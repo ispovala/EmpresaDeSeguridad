@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -19,10 +19,14 @@ const routes: Routes = [
     path: 'registro',
     loadChildren: () => import('./registro/registro.module').then( m => m.RegistroPageModule)
   },
+<<<<<<< HEAD
   {
     path: 'phone-login',
     loadChildren: () => import('./phone-login/phone-login.module').then( m => m.PhoneLoginPageModule)
   },
+=======
+
+>>>>>>> 2dbf9c41d3e0e8e9bf89a62d5cf56aeb3dde1c71
 ];
 
 @NgModule({

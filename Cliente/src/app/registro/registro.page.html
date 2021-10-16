@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <ion-app>
 
   <ion-header>
@@ -76,3 +77,35 @@
 
   </ion-content>
 </ion-app>
+=======
+<ion-header>
+  <ion-toolbar>
+    <ion-title>registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="formularioRegistro" (keyup.enter)="guardar()">
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input formControlName="nombre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Apellido</ion-label>
+      <ion-input formControlName="apellido"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input formControlName="email" type="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input formControlName="password" type="password" ></ion-input>
+    </ion-item>
+    
+    <br>
+    <ion-button (click)="guardar()">Registrarse
+    </ion-button>
+  </form>
+</ion-content>
+>>>>>>> 2dbf9c41d3e0e8e9bf89a62d5cf56aeb3dde1c71
