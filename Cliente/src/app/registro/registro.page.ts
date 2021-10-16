@@ -1,20 +1,11 @@
-<<<<<<< HEAD
+
 // registro.page.ts
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, AbstractControl } from '@angular/forms';
 import { AuthenticateService } from '../services/authentication.service';
 import { NavController } from '@ionic/angular';
 
-=======
-import { Component, OnInit } from '@angular/core';
-import {
-  FormGroup,
-  FormControl,
-  Validators,
-  FormBuilder
-} from '@angular/forms';
-import { AlertController } from '@ionic/angular';
->>>>>>> 2dbf9c41d3e0e8e9bf89a62d5cf56aeb3dde1c71
+
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.page.html',
@@ -22,7 +13,6 @@ import { AlertController } from '@ionic/angular';
 })
 export class RegistroPage implements OnInit {
 
-<<<<<<< HEAD
 
   // eslint-disable-next-line @typescript-eslint/naming-convention
   validations_form: FormGroup;
@@ -92,37 +82,4 @@ export class RegistroPage implements OnInit {
       this.btnDisabled = false;
    }
   }*/
-=======
-  formularioRegistro: FormGroup;
-  
-  constructor(public fb: FormBuilder, public alertController: AlertController) {
-    this.formularioRegistro = this.fb.group({
-      'nombre': new FormControl("", Validators.required),
-      'apellido': new FormControl("", Validators.required),
-      'password': new FormControl("", Validators.required),
-      'email': new FormControl("", Validators.required)
-    });
-  }
-
-
-  ngOnInit() {
-  }
-  async guardar(){
-    var f = this.formularioRegistro.value;
-
-    if(this.formularioRegistro.invalid){
-      const alert = await this.alertController.create({
-        header: 'Datos incompletos',
-        message: 'Tienes que llenar todos los datos',
-        buttons: ['Aceptar']
-      });
-  
-      await alert.present();
-      return;
-    }
-
-  }
-
-
->>>>>>> 2dbf9c41d3e0e8e9bf89a62d5cf56aeb3dde1c71
 }

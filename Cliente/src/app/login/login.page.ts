@@ -1,19 +1,9 @@
-<<<<<<< HEAD
 // login.page.ts
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authentication.service';
 
-=======
-import { Component, OnInit } from '@angular/core';
-import {
-  FormGroup,
-  FormControl,
-  Validators,
-  FormBuilder
-} from '@angular/forms';
->>>>>>> 2dbf9c41d3e0e8e9bf89a62d5cf56aeb3dde1c71
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -21,7 +11,6 @@ import {
 })
 export class LoginPage implements OnInit {
 
-<<<<<<< HEAD
   // eslint-disable-next-line @typescript-eslint/naming-convention
   validations_form: FormGroup;
   errorMessage = '';
@@ -79,18 +68,3 @@ export class LoginPage implements OnInit {
 
 }
 
-=======
-
-  formularioLogin: FormGroup;
-
-  constructor(public fb: FormBuilder) { 
-
-    this.formularioLogin = this.fb.group({
-      'celular': new FormControl("",Validators.required)
-    })
-  }
-  ngOnInit() {
-  }
-
-}
->>>>>>> 2dbf9c41d3e0e8e9bf89a62d5cf56aeb3dde1c71
