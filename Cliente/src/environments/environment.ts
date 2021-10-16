@@ -12,8 +12,12 @@ export const environment = {
     messagingSenderId: '366576104208',
     appId: '1:366576104208:web:891bbf6e7b0970e02feb95',
     measurementId: 'G-3XEQP35CCG'
-  }
+  },
+  countryJson:  [
+      { name: 'Ecuador', dialCode: '+593', code: 'ECU' }
+      ]
 };
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
