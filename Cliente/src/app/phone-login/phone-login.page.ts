@@ -13,9 +13,9 @@ export class PhoneLoginPage implements OnInit {
   otp= '';
   code: any;
   phoneNo: any;
-  countryCode: any = '+91';
+  countryCode: any = '+593';
   showOTPInput= false;
-  otpMessage= 'An OTP is sent to your number. You should receive it in 15 s';
+  otpMessage= 'Se ha enviado un pin a tu número de celular';
   recaptchaVerifier: firebase.auth.RecaptchaVerifier;
   confirmationResult: any;
   constructor(
@@ -80,13 +80,13 @@ export class PhoneLoginPage implements OnInit {
   }
   async otpVerification() {
     const alert = await this.alertController.create({
-      header: 'Enter OTP',
+      header: 'Ingresar pin',
       backdropDismiss: false,
       inputs: [
         {
           name: 'otp',
           type: 'text',
-          placeholder: 'Enter your otp',
+          placeholder: 'Ingresa tu pin',
         }
       ],
       buttons: [{
