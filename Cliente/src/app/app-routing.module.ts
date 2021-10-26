@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
+
 const routes: Routes = [
   {
     path: 'home',
@@ -22,6 +23,32 @@ const routes: Routes = [
   {
     path: 'phone-login',
     loadChildren: () => import('./phone-login/phone-login.module').then( m => m.PhoneLoginPageModule)
+  },
+  {
+    path: 'servicios',
+    loadChildren: () => import('./servicios/servicios.module').then( m => m.ServiciosPageModule),
+
+  },
+  {
+    path: 'servicios/n',
+    children: [
+      {
+        path: 'chofer', 
+        loadChildren: () => import('./servicios/chofer/chofer.module').then( m => m.ChoferPageModule)
+      },
+      {
+        path: 'custodia', 
+        loadChildren: () => import('./servicios/custodia/custodia.module').then( m => m.CustodiaPageModule)
+      },
+      {
+        path: 'guardia', 
+        loadChildren: () => import('./servicios/guardia/guardia.module').then( m => m.GuardiaPageModule)
+      },
+      {
+        path: 'transporte', 
+        loadChildren: () => import('./servicios/transporte/transporte.module').then( m => m.TransportePageModule)
+      },
+    ]
   },
 ];
 
