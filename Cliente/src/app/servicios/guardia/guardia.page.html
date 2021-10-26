@@ -1,31 +1,72 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>guardia</ion-title>
-  </ion-toolbar>
+  
 </ion-header>
 
 <ion-content>
-  <IonItem>
-    <IonLabel>Fecha de Inicio</IonLabel>
-    <ion-datetime placeholder="seleccione"></ion-datetime>
-  </IonItem>
-  <IonItem>
-    <IonLabel>Hora de Inicio</IonLabel>
-    <ion-datetime placeholder="Seleccione" displayFormat="hh-mm-A"></ion-datetime>
-  </IonItem>
-  
-  <IonItem>
-    <IonLabel>Fecha de Finalizacion</IonLabel>
-    <ion-datetime placeholder="Seleccione"></ion-datetime>
-  </IonItem>
-  <IonItem>
-    <IonLabel>Hora de Finalizacion</IonLabel>
-    <ion-datetime placeholder="Seleccione" displayFormat="hh-mm-A"></ion-datetime>
-  </IonItem>
-  <IonLabel>Elegir ubicación</IonLabel>
-  <button ion-button color="secondary">Abrir mapa</button>
-
+  <div class="titulo">
+    <h1>GUARDIA DE SEGURIDAD</h1>
+    <div class="logo">
+      <ion-img style="width: 100px; height: 100px;" src="assets/img/logoguardia.png"></ion-img>
+    </div>
+  </div>
+  <div class="datos">
+    <ion-list>
+      <IonItem>
+        <h8>Fecha de Inicio</h8>
+        <div class="seleccion">
+          <ion-item >
+            <ion-datetime displayFormat="MM/DD/YYYY"></ion-datetime>
+            <ion-icon name="calendar-clear-outline" item-right></ion-icon>
+          </ion-item>
+        </div>
+      </IonItem>
+      <IonItem>
+        <h8>Hora de Inicio</h8>
+        <div class="seleccion">
+          <ion-item >
+            <ion-datetime displayFormat="hh-mm-A"></ion-datetime>
+            <ion-icon name="time-outline" item-right></ion-icon>
+          </ion-item>
+          
+        </div>
+      </IonItem>
+      <IonItem>
+        <h8>Fecha de Finalizacion</h8>
+        <div class="seleccion">
+          <ion-item >
+            <ion-datetime displayFormat="MM/DD/YYYY"></ion-datetime>
+            <ion-icon  name="calendar-clear-outline" item-right></ion-icon>
+          </ion-item>
+        </div>
+      </IonItem>
+      <IonItem>
+        <h8>Hora de Finalizacion</h8>
+        <div class="seleccion">
+          <ion-item >
+            <ion-datetime displayFormat="hh-mm-A"></ion-datetime>
+            <ion-icon name="time-outline" item-right></ion-icon>
+          </ion-item>
+        </div>
+      </IonItem>
+    </ion-list>
+  </div>
+  <div class="mapa">
+    <h6>Elegir ubicación</h6>
+    <button ion-button color="secondary">Abrir mapa</button>
+     
+  </div>
+  <div class="cantidad-guardias">
+      <h7>Número de guardias</h7>
+      <div class="cantidad">
+        <ion-icon name="remove-circle" (click)="decrement()"></ion-icon>
+         {{currentNumber}}
+        <ion-icon name="add-circle" (click)="increment()"></ion-icon>
+      </div>
+  </div>
+  <div class="solicitar-servicio">
+    <button ion-button color="secondary">Solicitar Servicio</button>
+  </div>
+    
  
-
 
 </ion-content>

@@ -1,0 +1,50 @@
+ion-content{ 
+    --ion-background-color:#d9dbd9; 
+}
+
+.titulo h1{
+  margin: 1rem;
+  padding: 0.5rem 3.5rem 0.5rem 3.5rem;
+  border: 2px ;
+  text-align: center;
+}
+.logo ion-img{
+   display:block;
+   margin:auto;
+}
+.datos{
+  margin: 1rem;
+  padding: 0.5rem 3.5rem 0.5rem 3.5rem;
+  border: 2px ;
+  
+}
+
+.seleccion ion-item{
+  --ion-background-color:#ffffff;
+ 
+  display: flex;
+  text-align: center;
+  border-radius: 60px ;
+  width: auto;
+  height: 2rem;
+}
+
+.cantidad-guardias{
+    margin: 0rem;
+    padding: 0.5rem 3.5rem 0.5rem 3.5rem;
+    border: 0px ;
+    
+
+}
+//top rigth bottom left
+.mapa {
+    margin: 0.5rem;
+    padding: 0.5rem 3.5rem 0.5rem 3.5rem;
+    border: 0px ;
+    display: flex;
+}
+.solicitar-servicio{
+    margin: 0rem;
+    padding: 1.5rem 3.5rem 0.5rem 3.5rem;
+    border: 0px ;
+}
