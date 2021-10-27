@@ -6,7 +6,7 @@
   <div class="titulo">
     <h1>GUARDIA DE SEGURIDAD</h1>
     <div class="logo">
-      <ion-img style="width: 100px; height: 100px;" src="assets/img/logoguardia.png"></ion-img>
+      <ion-img style="width: 100px; height: 100px;" src="assets/img/guardialogo.png"></ion-img>
     </div>
   </div>
   <div class="datos">
@@ -16,7 +16,7 @@
         <div class="seleccion">
           <ion-item >
             <ion-datetime displayFormat="MM/DD/YYYY"></ion-datetime>
-            <ion-icon name="calendar-clear-outline" item-right></ion-icon>
+            <ion-icon name="calendar-clear-outline" ></ion-icon>
           </ion-item>
         </div>
       </IonItem>
@@ -25,17 +25,17 @@
         <div class="seleccion">
           <ion-item >
             <ion-datetime displayFormat="hh-mm-A"></ion-datetime>
-            <ion-icon name="time-outline" item-right></ion-icon>
+            <ion-icon name="time-outline" ></ion-icon>
           </ion-item>
           
         </div>
       </IonItem>
       <IonItem>
-        <h8>Fecha de Finalizacion</h8>
+        <h8>Fecha de Finalización</h8>
         <div class="seleccion">
           <ion-item >
             <ion-datetime displayFormat="MM/DD/YYYY"></ion-datetime>
-            <ion-icon  name="calendar-clear-outline" item-right></ion-icon>
+            <ion-icon  name="calendar-clear-outline" ></ion-icon>
           </ion-item>
         </div>
       </IonItem>
@@ -44,7 +44,7 @@
         <div class="seleccion">
           <ion-item >
             <ion-datetime displayFormat="hh-mm-A"></ion-datetime>
-            <ion-icon name="time-outline" item-right></ion-icon>
+            <ion-icon name="time-outline" ></ion-icon>
           </ion-item>
         </div>
       </IonItem>
@@ -58,9 +58,10 @@
   <div class="cantidad-guardias">
       <h7>Número de guardias</h7>
       <div class="cantidad">
-        <ion-icon name="remove-circle" (click)="decrement()"></ion-icon>
-         {{currentNumber}}
-        <ion-icon name="add-circle" (click)="increment()"></ion-icon>
+        <ion-icon class="decremento" name="remove-circle-outline" (click)="decrement()"></ion-icon>
+        <ion-label> {{currentNumber}}</ion-label>
+         
+        <ion-icon class="aumento" name="add-circle-outline" (click)="increment()"></ion-icon>
       </div>
   </div>
   <div class="solicitar-servicio">

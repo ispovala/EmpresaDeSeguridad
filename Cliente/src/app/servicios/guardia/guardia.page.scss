@@ -7,6 +7,8 @@ ion-content{
   padding: 0.5rem 3.5rem 0.5rem 3.5rem;
   border: 2px ;
   text-align: center;
+  font-weight: bold;
+  color:#0000003f;
 }
 .logo ion-img{
    display:block;
@@ -28,6 +30,10 @@ ion-content{
   width: auto;
   height: 2rem;
 }
+.seleccion ion-icon{
+    display: flex;
+    text-align: center;
+}
 
 .cantidad-guardias{
     margin: 0rem;
@@ -47,4 +53,52 @@ ion-content{
     margin: 0rem;
     padding: 1.5rem 3.5rem 0.5rem 3.5rem;
     border: 0px ;
+}
+.mapa h6{
+  margin: 0rem;
+  padding: 0.5rem 3.5rem 0.5rem 0rem;
+  border: 0px ;
+}
+
+.mapa button{
+  text-align:center;
+  margin-left: 0rem;
+  width: 25rem;
+  height: 2.3rem;
+  border-radius: 60px ;
+  background-color:#3887bd;
+  color:#ffffff;
+}
+.solicitar-servicio button{
+  text-align:center;
+  margin-left: 0rem;
+  width: 14rem;
+  height: 2.3rem;
+  border-radius: 60px ;
+  background-color:#38bd4e;
+  color:#ffffff;
+}
+
+.cantidad-guardias .cantidad .decremento {
+  color:#e70808;
+  font-size: 23px;
+}
+.cantidad-guardias .cantidad .aumento {
+  color:#0a0db3;
+  font-size: 23px;
+}
+.cantidad-guardias .cantidad ion-label{
+  background-color:#ffffff;
+  display: flex;
+  text-align: center;
+  border-radius: 60px ;
+  width: 3rem;
+  height: 1.5rem;
+  padding: 0rem 2.5rem 0rem 1.8rem;
+}
+.cantidad-guardias .cantidad {
+  
+  display: flex;
+  text-align: center;
+
 }
