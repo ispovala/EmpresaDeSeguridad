@@ -1,0 +1,206 @@
+span.circle-grey {
+    position:absolute;
+    width:230px;
+    height:230px;
+    border-radius: 50%;
+    background: rgba(124, 120, 120, 0.932);
+    margin:auto;
+    top: 0; left: 0; bottom: 0; right: 0;
+}
+span.circle-white-custodia {
+    position:absolute;
+    width:120px;
+    height:120px;
+    border-radius: 50%;
+    background: rgb(255, 255, 255);
+    margin:auto;
+    top: 0; left: 0px; bottom: 185px; right: 185px;
+}
+.datos{
+    
+    display: flex;
+    flex-direction:column;
+
+}
+.texto ion-label{
+    font-weight: bold; 
+    font-size: 0.5em;
+    text-align: center;
+    margin-top: 8px;
+    margin-left: 15px;
+    margin-right: 15px;
+    display: flex;
+    
+
+}
+.textogreen ion-label{
+    font-weight: bold; 
+    font-size: 0.6em;
+    text-align: center;
+    margin-top: 8px;
+    margin-left: 15px;
+    margin-right: 15px;
+    display: flex;
+    color:#ffffff;
+}
+.textogreen2 ion-label{
+    font-weight: bold; 
+    font-size: 0.5em;
+    text-align: center;
+    margin-top: 8px;
+    margin-left: 15px;
+    margin-right: 15px;
+    display: flex;
+    color:#ffffff;
+}
+.detalle button{
+    text-align:center;
+    font-size: 0.5em;
+    margin-left: 0rem;
+    display:block;
+    margin:auto;
+     
+    height: 0.6rem;
+    border-radius: 60px ;
+    background-color:#3887bd;
+    color:#ffffff;
+
+}
+.logo{
+    display:block;
+   margin:auto;
+    
+}
+span.circle-yellow1-custodia {
+    position:absolute;
+    width:107px;
+    height:107px;
+    border-radius: 50%;
+    background: rgb(243, 188, 5);
+    margin:auto;
+    top: 0; left: 0px; bottom: 185px; right: 185px;
+}
+span.circle-yellow2-custodia {
+    position:absolute;
+    width:96px;
+    height:96px;
+    border-radius: 50%;
+    background: rgb(233, 229, 21);
+    margin:auto;
+    top: 0; left: 0px; bottom: 185px; right: 185px;
+}
+span.circle-white-chofer {
+    position:absolute;
+    width:120px;
+    height:120px;
+    border-radius: 50%;
+    background: rgb(255, 255, 255);
+    margin:auto;
+    top: 185px; left: 185px; bottom: 0px; right: 0px;
+}
+span.circle-yellow1-chofer {
+    position:absolute;
+    width:107px;
+    height:107px;
+    border-radius: 50%;
+    background: rgb(243, 188, 5);
+    margin:auto;
+    top: 185px; left: 185px; bottom: 0px; right: 0px;
+}
+span.circle-yellow2-chofer {
+    position:absolute;
+    width:96px;
+    height:96px;
+    border-radius: 50%;
+    background: rgb(233, 229, 21);
+    margin:auto;
+    top: 185px; left: 185px; bottom: 0px; right: 0px;
+}
+span.circle-white-transporte {
+    position:absolute;
+    width:140px;
+    height:140px;
+    border-radius: 50%;
+    background: rgb(255, 255, 255);
+    margin:auto;
+    top: 130px; left: 0px; bottom: 0px; right: 120px;
+}
+span.circle-green1-transporte {
+    position:absolute;
+    width:125px;
+    height:125px;
+    border-radius: 50%;
+    background: rgb(28, 160, 50);
+    margin:auto;
+    top: 130px; left: 0px; bottom: 0px; right: 120px;
+}
+span.circle-green2-transporte {
+    position:absolute;
+    width:112px;
+    height:112px;
+    border-radius: 50%;
+    background: rgb(37, 170, 59);
+    margin:auto;
+    top: 130px; left: 0px; bottom: 0px; right: 120px;
+}
+span.circle-white-guardia {
+    position:absolute;
+    width:130px;
+    height:130px;
+    border-radius: 50%;
+    background: rgb(255, 255, 255);
+    margin:auto;
+    top: 0px; left: 165px; bottom: 135px; right: 0px;
+}
+span.circle-green1-guardia {
+    position:absolute;
+    width:114px;
+    height:114px;
+    border-radius: 50%;
+    background: rgb(28, 160, 50);
+    margin:auto;
+    top: 0px; left: 165px; bottom: 135px; right: 0px;
+}
+span.circle-green2-guardia {
+    position:absolute;
+    width:98px;
+    height:98px;
+    border-radius: 50%;
+    background: rgb(37, 170, 59);
+    margin:auto;
+    top: 0px; left: 165px; bottom: 135px; right: 0px;
+}
+.tope span{
+    width:100%;
+   position:absolute;
+   left:0;
+   background-color:#aaafb4;
+   height:26px;
+   top:80px;
+   
+    
+}
+.logosepro ion-img{
+    padding-left: 0px;
+    display:block;
+    position:absolute;
+    margin-left: 100px;
+  
+    
+}
+.track-servicio{
+    margin: 0rem;
+    padding: 1.5rem 3.5rem 0.5rem 3.5rem;
+    border-top: 0px ;
+    padding-top: 32rem;
+    padding-left: 4.2rem;
+}
+.track-servicio button{
+    text-align:center;
+    margin-left: 0rem;
+    width: 14rem;
+    height: 2.3rem;
+    border-radius: 60px ;
+    background-color:#2b6ebb;
+    color:#ffffff;
+}

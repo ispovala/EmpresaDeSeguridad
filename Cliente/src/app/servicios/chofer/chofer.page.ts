@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { NavController } from '@ionic/angular';
 @Component({
   selector: 'app-chofer',
   templateUrl: './chofer.page.html',
@@ -7,7 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChoferPage implements OnInit {
 
-  constructor() { }
+  constructor(private navCtrl: NavController){
+    
+  }
+  cancelar(){
+    this.navCtrl.navigateForward("/servicios");
+  }
 
   ngOnInit() {
   }

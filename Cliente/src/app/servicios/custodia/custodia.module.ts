@@ -17,4 +17,6 @@ import { CustodiaPage } from './custodia.page';
   ],
   declarations: [CustodiaPage]
 })
-export class CustodiaPageModule {}
+export class CustodiaPageModule {
+  
+}

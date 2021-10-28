@@ -4,9 +4,9 @@
 
 <ion-content>
   <div class="titulo">
-    <h1>CUSTODIA ARMADA</h1>
+    <h1>CHOFER SEGURO</h1>
     <div class="logo">
-      <ion-img style="width: 100px; height: 100px;" src="assets/img/custodialogo.png"></ion-img>
+      <ion-img style="width: 100px; height: 100px;" src="assets/img/choferlogo.png"></ion-img>
     </div>
   </div>
   <div class="datos">
@@ -30,6 +30,24 @@
           
         </div>
       </IonItem>
+      <IonItem>
+        <h8>Fecha de Finalización</h8>
+        <div class="seleccion">
+          <ion-item >
+            <ion-datetime displayFormat="MM/DD/YYYY"></ion-datetime>
+            <ion-icon  name="calendar-clear-outline" ></ion-icon>
+          </ion-item>
+        </div>
+      </IonItem>
+      <IonItem>
+        <h8>Hora de Finalizacion</h8>
+        <div class="seleccion">
+          <ion-item >
+            <ion-datetime displayFormat="hh-mm-A"></ion-datetime>
+            <ion-icon name="time-outline" ></ion-icon>
+          </ion-item>
+        </div>
+      </IonItem>
       
     </ion-list>
   </div>
@@ -50,5 +68,8 @@
   </div>
   <div class="solicitar-servicio">
     <button ion-button color="secondary">Solicitar Servicio</button>
+  </div>
+  <div class="cancelar-servicio">
+    <button ion-button color="secondary" (click)="cancelar()">Cancelar</button>
   </div>
 </ion-content>

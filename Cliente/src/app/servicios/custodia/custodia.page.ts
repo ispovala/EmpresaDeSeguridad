@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { NavController } from '@ionic/angular';
 @Component({
   selector: 'app-custodia',
   templateUrl: './custodia.page.html',
@@ -18,8 +18,12 @@ export class CustodiaPage implements OnInit {
     }
  }
 
-  constructor() { }
-
+ constructor(private navCtrl: NavController){
+    
+}
+cancelar(){
+  this.navCtrl.navigateForward("/servicios");
+}
   ngOnInit() {
   }
 

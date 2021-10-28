@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-guardia',
@@ -23,10 +23,12 @@ export class GuardiaPage implements OnInit {
     }
  }
  
-  constructor() {
-  
+ constructor(private navCtrl: NavController){
     
-  }
+}
+cancelar(){
+  this.navCtrl.navigateForward("/servicios");
+}
 
   ngOnInit() {
   }
