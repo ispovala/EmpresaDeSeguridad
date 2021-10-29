@@ -11,17 +11,15 @@
   </div>
   <div class="datos">
     <ion-list>
-      <IonItem>
-        <h8>Fecha de Inicio</h8>
+        <ion-label>Fecha de Inicio</ion-label>
         <div class="seleccion">
           <ion-item >
             <ion-datetime displayFormat="MM/DD/YYYY"></ion-datetime>
             <ion-icon name="calendar-clear-outline" ></ion-icon>
           </ion-item>
         </div>
-      </IonItem>
-      <IonItem>
-        <h8>Hora de Inicio</h8>
+    
+        <ion-label>Hora de Inicio</ion-label>
         <div class="seleccion">
           <ion-item >
             <ion-datetime displayFormat="hh-mm-A"></ion-datetime>
@@ -29,34 +27,32 @@
           </ion-item>
           
         </div>
-      </IonItem>
-      <IonItem>
-        <h8>Fecha de Finalización</h8>
+      
+        <ion-label>Fecha de Finalización</ion-label>
         <div class="seleccion">
           <ion-item >
             <ion-datetime displayFormat="MM/DD/YYYY"></ion-datetime>
             <ion-icon  name="calendar-clear-outline" ></ion-icon>
           </ion-item>
         </div>
-      </IonItem>
-      <IonItem>
-        <h8>Hora de Finalizacion</h8>
+     
+        <ion-label>Hora de Finalizacion</ion-label>
         <div class="seleccion">
           <ion-item >
             <ion-datetime displayFormat="hh-mm-A"></ion-datetime>
             <ion-icon name="time-outline" ></ion-icon>
           </ion-item>
         </div>
-      </IonItem>
+    
     </ion-list>
   </div>
   <div class="mapa">
-    <h6>Elegir ubicación</h6>
+    <ion-label>Elegir ubicación</ion-label>
     <button ion-button color="secondary">Abrir mapa</button>
      
   </div>
   <div class="cantidad-guardias">
-      <h7>Número de guardias</h7>
+      <ion-label>Número de guardias</ion-label>
       <div class="cantidad">
         <ion-icon class="decremento" name="remove-circle-outline" (click)="decrement()"></ion-icon>
         <ion-label> {{currentNumber}}</ion-label>
