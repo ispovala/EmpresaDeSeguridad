@@ -1,17 +1,70 @@
-ion-content{ 
-    --ion-background-color:#ffffff; 
-}
+.datos2{
+    margin: 1rem;
+    padding: 0.5rem 3.5rem 0.5rem 3.5rem;
+    border: 2px ;
+    margin-top: 60%;;
+    
+  }
 
+
+.tope span{
+    width:100%;
+   position:absolute;
+   left:0;
+   background-color:#aaafb4;
+   height:26px;
+   top:80px;
+   
+    
+}
+.logosepro ion-img{
+    padding-left: 0px;
+    display:block;
+    position:absolute;
+    margin-left: 100px;
+}
 
 span.circle-grey {
     position:absolute;
-    width:230px;
-    height:230px;
+    width:5rem;
+    height:5rem;
     border-radius: 50%;
     background: rgba(124, 120, 120, 0.932);
     margin:auto;
-    top: 0; left: 0; bottom: 0; right: 0;
+    top: 20%; left: 0; bottom: 10; right: 0;
 }
+
+.botones button{
+    text-align:center;
+    width: 10rem;
+    height: 2.3rem;
+    border-radius: 60px ;
+    background-color:#3887bd;
+    color:#ffffff;
+    margin-right: 5%;;
+    justify-content: space-between;
+
+  }
+
+.botones{
+    margin-left: 5%;
+    display: flex;
+}
+
+
+.datos2 ion-item{
+    display: flex;
+    text-align: center;
+    border-radius: 60px ;
+    width: auto;
+    height: 2rem;
+    --border-color: #3a75af;
+      --ion-background-color: #c3cbd3;
+  
+  }
+
+
+
 span.circle-white-custodia {
     position:absolute;
     width:120px;
@@ -25,6 +78,7 @@ span.circle-white-custodia {
     
     display: flex;
     flex-direction:column;
+
 
 }
 .texto ion-label{
@@ -175,24 +229,7 @@ span.circle-green2-guardia {
     margin:auto;
     top: 0px; left: 165px; bottom: 135px; right: 0px;
 }
-.tope span{
-    width:100%;
-   position:absolute;
-   left:0;
-   background-color:#aaafb4;
-   height:26px;
-   top:80px;
-   
-    
-}
-.logosepro ion-img{
-    padding-left: 0px;
-    display:block;
-    position:absolute;
-    margin-left: 100px;
-  
-    
-}
+
 .track-servicio{
     margin: 0rem;
     padding: 1.5rem 3.5rem 0.5rem 3.5rem;

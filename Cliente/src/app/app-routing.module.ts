@@ -49,7 +49,15 @@ const routes: Routes = [
         loadChildren: () => import('./servicios/transporte/transporte.module').then( m => m.TransportePageModule)
       },
     ]
+  },  {
+    path: 'perfil',
+    loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
   },
+  {
+    path: 'editarperfil',
+    loadChildren: () => import('./editarperfil/editarperfil.module').then( m => m.EditarperfilPageModule)
+  },
+
 ];
 
 @NgModule({
