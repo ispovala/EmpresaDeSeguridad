@@ -1,59 +1,63 @@
-<ion-header>
-  
+<ion-header> 
 </ion-header>
 
 <ion-content>
   <div class="tope">
-    <span>
-      
+    <span> 
     </span>
-    
     <div class="logosepro">
       <ion-img style="width: 150px; height: 150px;" src="assets/img/logosepro.png"></ion-img>
     </div>
   </div>
 
-  <span class="circle-grey">
+  <div class="titulo">
     <h4>Mi perfil</h4>
+  </div>
+
+  <span class="circle-grey">
     <div class="logo">
       <ion-img  src="assets/img/perfilcliente.png"></ion-img>
-</div>
+    </div>
   </span>
 
-
+  
 
 	<div class="datos2">
     <ion-list>
       <ion-label>Nombres</ion-label>
-        <ion-item class="nombres">  
+        <ion-chip outline color="dark" disabled = true>
           <ion-label>Hayleen</ion-label>
-        </ion-item>
+        </ion-chip>
+        
         <ion-label>Apellidos</ion-label>
-        <ion-item class="apellidos">  
+        <ion-chip outline color="dark" disabled = true>
           <ion-label>Carrillo</ion-label>
-        </ion-item>
+        </ion-chip>
+
         <ion-label>Cédula de identidad</ion-label>
-        <ion-item class="cedula">  
+        <ion-chip outline color="dark" disabled = true>
           <ion-label>1234567890</ion-label>
-        </ion-item>
+        </ion-chip>
 
         <ion-label>Número de celular</ion-label>
-        <ion-item class="celular">  
+        <ion-chip outline color="dark" disabled = true>
           <ion-label>0912345678</ion-label>
-        </ion-item>
+        </ion-chip>
+
         <ion-label>Fecha de nacimiento</ion-label>
-        <ion-item class="fecha">  
-          <ion-label>10/29/1999</ion-label>
-        </ion-item>
+        <ion-chip outline color="dark" disabled = true>
+          <ion-label>12/31/1999</ion-label>
+        </ion-chip>
 
         <ion-label>Dirección</ion-label>
-        <ion-item class="direccion">  
+        <ion-chip outline color="dark" disabled = true>
           <ion-label>Espol</ion-label>
-        </ion-item>
+        </ion-chip>
+
         <ion-label>Correo electrónico</ion-label>
-        <ion-item class="correo">  
+        <ion-chip outline color="dark" disabled = true>
           <ion-label>hicc@espol.edu.ec</ion-label>
-        </ion-item>
+        </ion-chip>
 
     </ion-list>
     </div>
@@ -62,6 +66,5 @@
   <div class="botones">
       <button ion-button color="secondary" (click)="editar()">Editar</button>
     </div>
-
 
 </ion-content>

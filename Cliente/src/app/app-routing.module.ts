@@ -57,6 +57,10 @@ const routes: Routes = [
     path: 'editarperfil',
     loadChildren: () => import('./editarperfil/editarperfil.module').then( m => m.EditarperfilPageModule)
   },
+  {
+    path: 'metododepago',
+    loadChildren: () => import('./metododepago/metododepago.module').then( m => m.MetododepagoPageModule)
+  },
 
 ];
 

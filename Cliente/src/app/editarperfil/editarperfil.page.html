@@ -1,28 +1,24 @@
 <ion-header>
-  
 </ion-header>
 
 <ion-content>
   <div class="tope">
-    <span>
-      
+    <span> 
     </span>
-    
     <div class="logosepro">
       <ion-img style="width: 150px; height: 150px;" src="assets/img/logosepro.png"></ion-img>
     </div>
-
-
-
-    
   </div>
+
+  <div class="titulo">
+    <h4>Editar perfil</h4>
+  </div>
+
   <span class="circle-grey">
     <div class="logo">
       <ion-img  src="assets/img/perfilcliente.png"></ion-img>
-</div>
+    </div>
   </span>
-
-
 
 	<div class="datos2">
     <ion-list>
@@ -30,18 +26,21 @@
         <ion-item class="nombres">  
           <ion-input></ion-input>
         </ion-item>
+
+
+        
         <ion-label>Apellidos</ion-label>
         <ion-item class="apellidos">  
           <ion-input></ion-input>
         </ion-item>
         <ion-label>Cédula de identidad</ion-label>
         <ion-item class="cedula">  
-          <ion-input></ion-input>
+          <ion-input type='number' maxlength='10'></ion-input>
         </ion-item>
 
         <ion-label>Número de celular</ion-label>
         <ion-item class="celular">  
-          <ion-input></ion-input>
+          <ion-input type='number' maxlength='10'></ion-input>
         </ion-item>
         <ion-label>Fecha</ion-label>
         <ion-item class="fecha">  
@@ -55,7 +54,7 @@
         </ion-item>
         <ion-label>Correo electrónico</ion-label>
         <ion-item class="correo">  
-          <ion-input></ion-input>
+          <ion-input type='email'></ion-input>
         </ion-item>
 
     </ion-list>
