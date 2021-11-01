@@ -48,8 +48,13 @@ const routes: Routes = [
         path: 'transporte', 
         loadChildren: () => import('./servicios/transporte/transporte.module').then( m => m.TransportePageModule)
       },
+      {
+        path: 'solicitud', 
+        loadChildren: () => import('./servicios/solicitud-servicio/solicitud-servicio.module').then( m => m.SolicitudServicioPageModule)
+      },
     ]
-  },  {
+  },
+  {
     path: 'perfil',
     loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
   },
