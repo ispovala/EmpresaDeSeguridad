@@ -1,0 +1,77 @@
+<ion-header>
+ 
+</ion-header>
+
+<ion-content>
+  <div class="tope">
+    <span>
+    </span>
+    <div class="logosepro">
+      <ion-img style="width: 150px; height: 150px;" src="assets/img/logosepro.png"></ion-img>
+    </div>
+  </div>
+  <span class="titulo">
+    <ion-card>Solicitud de servicio</ion-card>
+  </span>
+  <span class="imagen">   
+    <div class="logo">
+      <ion-img  src="assets/img/perfilcliente.png"></ion-img>
+    </div>
+  </span>
+  <div class="datos">
+    <ion-list >
+      <ion-item lines="none">
+        <ion-label>Servicio:</ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Fecha de inicio:</ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Hora de inicio:</ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Lugar de origen:</ion-label>
+      </ion-item >
+      <ion-item lines="none">
+        <ion-label>Lugar de destino:</ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Numero de vehiculos:</ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Candado satelital:</ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>Monto:</ion-label>
+      </ion-item>
+
+    </ion-list>
+
+  </div>
+  
+  <div class="botonruta" >
+    <button class="ruta">
+        <label>Ver ruta</label>
+        <ion-img style="width: 30px; height: 30px;" src="assets/img/ruta.png"></ion-img>
+    </button>
+  </div>
+  <div class="botones">
+    <div class="confirmar-servicio">
+      <button ion-button color="secondary" (click)="confirmar()">Confirmar</button>
+    </div>
+    <div class="cancelar-servicio">
+      <button ion-button color="secondary" (click)="cancelar() " >Cancelar</button>
+    </div>
+
+  </div>
+  <div class="metodo-pago">
+    <ion-label > Elegir metodo de pago</ion-label>
+    <ion-select >
+      <ion-select-option value="tarjeta">TARJETA CREDITO/DEBITO</ion-select-option>
+      <ion-select-option value="efectivo">EFECTIVO</ion-select-option>
+    </ion-select>
+
+  </div>
+  
+
+</ion-content>

@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: ServiciosPage
+  },
+  {
+    path: 'solicitud-servicio',
+    loadChildren: () => import('./solicitud-servicio/solicitud-servicio.module').then( m => m.SolicitudServicioPageModule)
   }
 ];
 

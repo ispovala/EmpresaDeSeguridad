@@ -1,0 +1,103 @@
+.tope span{
+    width:100%;
+   position:absolute;
+   left:0;
+   background-color:#aaafb4;
+   height:26px;
+   top:80px;
+   
+    
+}
+.logosepro ion-img{
+    padding-left: 0px;
+    display:block;
+    position:absolute;
+    margin-left: 100px;
+  
+    
+}
+span.imagen {
+    position:absolute;
+    width:5rem;
+    height:5rem;
+    border-radius: 50%;
+    margin:auto;
+    top: 31%; left: 0; bottom: 10; right: 0;
+}
+span.titulo {
+    position: absolute;
+    text-align: center;
+    border-radius: 60%;
+    top: 20%; left: 20%; bottom: 10; right: 20%;
+    
+    
+ 
+}
+span.titulo ion-card{
+ 
+    border: 1px solid #4A4A4A;
+    margin:20px auto;
+    border-radius: 20px !important;
+    height: 2rem;
+
+}
+.datos{
+    position:absolute;
+    top: 45%; left: 20%; bottom: 10; right: 20%;
+    
+
+}
+.datos ion-item{
+    padding:0px !important;
+    margin: 0px !important;
+}
+.datos{
+    padding-top:0px !important;
+    padding-bottom:0px !important;
+  }
+  .botones{
+    position:absolute;
+    top: 122%; left: 20%; bottom: 10; right: 20%;
+    display: flex;
+    justify-content:space-between;
+
+  }
+
+.confirmar-servicio button{
+    text-align:center;
+    margin-left: 0rem;
+    width: 6rem;
+    height: 2.3rem;
+    border-radius: 60px ;
+    background-color:#38bd4e;
+    color:#ffffff;
+  }
+  .cancelar-servicio button{
+      text-align:center;
+      margin-left: 0rem;
+      width: 6rem;
+      height: 2.3rem;
+      border-radius: 60px ;
+      background-color:#c43834;
+      color:#ffffff;
+    }
+.ruta{
+    display: flex;
+    position:absolute;
+    top: 105%; left: 35%; bottom: 10; right: 20%;
+    background-color: #ffffff;
+    
+
+}
+.metodo-pago{
+    position:absolute;
+    top: 110%; left: 35%; bottom: 10; right: 20%;
+    background-color: #ffffff;
+
+}
+.botonruta{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+
+}
