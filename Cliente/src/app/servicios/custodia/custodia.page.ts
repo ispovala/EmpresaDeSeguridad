@@ -21,6 +21,10 @@ export class CustodiaPage implements OnInit {
  constructor(private navCtrl: NavController){
     
 }
+solicitud(){
+  this.navCtrl.navigateForward("/servicios/n/solicitud");
+  
+}
 cancelar(){
   this.navCtrl.navigateForward("/servicios");
 }

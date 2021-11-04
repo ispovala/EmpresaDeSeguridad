@@ -14,5 +14,11 @@ export class SolicitudServicioPage implements OnInit {
   }
   ngOnInit() {
   }
+  cancelar(){
+    this.navCtrl.navigateForward("/servicios");
+  }
+  confirmar(){
+    this.navCtrl.navigateForward("/servicios");
+  }
 
 }
