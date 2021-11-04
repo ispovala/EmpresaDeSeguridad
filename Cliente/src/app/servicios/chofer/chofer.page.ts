@@ -13,6 +13,10 @@ export class ChoferPage implements OnInit {
   cancelar(){
     this.navCtrl.navigateForward("/servicios");
   }
+  solicitud(){
+    this.navCtrl.navigateForward("/servicios/n/solicitud");
+    
+  }
 
   ngOnInit() {
   }
