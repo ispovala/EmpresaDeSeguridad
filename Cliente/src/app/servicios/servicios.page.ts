@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { GuardiaPage } from '../servicios/guardia/guardia.page';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-servicios',
@@ -10,7 +11,7 @@ import { GuardiaPage } from '../servicios/guardia/guardia.page';
 export class ServiciosPage implements OnInit {
 
   
-  constructor(private navCtrl: NavController){
+  constructor(private navCtrl: NavController, private menu: MenuController){
     
   }
   irPaginaChofer(){
@@ -28,6 +29,20 @@ export class ServiciosPage implements OnInit {
     this.navCtrl.navigateForward("/servicios/n/transporte");
   }
   ngOnInit() {
+  }
+
+  openFirst() {
+    this.menu.enable(true, 'first');
+    this.menu.open('first');
+  }
+
+  openEnd() {
+    this.menu.open('end');
+  }
+
+  openCustom() {
+    this.menu.enable(true, 'custom');
+    this.menu.open('custom');
   }
 
 }

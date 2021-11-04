@@ -19,6 +19,15 @@
         }
 
     }
+
+    .detalles{
+        margin-top: 15%;
+        margin-left: 10%;
+
+        .fijo{
+            font-weight: bold;
+        }
+    }
 }
 
 .tope span{
@@ -58,4 +67,19 @@ span.circle-grey {
     border-radius: 50%;
     margin:auto;
     top: 30%; left: 0; bottom: 10; right: 0;
+}
+
+
+.botones ion-button{
+    text-align:center;
+    width: 10rem;
+    height: 2.3rem;
+    border-radius: 60px ;
+    margin-right: 5%;;
+    justify-content: space-between;
+  }
+
+.botones{
+    margin-left: 5%;
+    display: flex;
 }

@@ -82,7 +82,11 @@ const routes: Routes = [
       special: DataResolverService
     },
     loadChildren: () => import('./detallesservicio/detallesservicio.module').then( m => m.DetallesservicioPageModule)
+  },  {
+    path: 'menuprueba',
+    loadChildren: () => import('./menuprueba/menuprueba.module').then( m => m.MenupruebaPageModule)
   }
+
 ];
 
 @NgModule({
