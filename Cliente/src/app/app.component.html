@@ -1,13 +1,18 @@
 <ion-app>
   <ion-split-pane contentId="main-content">
-    <ion-menu contentId="main-content">
+    <ion-menu contentId="main-content" >
       <ion-header>
         <ion-toolbar>
-          <ion-title>Menu</ion-title>
+          <ion-img style="width: 150px; height: 150px;" src="assets/img/logosepro.png"></ion-img>
         </ion-toolbar>
       </ion-header>
       <ion-content>
-        <ion-list>
+        <ion-menu-toggle auto-hide="false">
+          <img menuClose style="width: 32%; height: 20%;"src="assets/img/backcliente.png" (click)="openPage()">
+          <p ion-text header-subtitle>Hayleen Carrillo</p>
+        </ion-menu-toggle>
+        
+        <ion-list class="opciones">
           <ion-menu-toggle auto-hide="false">
             <ion-item [routerDirection]="'root'" [routerLink]="'/servicios'">
               <ion-icon slot="start" [name]="'list'"></ion-icon>
@@ -16,9 +21,45 @@
               </ion-label>
             </ion-item>
             <ion-item [routerDirection]="'root'" [routerLink]="'/historialservicios'">
-              <ion-icon slot="start" [name]="'home'"></ion-icon>
+              <ion-icon slot="start" [name]="'list'"></ion-icon>
               <ion-label>
                 Historial de servicios
+              </ion-label>
+            </ion-item>
+            <ion-item [routerDirection]="'root'" [routerLink]="">
+              <ion-icon slot="start" [name]="'list'"></ion-icon>
+              <ion-label>
+                Notificaciones
+              </ion-label>
+            </ion-item>
+            <ion-item [routerDirection]="'root'" [routerLink]="">
+              <ion-icon slot="start" [name]="'list'"></ion-icon>
+              <ion-label>
+                Carrito
+              </ion-label>
+            </ion-item>
+            <ion-item [routerDirection]="'root'" [routerLink]="'/metododepago'">
+              <ion-icon slot="start" [name]="'list'"></ion-icon>
+              <ion-label>
+                Tarjetas
+              </ion-label>
+            </ion-item>
+            <ion-item [routerDirection]="'root'" [routerLink]="">
+              <ion-icon slot="start" [name]="'list'"></ion-icon>
+              <ion-label>
+                Chats
+              </ion-label>
+            </ion-item>
+            <ion-item [routerDirection]="'root'" [routerLink]="">
+              <ion-icon slot="start" [name]="'list'"></ion-icon>
+              <ion-label>
+                Escanear código QR
+              </ion-label>
+            </ion-item>
+            <ion-item [routerDirection]="'root'" [routerLink]="">
+              <ion-icon slot="start" [name]="'list'"></ion-icon>
+              <ion-label>
+                Sucursales
               </ion-label>
             </ion-item>
 
