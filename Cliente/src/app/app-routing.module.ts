@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-
+import { DataResolverService } from './resolver/data-resolver.service';
 
 const routes: Routes = [
   {
@@ -66,7 +66,23 @@ const routes: Routes = [
     path: 'metododepago',
     loadChildren: () => import('./metododepago/metododepago.module').then( m => m.MetododepagoPageModule)
   },
+  {
+    path: 'historialservicios',
+    loadChildren: () => import('./historialservicios/historialservicios.module').then( m => m.HistorialserviciosPageModule)
+  },
 
+  {
+    path: 'detallesservicio',
+    loadChildren: () => import('./detallesservicio/detallesservicio.module').then( m => m.DetallesservicioPageModule)
+  },
+
+  {
+    path: 'detallesservicio/:id',
+    resolve: {
+      special: DataResolverService
+    },
+    loadChildren: () => import('./detallesservicio/detallesservicio.module').then( m => m.DetallesservicioPageModule)
+  }
 ];
 
 @NgModule({
