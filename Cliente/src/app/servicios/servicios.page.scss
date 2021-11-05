@@ -77,7 +77,8 @@ span.circle-white-custodia {
     
 }
 span.circle-yellow1-custodia {
-    position:absolute;
+
+    //position:absolute;
     width:107px;
     height:107px;
     border-radius: 50%;
@@ -86,7 +87,7 @@ span.circle-yellow1-custodia {
     top: 0; left: 0px; bottom: 185px; right: 185px;
 }
 span.circle-yellow2-custodia {
-    position:absolute;
+    //position:absolute;
     width:96px;
     height:96px;
     border-radius: 50%;
@@ -95,7 +96,7 @@ span.circle-yellow2-custodia {
     top: 0; left: 0px; bottom: 185px; right: 185px;
 }
 span.circle-white-chofer {
-    position:absolute;
+    //position:absolute;
     width:120px;
     height:120px;
     border-radius: 50%;
@@ -104,7 +105,7 @@ span.circle-white-chofer {
     top: 185px; left: 185px; bottom: 0px; right: 0px;
 }
 span.circle-yellow1-chofer {
-    position:absolute;
+    //position:absolute;
     width:107px;
     height:107px;
     border-radius: 50%;
@@ -113,7 +114,7 @@ span.circle-yellow1-chofer {
     top: 185px; left: 185px; bottom: 0px; right: 0px;
 }
 span.circle-yellow2-chofer {
-    position:absolute;
+    //position:absolute;
     width:96px;
     height:96px;
     border-radius: 50%;
@@ -122,7 +123,7 @@ span.circle-yellow2-chofer {
     top: 185px; left: 185px; bottom: 0px; right: 0px;
 }
 span.circle-white-transporte {
-    position:absolute;
+    //position:absolute;
     width:140px;
     height:140px;
     border-radius: 50%;
@@ -131,7 +132,7 @@ span.circle-white-transporte {
     top: 130px; left: 0px; bottom: 0px; right: 120px;
 }
 span.circle-green1-transporte {
-    position:absolute;
+    //position:absolute;
     width:125px;
     height:125px;
     border-radius: 50%;
@@ -140,7 +141,7 @@ span.circle-green1-transporte {
     top: 130px; left: 0px; bottom: 0px; right: 120px;
 }
 span.circle-green2-transporte {
-    position:absolute;
+    //position:absolute;
     width:112px;
     height:112px;
     border-radius: 50%;
@@ -149,7 +150,7 @@ span.circle-green2-transporte {
     top: 130px; left: 0px; bottom: 0px; right: 120px;
 }
 span.circle-white-guardia {
-    position:absolute;
+    //position:absolute;
     width:130px;
     height:130px;
     border-radius: 50%;
@@ -158,7 +159,7 @@ span.circle-white-guardia {
     top: 0px; left: 165px; bottom: 135px; right: 0px;
 }
 span.circle-green1-guardia {
-    position:absolute;
+    //position:absolute;
     width:114px;
     height:114px;
     border-radius: 50%;
@@ -167,7 +168,7 @@ span.circle-green1-guardia {
     top: 0px; left: 165px; bottom: 135px; right: 0px;
 }
 span.circle-green2-guardia {
-    position:absolute;
+    //position:absolute;
     width:98px;
     height:98px;
     border-radius: 50%;
@@ -185,31 +186,41 @@ span.circle-green2-guardia {
    
     
 }
+.circle span{
+    position: absolute;
+}
 .logosepro ion-img{
     padding-left: 0px;
-    display:block;
-    position:absolute;
+    //display:block;
+    position:relative;
     margin-left: 100px;
   
     
 }
+
 .track-servicio{
-    margin: 0rem;
-    padding: 1.5rem 3.5rem 0.5rem 3.5rem;
-    border-top: 0px ;
-    padding-top: 32rem;
-    padding-left: 4.2rem;
+    position: absolute;
+    //display: block;
+    //height: 70%;
+    margin:auto;
+    top: 40%; left: 10%; bottom: 20%; right: 10%;
+    //margin: 0rem;
+    //padding: 1.5% 50% 0.5% 3.5%;
+    //border-top: 0px ;
+    padding-top: 70%;
+    padding-left: 20%;
+    padding-right: 20%;
 }
 .track-servicio button{
-    text-align:center;
-    margin-left: 0rem;
+    
+    //text-align:center;
+    //margin-left: 0rem;
     width: 14rem;
     height: 2.3rem;
+    
     border-radius: 60px ;
     background-color:#2b6ebb;
     color:#ffffff;
 }
 
-.my-custom-menu {
-    --width: 500px;
-  }
+

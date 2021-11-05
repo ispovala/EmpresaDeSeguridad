@@ -30,12 +30,11 @@ div h4{
     margin-top: 40%;
 }
 
-span.circle-grey {
+span.circle-grey ion-img{
     position:absolute;
-    width:5rem;
-    height:5rem;
+    width:20%;
+    //height:5rem;
     border-radius: 50%;
-    background-color:#dadde0;
     margin:auto;
     top: 28%; left: 0; bottom: 10; right: 0;
 }
@@ -47,14 +46,19 @@ span.circle-grey {
     border-radius: 60px ;
     background-color:#3887bd;
     color:#ffffff;
-    margin-right: 5%;;
+    //margin-right: 5%;
     justify-content: space-between;
 
   }
 
 .botones{
-    margin-left: 5%;
+    position: relative;
+    text-align:center;
+    margin-left: 20%;
+    margin-right: 20%;
     display: flex;
+    justify-content: space-between;
+    
 }
 
 
@@ -71,7 +75,7 @@ span.circle-grey {
 
 
 .logo{
-    display:block;
+    position: relative;
    margin:auto;
     
 }
