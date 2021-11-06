@@ -9,6 +9,11 @@ ion-menu-toggle ion-img{
     width:35%;
     margin-top: 4%;
 }
+ion-toolbar{
+    text-align: center;
+    width:35%;
+    margin-top: 4%;
+}
 ion-menu-toggle{
     text-align: center;
 
@@ -19,4 +24,16 @@ ion-item{
 p{
     color:#ffffff;
 
+}
+.opciones ion-img{
+    //mask-size: contain;
+//mask-position: 50% 50%;
+//mask-repeat: no-repeat;
+width: 2.3em;
+height: 2.3em;
+padding-bottom: 3%;
+text-align: center;
+}
+.opciones ion-label{
+    padding-left: 7%;
 }

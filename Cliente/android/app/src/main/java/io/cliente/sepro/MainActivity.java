@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package io.cliente.sepro;
 
 import com.getcapacitor.BridgeActivity;
 

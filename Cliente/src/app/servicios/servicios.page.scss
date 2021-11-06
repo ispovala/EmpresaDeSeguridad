@@ -78,12 +78,13 @@ span.circle-white-custodia {
 }
 span.circle-yellow1-custodia {
 
-    //position:absolute;
+    position:static;
     width:107px;
     height:107px;
+    
     border-radius: 50%;
     background: rgb(243, 188, 5);
-    margin:auto;
+    margin: auto;
     top: 0; left: 0px; bottom: 185px; right: 185px;
 }
 span.circle-yellow2-custodia {
@@ -187,7 +188,8 @@ span.circle-green2-guardia {
     
 }
 .circle span{
-    position: absolute;
+    position: fixed;
+  
 }
 .logosepro ion-img{
     padding-left: 0px;
@@ -199,17 +201,19 @@ span.circle-green2-guardia {
 }
 
 .track-servicio{
-    position: absolute;
+    //position: absolute;
     //display: block;
-    //height: 70%;
-    margin:auto;
-    top: 40%; left: 10%; bottom: 20%; right: 10%;
+    height: 60%;
+    //margin:auto;
+    //top: 10%; left: 0%; bottom: 30%; right: 20%;
     //margin: 0rem;
     //padding: 1.5% 50% 0.5% 3.5%;
-    //border-top: 0px ;
-    padding-top: 70%;
-    padding-left: 20%;
-    padding-right: 20%;
+    //border: auto;
+    border-top: 50em ;
+    padding-top: 20em;
+    text-align: center;
+    //padding-left: 20%;
+    //padding-right: 20%;
 }
 .track-servicio button{
     

@@ -60,13 +60,15 @@
         <ion-icon class="aumento" name="add-circle-outline" (click)="increment()"></ion-icon>
       </div>
   </div>
-  <div class="solicitar-servicio">
-    <button ion-button color="secondary" (click)="solicitud()">Solicitar Servicio</button>
+  <div class="botones">
+    <div class="solicitar-servicio">
+      <button ion-button color="secondary" (click)="solicitud()">Solicitar Servicio</button>
+    </div>
+    <div class="cancelar-servicio">
+      <button ion-button color="secondary" (click)="cancelar()">Cancelar</button>
+    </div>
+
   </div>
-  <div class="cancelar-servicio">
-    <button ion-button color="secondary" (click)="cancelar()">Cancelar</button>
-  </div>
-    
   
 
 </ion-content>
