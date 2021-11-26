@@ -2,8 +2,10 @@
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" >
       <ion-header>
-        <ion-toolbar>
-          <ion-img style="width: 150px; height: 150px;" src="assets/img/logosepro.png"></ion-img>
+        <ion-toolbar class="logo" >
+          <div class="imagen">
+            <ion-img  src="assets/img/logosepro.png"></ion-img>
+          </div>
         </ion-toolbar>
       </ion-header>
       <ion-content>
@@ -11,13 +13,7 @@
           <p align="center"><ion-img menuClose src="assets/img/backcliente.png" (click)="openPage()"></ion-img></p>
           <p ion-text header-subtitle>HAYLEEN CARRILLO</p>
         </ion-menu-toggle>
-        <div class="tope">
-          <span> 
-          </span>
-          <div class="logosepro">
-            <ion-img style="width: 150px; height: 150px;" src="assets/img/logosepro.png"></ion-img>
-          </div>
-        </div>
+        
 
         <ion-list class="opciones">
           <ion-menu-toggle auto-hide="false">
