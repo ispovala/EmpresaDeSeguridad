@@ -1,0 +1,15 @@
+<ion-header>
+</ion-header>
+
+<ion-content>
+  <div #map class="map"></div>
+  
+  <ion-chip class="miubicacion" (click)="mylocation()">
+    <ion-label class="normal">Mi ubicación actual</ion-label>
+    <ion-label name="locate"></ion-label>
+  </ion-chip>
+  <ion-chip class="aceptar" (click)="aceptar()">
+    <ion-label class="normal">Aceptar</ion-label>
+    <ion-label name="checkmark"></ion-label>
+  </ion-chip>
+</ion-content>

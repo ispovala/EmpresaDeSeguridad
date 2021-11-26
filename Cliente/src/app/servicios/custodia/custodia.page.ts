@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
+import { UbicacionComponent } from 'src/app/ubicacion/ubicacion.component';
+
 @Component({
   selector: 'app-custodia',
   templateUrl: './custodia.page.html',
@@ -18,7 +21,7 @@ export class CustodiaPage implements OnInit {
     }
  }
 
- constructor(private navCtrl: NavController){
+ constructor(private navCtrl: NavController,private modalController: ModalController){
     
 }
 solicitud(){
@@ -29,6 +32,29 @@ cancelar(){
   this.navCtrl.navigateForward("/servicios");
 }
   ngOnInit() {
+
+  }
+
+  async addDirection() {
+
+    let positionInput = {  
+      lat: -2.1676746,
+      lng: -79.8956897
+    };
+
+    const modalAdd  = await this.modalController.create({
+      component: UbicacionComponent,
+      mode: 'ios',
+      swipeToClose: true,
+      componentProps: {position: positionInput}
+    });
+    await modalAdd.present();
+
+    const {data} = await modalAdd.onWillDismiss();
+    if (data) {
+      console.log('data -> ', data);
+    }
+
   }
 
 }
