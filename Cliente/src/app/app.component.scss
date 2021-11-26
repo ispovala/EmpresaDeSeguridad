@@ -25,7 +25,7 @@ ion-menu-toggle{
     text-align: center;
 
 }
-ion-item{
+.opciones ion-item{
     color:#ffffff;
 }
 p{
@@ -36,11 +36,47 @@ p{
     //mask-size: contain;
 //mask-position: 50% 50%;
 //mask-repeat: no-repeat;
-width: 2.3em;
-height: 2.3em;
-padding-bottom: 3%;
-text-align: center;
+    width: 2.3em;
+    height: 2.3em;
+    padding-bottom: 3%;
+    text-align: center;
+}
+.cerrarsesion{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+.cerrarsesion ion-img{
+    width: 2.3em;
+    height: 2.3em;
+    padding-bottom: 3%;
+    text-align: center;
+    color: black;
+}
+.cerrarsesion button{
+    background-color:#888484; 
 }
 .opciones ion-label{
     padding-left: 7%;
+}
+.hora{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    
+    justify-content: flex-end;
+  
+}
+.hora ion-label{
+    margin-top: 3%;
+    font-size: 20px;
+    margin-right: 0px;
+    border-right: 0px;
+}
+.hora ion-datetime{
+    margin-top: 0%;
+    border-top: 0%;
+    font-size: 20px;
+    margin-left: 0px;
+    border-left: 0px;
 }
