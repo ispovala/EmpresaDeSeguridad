@@ -8,6 +8,7 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./perfil.page.scss'],
 })
 export class PerfilPage implements OnInit {
+  
 
   constructor(private navCtrl: NavController, public alertController: AlertController){
     

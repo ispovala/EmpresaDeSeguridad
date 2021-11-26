@@ -2,8 +2,10 @@
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" >
       <ion-header>
-        <ion-toolbar>
-          <ion-img style="width: 150px; height: 150px;" src="assets/img/logosepro.png"></ion-img>
+        <ion-toolbar class="logo" >
+          <div class="imagen">
+            <ion-img  src="assets/img/logosepro.png"></ion-img>
+          </div>
         </ion-toolbar>
       </ion-header>
       <ion-content>
@@ -11,15 +13,9 @@
           <p align="center"><ion-img menuClose src="assets/img/backcliente.png" (click)="openPage()"></ion-img></p>
           <p ion-text header-subtitle>HAYLEEN CARRILLO</p>
         </ion-menu-toggle>
-        <div class="tope">
-          <span> 
-          </span>
-          <div class="logosepro">
-            <ion-img style="width: 150px; height: 150px;" src="assets/img/logosepro.png"></ion-img>
-          </div>
-        </div>
+        
 
-        <ion-list class="opciones">
+        <ion-list class="opciones" lines="none">
           <ion-menu-toggle auto-hide="false">
             <ion-item [routerDirection]="'root'" [routerLink]="'/servicios'">
               <ion-img menuClose src="assets/img/serviciosicono.png"></ion-img>
@@ -71,13 +67,26 @@
               <ion-label>
                 Sucursales
               </ion-label>
-            </ion-item>
-
+            </ion-item>      
           
             
             
           </ion-menu-toggle>
         </ion-list>
+        <div class="hora">  
+          <ion-item lines="none">
+            <ion-label>hora:</ion-label>
+            <ion-datetime displayFormat="hh:mm A" [(ngModel)]="myDate"></ion-datetime>
+          </ion-item>
+              
+        </div>
+        <div class="cerrarsesion">
+          <ion-item lines="none">
+            <ion-img src="assets/img/cerrarsesion.png"></ion-img>
+            <button ion-button>CERRAR SESION</button>
+          </ion-item>  
+          
+        </div>
       </ion-content>
     </ion-menu> 
     <ion-router-outlet id="main-content"></ion-router-outlet>
