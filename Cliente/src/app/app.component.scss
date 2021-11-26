@@ -1,13 +1,14 @@
 ion-content{ 
     --ion-background-color:#888484; 
 }
-ion-menu ion-header{ 
-    --ion-background-color:#888484; 
-}
+
 ion-menu-toggle ion-img{
     text-align: center;
     width:35%;
     margin-top: 4%;
+}
+.logo{
+    --background: #e6e6e6;
 }
 ion-toolbar .logo{
     width:35%;
