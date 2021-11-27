@@ -86,7 +86,15 @@ const routes: Routes = [
   {
     path: 'menuprueba',
     loadChildren: () => import('./menuprueba/menuprueba.module').then( m => m.MenupruebaPageModule)
+  },  {
+    path: 'log-in-phone',
+    loadChildren: () => import('./log-in-phone/log-in-phone.module').then( m => m.LogInPhonePageModule)
+  },
+  {
+    path: 'calificar-servicio',
+    loadChildren: () => import('./calificar-servicio/calificar-servicio.module').then( m => m.CalificarServicioPageModule)
   }
+
 
 ];
 
