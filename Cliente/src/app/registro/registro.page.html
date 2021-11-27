@@ -3,12 +3,13 @@
   <ion-content class="ion-padding">
     <ion-row class="row logo">
       <div>
-        <img src="../../assets/app sepro vectores-30.png" class="img-logo">
+        <img src="../../assets/app sepro vectores-30.png" class="img-logo img-center">
       </div>
     </ion-row>
     <ion-row class="row">
-      <div>
-        <img src="../../assets/img/app sepro vectores-07.png" class="img-logo">
+      <div class="container">
+        <img src="../../assets/img/app sepro vectores-07.png" style="width:100%;">
+        <ion-text class="centered">REGISTRO</ion-text>
       </div>
     </ion-row>
     <form class="form" [formGroup]="validations_form" (ngSubmit)="tryRegistro(validations_form.value)">
