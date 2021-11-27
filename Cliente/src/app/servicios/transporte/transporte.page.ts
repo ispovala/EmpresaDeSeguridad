@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
-import { RouterModule } from '@angular/router';
-import { ProviderService} from "src/app/provider.service";
-import { NavigationExtras } from '@angular/router';
+import { ModalController, NavController } from '@ionic/angular';
+import { UbicacionComponent } from 'src/app/ubicacion/ubicacion.component';
 
 
 @Component({
@@ -13,7 +11,7 @@ import { NavigationExtras } from '@angular/router';
 export class TransportePage implements OnInit {
   item="transporte"
  
-  constructor(private navCtrl: NavController){
+  constructor(private navCtrl: NavController, private modalController: ModalController){
     
   }
   cancelar(){
@@ -26,6 +24,28 @@ export class TransportePage implements OnInit {
 
 
   ngOnInit() {
+  }
+
+  async addDirection() {
+
+    let positionInput = {  
+      lat: -2.1676746,
+      lng: -79.8956897
+    };
+
+    const modalAdd  = await this.modalController.create({
+      component: UbicacionComponent,
+      mode: 'ios',
+      swipeToClose: true,
+      componentProps: {position: positionInput}
+    });
+    await modalAdd.present();
+
+    const {data} = await modalAdd.onWillDismiss();
+    if (data) {
+      console.log('data -> ', data);
+    }
+
   }
 
 }
