@@ -7,6 +7,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReactiveFormsModule } from '@angular/forms';
+
+
+import { UserService } from './core/services/recursos/user/user.service';
 
 @NgModule({
   declarations: [
@@ -18,8 +22,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     HttpClientModule,
     NgbModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
