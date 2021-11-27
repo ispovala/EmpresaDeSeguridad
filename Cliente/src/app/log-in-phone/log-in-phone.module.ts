@@ -1,19 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
 import { IonicModule } from '@ionic/angular';
-import { CustodiaPageRoutingModule } from './custodia-routing.module';
-import { CustodiaPage } from './custodia.page';
+
+import { LogInPhonePageRoutingModule } from './log-in-phone-routing.module';
+
+import { LogInPhonePage } from './log-in-phone.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CustodiaPageRoutingModule
+    LogInPhonePageRoutingModule
   ],
-  declarations: [CustodiaPage]
+  declarations: [LogInPhonePage]
 })
-export class CustodiaPageModule {
-  
-}
+export class LogInPhonePageModule {}

@@ -8,6 +8,9 @@ import { NavController } from '@ionic/angular';
 })
 export class AppComponent {
   constructor(private navCtrl: NavController) {}
+
+  myDate: String = new Date().toISOString();
+  
   openPage(){
     this.navCtrl.navigateForward("/perfil");
   }
