@@ -16,7 +16,7 @@ export class VehiculosListComponent implements OnInit {
 
   constructor(
     private vehiculoService: VehiculoService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
   ) {}
 
   ngOnInit(): void {

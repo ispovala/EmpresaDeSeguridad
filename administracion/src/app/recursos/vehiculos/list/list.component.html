@@ -53,11 +53,10 @@
         <!--<option value=""></option>-->
       </select>
     </div>
-    <!--
-      Numeración
-      Observaciones
-      Foto
-    -->
+
+    <label for="Num">Numeración</label>
+    <hr class="solid">
+
     <div class="form-group m-form__group">
       <label for="Tipo">Tipo</label>
       <select name="currentVehiculo.tipo" [(ngModel)]="currentVehiculo.tipo" class="form-control" >
@@ -97,6 +96,8 @@
       <label for="Motor">Motor</label>
       <input type="text" #Motor="ngModel" id="Motor" class="form-control" [(ngModel)]="currentVehiculo.motor" name="Motor" minlength="1"  maxlength="255" />
     </div>
+
+    <!-- Observaciones Foto -->
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-dark" (click)="modal.close(currentVehiculo)">AGREGAR</button>
