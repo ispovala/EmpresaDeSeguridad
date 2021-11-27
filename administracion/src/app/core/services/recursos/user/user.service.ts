@@ -30,7 +30,7 @@ export class UserService {
             this.setData(token.token);
             res('Login Success!');
             if (localStorage.getItem('roles') != null && localStorage.getItem('roles') == 'superuser') {
-              this.router.navigate([next+'admin/home']);
+              this.router.navigate([next+'/home']);
             } else
               this.router.navigate([next]);
           },

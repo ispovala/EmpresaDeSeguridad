@@ -1,17 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { UserService } from './core/services/recursos/user/user.service';
+import { UserService } from 'src/app/core/services/recursos/user/user.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-
-
-
-export class AppComponent implements OnInit {
+export class LoginComponent implements OnInit {
 
   private nextPath?: string;
   public usernameField: FormControl;
@@ -40,6 +37,7 @@ export class AppComponent implements OnInit {
   }
 
   authUser() {
+    console.log("intentamos autenticar")
     if (this.usernameField.valid && this.passwordField.valid) {
       let authResult = this.userService.login(
         {
@@ -54,4 +52,3 @@ export class AppComponent implements OnInit {
   }
 
 }
-
