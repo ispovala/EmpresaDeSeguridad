@@ -33,23 +33,23 @@ const routes: Routes = [
     path: 'servicios/n',
     children: [
       {
-        path: 'chofer', 
+        path: 'chofer',
         loadChildren: () => import('./servicios/chofer/chofer.module').then( m => m.ChoferPageModule)
       },
       {
-        path: 'custodia', 
+        path: 'custodia',
         loadChildren: () => import('./servicios/custodia/custodia.module').then( m => m.CustodiaPageModule)
       },
       {
-        path: 'guardia', 
+        path: 'guardia',
         loadChildren: () => import('./servicios/guardia/guardia.module').then( m => m.GuardiaPageModule)
       },
       {
-        path: 'transporte', 
+        path: 'transporte',
         loadChildren: () => import('./servicios/transporte/transporte.module').then( m => m.TransportePageModule)
       },
       {
-        path: 'solicitud', 
+        path: 'solicitud',
         loadChildren: () => import('./servicios/solicitud-servicio/solicitud-servicio.module').then( m => m.SolicitudServicioPageModule)
       },
     ]
@@ -86,13 +86,51 @@ const routes: Routes = [
   {
     path: 'menuprueba',
     loadChildren: () => import('./menuprueba/menuprueba.module').then( m => m.MenupruebaPageModule)
-  },  {
+  },
+  {
     path: 'log-in-phone',
     loadChildren: () => import('./log-in-phone/log-in-phone.module').then( m => m.LogInPhonePageModule)
   },
   {
     path: 'calificar-servicio',
     loadChildren: () => import('./calificar-servicio/calificar-servicio.module').then( m => m.CalificarServicioPageModule)
+  },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+  {
+    path: 'editarperfil',
+    loadChildren: () => import('./editarperfil/editarperfil.module').then( m => m.EditarperfilPageModule)
+  },
+  {
+    path: 'metododepago',
+    loadChildren: () => import('./metododepago/metododepago.module').then( m => m.MetododepagoPageModule)
+  },
+  {
+    path: 'historialservicios',
+    loadChildren: () => import('./historialservicios/historialservicios.module').then( m => m.HistorialserviciosPageModule)
+  },
+
+  {
+    path: 'detallesservicio',
+    loadChildren: () => import('./detallesservicio/detallesservicio.module').then( m => m.DetallesservicioPageModule)
+  },
+
+  {
+    path: 'detallesservicio/:id',
+    resolve: {
+      special: DataResolverService
+    },
+    loadChildren: () => import('./detallesservicio/detallesservicio.module').then( m => m.DetallesservicioPageModule)
+  },
+  {
+    path: 'menuprueba',
+    loadChildren: () => import('./menuprueba/menuprueba.module').then( m => m.MenupruebaPageModule)
+  },
+  {
+    path: 'ubicacion',
+    loadChildren: () => import('./ubicacion/ubicacion.module').then( m => m.UbicacionModule)
   }
 
 
