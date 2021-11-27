@@ -1,0 +1,104 @@
+<router-recursos></router-recursos>
+
+<div class="row align-items-center">
+  <tr>
+    <th style="width: 150px">Marca</th>
+    <th style="width: 150px">Tipo</th>
+    <th style="width: 150px">Color</th>
+    <th style="width: 150px">Placa</th>
+    <th style="width: 150px">Año</th>
+    <th style="width: 250px">Motor</th>
+    <th style="width: 200px">
+      <button class="btn btn-lg btn-outline-primary" (click)="open(mymodal)">AGREGAR</button>
+    </th>
+  </tr>
+
+  <ng-template pTemplate="body">
+      <tr *ngFor="let vehiculo of vehiculos">
+          <td style="width:150px">
+              {{ vehiculo.marca }}
+          </td>
+          <td style="width:150px">
+              {{ vehiculo.tipo }}
+          </td>
+          <td style="width:150px">
+              {{ vehiculo.color }}
+          </td>
+          <td style="width:150px">
+              {{ vehiculo.placa }}
+          </td>
+          <td style="width:150px">
+              {{ vehiculo.year }}
+          </td>
+          <td style="width:150px">
+              {{ vehiculo.motor }}
+          </td>
+      </tr>
+  </ng-template>
+</div>
+
+
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">AGREGAR VEHICULO</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group m-form__group">
+      <label for="Marca">Marca</label>
+      <select name="currentVehiculo.marca" [(ngModel)]="currentVehiculo.marca" class="form-control" >
+        <option value="Chevrolet">Chevrolet</option>
+        <!--<option value=""></option>-->
+      </select>
+    </div>
+    <!--
+      Numeración
+      Observaciones
+      Foto
+    -->
+    <div class="form-group m-form__group">
+      <label for="Tipo">Tipo</label>
+      <select name="currentVehiculo.tipo" [(ngModel)]="currentVehiculo.tipo" class="form-control" >
+        <option value="Camioneta">Camioneta</option>
+        <option value="Van">Van</option>
+        <!--<option value=""></option>-->
+      </select>
+    </div>
+    <div class="form-group m-form__group">
+      <label for="Color">Color</label>
+      <select name="currentVehiculo.color" [(ngModel)]="currentVehiculo.color" class="form-control" >
+        <option value="Rojo">Rojo</option>
+        <option value="Negro">Negro</option>
+        <option value="Blanco">Blanco</option>
+        <option value="Azul">Azul</option>
+        <!--<option value=""></option>-->
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="Placa">Placa</label>
+      <input type="text" #Placa="ngModel" id="Placa" class="form-control" [(ngModel)]="currentVehiculo.placa" name="Placa" minlength="8"  maxlength="255" />
+    </div>
+    <div class="form-group m-form__group">
+      <label for="Year">Año</label>
+      <select name="currentVehiculo.year" [(ngModel)]="currentVehiculo.year" class="form-control" >
+        <option value="2012">2012</option>
+        <option value="2013">2013</option>
+        <option value="2014">2014</option>
+        <option value="2015">2015</option>
+        <option value="2016">2016</option>
+        <option value="2017">2017</option>
+        <option value="2018">2018</option>
+        <!--<option value=""></option>-->
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="Motor">Motor</label>
+      <input type="text" #Motor="ngModel" id="Motor" class="form-control" [(ngModel)]="currentVehiculo.motor" name="Motor" minlength="1"  maxlength="255" />
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close(currentVehiculo)">AGREGAR</button>
+  </div>
+</ng-template>

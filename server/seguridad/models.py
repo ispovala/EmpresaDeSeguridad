@@ -55,3 +55,25 @@ class Usuario(AbstractUser):
 
     class Meta:
         db_table = 'usuario'
+
+
+class CandadoSatelital(models.Model):
+    marca = models.CharField(verbose_name="marca", max_length=255, default='')
+    tipo = models.CharField(verbose_name="tipo", max_length=255, default='')
+    color = models.CharField(verbose_name="color", max_length=255, default='')
+
+    class Meta:
+        db_table = 'candadosatelital'
+        verbose_name_plural = 'candados_satelitales'
+
+
+class Vehiculo(models.Model):
+    placa = models.CharField(verbose_name="placa", max_length=255, default='', primary_key=True)
+    motor = models.CharField(verbose_name="motor", max_length=255, default='')
+    marca = models.CharField(verbose_name="marca", max_length=255, default='')
+    tipo = models.CharField(verbose_name="tipo", max_length=255, default='')
+    color = models.CharField(verbose_name="color", max_length=255, default='')
+    year = models.PositiveSmallIntegerField(verbose_name="year", default=0)
+
+    class Meta:
+        db_table = 'vehiculo'

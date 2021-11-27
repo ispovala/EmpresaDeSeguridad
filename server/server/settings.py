@@ -15,14 +15,14 @@ ALLOWED_HOSTS = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    # "http://localhost:4200",
+    "http://localhost:4200",
 ]
 
 AUTH_USER_MODEL = 'seguridad.Usuario'
 
-# REST_AUTH_SERIALIZERS = {
-#    'USER_DETAILS_SERIALIZER': 'seguridad.serializers.UsuarioSerializer',
-# }
+REST_AUTH_SERIALIZERS = {
+   'USER_DETAILS_SERIALIZER': 'seguridad.serializers.UsuarioSerializer',
+}
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -108,11 +108,11 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# JWT_AUTH = {
-#     'JWT_ALLOW_REFRESH': True,
-#     'JWT_PAYLOAD_HANDLER': 'server.conf.jwt_custom_payload_handler',
-#     'JWT_EXPIRATION_DELTA': datetime.timedelta(days=100),
-# }
+JWT_AUTH = {
+    'JWT_ALLOW_REFRESH': True,
+    'JWT_PAYLOAD_HANDLER': 'server.conf.jwt_custom_payload_handler',
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=100),
+}
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
