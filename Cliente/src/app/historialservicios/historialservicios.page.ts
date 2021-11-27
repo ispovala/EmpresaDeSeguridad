@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { CalificarServicioComponent } from '../calificar-servicio/calificar-servicio.component';
 
 @Component({
   selector: 'app-historialservicios',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistorialserviciosPage implements OnInit {
 
-  constructor() { }
+  constructor(private modalController: ModalController) { }
 
   ngOnInit() {
   }
+
+async openModal(){
+  const modal = await this.modalController.create({
+    component: CalificarServicioComponent
+  })
+  await modal.present();
+}
 
 }
