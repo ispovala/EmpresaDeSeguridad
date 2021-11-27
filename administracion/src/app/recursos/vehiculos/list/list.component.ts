@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { CandadoSatelital } from 'src/app/core/models/recursos/candado-satelital.model';
-import { CandadoSatelitalService } from 'src/app/core/services/recursos/candado-satelital.service';
+import { Vehiculo } from 'src/app/core/models/recursos/vehiculo.model';
+import { VehiculoService } from 'src/app/core/services/recursos/vehiculo.service';
 
 @Component({
-  selector: 'candados-satelitales-list',
+  selector: 'vehiculos-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css'],
 })
-export class CandadosSatelitalesListComponent implements OnInit {
-  candadosSatelitales?: CandadoSatelital[];
-  currentCandadoSatelital: CandadoSatelital = new CandadoSatelital();
+export class VehiculosListComponent implements OnInit {
+  vehiculos?: Vehiculo[];
+  currentVehiculo: Vehiculo = new Vehiculo();
   currentIndex = -1;
   closeResult: string = '';
 
   constructor(
-    private candadoSatelitalService: CandadoSatelitalService,
+    private vehiculoService: VehiculoService,
     private modalService: NgbModal,
   ) {}
 
@@ -24,9 +24,9 @@ export class CandadosSatelitalesListComponent implements OnInit {
   }
 
   retrieveVehiculos(): void {
-    this.candadoSatelitalService.getAll().subscribe(
+    this.vehiculoService.getAll().subscribe(
       (data) => {
-        this.candadosSatelitales = data;
+        this.vehiculos = data;
       },
       (error) => {
         console.error(error);
@@ -38,17 +38,18 @@ export class CandadosSatelitalesListComponent implements OnInit {
     this.modalService
       .open(content, { ariaLabelledBy: 'modal-basic-title' })
       .result.then(
-        (result) => {
-          this.candadoSatelitalService.create(result).subscribe(
-            (response) => {
-              this.refreshList();
-            },
-            (error) => {
-              console.error(error);
-            }
-          );
+        result => {
+          this.vehiculoService.create(result)
+            .subscribe(
+              response => {
+                this.refreshList();
+              },
+              error => {
+                console.error(error);
+            });
         },
-        (reason) => {}
+        reason => {
+        }
       );
   }
 
@@ -64,12 +65,12 @@ export class CandadosSatelitalesListComponent implements OnInit {
 
   refreshList(): void {
     this.retrieveVehiculos();
-    this.currentCandadoSatelital = new CandadoSatelital();
+    this.currentVehiculo = new Vehiculo();
     this.currentIndex = -1;
   }
 
-  setActiveVehiculo(candadoSatelital: CandadoSatelital, index: number): void {
-    this.currentCandadoSatelital = candadoSatelital;
+  setActiveVehiculo(vehiculo: Vehiculo, index: number): void {
+    this.currentVehiculo = vehiculo;
     this.currentIndex = index;
   }
 }
