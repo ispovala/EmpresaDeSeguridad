@@ -4,11 +4,85 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.parsers import JSONParser
 # from rest_framework.response import Response
-from seguridad.models import CandadoSatelital, Vehiculo
-from seguridad.serializers import CandadoSatelitalSerializer, VehiculoSerializer
+from seguridad.models import *
+from seguridad.serializers import *
 
 
-@api_view(['GET', 'POST', 'DELETE'])
+@api_view(['GET'])
+def cargo(request):
+    if request.method == 'GET':
+        cargos = Cargo.objects.all()
+        cargo_serializer=CargoSerializer(cargos,many=True)
+        return JsonResponse(cargo_serializer.data, safe=False)
+
+@api_view(['GET','POST'])
+def usuarios(request):
+    if request.method == 'GET':        
+        usuarios = Usuario.objects.all()
+        usuario_serializer = UsuarioSerializer (usuarios, many=True)
+        return JsonResponse(usuario_serializer.data, safe=False)
+    elif request.method == 'POST':
+        user_data = JSONParser().parse(request)
+        usuario_serializer = UsuarioSerializer(data=user_data)
+        if usuario_serializer.is_valid():
+            usuario_serializer.save()
+            return JsonResponse(usuario_serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            print(usuario_serializer.errors)
+            return JsonResponse(usuario_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET','POST', 'DELETE'])
+def personas(request):
+    if request.method == 'GET':        
+        personas = Persona.objects.all()
+        persona_serializer = PersonaSerializer (personas, many=True)
+        return JsonResponse(persona_serializer.data, safe=False)
+    elif request.method == 'POST':
+        persona_data = JSONParser().parse(request)
+        persona_serializer = PersonaSerializer(data=persona_data)
+        if persona_serializer.is_valid():
+            persona_serializer.save()
+            return JsonResponse(persona_serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            print(persona_serializer.errors)
+            return JsonResponse(persona_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+
+@api_view(['GET','PUT'])
+def persona(request, pk):
+    persona = Persona.objects.get(pk=pk)
+    if request.method == 'GET':
+        persona_serializer = PersonaSerializer (persona)
+        return JsonResponse(persona_serializer.data, safe=False)
+    elif request.method == 'PUT':
+        update = JSONParser().parse(request)
+        update_serializer = PersonaSerializer(persona, data=update)
+        if update_serializer.is_valid():
+            update_serializer.save()
+            return JsonResponse(update_serializer.data)
+        return JsonResponse(update_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET','PUT','DELETE'])
+def usuario(request, pk):
+    usuario = Usuario.objects.get(pk=pk)
+    if request.method == 'GET':
+        usuario_serializer = UsuarioSerializer (usuario)
+        return JsonResponse(usuario_serializer.data, safe=False)
+    elif request.method == 'PUT':
+        update = JSONParser().parse(request)
+        update_serializer = UsuarioSerializer(usuario, data=update)
+        if update_serializer.is_valid():
+            update_serializer.save()
+            return JsonResponse(update_serializer.data)
+        print(update_serializer.errors)
+        return JsonResponse(update_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == 'DELETE':
+        usuario.delete()
+        return JsonResponse({'message': '¡Recurso eliminado satisfactoriamente!'}, status=status.HTTP_204_NO_CONTENT)
+
+
+
+@api_view(['GET'])
 def candadosatelital_list(request):
     if request.method == 'GET':
         candados_satelitales = CandadoSatelital.objects.all()

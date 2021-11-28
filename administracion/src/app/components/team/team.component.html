@@ -1,0 +1,61 @@
+<app-header></app-header>
+
+
+<div class="p-5">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">NOMBRES</th>
+      <th scope="col">APELLIDOS</th>
+      <th scope="col">IDENTIFICACION</th>
+      <th scope="col">ROL</th>
+      <th scope="col">USO DE VEHICUO</th>
+      <th scope="col">USO DE ARMAMENTOS</th>
+      <th scope="col">STATUS</th>
+      <th scope="col">
+        <a class="btn btn-primary" href="/team/create">REGISTRAR PERSONAL</a>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+        <th *ngIf="user.is_superuser; else NotName">SEPROAMERICA</th>
+        <td *ngIf="user.is_superuser; else NotAp">N/A</td>
+        <td *ngIf="user.is_superuser; else NotIde">N/A</td>
+        <td *ngIf="user.is_superuser; else Rol">SUPERUSER</td>
+        <td *ngIf="user.is_superuser; else NotVeh">N/A</td>
+        <td *ngIf="user.is_superuser; else NotArm">N/A</td>
+        <td *ngIf="user.is_superuser; else NotStat">ACTIVE</td>
+        <td *ngIf="user.is_superuser; else NotDet">N/A</td>
+      <ng-template #NotName>
+        <th scope="row">{{ user.nombre}}</th>
+      </ng-template>
+      <ng-template #NotAp>
+        <th scope="row">{{ user.apellido}}</th>
+      </ng-template>
+      <ng-template #NotIde>
+        <th scope="row">{{ user.identificacion}}</th>
+      </ng-template>
+      <ng-template #Rol>
+        <th scope="row">{{ user.rol_id}}</th>
+      </ng-template>
+      <ng-template #NotVeh>
+        <th scope="row">{{ user.conduccion}}</th>
+      </ng-template>
+      <ng-template #NotArm>
+        <th scope="row">{{ user.armamento}}</th>
+      </ng-template>
+      <ng-template #NotStat>
+        <th scope="row">{{ user.is_active}}</th>
+      </ng-template>
+      <ng-template #NotDet>
+        <th scope="row">
+          <a class="btn btn-primary" href="/team/detail/{{user.id}}">Detalles</a>
+        </th>
+      </ng-template>
+
+    </tr>
+  </tbody>
+</table>
+</div>
+<app-footer></app-footer>

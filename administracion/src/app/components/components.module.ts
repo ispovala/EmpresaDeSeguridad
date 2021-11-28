@@ -7,6 +7,10 @@ import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { TeamComponent } from './team/team.component';
+import { NewUserComponent } from './team/new-user/new-user.component';
+import { FormsModule } from '@angular/forms';
+import { DetailUserComponent } from './team/detail-user/detail-user.component';
 
 
 @NgModule({
@@ -14,12 +18,16 @@ import { FooterComponent } from './footer/footer.component';
     HomeComponent,
     LoginComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    TeamComponent,
+    NewUserComponent,
+    DetailUserComponent
   ],
   imports: [
     CommonModule,
     ComponentsRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class ComponentsModule { }

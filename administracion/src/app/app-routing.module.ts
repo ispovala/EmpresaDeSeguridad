@@ -6,7 +6,7 @@ const routes: Routes = [
   { path: 'login', component:LoginComponent, pathMatch: 'full' },
 
   {
-    path: 'home',
+    path: '',
     loadChildren: () =>
       import('./components/components.module').then((m) => m.ComponentsModule),
     // canActivate: [AppAuthGuard],

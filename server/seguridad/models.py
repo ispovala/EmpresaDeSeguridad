@@ -1,3 +1,4 @@
+from re import DEBUG
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
@@ -15,7 +16,7 @@ class Persona(models.Model):
     apellidos = models.CharField(verbose_name="apellidos", max_length=255, default='')
     cedula = models.CharField(verbose_name="cedula", max_length=10, default='')
     celular = models.CharField(verbose_name="celular", max_length=255, default='')
-    fecha_nacimiento = models.DateTimeField(verbose_name="fecha_nacimiento", null=True)
+    fecha_nacimiento = models.DateField(verbose_name="fecha_nacimiento", null=True)
     direccion = models.CharField(verbose_name="direccion", max_length=255, default='')
     estado = models.CharField(verbose_name="estado", max_length=255, default='')
     fecha_creacion = models.DateTimeField(verbose_name="fecha_creacion", null=True)
@@ -49,10 +50,12 @@ class Rol(models.Model):
 
 # auth
 class Usuario(AbstractUser):
+    armamento=models.BooleanField(verbose_name="armamento",default=False)
+    conduccion=models.BooleanField(verbose_name="conduccion",default=False)
     cedula = models.CharField(verbose_name="cedula", max_length=10, default='')
     persona = models.ForeignKey(Persona, verbose_name="personaid", null=True, on_delete=models.CASCADE)
     rol = models.ForeignKey(Rol, verbose_name="rol", null=True, on_delete=models.CASCADE)
-
+    
     class Meta:
         db_table = 'usuario'
 

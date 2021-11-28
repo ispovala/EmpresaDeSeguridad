@@ -10,7 +10,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
 
 
-import { UserService } from './core/services/recursos/user/user.service';
+import { UserService } from './core/services/user/user.service';
 
 @NgModule({
   declarations: [
