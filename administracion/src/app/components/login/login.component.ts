@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
   }
 
   authUser() {
-    console.log("intentamos autenticar")
+    //console.log("intentamos autenticar")
     if (this.usernameField.valid && this.passwordField.valid) {
       let authResult = this.userService.login(
         {
