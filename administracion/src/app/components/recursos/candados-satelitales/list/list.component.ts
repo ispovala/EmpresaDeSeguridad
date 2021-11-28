@@ -38,17 +38,18 @@ export class CandadosSatelitalesListComponent implements OnInit {
     this.modalService
       .open(content, { ariaLabelledBy: 'modal-basic-title' })
       .result.then(
-        (result) => {
-          this.candadoSatelitalService.create(result).subscribe(
-            (response) => {
-              this.refreshList();
-            },
-            (error) => {
-              console.error(error);
-            }
-          );
+        result => {
+          this.candadoSatelitalService.create(result)
+            .subscribe(
+              response => {
+                this.refreshList();
+              },
+              error => {
+                console.error(error);
+              }
+            );
         },
-        (reason) => {}
+        reason => {}
       );
   }
 

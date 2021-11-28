@@ -7,8 +7,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # Auth
-	path(r'auth/login', obtain_jwt_token),
-	path(r'auth/refresh', refresh_jwt_token),
+    path(r'auth/login', obtain_jwt_token),
+    path(r'auth/refresh', refresh_jwt_token),
 
     url(r'^', include('seguridad.urls')),
 ]

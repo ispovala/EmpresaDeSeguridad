@@ -12,14 +12,15 @@ from seguridad.serializers import *
 def cargo(request):
     if request.method == 'GET':
         cargos = Cargo.objects.all()
-        cargo_serializer=CargoSerializer(cargos,many=True)
+        cargo_serializer = CargoSerializer(cargos, many=True)
         return JsonResponse(cargo_serializer.data, safe=False)
 
-@api_view(['GET','POST'])
+
+@api_view(['GET', 'POST'])
 def usuarios(request):
-    if request.method == 'GET':        
+    if request.method == 'GET':
         usuarios = Usuario.objects.all()
-        usuario_serializer = UsuarioSerializer (usuarios, many=True)
+        usuario_serializer = UsuarioSerializer(usuarios, many=True)
         return JsonResponse(usuario_serializer.data, safe=False)
     elif request.method == 'POST':
         user_data = JSONParser().parse(request)
@@ -31,11 +32,12 @@ def usuarios(request):
             print(usuario_serializer.errors)
             return JsonResponse(usuario_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['GET','POST', 'DELETE'])
+
+@api_view(['GET', 'POST', 'DELETE'])
 def personas(request):
-    if request.method == 'GET':        
+    if request.method == 'GET':
         personas = Persona.objects.all()
-        persona_serializer = PersonaSerializer (personas, many=True)
+        persona_serializer = PersonaSerializer(personas, many=True)
         return JsonResponse(persona_serializer.data, safe=False)
     elif request.method == 'POST':
         persona_data = JSONParser().parse(request)
@@ -46,13 +48,13 @@ def personas(request):
         else:
             print(persona_serializer.errors)
             return JsonResponse(persona_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
 
-@api_view(['GET','PUT'])
+
+@api_view(['GET', 'PUT'])
 def persona(request, pk):
     persona = Persona.objects.get(pk=pk)
     if request.method == 'GET':
-        persona_serializer = PersonaSerializer (persona)
+        persona_serializer = PersonaSerializer(persona)
         return JsonResponse(persona_serializer.data, safe=False)
     elif request.method == 'PUT':
         update = JSONParser().parse(request)
@@ -62,11 +64,12 @@ def persona(request, pk):
             return JsonResponse(update_serializer.data)
         return JsonResponse(update_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['GET','PUT','DELETE'])
+
+@api_view(['GET', 'PUT', 'DELETE'])
 def usuario(request, pk):
     usuario = Usuario.objects.get(pk=pk)
     if request.method == 'GET':
-        usuario_serializer = UsuarioSerializer (usuario)
+        usuario_serializer = UsuarioSerializer(usuario)
         return JsonResponse(usuario_serializer.data, safe=False)
     elif request.method == 'PUT':
         update = JSONParser().parse(request)
@@ -81,8 +84,7 @@ def usuario(request, pk):
         return JsonResponse({'message': '¡Recurso eliminado satisfactoriamente!'}, status=status.HTTP_204_NO_CONTENT)
 
 
-
-@api_view(['GET'])
+@api_view(['GET', 'POST', 'DELETE'])
 def candadosatelital_list(request):
     if request.method == 'GET':
         candados_satelitales = CandadoSatelital.objects.all()
