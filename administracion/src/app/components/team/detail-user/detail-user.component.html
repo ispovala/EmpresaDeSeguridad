@@ -51,7 +51,7 @@
         <div class="form-group">
           <label for="cargo">DATOS DEL CARGO</label>
           <select class="form-control"  [(ngModel)]="cargo" name="cargo" id="cargo">
-            <option value="3">CHOFER</option>
+            <option *ngFor="let car of cargos" value="{{car.id}}">{{car.nombre}}</option>
           </select>
         </div>
 

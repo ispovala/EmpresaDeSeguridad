@@ -6,6 +6,8 @@ import { UsuarioService } from 'src/app/core/services/usuario/usuario.service';
 import { User } from 'src/app/core/models/user/user.model';
 import { Persona } from 'src/app/core/models/user/persona.model';
 import { PersonaService } from 'src/app/core/services/persona/persona.service';
+import { Cargo } from 'src/app/core/models/user/cargo.model';
+import { CargoService } from 'src/app/core/services/cargo/cargo.service';
 
 @Component({
   selector: 'app-detail-user',
@@ -28,15 +30,22 @@ export class DetailUserComponent implements OnInit {
   username?:String;
   password?:String;
 
+  cargos?:Cargo[];
+
   id?:number;
   id_per?:Number;
 
-  constructor(private personaService:PersonaService,private usuarioService:UsuarioService, private userService: UserService, private router: Router,private root: ActivatedRoute,) { }
+  constructor(private cargoService:CargoService, private personaService:PersonaService,private usuarioService:UsuarioService, private userService: UserService, private router: Router,private root: ActivatedRoute,) { }
 
   ngOnInit(): void {
     if(!this.userService.isAuthenticated()){
       this.router.navigate(['login']);
     }
+    this.cargoService.getAll().subscribe(
+      cargs=>{
+        this.cargos=cargs;
+      }
+    )
     this.root.params.forEach(param =>
       this.id = param['id']
     );
