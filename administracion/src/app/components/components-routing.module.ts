@@ -10,6 +10,12 @@ const routes: Routes = [
   { path: 'team', component: TeamComponent},
   { path: 'team/create', component: NewUserComponent},
   { path: 'team/detail/:id', component: DetailUserComponent},
+  {
+    path: 'recursos',
+    loadChildren: () =>
+      import('../recursos/recursos.module').then((m) => m.RecursosModule),
+    // canActivate: [AppAuthGuard],
+  },
 ];
 
 @NgModule({

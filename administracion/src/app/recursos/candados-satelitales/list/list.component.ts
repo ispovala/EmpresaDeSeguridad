@@ -20,7 +20,7 @@ export class CandadosSatelitalesListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.retrieveVehiculos();
+    this.refreshList();
   }
 
   retrieveVehiculos(): void {

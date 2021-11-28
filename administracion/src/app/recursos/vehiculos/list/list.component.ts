@@ -20,15 +20,15 @@ export class VehiculosListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.retrieveVehiculos();
+    this.refreshList();
   }
 
   retrieveVehiculos(): void {
     this.vehiculoService.getAll().subscribe(
-      (data) => {
+      data => {
         this.vehiculos = data;
       },
-      (error) => {
+      error => {
         console.error(error);
       }
     );

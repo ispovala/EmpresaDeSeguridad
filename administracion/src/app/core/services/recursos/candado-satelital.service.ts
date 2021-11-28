@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -10,7 +10,17 @@ const baseUrl = environment.main_url + '/api/candados_satelitales';
   providedIn: 'root',
 })
 export class CandadoSatelitalService {
-  constructor(private http: HttpClient) {}
+
+  private httpOptions: any;
+
+  constructor(private http: HttpClient) {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `JWT ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+      }),
+    };
+  }
 
   getAll(): Observable<CandadoSatelital[]> {
     return this.http.get<CandadoSatelital[]>(baseUrl);
@@ -21,7 +31,7 @@ export class CandadoSatelitalService {
   }
 
   create(data: any): Observable<CandadoSatelital> {
-    return this.http.post<CandadoSatelital>(baseUrl, data);
+    return this.http.post<CandadoSatelital>(baseUrl, data, {headers: this.httpOptions.headers});
   }
 
   update(id: any, data: any): Observable<CandadoSatelital> {
