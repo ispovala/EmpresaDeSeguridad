@@ -39,6 +39,6 @@ export class VehiculoService {
   }
 
   delete(placa: string): Observable<Vehiculo> {
-    return this.http.delete<Vehiculo>(`${baseUrl}/` + placa);
+    return this.http.delete<Vehiculo>(`${baseUrl}/` + placa, {headers: this.httpOptions.headers});
   }
 }

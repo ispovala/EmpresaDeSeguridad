@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Vehiculo } from 'src/app/core/models/recursos/vehiculo.model';
 import { VehiculoService } from 'src/app/core/services/recursos/vehiculo.service';
 
@@ -11,12 +11,10 @@ import { VehiculoService } from 'src/app/core/services/recursos/vehiculo.service
 export class VehiculosListComponent implements OnInit {
   vehiculos?: Vehiculo[];
   currentVehiculo: Vehiculo = new Vehiculo();
-  currentIndex = -1;
-  closeResult: string = '';
 
   constructor(
     private vehiculoService: VehiculoService,
-    private modalService: NgbModal,
+    private modalService: NgbModal
   ) {}
 
   ngOnInit(): void {
@@ -25,52 +23,66 @@ export class VehiculosListComponent implements OnInit {
 
   retrieveVehiculos(): void {
     this.vehiculoService.getAll().subscribe(
-      data => {
+      (data) => {
         this.vehiculos = data;
       },
-      error => {
-        console.error(error);
-      }
+      (error) => {}
     );
   }
 
-  open(content: any) {
+  openCM(content: any) {
     this.modalService
-      .open(content, { ariaLabelledBy: 'modal-basic-title' })
+      .open(content, {
+        ariaLabelledBy: 'modal-basic-title',
+        size: 'lg',
+        backdrop: 'static',
+      })
       .result.then(
-        result => {
-          this.vehiculoService.create(result)
-            .subscribe(
-              response => {
-                this.refreshList();
-              },
-              error => {
-                console.error(error);
-            });
+        (result) => {
+          this.vehiculoService.create(result).subscribe(
+            (response) => {
+              this.refreshList();
+            },
+            (error) => {}
+          );
         },
-        reason => {
-        }
+        (reason) => {}
       );
   }
 
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
+  openDM(content: any) {
+    this.modalService
+      .open(content, { ariaLabelledBy: 'modal-basic-title', size: 'sm' })
+      .result.then(
+        (result) => {
+          this.vehiculoService.delete(result.placa).subscribe(
+            (response) => {
+              this.refreshList();
+            },
+            (error) => {
+              console.error(error);
+            }
+          );
+        },
+        (reason) => {}
+      );
+  }
+
+  openVM(content: any) {
+    this.modalService
+      .open(content, { ariaLabelledBy: 'modal-basic-title', size: 'lg' })
+      .result.then(
+        (result) => {},
+        (reason) => {}
+      );
   }
 
   refreshList(): void {
     this.retrieveVehiculos();
-    this.currentVehiculo = new Vehiculo();
-    this.currentIndex = -1;
+    this.currentVehiculo = {};
   }
 
-  setActiveVehiculo(vehiculo: Vehiculo, index: number): void {
+  setActiveVehiculo(vehiculo: Vehiculo): void {
     this.currentVehiculo = vehiculo;
-    this.currentIndex = index;
   }
 }

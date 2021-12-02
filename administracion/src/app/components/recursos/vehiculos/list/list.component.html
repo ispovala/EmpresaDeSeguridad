@@ -4,44 +4,47 @@
   <table class="table">
     <thead>
       <tr>
-        <th style="width: 150px">Marca</th>
-        <th style="width: 150px">Tipo</th>
-        <th style="width: 150px">Color</th>
-        <th style="width: 150px">Placa</th>
-        <th style="width: 150px">Año</th>
-        <th style="width: 250px">Motor</th>
-        <th style="width: 200px">
-          <button class="btn btn-lg btn-outline-primary" (click)="open(mymodal)">AGREGAR</button>
+        <th class="w150px">Marca</th>
+        <th class="w150px">Tipo</th>
+        <th class="w150px">Color</th>
+        <th class="w100px">Placa</th>
+        <th class="w50px">Año</th>
+        <th class="w200px">Motor</th>
+        <th class="w200px">
+          <button class="btn bg-success text-white w-100" (click)="openCM(createModal)">AGREGAR</button>
         </th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let vehiculo of vehiculos">
-          <td style="width:150px">
-              {{ vehiculo.marca }}
+          <td class="w150px">
+            {{ vehiculo.marca }}
           </td>
-          <td style="width:150px">
-              {{ vehiculo.tipo }}
+          <td class="w150px">
+            {{ vehiculo.tipo }}
           </td>
-          <td style="width:150px">
-              {{ vehiculo.color }}
+          <td class="w150px">
+            {{ vehiculo.color }}
           </td>
-          <td style="width:150px">
-              {{ vehiculo.placa }}
+          <td class="w100px">
+            {{ vehiculo.placa }}
           </td>
-          <td style="width:150px">
-              {{ vehiculo.year }}
+          <td class="w50px">
+            {{ vehiculo.year }}
           </td>
-          <td style="width:150px">
-              {{ vehiculo.motor }}
+          <td class="w200px">
+            {{ vehiculo.motor }}
+          </td>
+          <td class="w200px">
+              <a (click)="setActiveVehiculo(vehiculo); openDM(deleteModal)" class="pe-auto link-danger px-3">Eliminar</a>
+              <button class="btn bg-primary text-white w-50" (click)="setActiveVehiculo(vehiculo); openVM(viewModal)">DETALLES</button>
           </td>
       </tr>
     </tbody>
   </table>
 </div>
 
-
-<ng-template #mymodal let-modal>
+<ng-template #createModal let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">AGREGAR VEHICULO</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -53,7 +56,6 @@
       <label for="Marca">Marca</label>
       <select name="currentVehiculo.marca" [(ngModel)]="currentVehiculo.marca" class="form-control" >
         <option value="Chevrolet">Chevrolet</option>
-        <!--<option value=""></option>-->
       </select>
     </div>
 
@@ -65,7 +67,6 @@
       <select name="currentVehiculo.tipo" [(ngModel)]="currentVehiculo.tipo" class="form-control" >
         <option value="Camioneta">Camioneta</option>
         <option value="Van">Van</option>
-        <!--<option value=""></option>-->
       </select>
     </div>
     <div class="form-group m-form__group">
@@ -75,7 +76,6 @@
         <option value="Negro">Negro</option>
         <option value="Blanco">Blanco</option>
         <option value="Azul">Azul</option>
-        <!--<option value=""></option>-->
       </select>
     </div>
     <div class="form-group">
@@ -92,7 +92,6 @@
         <option value="2016">2016</option>
         <option value="2017">2017</option>
         <option value="2018">2018</option>
-        <!--<option value=""></option>-->
       </select>
     </div>
     <div class="form-group">
@@ -104,5 +103,48 @@
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-dark" (click)="modal.close(currentVehiculo)">AGREGAR</button>
+  </div>
+</ng-template>
+
+<ng-template #deleteModal let-modal>
+  <div class="modal-body">
+    <h4 class="modal-title pt-3 pb-5" id="modal-basic-title">ELIMINAR RECURSO</h4>
+    <label class="text-info pb-4">¿Está seguro de eliminar el recurso?</label>
+    <div class="form-group pb-5">
+      <label for="Observaciones" class="pb-3">Observaciones</label>
+      <textarea class="form-control resized" name="observaciones" id="observaciones"></textarea>
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-sm btn-danger w-50" (click)="modal.close(currentVehiculo)">Eliminar</button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #viewModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Detalles</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="Marca">Marca</label>
+    </div>
+    <div class="form-group">
+      <label for="Tipo">Tipo</label>
+    </div>
+    <div class="form-group">
+      <label for="Color">Color</label>
+    </div>
+    <div class="form-group">
+      <label for="Placa">Placa</label>
+    </div>
+    <div class="form-group">
+      <label for="Year">Año</label>
+    </div>
+    <div class="form-group">
+      <label for="Observaciones">Observaciones</label>
+    </div>
   </div>
 </ng-template>

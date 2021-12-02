@@ -1,1 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+hr.solid {
+  border-top: 3px solid #bbb;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+.w50px {
+  width: 50px;
+}
+
+.w100px {
+  width: 100px;
+}
+
+.w150px {
+  width: 150px;
+}
+
+.w200px {
+  width: 200px;
+}
+
+.w250px {
+  width: 250px;
+}

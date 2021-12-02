@@ -39,6 +39,6 @@ export class CandadoSatelitalService {
   }
 
   delete(id: any): Observable<CandadoSatelital> {
-    return this.http.delete<CandadoSatelital>(`${baseUrl}/` + id);
+    return this.http.delete<CandadoSatelital>(`${baseUrl}/` + id, {headers: this.httpOptions.headers});
   }
 }

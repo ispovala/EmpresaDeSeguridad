@@ -11,12 +11,10 @@ import { CandadoSatelitalService } from 'src/app/core/services/recursos/candado-
 export class CandadosSatelitalesListComponent implements OnInit {
   candadosSatelitales?: CandadoSatelital[];
   currentCandadoSatelital: CandadoSatelital = new CandadoSatelital();
-  currentIndex = -1;
-  closeResult: string = '';
 
   constructor(
     private candadoSatelitalService: CandadoSatelitalService,
-    private modalService: NgbModal,
+    private modalService: NgbModal
   ) {}
 
   ngOnInit(): void {
@@ -34,43 +32,61 @@ export class CandadosSatelitalesListComponent implements OnInit {
     );
   }
 
-  open(content: any) {
+  openCM(content: any) {
     this.modalService
-      .open(content, { ariaLabelledBy: 'modal-basic-title' })
+      .open(content, {
+        ariaLabelledBy: 'modal-basic-title',
+        size: 'lg',
+        backdrop: 'static',
+      })
       .result.then(
-        result => {
-          this.candadoSatelitalService.create(result)
-            .subscribe(
-              response => {
-                this.refreshList();
-              },
-              error => {
-                console.error(error);
-              }
-            );
+        (result) => {
+          this.candadoSatelitalService.create(result).subscribe(
+            (response) => {
+              this.refreshList();
+            },
+            (error) => {
+              console.error(error);
+            }
+          );
         },
-        reason => {}
+        (reason) => {}
       );
   }
 
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
+  openDM(content: any) {
+    this.modalService
+      .open(content, { ariaLabelledBy: 'modal-basic-title', size: 'sm' })
+      .result.then(
+        (result) => {
+          this.candadoSatelitalService.delete(result.id).subscribe(
+            (response) => {
+              this.refreshList();
+            },
+            (error) => {
+              console.error(error);
+            }
+          );
+        },
+        (reason) => {}
+      );
+  }
+
+  openVM(content: any) {
+    this.modalService
+      .open(content, { ariaLabelledBy: 'modal-basic-title', size: 'lg' })
+      .result.then(
+        (result) => {},
+        (reason) => {}
+      );
   }
 
   refreshList(): void {
     this.retrieveVehiculos();
     this.currentCandadoSatelital = new CandadoSatelital();
-    this.currentIndex = -1;
   }
 
-  setActiveVehiculo(candadoSatelital: CandadoSatelital, index: number): void {
+  setActiveCandadoSatelital(candadoSatelital: CandadoSatelital): void {
     this.currentCandadoSatelital = candadoSatelital;
-    this.currentIndex = index;
   }
 }
