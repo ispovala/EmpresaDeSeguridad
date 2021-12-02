@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CandadoSatelital } from 'src/app/core/models/recursos/candado-satelital.model';
 import { CandadoSatelitalService } from 'src/app/core/services/recursos/candado-satelital.service';
 
@@ -45,9 +45,7 @@ export class CandadosSatelitalesListComponent implements OnInit {
             (response) => {
               this.refreshList();
             },
-            (error) => {
-              console.error(error);
-            }
+            (error) => {}
           );
         },
         (reason) => {}
@@ -60,30 +58,37 @@ export class CandadosSatelitalesListComponent implements OnInit {
       .result.then(
         (result) => {
           this.candadoSatelitalService.delete(result.id).subscribe(
-            (response) => {
+            () => {
               this.refreshList();
             },
-            (error) => {
-              console.error(error);
-            }
+            (error) => {}
           );
         },
-        (reason) => {}
+        () => {
+          this.resetCurrent();
+        }
       );
   }
 
   openVM(content: any) {
     this.modalService
-      .open(content, { ariaLabelledBy: 'modal-basic-title', size: 'lg' })
-      .result.then(
-        (result) => {},
-        (reason) => {}
-      );
+      .open(content, {
+        ariaLabelledBy: 'modal-basic-title',
+        size: 'lg',
+        backdrop: 'static',
+      })
+      .result.then(() => {
+        this.resetCurrent();
+      });
   }
 
   refreshList(): void {
     this.retrieveVehiculos();
-    this.currentCandadoSatelital = new CandadoSatelital();
+    this.resetCurrent();
+  }
+
+  resetCurrent(): void {
+    this.currentCandadoSatelital = {};
   }
 
   setActiveCandadoSatelital(candadoSatelital: CandadoSatelital): void {

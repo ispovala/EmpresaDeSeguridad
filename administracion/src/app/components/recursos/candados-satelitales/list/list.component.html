@@ -89,22 +89,26 @@
 <ng-template #viewModal let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Detalles</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <button type="button" class="close" aria-label="Close" (click)="modal.close('Cross click')">
       <span aria-hidden="true">×</span>
     </button>
   </div>
   <div class="modal-body">
     <div class="form-group">
-      <label for="Marca">Marca</label>
+      <label for="CSMarca">Marca:</label>
+      <label for="Marca" class="px-2">{{ currentCandadoSatelital.marca }}</label>
     </div>
     <div class="form-group">
-      <label for="Tipo">Tipo</label>
+      <label for="CSTipo">Tipo:</label>
+      <label for="Tipo" class="px-2">{{ currentCandadoSatelital.tipo }}</label>
     </div>
     <div class="form-group">
-      <label for="Color">Color</label>
+      <label for="CSColor">Color:</label>
+      <label for="Color" class="px-2">{{ currentCandadoSatelital.color }}</label>
     </div>
     <div class="form-group">
-      <label for="Observaciones">Observaciones</label>
+      <label for="CSObservaciones">Observaciones:</label>
+      <label for="Observaciones" class="px-2"><!--{{ currentCandadoSatelital.observaciones }}--></label>
     </div>
   </div>
 </ng-template>

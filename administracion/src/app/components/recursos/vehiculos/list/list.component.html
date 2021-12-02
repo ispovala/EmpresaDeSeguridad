@@ -123,28 +123,38 @@
 <ng-template #viewModal let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Detalles</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">×</span>
+    <button type="button" class="close" aria-label="Close" (click)="modal.close('Cross click')">
+      <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
     <div class="form-group">
-      <label for="Marca">Marca</label>
+      <label for="VMarca">Marca:</label>
+      <label for="Marca" class="px-2">{{ currentVehiculo.marca }}</label>
     </div>
     <div class="form-group">
-      <label for="Tipo">Tipo</label>
+      <label for="VTipo">Tipo:</label>
+      <label for="Tipo" class="px-2">{{ currentVehiculo.tipo }}</label>
     </div>
     <div class="form-group">
-      <label for="Color">Color</label>
+      <label for="VColor">Color:</label>
+      <label for="Color" class="px-2">{{ currentVehiculo.color }}</label>
     </div>
     <div class="form-group">
-      <label for="Placa">Placa</label>
+      <label for="VPlaca">Placa:</label>
+      <label for="Placa" class="px-2">{{ currentVehiculo.placa }}</label>
     </div>
     <div class="form-group">
-      <label for="Year">Año</label>
+      <label for="VYear">Año:</label>
+      <label for="Year" class="px-2">{{ currentVehiculo.year }}</label>
     </div>
     <div class="form-group">
-      <label for="Observaciones">Observaciones</label>
+      <label for="VMotor">Motor:</label>
+      <label for="Motor" class="px-2">{{ currentVehiculo.motor }}</label>
+    </div>
+    <div class="form-group">
+      <label for="VObservaciones">Observaciones:</label>
+      <label for="Observaciones" class="px-2"><!--{{ currentVehiculo.observaciones }}--></label>
     </div>
   </div>
 </ng-template>

@@ -37,17 +37,14 @@ export class VehiculosListComponent implements OnInit {
         size: 'lg',
         backdrop: 'static',
       })
-      .result.then(
-        (result) => {
-          this.vehiculoService.create(result).subscribe(
-            (response) => {
-              this.refreshList();
-            },
-            (error) => {}
-          );
-        },
-        (reason) => {}
-      );
+      .result.then((result) => {
+        this.vehiculoService.create(result).subscribe(
+          () => {
+            this.refreshList();
+          },
+          (error) => {}
+        );
+      });
   }
 
   openDM(content: any) {
@@ -56,29 +53,36 @@ export class VehiculosListComponent implements OnInit {
       .result.then(
         (result) => {
           this.vehiculoService.delete(result.placa).subscribe(
-            (response) => {
+            () => {
               this.refreshList();
             },
-            (error) => {
-              console.error(error);
-            }
+            (error) => {}
           );
         },
-        (reason) => {}
+        () => {
+          this.resetCurrent();
+        }
       );
   }
 
   openVM(content: any) {
     this.modalService
-      .open(content, { ariaLabelledBy: 'modal-basic-title', size: 'lg' })
-      .result.then(
-        (result) => {},
-        (reason) => {}
-      );
+      .open(content, {
+        ariaLabelledBy: 'modal-basic-title',
+        size: 'lg',
+        backdrop: 'static',
+      })
+      .result.then(() => {
+        this.resetCurrent();
+      });
   }
 
   refreshList(): void {
     this.retrieveVehiculos();
+    this.resetCurrent();
+  }
+
+  resetCurrent(): void {
     this.currentVehiculo = {};
   }
 
