@@ -1,10 +1,11 @@
-.datos2{
+.datos{
     margin: 1rem;
     padding: 0.5rem 3.5rem 0.5rem 3.5rem;
     border: 2px ;
     margin-top: 30%;
     justify-items:center;
     justify-content: space-between;
+    color:black;
 }
 
 .tope span{
@@ -15,7 +16,10 @@
    height:26px;
    top:80px;
 }
+ion-content{
+    --ion-background-color: white;
 
+}
 .logosepro ion-img{
     padding-left: 0px;
     display:block;
@@ -62,7 +66,7 @@ span.circle-grey ion-img{
 }
 
 
-.datos2 ion-item{
+.datos ion-item{
     display: flex;
     text-align: center;
     border-radius: 60px ;
@@ -84,6 +88,6 @@ span.circle-grey ion-img{
     width: 95%;
 }
 
-.datosinput{
+.datos{
     margin-top: 7rem;
 }
