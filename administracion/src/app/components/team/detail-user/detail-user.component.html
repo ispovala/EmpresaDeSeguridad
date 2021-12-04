@@ -1,0 +1,90 @@
+<app-header></app-header>
+
+<form>
+  <div class="row">
+      <div class="col-lg-2 col-md-2 col-sm-2">
+        <h3>DATOS PERSONALES</h3>
+        <div class="form-group">
+          <label class="btn btn-primary" for="my-file-selector">
+            <input id="my-file-selector" type="file" class="d-none">
+            CARGAR HOJA DE VIDA
+          </label>
+        </div>
+      </div>
+
+      <div class="col-lg-5 col-md-5 col-sm-5">
+        <div class="form-group">
+          <label for="nombres">NOMBRES</label>
+          <input type="text" maxlength="255"  class="form-control" id="nombres" [(ngModel)]="nombres" name="nombres" required>
+        </div>
+        <div class="form-group">
+          <label for="apellidos">APELLIDOS</label>
+          <input type="text" maxlength="255" class="form-control" id="apellidos" [(ngModel)]="apellidos" name="apellidos" required>
+        </div>
+        <div class="form-group">
+          <label for="nacimiento">FECHA DE NACIMIENTO</label>
+          <input type="date" maxlength="255" class="form-control" id="nacimiento" [(ngModel)]="nacimiento" name="nacimiento" required>
+        </div>
+        <div class="form-group">
+          <label for="cedula">DOCUMENTO IDENTIDAD</label>
+          <input type="number" max="15" class="form-control" id="cedula" [(ngModel)]="cedula" name="cedula" required>
+        </div>
+        <div class="form-group">
+          <label for="profesion">PROFESION</label>
+          <input type="text" maxlength="255" class="form-control" id="profesion" [(ngModel)]="profesion" name="profesion" required>
+        </div>
+        <div class="form-group">
+          <label for="telefono">TELEFONO</label>
+          <input type="number" max="10" class="form-control" id="telefono" [(ngModel)]="telefono" name="telefono" required>
+        </div>
+        <div class="form-group">
+          <label for="email">CORREO ELECTRONICO</label>
+          <input type="email" class="form-control" aria-describedby="emailHelp" id="email" [(ngModel)]="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="dirr">DIRECCION</label>
+          <input type="text" class="form-control" id="dirr" [(ngModel)]="dirr" name="dirr" required>
+        </div>
+      </div>
+
+      <div class="col-lg-5 col-md-5 col-sm-5">
+        <div class="form-group">
+          <label for="cargo">DATOS DEL CARGO</label>
+          <select class="form-control"  [(ngModel)]="cargo" name="cargo" id="cargo">
+            <option *ngFor="let car of cargos" value="{{car.id}}">{{car.nombre}}</option>
+          </select>
+        </div>
+
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="1" [(ngModel)]="conduccion" name="conduccion">
+          <label class="form-check-label" for="conduccion">
+            CONDUCCCION
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="1" [(ngModel)]="armamento" name="armamento">
+          <label class="form-check-label" for="armamento">
+            Uso de armamento
+          </label>
+        </div>
+
+        <div class="form-group row">
+          <label for="username" class="col-sm-2 col-form-label">Usuario</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control-plaintext" id="username" [(ngModel)]="username"name="username" required>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="password" class="col-sm-2 col-form-label">Contraseña</label>
+          <div class="col-sm-10">
+            <input type="password" class="form-control" [(ngModel)]="password" name="password" id='password' placeholder="password" required>
+          </div>
+        </div>
+        <button tpye="button" class="btn btn-primary" (click)="update()">GUARDAR</button>
+        <button tpye="button" class="btn btn-danger" (click)="deleteUser()">ELIMINAR</button>
+      </div>
+
+  </div>
+  </form>
+
+<app-footer></app-footer>

@@ -1,0 +1,114 @@
+<router-recursos></router-recursos>
+
+<div class="p-5">
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="w150px">Marca</th>
+        <th class="w150px">Tipo</th>
+        <th class="w150px">Color</th>
+        <th class="w100px">
+          <button class="btn btn-success text-white w-100" (click)="openCM(mymodal)">AGREGAR</button>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let candadosSatelital of candadosSatelitales">
+          <td class="w150px">
+              {{ candadosSatelital.marca }}
+          </td>
+          <td class="w150px">
+              {{ candadosSatelital.tipo }}
+          </td>
+          <td class="w150px">
+              {{ candadosSatelital.color }}
+          </td>
+          <td class="w100px">
+              <a (click)="setActiveCandadoSatelital(candadosSatelital); openDM(deleteModal)" class="pe-auto link-danger px-3">Eliminar</a>
+              <button class="btn bg-primary text-white w-50" (click)="setActiveCandadoSatelital(candadosSatelital); openVM(viewModal)">DETALLES</button>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">AGREGAR CANDADO SATELITAL</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group m-form__group">
+      <label for="Marca">Marca</label>
+      <select name="currentCandadoSatelital.marca" [(ngModel)]="currentCandadoSatelital.marca" class="form-control" >
+        <option value="GeoLock">GeoLock</option>
+      </select>
+    </div>
+
+    <label for="Num">Numeración</label>
+    <hr class="solid">
+
+    <div class="form-group m-form__group">
+      <label for="Tipo">Tipo</label>
+      <select name="currentCandadoSatelital.tipo" [(ngModel)]="currentCandadoSatelital.tipo" class="form-control" >
+        <option value="H14">H14</option>
+      </select>
+    </div>
+    <div class="form-group m-form__group">
+      <label for="Color">Color</label>
+      <select name="currentCandadoSatelital.color" [(ngModel)]="currentCandadoSatelital.color" class="form-control" >
+        <option value="Rojo">Rojo</option>
+        <option value="Negro">Negro</option>
+        <option value="Blanco">Blanco</option>
+        <option value="Azul">Azul</option>
+      </select>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close(currentCandadoSatelital)">AGREGAR</button>
+  </div>
+</ng-template>
+
+<ng-template #deleteModal let-modal>
+  <div class="modal-body">
+    <h4 class="modal-title pt-3 pb-5" id="modal-basic-title">ELIMINAR RECURSO</h4>
+    <label class="text-info pb-4">¿Está seguro de eliminar el recurso?</label>
+    <div class="form-group pb-5">
+      <label for="Observaciones" class="pb-3">Observaciones</label>
+      <textarea class="form-control resized" name="observaciones" id="observaciones"></textarea>
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-sm btn-danger w-50" (click)="modal.close(currentCandadoSatelital)">Eliminar</button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #viewModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Detalles</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.close('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="CSMarca">Marca:</label>
+      <label for="Marca" class="px-2">{{ currentCandadoSatelital.marca }}</label>
+    </div>
+    <div class="form-group">
+      <label for="CSTipo">Tipo:</label>
+      <label for="Tipo" class="px-2">{{ currentCandadoSatelital.tipo }}</label>
+    </div>
+    <div class="form-group">
+      <label for="CSColor">Color:</label>
+      <label for="Color" class="px-2">{{ currentCandadoSatelital.color }}</label>
+    </div>
+    <div class="form-group">
+      <label for="CSObservaciones">Observaciones:</label>
+      <label for="Observaciones" class="px-2"><!--{{ currentCandadoSatelital.observaciones }}--></label>
+    </div>
+  </div>
+</ng-template>

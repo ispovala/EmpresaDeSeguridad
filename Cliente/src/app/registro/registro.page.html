@@ -1,16 +1,17 @@
 <ion-app>
 
-  <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button></ion-back-button>
-      </ion-buttons>
-      <ion-title>Registro</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
   <ion-content class="ion-padding">
-
+    <ion-row class="row logo">
+      <div>
+        <img src="../../assets/app sepro vectores-30.png" class="img-logo img-center">
+      </div>
+    </ion-row>
+    <ion-row class="row">
+      <div class="container">
+        <img src="../../assets/img/app sepro vectores-07.png" style="width:100%;">
+        <ion-text class="centered">REGISTRO</ion-text>
+      </div>
+    </ion-row>
     <form class="form" [formGroup]="validations_form" (ngSubmit)="tryRegistro(validations_form.value)">
       <ion-item lines="full">
         <ion-label position="floating">Nombres</ion-label>
