@@ -20,7 +20,7 @@ export class EditarperfilPage implements OnInit {
       lastname: ['', [Validators.required, Validators.minLength(2), Validators.pattern('[a-zA-Z]*')]],
       email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
       dob: [this.defaultDate],
-      mobile: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
+      mobile: ['', [Validators.required, Validators.pattern('^09[0-9]+$')]],
       cedula: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
       direccion: ['', [Validators.required, Validators.minLength(2), Validators.pattern('[a-zA-Z-0-9\.]*')]],
     })
