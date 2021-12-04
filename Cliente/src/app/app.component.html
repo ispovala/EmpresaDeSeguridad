@@ -14,78 +14,82 @@
           <p ion-text header-subtitle>HAYLEEN CARRILLO</p>
         </ion-menu-toggle>
         
-
-        <ion-list class="opciones" lines="none">
-          <ion-menu-toggle auto-hide="false">
-            <ion-item [routerDirection]="'root'" [routerLink]="'/servicios'">
-              <ion-img menuClose src="assets/img/serviciosicono.png"></ion-img>
-              <ion-label>
-                Servicios
-              </ion-label>
-            </ion-item>
-            <ion-item [routerDirection]="'root'" [routerLink]="'/historialservicios'">
-              <ion-img menuClose src="assets/img/historialicono.png"></ion-img>
-              <ion-label>
-                Historial de servicios
-              </ion-label>
-            </ion-item>
-            <ion-item [routerDirection]="'root'" [routerLink]="" style="--ion-background-color:rgb(107, 107, 107);">
-              <ion-img menuClose src="assets/img/notificacionesicono.png"></ion-img>
-              <ion-label>
-                Notificaciones
-              </ion-label>
-              
-            </ion-item>
-            <ion-item [routerDirection]="'root'" [routerLink]=""style="--ion-background-color:rgb(107, 107, 107);">
-              
-                <ion-img menuClose src="assets/img/carritoicono.png"></ion-img>
-              
-              <ion-label>
-                Carrito
-              </ion-label>
-            </ion-item>
-            <ion-item [routerDirection]="'root'" [routerLink]="'/metododepago'">
-              <ion-img menuClose src="assets/img/tarjetasicono.png"></ion-img>
-              <ion-label>
-                Tarjetas
-              </ion-label>
-            </ion-item>
-            <ion-item [routerDirection]="'root'" [routerLink]=""style="--ion-background-color:rgb(107, 107, 107);">
-              <ion-img menuClose src="assets/img/chatsicono.png"></ion-img>
-              <ion-label>
-                Chats
-              </ion-label>
-            </ion-item>
-            <ion-item [routerDirection]="'root'" [routerLink]=""style="--ion-background-color:rgb(107, 107, 107);">
-              <ion-img menuClose src="assets/img/escanearicono.png"></ion-img>
-              <ion-label>
-                Escanear código QR
-              </ion-label>
-            </ion-item>
-            <ion-item [routerDirection]="'root'" [routerLink]=""style="--ion-background-color:rgb(107, 107, 107);">
-              <ion-img menuClose src="assets/img/sucursalesicono.png"></ion-img>
-              <ion-label>
-                Sucursales
-              </ion-label>
-            </ion-item>      
-          
+        <div class="front">
+          <ion-list class="opciones" lines="none">
+            <ion-menu-toggle auto-hide="false">
+              <ion-item [routerDirection]="'root'" [routerLink]="'/servicios'">
+                <ion-img menuClose src="assets/img/serviciosicono.png"></ion-img>
+                <ion-label>
+                  Servicios
+                </ion-label>
+              </ion-item>
+              <ion-item [routerDirection]="'root'" [routerLink]="'/historialservicios'">
+                <ion-img menuClose src="assets/img/historialicono.png"></ion-img>
+                <ion-label>
+                  Historial de servicios
+                </ion-label>
+              </ion-item>
+              <ion-item [routerDirection]="'root'" [routerLink]="" style="--ion-background-color:rgb(107, 107, 107);">
+                <ion-img menuClose src="assets/img/notificacionesicono.png"></ion-img>
+                <ion-label>
+                  Notificaciones
+                </ion-label>
+                
+              </ion-item>
+              <ion-item [routerDirection]="'root'" [routerLink]=""style="--ion-background-color:rgb(107, 107, 107);">
+                
+                  <ion-img menuClose src="assets/img/carritoicono.png"></ion-img>
+                
+                <ion-label>
+                  Carrito
+                </ion-label>
+              </ion-item>
+              <ion-item [routerDirection]="'root'" [routerLink]="'/metododepago'">
+                <ion-img menuClose src="assets/img/tarjetasicono.png"></ion-img>
+                <ion-label>
+                  Tarjetas
+                </ion-label>
+              </ion-item>
+              <ion-item [routerDirection]="'root'" [routerLink]=""style="--ion-background-color:rgb(107, 107, 107);">
+                <ion-img menuClose src="assets/img/chatsicono.png"></ion-img>
+                <ion-label>
+                  Chats
+                </ion-label>
+              </ion-item>
+              <ion-item [routerDirection]="'root'" [routerLink]=""style="--ion-background-color:rgb(107, 107, 107);">
+                <ion-img menuClose src="assets/img/escanearicono.png"></ion-img>
+                <ion-label>
+                  Escanear código QR
+                </ion-label>
+              </ion-item>
+              <ion-item [routerDirection]="'root'" [routerLink]=""style="--ion-background-color:rgb(107, 107, 107);">
+                <ion-img menuClose src="assets/img/sucursalesicono.png"></ion-img>
+                <ion-label>
+                  Sucursales
+                </ion-label>
+              </ion-item>      
             
-            
-          </ion-menu-toggle>
-        </ion-list>
-        <div class="hora">  
-          <ion-item lines="none">
-            <ion-label>hora:</ion-label>
-            <ion-datetime displayFormat="hh:mm A" [(ngModel)]="myDate"></ion-datetime>
-          </ion-item>
               
+              
+            </ion-menu-toggle>
+          </ion-list>
+          <div class="hora">  
+            <ion-item lines="none">
+              <ion-label>hora:</ion-label>
+              <ion-datetime displayFormat="hh:mm A" [(ngModel)]="myDate"></ion-datetime>
+            </ion-item>
+                
+          </div>
+          <div class="cerrarsesion">
+            <ion-item lines="none">
+              <ion-img src="assets/img/cerrarsesion.png"></ion-img>
+              <button ion-button>CERRAR SESION</button>
+            </ion-item>  
+            
+          </div>
         </div>
-        <div class="cerrarsesion">
-          <ion-item lines="none">
-            <ion-img src="assets/img/cerrarsesion.png"></ion-img>
-            <button ion-button>CERRAR SESION</button>
-          </ion-item>  
-          
+        <div class="back">
+          <ion-img style="width: 100; height: 200;" src="../../assets/img/appseprovectores-01.png"></ion-img>
         </div>
       </ion-content>
     </ion-menu> 

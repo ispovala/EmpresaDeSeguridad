@@ -3,73 +3,79 @@
 </ion-header>
 
 <ion-content>
-  <div class="titulo">
-    <h1>CHOFER SEGURO</h1>
-    <div class="logo">
-      <ion-img style="width: 100px; height: 100px;" src="assets/img/choferlogo.png"></ion-img>
+  <div class="front">
+    <div class="titulo">
+      <h1>CHOFER SEGURO</h1>
+      <div class="logo">
+        <ion-img style="width: 100px; height: 100px;" src="assets/img/choferlogo.png"></ion-img>
+      </div>
     </div>
-  </div>
-  <div class="datos">
-    <ion-list>
-     
-        <ion-label>Fecha de Inicio</ion-label>
-        <div class="seleccion">
-          <ion-item >
-            <ion-datetime displayFormat="MM/DD/YYYY" min="2000-06-30" max="2030-06-30"></ion-datetime>
-            <ion-icon name="calendar-clear-outline" ></ion-icon>
-          </ion-item>
-        </div>
-   
-        <ion-label>Hora de Inicio</ion-label>
-        <div class="seleccion">
-          <ion-item >
-            <ion-datetime displayFormat="hh-mm-A"></ion-datetime>
-            <ion-icon name="time-outline" ></ion-icon>
-          </ion-item>
-          
-        </div>
+    <div class="datos">
+      <ion-list class="dat">
       
-        <ion-label>Fecha de Finalización</ion-label>
-        <div class="seleccion">
-          <ion-item >
-            <ion-datetime displayFormat="MM/DD/YYYY" min="2000-06-30" max="2030-06-30"></ion-datetime>
-            <ion-icon  name="calendar-clear-outline" ></ion-icon>
-          </ion-item>
-        </div>
+          <ion-label>Fecha de Inicio</ion-label>
+          <div class="seleccion">
+            <ion-item >
+              <ion-datetime displayFormat="MM/DD/YYYY" min="2000-06-30" max="2030-06-30"></ion-datetime>
+              <ion-icon name="calendar-clear-outline" item-right></ion-icon>
+            </ion-item>
+            
+          </div>
+    
+          <ion-label>Hora de Inicio</ion-label>
+          <div class="seleccion">
+            <ion-item >
+              <ion-datetime displayFormat="hh:mma"></ion-datetime>
+              <ion-icon name="time-outline" ></ion-icon>
+            </ion-item>
+            
+          </div>
+        
+          <ion-label>Fecha de Finalización</ion-label>
+          <div class="seleccion">
+            <ion-item >
+              <ion-datetime displayFormat="MM/DD/YYYY" min="2000-06-30" max="2030-06-30"></ion-datetime>
+              <ion-icon  name="calendar-clear-outline" ></ion-icon>
+            </ion-item>
+          </div>
 
-        <ion-label>Hora de Finalizacion</ion-label>
-        <div class="seleccion">
-          <ion-item >
-            <ion-datetime displayFormat="hh-mm-A" ></ion-datetime>
-            <ion-icon name="time-outline" ></ion-icon>
-          </ion-item>
-        </div>
-      
-    </ion-list>
-  </div>
-  <div class="mapa">
-      <div class="ubicacion">
-        <ion-label>Elegir ubicación</ion-label>
-        <button ion-button color="secondary" (click)="addDirection()">Abrir mapa</button>
-      </div>   
-  </div>
-
-  <div class="check-vehiculo">
-    <ion-checkbox checked="true"></ion-checkbox>
-    <ion-label>Incluir vehículo</ion-label>
-  </div>
-  <div class="check-chofer">
-    <ion-checkbox checked="true"></ion-checkbox>
-    <ion-label>Incluir chofer guardaespaldas</ion-label>
-  </div>
-  
-  <div class="botones">
-    <div class="solicitar-servicio">
-      <button ion-button color="secondary" (click)="solicitud()">Solicitar Servicio</button>
+          <ion-label>Hora de Finalizacion</ion-label>
+          <div class="seleccion">
+            <ion-item >
+              <ion-datetime displayFormat="hh:mma" ></ion-datetime>
+              <ion-icon name="time-outline" ></ion-icon>
+            </ion-item>
+          </div>
+        
+      </ion-list>
     </div>
-    <div class="cancelar-servicio">
-      <button ion-button color="secondary" (click)="cancelar()">Cancelar</button>
+    <div class="mapa">
+        <div class="ubicacion">
+          <ion-label>Elegir Ubicación</ion-label>
+          <button ion-button color="secondary" (click)="addDirection()">Abrir mapa</button>
+        </div>   
     </div>
 
+    <div class="check-vehiculo">
+      <ion-checkbox checked="true"></ion-checkbox>
+      <ion-label>Incluir vehículo</ion-label>
+    </div>
+    <div class="check-chofer">
+      <ion-checkbox checked="true"></ion-checkbox>
+      <ion-label>Incluir chofer guardaespaldas</ion-label>
+    </div>
+    
+    <div class="botones">
+      <div class="solicitar-servicio">
+        <button ion-button color="secondary" (click)="solicitud()">Solicitar Servicio</button>
+      </div>
+      <div class="cancelar-servicio">
+        <button ion-button color="secondary" (click)="cancelar()">Cancelar</button>
+      </div>
+
+    </div>
+  </div>
+  <div class="back">
+    <ion-img style="width: 100; height: 200;" src="../../assets/img/appseprovectores-01.png"></ion-img>
   </div>
 </ion-content>
