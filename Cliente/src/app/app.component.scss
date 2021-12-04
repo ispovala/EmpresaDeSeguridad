@@ -1,5 +1,10 @@
 ion-content{ 
-    --ion-background-color:#888484; 
+    --ion-background-color:#828181; 
+    font-family: hp265;
+}
+p{
+    font-family: BebasBold;
+    font-size:150%;
 }
 .front{
     z-index:2;
@@ -16,7 +21,9 @@ ion-content{
   ion-list {
     --ion-item-background: transparent;
 }
-
+.front .linea{
+    border-bottom-style: dot-dash;
+}
   .back{
     position: absolute;
     text-align: buttom;
@@ -34,7 +41,7 @@ ion-menu-toggle ion-img{
     margin-top: 4%;
 }
 .logo{
-    --background: #e6e6e6;
+    --background: #d8d6d7;
 }
 ion-toolbar .logo{
     width:35%;
@@ -80,7 +87,7 @@ p{
     color: black;
 }
 .cerrarsesion button{
-    background-color:#888484; 
+    background-color:#828181; 
 }
 .opciones ion-label{
     padding-left: 7%;
