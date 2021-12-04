@@ -2,6 +2,26 @@
 // http://ionicframework.com/docs/theming/
 
 /** Ionic CSS Variables **/
+@font-face {
+  font-family: 'BebasBold';
+  src: url('/assets/fonts/BebasNeueBold.otf');
+}
+@font-face {
+  font-family: 'BebasRegular';
+  src: url('/assets/fonts/BebasNeueRagular.otf');
+}
+@font-face {
+  font-family: 'hp265';
+  src: url('/assets/fonts/hp-simplified-265.ttf');
+}
+@font-face {
+  font-family: 'hp556';
+  src: url('/assets/fonts/hp-simplified-556.ttf');
+}
+@font-face {
+  font-family: 'hp990';
+  src: url('/assets/fonts/hp-simplified-990.ttf');
+}
 :root {
   /** primary **/
   --ion-color-primary: #3880ff;
