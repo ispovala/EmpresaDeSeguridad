@@ -55,15 +55,6 @@ span.circle-grey ion-img{
 
   }
 
-.botones{
-    position: relative;
-    text-align:center;
-    margin-left: 20%;
-    margin-right: 20%;
-    display: flex;
-    justify-content: space-between;
-    
-}
 
 
 .datos ion-item{
@@ -90,4 +81,48 @@ span.circle-grey ion-img{
 
 .datos{
     margin-top: 7rem;
+    .itemdatos{
+        margin-top: 5%;
+    }
 }
+
+.error{
+    font-size: x-small;
+}
+
+.titulo{
+    h4{
+        color: #bf1a24;
+       /* font-family: "Bebas Neue Bold";*/
+    }
+}
+
+ion-chip{
+    border-color: black;
+
+}
+
+.botones {
+    margin-top: 15%;
+    justify-content: space-between;
+    text-align:center;
+    margin-left: 5%;
+    .guardar{
+        background-color:#3da631;
+        width:7rem;
+    }
+    .cancelar{
+        background-color: #fc5759;
+        width: 7rem;
+    }
+}
+/*
+.botones{
+    position: relative;
+    text-align:center;
+    margin-left: 20%;
+    margin-right: 20%;
+    display: flex;
+    justify-content: space-between;
+    
+}*/
