@@ -9,43 +9,65 @@ import { UbicacionComponent } from 'src/app/ubicacion/ubicacion.component';
   styleUrls: ['./transporte.page.scss'],
 })
 export class TransportePage implements OnInit {
-  item="transporte"
- 
-  constructor(private navCtrl: NavController, private modalController: ModalController){
-    
+
+  origen = {
+    lat: -2.1676746,
+    lng: -79.8956897
+  };
+  destino = {
+    lat: -2.1676746,
+    lng: -79.8956897
+  };
+  item = "transporte"
+
+  constructor(private navCtrl: NavController, private modalController: ModalController) {
+
   }
-  cancelar(){
+  cancelar() {
     this.navCtrl.navigateForward("/servicios");
   }
-  solicitud(){
+  solicitud() {
     this.navCtrl.navigateForward("/servicios/n/solicitud");
-    
+
   }
 
 
   ngOnInit() {
   }
 
-  async addDirection() {
+  async addDirection(tipo: number) {
 
-    let positionInput = {  
-      lat: -2.1676746,
-      lng: -79.8956897
-    };
+    if (tipo === 0) {
+      const modalAdd = await this.modalController.create({
+        component: UbicacionComponent,
+        mode: 'ios',
+        swipeToClose: true,
+        componentProps: { position: this.origen }
+      });
 
-    const modalAdd  = await this.modalController.create({
-      component: UbicacionComponent,
-      mode: 'ios',
-      swipeToClose: true,
-      componentProps: {position: positionInput}
-    });
-    await modalAdd.present();
+      await modalAdd.present();
+      const { data } = await modalAdd.onWillDismiss();
+      if (data) {
+        this.origen = data.pos;
+        console.log('Origen -> ', this.origen);
+      }
 
-    const {data} = await modalAdd.onWillDismiss();
-    if (data) {
-      console.log('data -> ', data);
     }
+    else if (tipo === 1) {
+      const modalAdd = await this.modalController.create({
+        component: UbicacionComponent,
+        mode: 'ios',
+        swipeToClose: true,
+        componentProps: { position: this.destino }
+      });
 
+      await modalAdd.present();
+      const { data } = await modalAdd.onWillDismiss();
+      if (data) {
+        this.destino = data.pos;
+        console.log('Destino -> ', this.destino);
+      }
+    }
   }
 
 }
