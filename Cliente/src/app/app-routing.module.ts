@@ -131,7 +131,11 @@ const routes: Routes = [
   {
     path: 'ubicacion',
     loadChildren: () => import('./ubicacion/ubicacion.module').then( m => m.UbicacionModule)
+  },  {
+    path: 'homeperfil',
+    loadChildren: () => import('./homeperfil/homeperfil.module').then( m => m.HomeperfilPageModule)
   }
+
 
 
 ];

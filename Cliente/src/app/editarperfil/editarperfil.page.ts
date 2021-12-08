@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+
 @Component({
   selector: 'app-editarperfil',
   templateUrl: './editarperfil.page.html',
@@ -9,7 +10,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 })
 export class EditarperfilPage implements OnInit {
   ionicForm: FormGroup;
-  defaultDate = "";
+  defaultDate = "1970-12-16";
   maxFecha: string = (new Date().getFullYear()-18).toString();
   minFecha: string = (new Date().getFullYear()-80).toString();
   
@@ -20,13 +21,13 @@ export class EditarperfilPage implements OnInit {
 
   ngOnInit() {
     this.ionicForm = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(2), Validators.pattern('[a-zA-Z]*')]],
-      lastname: ['', [Validators.required, Validators.minLength(2), Validators.pattern('[a-zA-Z]*')]],
+      name: ['', [Validators.required, Validators.minLength(2), Validators.pattern('[a-zA-Z ]*')]],
+      lastname: ['', [Validators.required, Validators.minLength(2), Validators.pattern('[a-zA-Z ]*')]],
       email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
       dob: [this.defaultDate],
-      mobile: ['', [Validators.required, Validators.minLength(2), Validators.pattern('^[0-9]+$') ]],
-      cedula: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
-      direccion: ['', [Validators.required, Validators.minLength(2), Validators.pattern('[a-zA-Z-0-9\.]*')]],
+      mobile: ['', [Validators.required, Validators.pattern('^09[0-9]+$') ]],
+      cedula: ['', [Validators.required, Validators.pattern('[0-9]{10}')]],
+      direccion: ['', [Validators.required, Validators.minLength(2), Validators.pattern('[a-zA-Z0-9- .#]*')]],
     })
   }
 
