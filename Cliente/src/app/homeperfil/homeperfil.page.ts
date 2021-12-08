@@ -13,8 +13,8 @@ export class HomeperfilPage implements OnInit {
   constructor(private navCtrl: NavController, public alertController: AlertController){
     
   }
-  editar(){
-    this.navCtrl.navigateForward("/editarperfil");
+  perfil(){
+    this.navCtrl.navigateForward("/perfil");
   }
 
   ngOnInit() {
