@@ -7,9 +7,7 @@ ion-content{
   margin-top: 2rem;
 }
 ion-text{
-
-  font-family:Arial, Helvetica, sans-serif;
-  font-weight: lighter;
+  font-family:"hp265";
 }
 ion-input{
   background-color: white;
@@ -20,6 +18,8 @@ ion-input{
 }
 
 ion-button{
+  font-family:'hp556';
+  font-weight: 3rem;
   --background: none;
   background-color: #3da630;
   width: 15rem;
