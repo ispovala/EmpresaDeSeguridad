@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content data-tap-disabled="true">
   <div class="tope">
     <span> 
     </span>
@@ -28,7 +28,7 @@
 
 	
   <div class="datosinput">
-    <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
+    <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" validate>
       <ion-list class="datos">
         <div class="itemdatos">
           <ion-label >Nombres</ion-label>
@@ -66,7 +66,7 @@
           <ion-label>Cédula de identidad</ion-label>
         <ion-item lines="full">
           
-          <ion-input minlength="10" maxlength="10" formControlName="cedula" type="number" required></ion-input>
+          <ion-input maxlength="10" formControlName="cedula" type="tel" required></ion-input>
         </ion-item>
         <span class="error ion-padding" *ngIf="isSubmitted && errorControl.cedula.errors?.required">
           Es necesario ingresar su cédula de identidad.
@@ -80,13 +80,13 @@
           <ion-label>Número de celular</ion-label>
           <ion-item lines="full">
             
-            <ion-input formControlName="mobile" type="number" required></ion-input>
+            <ion-input formControlName="mobile" input type="tel " maxlength="10" required ></ion-input>
           </ion-item>
           <span class="error ion-padding" *ngIf="isSubmitted && errorControl.mobile.errors?.required">
             Es necesario un número de celular.
           </span>
           <span class="error ion-padding" *ngIf="isSubmitted && errorControl.mobile.errors?.pattern">
-            Solo se permiten caracteres numéricos.
+            Ingrese un número de celular valido.
           </span>
         </div>
         

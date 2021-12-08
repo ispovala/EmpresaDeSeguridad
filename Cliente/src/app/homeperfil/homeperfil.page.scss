@@ -1,0 +1,92 @@
+.datos2{
+    margin: 1rem;
+    padding: 0.5rem 3.5rem 0.5rem 3.5rem;
+    border: 2px ;
+    margin-top: 30%;
+    justify-items:center;
+    justify-content: space-between;
+}
+
+.tope span{
+    width:100%;
+   position:absolute;
+   left:0;
+   background-color:#dadde0;
+   height:26px;
+   top:80px;
+}
+
+.logosepro ion-img{
+    padding-left: 0px;
+    display:block;
+    position:absolute;
+    margin-left: 100px;
+}
+
+div h4{
+    font-weight: bold;
+    color:#912020;
+    text-align: center;
+    margin-top: 30%;
+    position: relative;
+}
+
+
+span.circle-grey ion-img{
+    position:absolute;
+    width:20%;
+    //height:5rem;
+    border-radius: 50%;
+    margin:auto;
+    top: 28%; left: 0; bottom: 10; right: 0;
+}
+
+.botones button{
+    text-align:center;
+    margin-left: 30%;
+    width: 10rem;
+    height: 2.3rem;
+    border-radius: 60px ;
+    background-color:#3da631;
+    color:#ffffff;
+}
+
+
+
+
+.datos2 ion-card{
+  display: flex;
+  text-align: center;
+  width: auto;
+  height: 20rem;
+}
+
+
+.datos2 ion-chip{
+    width: 95%;
+    margin-bottom: 5%;
+}
+
+.datos2 .fijo{
+    font-weight: bold;
+    margin-top: 50%;
+}
+
+
+.logo{
+    position: relative;
+    //display:block;
+   margin:auto;
+    
+}
+
+.titulo{
+    h4{
+        color: #bf1a24;
+       /* font-family: "Bebas Neue Bold";*/
+    }
+}
+ion-chip{
+    border-color: black;
+
+}
