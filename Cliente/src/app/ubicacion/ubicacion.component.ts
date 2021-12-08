@@ -20,8 +20,8 @@ export class UbicacionComponent implements OnInit {
   };
 
   label = {
-    titulo: 'INNOVASYSTEM ECUADOR S.A.',
-    subtitulo: 'José Alavedra 206 y Francisco Rodríguez, Edificio Mack Piso 1 Oficina 2 (Frente a Bodegas de City Box), Guayaquil 090506'
+    titulo: 'Ubicación',
+    subtitulo: 'Seleccione la ubicación'
   }
 
   map: any;
@@ -54,7 +54,7 @@ export class UbicacionComponent implements OnInit {
 
     let mapOptions = {
       center: latLng,
-      zoom: 15,
+      zoom: 20,
       disableDefaultUI: false,
       clickableIcons: true,
     };
