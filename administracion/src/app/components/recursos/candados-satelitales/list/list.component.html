@@ -8,12 +8,12 @@
         <th class="w150px">Tipo</th>
         <th class="w150px">Color</th>
         <th class="w100px">
-          <button class="btn btn-success text-white w-100" (click)="openCM(mymodal)">AGREGAR</button>
+          <button class="btn btn-success text-white w-100" (click)="openCM(createModal)">AGREGAR</button>
         </th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let candadosSatelital of candadosSatelitales">
+      <tr *ngFor="let candadosSatelital of getCandadosSatelitales()">
           <td class="w150px">
               {{ candadosSatelital.marca }}
           </td>
@@ -33,11 +33,11 @@
 </div>
 
 
-<ng-template #mymodal let-modal>
+<ng-template #createModal let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">AGREGAR CANDADO SATELITAL</h4>
+    <h4 class="modal-title" id="modal-basic-title">Agregar Candado Satelital</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">×</span>
+      <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
@@ -68,7 +68,46 @@
     </div>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close(currentCandadoSatelital)">AGREGAR</button>
+    <button type="button" class="btn btn-outline-success" (click)="modal.close(currentCandadoSatelital)">Guardar</button>
+  </div>
+</ng-template>
+
+<ng-template #editModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Editar Candado Satelital</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group m-form__group">
+      <label for="Marca">Marca</label>
+      <select name="currentCandadoSatelital.marca" [(ngModel)]="currentCandadoSatelital.marca" class="form-control" >
+        <option value="GeoLock">GeoLock</option>
+      </select>
+    </div>
+
+    <label for="Num">Numeración</label>
+    <hr class="solid">
+
+    <div class="form-group m-form__group">
+      <label for="Tipo">Tipo</label>
+      <select name="currentCandadoSatelital.tipo" [(ngModel)]="currentCandadoSatelital.tipo" class="form-control" >
+        <option value="H14">H14</option>
+      </select>
+    </div>
+    <div class="form-group m-form__group">
+      <label for="Color">Color</label>
+      <select name="currentCandadoSatelital.color" [(ngModel)]="currentCandadoSatelital.color" class="form-control" >
+        <option value="Rojo">Rojo</option>
+        <option value="Negro">Negro</option>
+        <option value="Blanco">Blanco</option>
+        <option value="Azul">Azul</option>
+      </select>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-success" (click)="modal.close(currentCandadoSatelital)">Guardar</button>
   </div>
 </ng-template>
 
@@ -88,27 +127,42 @@
 
 <ng-template #viewModal let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Detalles</h4>
+    <h4 class="modal-title" id="modal-basic-title">Detalles del Candado Satelital</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.close('Cross click')">
-      <span aria-hidden="true">×</span>
+      <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-    <div class="form-group">
-      <label for="CSMarca">Marca:</label>
-      <label for="Marca" class="px-2">{{ currentCandadoSatelital.marca }}</label>
-    </div>
-    <div class="form-group">
-      <label for="CSTipo">Tipo:</label>
-      <label for="Tipo" class="px-2">{{ currentCandadoSatelital.tipo }}</label>
-    </div>
-    <div class="form-group">
-      <label for="CSColor">Color:</label>
-      <label for="Color" class="px-2">{{ currentCandadoSatelital.color }}</label>
-    </div>
-    <div class="form-group">
-      <label for="CSObservaciones">Observaciones:</label>
-      <label for="Observaciones" class="px-2"><!--{{ currentCandadoSatelital.observaciones }}--></label>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col">
+          <div class="form-group">
+            <img src="#" alt="CandadoSatelital">
+            <!-- {{ currentCandadoSatelital.imgpath }} -->
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="CSMarca" class="text-secondary">Marca:</label>
+            <label for="Marca" class="px-2">{{ currentCandadoSatelital.marca }}</label>
+          </div>
+          <div class="form-group">
+            <label for="CSTipo" class="text-secondary">Tipo:</label>
+            <label for="Tipo" class="px-2">{{ currentCandadoSatelital.tipo }}</label>
+          </div>
+          <div class="form-group">
+            <label for="CSColor" class="text-secondary">Color:</label>
+            <label for="Color" class="px-2">{{ currentCandadoSatelital.color }}</label>
+          </div>
+          <div class="form-group">
+            <label for="CSObservaciones" class="text-secondary">Observaciones:</label>
+            <label for="Observaciones" class="px-2"><!--{{ currentCandadoSatelital.observaciones }}--></label>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-end">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('edit'); openEM(editModal)"> Editar <i class="fas fa-edit"></i></button>
+      </div>
     </div>
   </div>
 </ng-template>

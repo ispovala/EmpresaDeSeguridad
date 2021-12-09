@@ -1,9 +1,7 @@
 from django.http import JsonResponse
-# from django.shortcuts import render
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.parsers import JSONParser
-# from rest_framework.response import Response
 from seguridad.models import *
 from seguridad.serializers import *
 
@@ -84,6 +82,15 @@ def usuario(request, pk):
         return JsonResponse({'message': '¡Recurso eliminado satisfactoriamente!'}, status=status.HTTP_204_NO_CONTENT)
 
 
+@api_view(['GET'])
+def color_list(request):
+    if request.method == 'GET':
+        colores = Color.objects.all()
+        colores = ColorSerializer(colores, many=True)
+        return JsonResponse(colores.data, safe=False)
+        # 'safe=False' for objects serialization
+
+
 @api_view(['GET', 'POST', 'DELETE'])
 def candadosatelital_list(request):
     if request.method == 'GET':
@@ -122,18 +129,28 @@ def candadosatelital_detail(request, pk):
         return JsonResponse({'message': '¡Recurso eliminado satisfactoriamente!'}, status=status.HTTP_204_NO_CONTENT)
 
 
-# @api_view(['GET'])
-# def candadosatelital_list_published(request):
-#     candados_satelitales = CandadoSatelital.objects.filter([filters])
-#
-#     if request.method == 'GET':
-#         candados_satelitales_serializer = CandadoSatelitalSerializer(candados_satelitales, many=True)
-#         return JsonResponse(candados_satelitales_serializer.data, safe=False)
+@api_view(['GET'])
+def marca_vehiculo_list(request):
+    if request.method == 'GET':
+        marcas = MarcaVehiculo.objects.all()
+        marcas = MarcaVehiculoSerializer(marcas, many=True)
+        return JsonResponse(marcas.data, safe=False)
+        # 'safe=False' for objects serialization
+
+
+@api_view(['GET'])
+def tipo_vehiculo_list(request):
+    if request.method == 'GET':
+        tipos = TipoVehiculo.objects.all()
+        tipos = TipoVehiculoSerializer(tipos, many=True)
+        return JsonResponse(tipos.data, safe=False)
+        # 'safe=False' for objects serialization
+
 
 @api_view(['GET', 'POST', 'DELETE'])
 def vehiculo_list(request):
     if request.method == 'GET':
-        vehiculos = Vehiculo.objects.all()
+        vehiculos = Vehiculo.objects.filter(is_deleted=False)
         vehiculos = VehiculoSerializer(vehiculos, many=True)
         return JsonResponse(vehiculos.data, safe=False)
         # 'safe=False' for objects serialization
@@ -166,11 +183,3 @@ def vehiculo_detail(request, pk):
     elif request.method == 'DELETE':
         vehiculo.delete()
         return JsonResponse({'message': '¡Recurso eliminado satisfactoriamente!'}, status=status.HTTP_204_NO_CONTENT)
-
-# @api_view(['GET'])
-# def vehiculo_list_published(request):
-#     vehiculos = Vehiculo.objects.filter([filters])
-#
-#     if request.method == 'GET':
-#         vehiculo_serializer = VehiculoSerializer(vehiculos, many=True)
-#         return JsonResponse(vehiculos_serializer.data, safe=False)
