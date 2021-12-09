@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Vehiculo } from '../../models/recursos/vehiculo.model';
+import { Vehiculo } from '../../../models/recursos/vehiculo/vehiculo.model';
 
 const baseUrl = environment.main_url + '/api/vehiculos';
 
@@ -10,7 +10,6 @@ const baseUrl = environment.main_url + '/api/vehiculos';
   providedIn: 'root',
 })
 export class VehiculoService {
-
   private httpOptions: any;
 
   constructor(private http: HttpClient) {
@@ -26,19 +25,27 @@ export class VehiculoService {
     return this.http.get<Vehiculo[]>(baseUrl);
   }
 
-  get(placa: string): Observable<Vehiculo> {
-    return this.http.get<Vehiculo>(`${baseUrl}/` + placa);
+  get(placa?: string): Observable<Vehiculo> {
+    return this.http.get<Vehiculo>(`${baseUrl}/` + placa, {
+      headers: this.httpOptions.headers,
+    });
   }
 
   create(data: any): Observable<Vehiculo> {
-    return this.http.post<Vehiculo>(baseUrl, data, {headers: this.httpOptions.headers});
+    return this.http.post<Vehiculo>(baseUrl, data, {
+      headers: this.httpOptions.headers,
+    });
   }
 
-  update(placa: string, data: any): Observable<Vehiculo> {
-    return this.http.put<Vehiculo>(`${baseUrl}/` + placa, data);
+  update(placa?: string, data?: any): Observable<Vehiculo> {
+    return this.http.put<Vehiculo>(`${baseUrl}/` + placa, data, {
+      headers: this.httpOptions.headers,
+    });
   }
 
   delete(placa: string): Observable<Vehiculo> {
-    return this.http.delete<Vehiculo>(`${baseUrl}/` + placa, {headers: this.httpOptions.headers});
+    return this.http.delete<Vehiculo>(`${baseUrl}/` + placa, {
+      headers: this.httpOptions.headers,
+    });
   }
 }
