@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>     
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="tope bar bar-header">
+    <span> 
+    </span>
+    <div class="logosepro">
+      <ion-img style="width: 150px; height: 150px;" src="assets/img/logosepro.png"></ion-img>
+    </div>
+  </div>
+
+
+  <div class="datosperfilhome">
+    <ion-grid class= "gridperfil">
+      <ion-row>
+        <ion-col>
+        <div class="logo">
+          <ion-img  src="assets/img/perfilcliente.png"></ion-img>
+        </div>
+        </ion-col>
+        <ion-col>
+          <ion-row>
+             <ion-label class="bienvenido">
+            BIENVENIDO (A)
+          </ion-label>
+          </ion-row>
+          <ion-row>
+            <ion-label>
+            HAYLEEN IVILIN
+          </ion-label>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+
+    <ion-list class="opcionesperfil" lines=full>
+      <ion-item button class="ingresoperfil" (click)="perfil()">
+        <ion-icon name="person-sharp"></ion-icon>
+        <ion-label>PERFIL</ion-label>
+      </ion-item>
+      <ion-item class="tarjetas">
+        <ion-icon name="card"></ion-icon>
+        <ion-label>MIS TARJETAS</ion-label>
+      </ion-item>
+      <ion-item class="politicasprivacidad">
+        <ion-icon name="card"></ion-icon>
+        <ion-label>POLÍTICAS DE PRIVACIDAD</ion-label>
+      </ion-item>
+   </ion-list>
+    
+    
+  </div>
+
+	
+
+ 
+
+</ion-content>
+

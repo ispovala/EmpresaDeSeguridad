@@ -47,9 +47,11 @@ span.circle-grey ion-img{
     width: 10rem;
     height: 2.3rem;
     border-radius: 60px ;
-    background-color:#3887bd;
+    background-color:#3da631;
     color:#ffffff;
 }
+
+
 
 
 .datos2 ion-card{
@@ -62,8 +64,13 @@ span.circle-grey ion-img{
 
 .datos2 ion-chip{
     width: 95%;
+    margin-bottom: 5%;
 }
 
+.datos2 .fijo{
+    font-weight: bold;
+    margin-top: 50%;
+}
 
 
 .logo{
@@ -71,4 +78,15 @@ span.circle-grey ion-img{
     //display:block;
    margin:auto;
     
+}
+
+.titulo{
+    h4{
+        color: #bf1a24;
+       /* font-family: "Bebas Neue Bold";*/
+    }
+}
+ion-chip{
+    border-color: black;
+
 }

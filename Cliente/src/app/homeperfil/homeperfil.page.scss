@@ -1,0 +1,48 @@
+.tope span{
+    width:100%;
+   position:absolute;
+   left:0;
+   background-color:#dadde0;
+   height:26px;
+   top:80px;
+}
+
+.logosepro ion-img{
+    padding-left: 0px;
+    display:block;
+    position:absolute;
+    margin-left: 100px;
+}
+
+
+.datosperfilhome{
+    margin-top: 40%;
+    .gridperfil{
+        .logo{
+            margin:auto;
+            width: 50%;
+        }  
+        .bienvenido{
+            color: #bf1a24;
+            font-weight: bold;
+        }
+    }
+}
+
+.opcionesperfil{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 5%;
+    ion-item{
+        justify-content: space-between;
+
+        ion-icon{
+            margin-right: 10%;
+            color: black;
+        }
+    }
+}
+
+ion-content{
+    
+}
