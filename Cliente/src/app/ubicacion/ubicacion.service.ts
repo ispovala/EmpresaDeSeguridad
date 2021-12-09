@@ -7,7 +7,7 @@ declare var google: any;
 })
 export class UbicacionService {
 
-  apiKey = "AIzaSyCENXLykoL6uyAIWOnX9NOY-jGNKeQqsy0"
+  apiKey = "PUT_YOUR_API_KEY_HERE_HOMIE"
   mapsLoaded = false;
 
   constructor() { }
@@ -22,8 +22,11 @@ export class UbicacionService {
         return;
       }
 
-      const script = renderer.createElement('script');
-      script.id = 'googleMaps'
+      const scriptmaps = renderer.createElement('script');
+      scriptmaps.id = 'googleMaps'
+
+      const scriptplaces = renderer.createElement('script');
+      scriptplaces.id = 'googlePlaces'
 
       window['mapInit'] = () => {
         this.mapsLoaded = true;
@@ -37,12 +40,12 @@ export class UbicacionService {
       }
 
       if(this.apiKey){
-        script.src = 'https://maps.googleapis.com/maps/api/js?key=' + this.apiKey + '&callback=mapInit';
+        scriptmaps.src = 'https://maps.googleapis.com/maps/api/js?libraries=places&key=' + this.apiKey + '&callback=mapInit';
     } else {
-        script.src = 'https://maps.googleapis.com/maps/api/js?callback=mapInit';       
+        scriptmaps.src = 'https://maps.googleapis.com/maps/api/js?callback=mapInit';       
     }
 
-    renderer.appendChild(document.body, script);
+    renderer.appendChild(document.body, scriptmaps);
       
     });
 
