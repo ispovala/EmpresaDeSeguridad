@@ -13,22 +13,22 @@
 
         
         <div class="itemdatos">
-          <ion-label>Número de celular</ion-label>
+          <ion-label>Ingresar código de 4 dígitos:</ion-label>
           <ion-item lines="full">
             
-            <ion-input formControlName="mobile" input type="tel " maxlength="10" required ></ion-input>
+            <ion-input formControlName="mobile" input type="tel " maxlength="4" required ></ion-input>
           </ion-item>
           <span class="error ion-padding" *ngIf="isSubmitted && errorControl.mobile.errors?.required">
-            Es necesario un número de celular.
+            Es necesario un pin de 4 dígitos.
           </span>
           <span class="error ion-padding" *ngIf="isSubmitted && errorControl.mobile.errors?.pattern">
-            Ingrese un número de celular valido.
+            Ingrese un pin valido.
           </span>
         </div>
 
         <div class="botones">
           <ion-col>
-            <button ion-button class ="guardar">Ingresar</button>
+            <button ion-button class ="guardar">Aceptar</button>
           </ion-col>
         </div>
       </ion-list>

@@ -88,10 +88,6 @@ const routes: Routes = [
     loadChildren: () => import('./menuprueba/menuprueba.module').then( m => m.MenupruebaPageModule)
   },
   {
-    path: 'log-in-phone',
-    loadChildren: () => import('./log-in-phone/log-in-phone.module').then( m => m.LogInPhonePageModule)
-  },
-  {
     path: 'calificar-servicio',
     loadChildren: () => import('./calificar-servicio/calificar-servicio.module').then( m => m.CalificarServicioPageModule)
   },
@@ -131,10 +127,20 @@ const routes: Routes = [
   {
     path: 'ubicacion',
     loadChildren: () => import('./ubicacion/ubicacion.module').then( m => m.UbicacionModule)
-  },  {
+  },
+  {
     path: 'homeperfil',
     loadChildren: () => import('./homeperfil/homeperfil.module').then( m => m.HomeperfilPageModule)
+  },
+  {
+    path: 'pin-login',
+    loadChildren: () => import('./pin-login/pin-login.module').then( m => m.PinLoginPageModule)
+  },  {
+    path: 'registrar',
+    loadChildren: () => import('./registrar/registrar.module').then( m => m.RegistrarPageModule)
   }
+
+
 
 
 

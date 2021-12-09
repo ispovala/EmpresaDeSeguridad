@@ -1,10 +1,10 @@
 ion-content{
-    --background: none;
-    background-image: url("../../assets/bg-rojo3.png");
-    background-position: center; 
-    background-repeat: no-repeat; 
-    background-size: cover; 
-  }
+  --background: none;
+  background-image: url("../../assets/bg-gris.png");
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover; 
+}
   .logo{
     margin-bottom: 5rem;
     margin-top: 2rem;
@@ -18,8 +18,8 @@ ion-content{
     border-radius: 25rem;
     width: 75%;
     margin-left: 3rem;
-  }
-  */
+  }*/
+  
   ion-button{
     font-family:'hp556';
     font-weight: 3rem;
@@ -62,8 +62,6 @@ ion-content{
     color:#ffffff;
     //margin-right: 5%;
     justify-content: space-between;
-    font-family:'hp265';
-    font-size: 1.2rem;
   
   }
   .botones {
@@ -72,15 +70,17 @@ ion-content{
     text-align:center;
     margin-left: 5%;
     .guardar{
-        background-color:#3da631;
         width:13rem;
     }
-    .cancelar{
-        background-color: #fc5759;
-        width: 7rem;
-    }
+    
   }
 
+ /**.list-md{
+    background: none;
+  }
+   .item-native{
+    background: none !important; 
+  }**/
   .item-background-color{
     --ion-item-background:transparent;
   }
@@ -96,4 +96,4 @@ ion-content{
     color: #ffffff;
     font-family:'hp265';
     font-size: 1.2rem;
-  }
+    }

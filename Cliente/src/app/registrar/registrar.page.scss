@@ -1,25 +1,38 @@
 ion-content{
-    --background: none;
-    background-image: url("../../assets/bg-rojo3.png");
-    background-position: center; 
-    background-repeat: no-repeat; 
-    background-size: cover; 
-  }
-  .logo{
-    margin-bottom: 5rem;
-    margin-top: 2rem;
+  --background: none;
+  background-color: #aaafb4;
+}
+.tope span{
+    width:100%;
+   position:absolute;
+   left:0;
+   background-color:#aaafb4;
+   height:26px;
+   top:80px;
+}
+.logosepro ion-img{
+    padding-left: 0px;
+    display:block;
+    position:absolute;
+    margin-left: 100px;
+}
+.container {
+    margin-top: 10rem;
+    position: relative;
+    text-align: center;
+}
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
   ion-text{
-    font-family:"hp265";
+    font-size: 3rem;
+    color: white;
+    font-family: 'BebasBold';
   }
-  /*ion-input{
-    background-color: white;
-    color: black;
-    border-radius: 25rem;
-    width: 75%;
-    margin-left: 3rem;
-  }
-  */
+
   ion-button{
     font-family:'hp556';
     font-weight: 3rem;
@@ -37,7 +50,7 @@ ion-content{
   }
   .datos{
     margin: 1rem;
-    padding: 0.5rem 3.5rem 0.5rem 3.5rem;
+    padding: 0.5rem 1rem 0.5rem 1rem;
     border: 2px ;
     margin-top: 30%;
     justify-items:center;
@@ -45,7 +58,8 @@ ion-content{
     color:black;
   }
   .datos{
-    margin-top: 7rem;
+    margin-top: 2rem;
+    width: 20rem;
     .itemdatos{
         margin-top: 5%;
     }
@@ -93,7 +107,12 @@ ion-content{
   ion-label{
     justify-content: space-between;
     text-align:center;
-    color: #ffffff;
+    color: #000;
     font-family:'hp265';
     font-size: 1.2rem;
+    font-weight: bold;
+  }
+  .itemdatos{
+    justify-content: space-between;
+    text-align:center;
   }
