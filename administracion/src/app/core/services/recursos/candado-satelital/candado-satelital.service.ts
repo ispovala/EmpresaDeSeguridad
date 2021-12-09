@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { CandadoSatelital } from 'src/app/core/models/recursos/candado-satelital/candado-satelital.model';
 import { environment } from 'src/environments/environment';
-import { CandadoSatelital } from '../../models/recursos/candado-satelital.model';
+
 
 const baseUrl = environment.main_url + '/api/candados_satelitales';
 
@@ -27,7 +28,7 @@ export class CandadoSatelitalService {
   }
 
   get(id: any): Observable<CandadoSatelital> {
-    return this.http.get<CandadoSatelital>(`${baseUrl}/` + id);
+    return this.http.get<CandadoSatelital>(`${baseUrl}/` + id, {headers: this.httpOptions.headers});
   }
 
   create(data: any): Observable<CandadoSatelital> {
@@ -35,7 +36,7 @@ export class CandadoSatelitalService {
   }
 
   update(id: any, data: any): Observable<CandadoSatelital> {
-    return this.http.put<CandadoSatelital>(`${baseUrl}/` + id, data);
+    return this.http.put<CandadoSatelital>(`${baseUrl}/` + id, data, {headers: this.httpOptions.headers});
   }
 
   delete(id: any): Observable<CandadoSatelital> {

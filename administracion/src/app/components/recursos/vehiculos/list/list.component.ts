@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Vehiculo } from 'src/app/core/models/recursos/vehiculo.model';
-import { VehiculoService } from 'src/app/core/services/recursos/vehiculo.service';
+import { Color } from 'src/app/core/models/recursos/color.model';
+import { MarcaVehiculo } from 'src/app/core/models/recursos/vehiculo/marca-vehiculo.model';
+import { TipoVehiculo } from 'src/app/core/models/recursos/vehiculo/tipo-vehiculo.model';
+import { Vehiculo } from 'src/app/core/models/recursos/vehiculo/vehiculo.model';
+import { ColorService } from 'src/app/core/services/recursos/color.service';
+import { MarcaVehiculoService } from 'src/app/core/services/recursos/vehiculo/marca-vehiculo.service';
+import { TipoVehiculoService } from 'src/app/core/services/recursos/vehiculo/tipo-vehiculo.service';
+import { VehiculoService } from 'src/app/core/services/recursos/vehiculo/vehiculo.service';
 
 @Component({
   selector: 'vehiculos-list',
@@ -9,25 +15,90 @@ import { VehiculoService } from 'src/app/core/services/recursos/vehiculo.service
   styleUrls: ['./list.component.css'],
 })
 export class VehiculosListComponent implements OnInit {
-  vehiculos?: Vehiculo[];
+  private vehiculos?: Vehiculo[];
+  private tipos_vehiculo?: TipoVehiculo[];
+  private marcas_vehiculo?: MarcaVehiculo[];
+  private colores?: Color[];
   currentVehiculo: Vehiculo = new Vehiculo();
 
   constructor(
     private vehiculoService: VehiculoService,
+    private tipoVehiculoService: TipoVehiculoService,
+    private marcaVehiculoService: MarcaVehiculoService,
+    private colorService: ColorService,
     private modalService: NgbModal
   ) {}
 
   ngOnInit(): void {
+    this.retrieveTiposVehiculo();
+    this.retrieveMarcasVehiculo();
+    this.retrieveColores();
     this.refreshList();
   }
 
-  retrieveVehiculos(): void {
+  private retrieveVehiculos(): void {
     this.vehiculoService.getAll().subscribe(
       (data) => {
         this.vehiculos = data;
+        this.vehiculos?.forEach(
+          (value: Vehiculo) => {
+            value.nombreColor = this.colores?.find(
+              (color) => color.id === value.color
+            )?.nombre;
+            value.nombreMarca = this.marcas_vehiculo?.find(
+              (marca) => marca.id === value.marca
+            )?.nombre;
+            value.nombreTipo = this.tipos_vehiculo?.find(
+              (tipo) => tipo.id === value.tipo
+            )?.nombre;
+          }
+        );
       },
       (error) => {}
     );
+  }
+
+  private retrieveTiposVehiculo(): void {
+    this.tipoVehiculoService.getAll().subscribe(
+      (data) => {
+        this.tipos_vehiculo = data;
+      },
+      (error) => {}
+    );
+  }
+
+  private retrieveMarcasVehiculo(): void {
+    this.marcaVehiculoService.getAll().subscribe(
+      (data) => {
+        this.marcas_vehiculo = data;
+      },
+      (error) => {}
+    );
+  }
+
+  private retrieveColores(): void {
+    this.colorService.getAll().subscribe(
+      (data) => {
+        this.colores = data;
+      },
+      (error) => {}
+    );
+  }
+
+  getVehiculos(): Vehiculo[] | undefined {
+    return this.vehiculos;
+  }
+
+  getTiposVehiculo(): TipoVehiculo[] | undefined {
+    return this.tipos_vehiculo;
+  }
+
+  getMarcasVehiculo(): MarcaVehiculo[] | undefined {
+    return this.marcas_vehiculo;
+  }
+
+  getColores(): Color[] | undefined {
+    return this.colores;
   }
 
   openCM(content: any) {
@@ -37,14 +108,41 @@ export class VehiculosListComponent implements OnInit {
         size: 'lg',
         backdrop: 'static',
       })
-      .result.then((result) => {
-        this.vehiculoService.create(result).subscribe(
-          () => {
-            this.refreshList();
-          },
-          (error) => {}
-        );
-      });
+      .result.then(
+        (result) => {
+          this.vehiculoService.create(result).subscribe(
+            () => {
+              this.refreshList();
+            },
+            (error) => {}
+          );
+        },
+        () => {
+          this.resetCurrent();
+        }
+      );
+  }
+
+  openEM(content: any) {
+    this.modalService
+      .open(content, {
+        ariaLabelledBy: 'modal-basic-title',
+        size: 'lg',
+        backdrop: 'static',
+      })
+      .result.then(
+        (result) => {
+          this.vehiculoService.update(result.placa, result).subscribe(
+            () => {
+              this.refreshList();
+            },
+            (error) => {}
+          );
+        },
+        () => {
+          this.resetCurrent();
+        }
+      );
   }
 
   openDM(content: any) {
@@ -52,7 +150,8 @@ export class VehiculosListComponent implements OnInit {
       .open(content, { ariaLabelledBy: 'modal-basic-title', size: 'sm' })
       .result.then(
         (result) => {
-          this.vehiculoService.delete(result.placa).subscribe(
+          result.is_deleted = true;
+          this.vehiculoService.update(result.placa, result).subscribe(
             () => {
               this.refreshList();
             },
@@ -72,8 +171,14 @@ export class VehiculosListComponent implements OnInit {
         size: 'lg',
         backdrop: 'static',
       })
-      .result.then(() => {
-        this.resetCurrent();
+      .result.then((result) => {
+        if (
+          result != null &&
+          result != undefined &&
+          result != '' &&
+          result !== 'edit'
+        )
+          this.resetCurrent();
       });
   }
 
