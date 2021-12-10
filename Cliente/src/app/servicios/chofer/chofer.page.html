@@ -16,9 +16,10 @@
           <ion-label>Fecha de Inicio</ion-label>
           <div class="seleccion">
             <ion-item >
-              <ion-datetime displayFormat="MM/DD/YYYY" min="2000-06-30" max="2030-06-30"></ion-datetime>
+              <ion-datetime  [max]="maxFecha" [min]="minFecha" displayFormat="DD/MM/YYYY" pickerFormat="DD MMMM YYYY" ></ion-datetime>
               <ion-icon name="calendar-clear-outline" item-right></ion-icon>
             </ion-item>
+            
             
           </div>
     
@@ -26,7 +27,7 @@
           <div class="seleccion">
             <ion-item >
               <ion-datetime displayFormat="hh:mma"></ion-datetime>
-              <ion-icon name="time-outline" ></ion-icon>
+              <ion-icon [min]="minhour" name="time-outline" ></ion-icon>
             </ion-item>
             
           </div>
@@ -34,7 +35,7 @@
           <ion-label>Fecha de Finalización</ion-label>
           <div class="seleccion">
             <ion-item >
-              <ion-datetime displayFormat="MM/DD/YYYY" min="2000-06-30" max="2030-06-30"></ion-datetime>
+              <ion-datetime [max]="maxFecha" [min]="minFecha" displayFormat="MM/DD/YYYY" min="2000-06-30" max="2030-06-30"></ion-datetime>
               <ion-icon  name="calendar-clear-outline" ></ion-icon>
             </ion-item>
           </div>

@@ -21,14 +21,14 @@ export class GuardiaPage implements OnInit {
     lat: -2.1676746,
     lng: -79.8956897
   };
-  currentNumber = 0;
+  currentNumber = 1;
 
   increment() {
     this.currentNumber++;
   }
 
   decrement() {
-    if (this.currentNumber > 0) {
+    if (this.currentNumber > 1) {
       this.currentNumber--;
     }
   }
