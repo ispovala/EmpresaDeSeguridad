@@ -5,6 +5,23 @@
     margin-top: 30%;
     justify-items:center;
     justify-content: space-between;
+
+    ion-label{
+        font-family: hp556;
+        font-size: small;
+        font-weight: bold;
+        
+    }
+    span{
+        font-family: hp556;
+        font-size: small;
+        font-weight: bold;
+    }
+    ion-input{
+        font-family: hp556;
+        font-size: small;
+        font-weight: bold;
+    }
 }
 
 .tope span{
@@ -29,8 +46,12 @@ div h4{
     text-align: center;
     margin-top: 30%;
     position: relative;
+    font-family: 'BebasBold';
 }
 
+.titulo{
+    font-family: BebasBold;
+}
 
 span.circle-grey ion-img{
     position:absolute;
@@ -49,6 +70,7 @@ span.circle-grey ion-img{
     border-radius: 60px ;
     background-color:#3da631;
     color:#ffffff;
+    font-family: hp556;
 }
 
 
