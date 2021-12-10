@@ -76,6 +76,9 @@ export class RegistroPage implements OnInit {
   goLoginPage() {
     this.navCtrl.navigateBack('');
   }
+  irPaginaServicios(){
+    this.navCtrl.navigateForward("/servicios");
+  }
 
   /*isChecked(event) {
     if ( event.checked ) {

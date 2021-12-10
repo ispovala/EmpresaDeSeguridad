@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule ,ReactiveFormsModule} from '@angular/forms'; 
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
@@ -17,7 +17,7 @@ import { environment } from '../environments/environment';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule, AngularFireAuthModule,AngularFirestoreModule,
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule,ReactiveFormsModule, AngularFireAuthModule,AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebase)],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

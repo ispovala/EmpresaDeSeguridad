@@ -3,69 +3,75 @@
 </ion-header>
 
 <ion-content>
- 
-  <div class="titulo">
-    <h1>CUSTODIA ARMADA</h1>
-    <div class="logo">
-      <ion-img style="width: 100px; height: 100px;" src="assets/img/custodialogo.png"></ion-img>
-    </div>
-  </div>
-  <div class="datos">
-    <ion-list>
-     
-        <ion-label>Fecha de Inicio</ion-label>
-        <div class="seleccion">
-          <ion-item >
-            <ion-datetime displayFormat="MM/DD/YYYY"></ion-datetime>
-            <ion-icon name="calendar-clear-outline" ></ion-icon>
-          </ion-item>
-        </div>
-      
-    
-        <ion-label>Hora de Inicio</ion-label>
-        <div class="seleccion">
-          <ion-item >
-            <ion-datetime displayFormat="hh-mm-A"></ion-datetime>
-            <ion-icon name="time-outline" ></ion-icon>
-          </ion-item>
-          
-        </div>
-     
-      
-    </ion-list>
-  </div>
-  <div class="mapa">
-   
-      <div class="ubicacion">
-        <h6>Ubicación de origen</h6>
-        <button ion-button color="secondary" (click)="addDirection(0)">Abrir mapa</button>
+  <div class="front">
+    <div class="titulo">
+      <h1>CUSTODIA ARMADA</h1>
+      <div class="logo">
+        <ion-img style="width: 100px; height: 100px;" src="assets/img/custodialogo.png"></ion-img>
       </div>
-      <div class="ubicacion"> 
-        <h6>Ubicación de destino</h6>
-        <button ion-button color="secondary" (click)="addDirection(1)">Abrir mapa</button>
-      </div>  
-  </div>
-  <div class="cantidad-vehiculos">
-      <ion-label>Número de vehículos</ion-label>
-      <div class="cantidad">
-        <ion-icon class="decremento" name="remove-circle-outline" (click)="decrement()"></ion-icon>
-        <ion-label> {{currentNumber}}</ion-label>
-         
-        <ion-icon class="aumento" name="add-circle-outline" (click)="increment()"></ion-icon>
+    </div>
+    <div class="datos">
+      <ion-list class="dat">
+       
+          <ion-label>Fecha de Inicio</ion-label>
+          <div class="seleccion">
+            <ion-item >
+              <ion-datetime [max]="maxFecha" [min]="minFecha" displayFormat="DD/MM/YYYY" pickerFormat="DD MM YYYY"></ion-datetime>
+              <ion-icon name="calendar-clear-outline" ></ion-icon>
+            </ion-item>
+          </div>
+        
+      
+          <ion-label>Hora de Inicio</ion-label>
+          <div class="seleccion">
+            <ion-item >
+              <ion-datetime displayFormat="hh:mma"></ion-datetime>
+              <ion-icon name="time-outline" ></ion-icon>
+            </ion-item>
+            
+          </div>
+       
+        
+      </ion-list>
+    </div>
+    <div class="mapa">
+     
+        <div class="ubicacion">
+          <ion-label>Ubicación de origen</ion-label>
+          <button ion-button color="secondary" (click)="addDirection(0)">Abrir mapa</button>
+        </div>
+        <div class="ubicacion"> 
+          <ion-label>Ubicación de destino</ion-label>
+          <button ion-button color="secondary" (click)="addDirection(1)">Abrir mapa</button>
+        </div>  
+    </div>
+    <div class="cantidad-vehiculos">
+        <ion-label>Número de vehículos</ion-label>
+        <div class="cantidad">
+          <ion-icon class="decremento" name="remove-circle-outline" (click)="decrement()"></ion-icon>
+          <ion-label> {{currentNumber}}</ion-label>
+           
+          <ion-icon class="aumento" name="add-circle-outline" (click)="increment()"></ion-icon>
+        </div>
+    </div>
+    <div class="check-candado">
+      <ion-checkbox checked="true"></ion-checkbox>
+      <ion-label>Incluir candado satelital</ion-label>
+    </div>
+    <div class="botones">
+      <div class="solicitar-servicio">
+        <button ion-button color="secondary" (click)="solicitud()">Solicitar Servicio</button>
       </div>
-  </div>
-  <div class="check-candado">
-    <ion-checkbox checked="true"></ion-checkbox>
-    <ion-label>Incluir candado satelital</ion-label>
-  </div>
-  <div class="botones">
-    <div class="solicitar-servicio">
-      <button ion-button color="secondary" (click)="solicitud()">Solicitar Servicio</button>
-    </div>
-    <div class="cancelar-servicio">
-      <button ion-button color="secondary" (click)="cancelar()">Cancelar</button>
-    </div>
+      <div class="cancelar-servicio">
+        <button ion-button color="secondary" (click)="cancelar()">Cancelar</button>
 
+      </div>
+  
+    </div>
+  </div>
+  
+  <div class="back">
+    <ion-img style="width: 100; height: 200;" src="../../assets/img/appseprovectores-01.png"></ion-img>
   </div>
   
 </ion-content>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { UbicacionComponent } from 'src/app/ubicacion/ubicacion.component';
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-custodia',
@@ -9,6 +10,10 @@ import { UbicacionComponent } from 'src/app/ubicacion/ubicacion.component';
   styleUrls: ['./custodia.page.scss'],
 })
 export class CustodiaPage implements OnInit {
+  ionicForm: FormGroup;
+  defaultDate = "1970-12-16";
+  maxFecha: string = (new Date().getFullYear()+1).toString();
+  minFecha: string = (new Date().getFullYear()).toString();
 
   origen = {
     lat: -2.1676746,
@@ -18,19 +23,19 @@ export class CustodiaPage implements OnInit {
     lat: -2.1676746,
     lng: -79.8956897
   };
-  currentNumber = 0;
+  currentNumber = 1;
 
   increment() {
     this.currentNumber++;
   }
 
   decrement() {
-    if (this.currentNumber > 0) {
+    if (this.currentNumber > 1) {
       this.currentNumber--;
     }
   }
 
-  constructor(private navCtrl: NavController, private modalController: ModalController) {
+  constructor(private navCtrl: NavController, private modalController: ModalController, public formBuilder: FormBuilder) {
 
   }
   solicitud() {
@@ -41,6 +46,11 @@ export class CustodiaPage implements OnInit {
     this.navCtrl.navigateForward("/servicios");
   }
   ngOnInit() {
+    this.ionicForm = this.formBuilder.group({
+      
+      inicioDate: [this.defaultDate],
+      
+    })
 
   }
 

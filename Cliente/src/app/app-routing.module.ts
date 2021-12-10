@@ -9,7 +9,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'servicios',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -135,7 +135,8 @@ const routes: Routes = [
   {
     path: 'pin-login',
     loadChildren: () => import('./pin-login/pin-login.module').then( m => m.PinLoginPageModule)
-  },  {
+  },
+  {
     path: 'registrar',
     loadChildren: () => import('./registrar/registrar.module').then( m => m.RegistrarPageModule)
   }

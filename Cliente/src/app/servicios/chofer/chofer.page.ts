@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ModalController, NavController } from '@ionic/angular';
 import { UbicacionComponent } from 'src/app/ubicacion/ubicacion.component';
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-chofer',
@@ -8,7 +10,15 @@ import { UbicacionComponent } from 'src/app/ubicacion/ubicacion.component';
   styleUrls: ['./chofer.page.scss'],
 })
 export class ChoferPage implements OnInit {
-
+  ionicForm: FormGroup;
+  defaultDate = "1970-12-16";
+  maxFecha: string = (new Date().getFullYear()+1).toString();
+  minFecha: string = (new Date().getFullYear()).toString();
+  maxFecha2: string = (new Date().getFullYear()+1).toString();
+  minFecha2: string = (new Date().getFullYear()).toString();
+  minhour: String = new Date().toISOString();
+  
+  
   origen = {
     lat: -2.1676746,
     lng: -79.8956897
@@ -18,7 +28,7 @@ export class ChoferPage implements OnInit {
     lng: -79.8956897
   };
 
-  constructor(private navCtrl: NavController, private modalController: ModalController) {
+  constructor(private navCtrl: NavController, private modalController: ModalController,public formBuilder: FormBuilder) {
 
   }
   cancelar() {
@@ -30,6 +40,13 @@ export class ChoferPage implements OnInit {
   }
 
   ngOnInit() {
+    this.ionicForm = this.formBuilder.group({
+      
+      inicioDate: [this.defaultDate],
+      
+    })
+    
+  
   }
 
   async addDirection(tipo: number) {

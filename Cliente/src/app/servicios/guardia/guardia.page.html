@@ -3,71 +3,76 @@
 </ion-header>
 
 <ion-content class="fondo" >
-  <div class="titulo">
-    <h1>GUARDIA DE SEGURIDAD</h1>
-    <div class="logo">
-      <ion-img style="width: 100px; height: 100px;" src="assets/img/guardialogo.png"></ion-img>
-    </div>
-  </div>
-  <div class="datos">
-    <ion-list>
-        <ion-label>Fecha de Inicio</ion-label>
-        <div class="seleccion">
-          <ion-item >
-            <ion-datetime displayFormat="MM/DD/YYYY"></ion-datetime>
-            <ion-icon name="calendar-clear-outline" ></ion-icon>
-          </ion-item>
-        </div>
-    
-        <ion-label>Hora de Inicio</ion-label>
-        <div class="seleccion">
-          <ion-item >
-            <ion-datetime displayFormat="hh-mm-A"></ion-datetime>
-            <ion-icon name="time-outline" ></ion-icon>
-          </ion-item>
-          
-        </div>
-      
-        <ion-label>Fecha de Finalización</ion-label>
-        <div class="seleccion">
-          <ion-item >
-            <ion-datetime displayFormat="MM/DD/YYYY"></ion-datetime>
-            <ion-icon  name="calendar-clear-outline" ></ion-icon>
-          </ion-item>
-        </div>
-     
-        <ion-label>Hora de Finalizacion</ion-label>
-        <div class="seleccion">
-          <ion-item >
-            <ion-datetime displayFormat="hh-mm-A"></ion-datetime>
-            <ion-icon name="time-outline" ></ion-icon>
-          </ion-item>
-        </div>
-    
-    </ion-list>
-  </div>
-  <div class="mapa">
-    <ion-label>Elegir ubicación</ion-label>
-    <button ion-button color="secondary" (click)="addDirection(0)">Abrir mapa</button>
-     
-  </div>
-  <div class="cantidad-guardias">
-      <ion-label>Número de guardias</ion-label>
-      <div class="cantidad">
-        <ion-icon class="decremento" name="remove-circle-outline" (click)="decrement()"></ion-icon>
-        <ion-label> {{currentNumber}}</ion-label>
-         
-        <ion-icon class="aumento" name="add-circle-outline" (click)="increment()"></ion-icon>
+  <div class="front">
+    <div class="titulo">
+      <h1>GUARDIA DE SEGURIDAD</h1>
+      <div class="logo">
+        <ion-img style="width: 100px; height: 100px;" src="assets/img/guardialogo.png"></ion-img>
       </div>
+    </div>
+    <div class="datos">
+      <ion-list class="dat">
+          <ion-label>Fecha de Inicio</ion-label>
+          <div class="seleccion">
+            <ion-item >
+              <ion-datetime [max]="maxFecha" [min]="minFecha" displayFormat="DD/MM/YYYY" pickerFormat="DD MM YYYY"></ion-datetime>
+              <ion-icon name="calendar-clear-outline" ></ion-icon>
+            </ion-item>
+          </div>
+      
+          <ion-label>Hora de Inicio</ion-label>
+          <div class="seleccion">
+            <ion-item >
+              <ion-datetime displayFormat="hh:mma"></ion-datetime>
+              <ion-icon name="time-outline" ></ion-icon>
+            </ion-item>
+            
+          </div>
+        
+          <ion-label>Fecha de Finalización</ion-label>
+          <div class="seleccion">
+            <ion-item >
+              <ion-datetime [max]="maxFecha" [min]="minFecha" displayFormat="DD/MM/YYYY" pickerFormat="DD MM YYYY"></ion-datetime>
+              <ion-icon  name="calendar-clear-outline" ></ion-icon>
+            </ion-item>
+          </div>
+       
+          <ion-label>Hora de Finalizacion</ion-label>
+          <div class="seleccion">
+            <ion-item >
+              <ion-datetime displayFormat="hh:mma"></ion-datetime>
+              <ion-icon name="time-outline" ></ion-icon>
+            </ion-item>
+          </div>
+      
+      </ion-list>
+    </div>
+    <div class="mapa">
+      <ion-label>Elegir ubicación</ion-label>
+      <button ion-button color="secondary" (click)="addDirection(0)">Abrir mapa</button>
+       
+    </div>
+    <div class="cantidad-guardias">
+        <ion-label>Número de guardias</ion-label>
+        <div class="cantidad">
+          <ion-icon class="decremento" name="remove-circle-outline" (click)="decrement()"></ion-icon>
+          <ion-label> {{currentNumber}}</ion-label>
+           
+          <ion-icon class="aumento" name="add-circle-outline" (click)="increment()"></ion-icon>
+        </div>
+    </div>
+    <div class="botones">
+      <div class="solicitar-servicio">
+        <button ion-button color="secondary" (click)="solicitud()">Solicitar Servicio</button>
+      </div>
+      <div class="cancelar-servicio">
+        <button ion-button color="secondary" (click)="cancelar()">Cancelar</button>
+      </div>
+  
+    </div>
   </div>
-  <div class="botones">
-    <div class="solicitar-servicio">
-      <button ion-button color="secondary" (click)="solicitud()">Solicitar Servicio</button>
-    </div>
-    <div class="cancelar-servicio">
-      <button ion-button color="secondary" (click)="cancelar()">Cancelar</button>
-    </div>
-
+  <div class="back">
+    <ion-img style="width: 100; height: 200;" src="../../assets/img/appseprovectores-01.png"></ion-img>
   </div>
   
 
