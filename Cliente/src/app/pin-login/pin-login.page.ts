@@ -37,8 +37,9 @@ export class PinLoginPage implements OnInit {
   }
   
   redirigir(){
-    this.navCtrl.navigateForward("/servicios");
+    this.navCtrl.navigateForward("/registro");
     this.ionicForm.reset()
   }
+
 
 }
