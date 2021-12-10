@@ -81,9 +81,12 @@ span.circle-grey ion-img{
 }
 
 .titulo{
+    margin-top: 25%;
     h4{
         color: #bf1a24;
-       /* font-family: "Bebas Neue Bold";*/
+            font-weight: bold;
+            font-family: 'BebasBold';
+            font-size: x-large;
     }
 }
 ion-chip{
