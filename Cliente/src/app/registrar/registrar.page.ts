@@ -8,7 +8,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
   styleUrls: ['./registrar.page.scss'],
 })
 export class RegistrarPage implements OnInit {
- 
+  condiciones: boolean;
   ionicForm: FormGroup;
   isSubmitted = false;
 
@@ -30,7 +30,7 @@ export class RegistrarPage implements OnInit {
 
 submitForm() {
   this.isSubmitted = true;
-  if (!this.ionicForm.valid) {
+  if (!this.ionicForm.valid || !this.condiciones) {
     console.log('Please provide all the required values!')
 
     return false;
@@ -48,4 +48,4 @@ submitForm() {
   }
  
 
-}
+} 

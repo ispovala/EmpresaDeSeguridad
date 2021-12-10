@@ -78,18 +78,19 @@
           <div class="botones">
           <ion-col>
 
-            <button ion-button class ="guardar" (click)="redirigir()">Registrarse</button>
+            <button ion-button class ="guardar">Registrarse</button>
           </ion-col>
           </div>
         </ion-row>
 
-        <div class="">
-          <ion-item lines="full">
-            <ion-label class="terminos">He leído y acepto las políticas de privacidad</ion-label>
-            <ion-checkbox color="primary" slot="start"></ion-checkbox>
-          </ion-item>
-        </div>
+        
     </ion-list>
     </form>
+    <div class="container-terminos">
+      <ion-item>
+        <ion-label class="terminos">He leído y acepto las políticas de privacidad</ion-label>
+        <ion-checkbox [(ngModel)]="condiciones" color="primary" slot="start"></ion-checkbox>
+      </ion-item>
+    </div> 
   </div>
 </ion-content>
