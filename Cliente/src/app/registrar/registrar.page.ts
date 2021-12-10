@@ -8,7 +8,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
   styleUrls: ['./registrar.page.scss'],
 })
 export class RegistrarPage implements OnInit {
-
+ 
   ionicForm: FormGroup;
   isSubmitted = false;
 

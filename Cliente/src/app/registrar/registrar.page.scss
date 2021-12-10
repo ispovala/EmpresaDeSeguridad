@@ -1,6 +1,13 @@
-ion-content{
+/*ion-content{
   --background: none;
-  background-color: #aaafb4;
+  background-image: url("../../assets/bg-registro.png");
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover; 
+  height: max-content;
+}*/
+ion-content.background{
+  --background: url("../../assets/bg-registro.png") no-repeat center center / cover; 
 }
 .tope span{
     width:100%;
@@ -20,6 +27,19 @@ ion-content{
     margin-top: 10rem;
     position: relative;
     text-align: center;
+}
+.container ion-img{
+  background-color: #ffffff;
+  display: block;
+  height: auto;
+}
+.rectangle {
+  height: 6rem;
+  max-width: 100%;
+  background-color: #BF1A24;
+  margin:0;
+  border-top-left-radius: 25rem;
+  border-top-right-radius: 25rem;
 }
 .centered {
     position: absolute;
@@ -115,4 +135,13 @@ ion-content{
   .itemdatos{
     justify-content: space-between;
     text-align:center;
+  }
+  .terminos{
+    color: #000;
+    font-family:'hp265';
+    font-size: 0.7rem;
+  }
+  ion-checkbox{
+    --border-radius: 0;
+    --border-color: #000; 
   }
