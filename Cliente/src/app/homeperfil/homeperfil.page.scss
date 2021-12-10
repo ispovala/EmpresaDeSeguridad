@@ -25,13 +25,20 @@
         .bienvenido{
             color: #bf1a24;
             font-weight: bold;
+            font-family: 'BebasBold';
+            font-size: x-large;
+        }
+        .user{
+            font-family: 'BebasRegular';
+            font-stretch: narrower;
+            
         }
     }
 }
 
 .opcionesperfil{
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
     margin-top: 5%;
     ion-item{
         justify-content: space-between;
@@ -39,6 +46,11 @@
         ion-icon{
             margin-right: 10%;
             color: black;
+        }
+
+        ion-label{
+            font-family: 'BebasBold';
+           font-size: x-large;
         }
     }
 }
