@@ -42,7 +42,7 @@ export class ChoferPage implements OnInit {
   ngOnInit() {
     this.ionicForm = this.formBuilder.group({
       
-      dob: [this.defaultDate],
+      inicioDate: [this.defaultDate],
       
     })
     

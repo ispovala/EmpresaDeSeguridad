@@ -16,7 +16,7 @@
           <ion-label>Fecha de Inicio</ion-label>
           <div class="seleccion">
             <ion-item >
-              <ion-datetime displayFormat="MM/DD/YYYY"></ion-datetime>
+              <ion-datetime [max]="maxFecha" [min]="minFecha" displayFormat="DD/MM/YYYY" pickerFormat="DD MM YYYY"></ion-datetime>
               <ion-icon name="calendar-clear-outline" ></ion-icon>
             </ion-item>
           </div>
