@@ -38,11 +38,11 @@
      
         <div class="ubicacion">
           <ion-label>Ubicación de origen</ion-label>
-          <button ion-button color="secondary" (click)="addDirection()">Abrir mapa</button>
+          <button ion-button color="secondary" (click)="addDirection(0)">Abrir mapa</button>
         </div>
         <div class="ubicacion"> 
           <ion-label>Ubicación de destino</ion-label>
-          <button ion-button color="secondary">Abrir mapa</button>
+          <button ion-button color="secondary" (click)="addDirection(1)">Abrir mapa</button>
         </div>  
     </div>
     <div class="cantidad-vehiculos">
@@ -64,6 +64,7 @@
       </div>
       <div class="cancelar-servicio">
         <button ion-button color="secondary" (click)="cancelar()">Cancelar</button>
+
       </div>
   
     </div>

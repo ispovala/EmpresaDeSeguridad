@@ -2,6 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { Component, OnInit, Input, Renderer2, ElementRef, ViewChild, Inject } from '@angular/core';
 import { UbicacionService } from './ubicacion.service';
 import { ModalController } from '@ionic/angular';
+import { NgZone } from '@angular/core';
 
 import { Geolocation } from '@capacitor/geolocation';
 
@@ -14,14 +15,18 @@ declare var google: any;
 })
 export class UbicacionComponent implements OnInit {
 
+  autocomplete: { input: string; };
+  GoogleAutocomplete: any;
+  autocompleteItems: any[];
+
   @Input() position = {
     lat: -2.1676746,
     lng: -79.8956897
   };
 
   label = {
-    titulo: 'INNOVASYSTEM ECUADOR S.A.',
-    subtitulo: 'José Alavedra 206 y Francisco Rodríguez, Edificio Mack Piso 1 Oficina 2 (Frente a Bodegas de City Box), Guayaquil 090506'
+    titulo: 'Ubicación',
+    subtitulo: 'Seleccione la ubicación'
   }
 
   map: any;
@@ -34,15 +39,66 @@ export class UbicacionComponent implements OnInit {
   constructor(private renderer: Renderer2,
     @Inject(DOCUMENT) private document,
     private ubicacionService: UbicacionService,
-    public modalController: ModalController) { }
+    public modalController: ModalController,
+    public zone: NgZone) {
+      this.autocomplete = { input: '' };
+      this.autocompleteItems = [];
+  }
 
   ngOnInit(): void {
     this.init();
   }
 
+  UpdateSearchResults() {
+    if (this.autocomplete.input == '') {
+      this.autocompleteItems = [];
+      return;
+    }
+    this.GoogleAutocomplete.getPlacePredictions({ input: this.autocomplete.input },
+      (predictions, status) => {
+
+        this.autocompleteItems = [];
+        this.zone.run(() => {
+          predictions.forEach((prediction) => {
+            //console.log(prediction)
+            this.autocompleteItems.push(prediction);
+          });
+        });
+      });
+  }
+
+  async SelectSearchResult(item) {
+    console.log(item.place_id)
+    this.autocomplete.input = item.description;
+    this.autocompleteItems = [];
+
+    const geocoder = new google.maps.Geocoder();
+
+    geocoder.geocode({ placeId: item.place_id })
+    .then(({ results }) => {
+      if (results[0]) {
+        console.log(results[0].geometry.location.lat());
+        console.log(results[0].geometry.location.lng());
+        this.position.lat = results[0].geometry.location.lat();
+        this.position.lng = results[0].geometry.location.lng();
+        this.addMarker(this.position);
+        
+      } else {
+        window.alert("No results found");
+      }
+    })
+    .catch((e) => window.alert("Geocoder failed due to: " + e));
+  }
+
+  ClearAutocomplete() {
+    this.autocompleteItems = []
+    this.autocomplete.input = ''
+  }
+
   async init() {
     this.ubicacionService.init(this.renderer, this.document).then(() => {
       this.initMap();
+      this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
     }).catch((err) => { console.log(err) })
   }
 
@@ -54,7 +110,7 @@ export class UbicacionComponent implements OnInit {
 
     let mapOptions = {
       center: latLng,
-      zoom: 15,
+      zoom: 20,
       disableDefaultUI: false,
       clickableIcons: true,
     };

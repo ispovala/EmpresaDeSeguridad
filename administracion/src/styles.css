@@ -2,6 +2,11 @@ hr.solid {
   border-top: 3px solid #bbb;
 }
 
+a:not([href]){
+  color: red;
+  text-decoration: underline;
+}
+
 a:hover {
   cursor: pointer;
 }

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { CandadoSatelital } from 'src/app/core/models/recursos/candado-satelital.model';
-import { CandadoSatelitalService } from 'src/app/core/services/recursos/candado-satelital.service';
+import { CandadoSatelital } from 'src/app/core/models/recursos/candado-satelital/candado-satelital.model';
+import { CandadoSatelitalService } from 'src/app/core/services/recursos/candado-satelital/candado-satelital.service';
+
 
 @Component({
   selector: 'candados-satelitales-list',
@@ -9,7 +10,7 @@ import { CandadoSatelitalService } from 'src/app/core/services/recursos/candado-
   styleUrls: ['./list.component.css'],
 })
 export class CandadosSatelitalesListComponent implements OnInit {
-  candadosSatelitales?: CandadoSatelital[];
+  private candadosSatelitales?: CandadoSatelital[];
   currentCandadoSatelital: CandadoSatelital = new CandadoSatelital();
 
   constructor(
@@ -32,6 +33,10 @@ export class CandadosSatelitalesListComponent implements OnInit {
     );
   }
 
+  getCandadosSatelitales(): CandadoSatelital[] | undefined {
+    return this.candadosSatelitales;
+  }
+
   openCM(content: any) {
     this.modalService
       .open(content, {
@@ -42,13 +47,37 @@ export class CandadosSatelitalesListComponent implements OnInit {
       .result.then(
         (result) => {
           this.candadoSatelitalService.create(result).subscribe(
-            (response) => {
+            () => {
               this.refreshList();
             },
             (error) => {}
           );
         },
-        (reason) => {}
+        () => {
+          this.resetCurrent();
+        }
+      );
+  }
+
+  openEM(content: any) {
+    this.modalService
+      .open(content, {
+        ariaLabelledBy: 'modal-basic-title',
+        size: 'lg',
+        backdrop: 'static',
+      })
+      .result.then(
+        (result) => {
+          this.candadoSatelitalService.update(result.id, result).subscribe(
+            () => {
+              this.refreshList();
+            },
+            (error) => {}
+          );
+        },
+        () => {
+          this.resetCurrent();
+        }
       );
   }
 
@@ -77,8 +106,15 @@ export class CandadosSatelitalesListComponent implements OnInit {
         size: 'lg',
         backdrop: 'static',
       })
-      .result.then(() => {
-        this.resetCurrent();
+      .result.then((result) => {
+        if (
+          result != null &&
+          result != undefined &&
+          result != '' &&
+          result !== 'edit'
+        ) {
+          this.resetCurrent();
+        }
       });
   }
 

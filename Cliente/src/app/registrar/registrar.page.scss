@@ -1,0 +1,147 @@
+/*ion-content{
+  --background: none;
+  background-image: url("../../assets/bg-registro.png");
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover; 
+  height: max-content;
+}*/
+ion-content.background{
+  --background: url("../../assets/bg-registro.png") no-repeat center center / cover; 
+}
+.tope span{
+    width:100%;
+   position:absolute;
+   left:0;
+   background-color:#aaafb4;
+   height:26px;
+   top:80px;
+}
+.logosepro ion-img{
+    padding-left: 0px;
+    display:block;
+    position:absolute;
+    margin-left: 100px;
+}
+.container {
+    margin-top: 10rem;
+    position: relative;
+    text-align: center;
+}
+.container ion-img{
+  background-color: #ffffff;
+  display: block;
+  height: auto;
+}
+.rectangle {
+  height: 6rem;
+  max-width: 100%;
+  background-color: #BF1A24;
+  margin:0;
+  border-top-left-radius: 25rem;
+  border-top-right-radius: 25rem;
+}
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  ion-text{
+    font-size: 3rem;
+    color: white;
+    font-family: 'BebasBold';
+  }
+
+  ion-button{
+    font-family:'hp556';
+    font-weight: 3rem;
+    --background: none;
+    background-color: #3da630;
+    width: 15rem;
+    border-radius: 25rem;
+    margin-top: 10rem;
+    margin-left: 3rem;
+  }
+  
+  a{
+    text-decoration: none;
+    color: white;
+  }
+  .datos{
+    margin: 1rem;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    border: 2px ;
+    margin-top: 30%;
+    justify-items:center;
+    justify-content: space-between;
+    color:black;
+  }
+  .datos{
+    margin-top: 2rem;
+    width: 20rem;
+    .itemdatos{
+        margin-top: 5%;
+    }
+  }
+  .error{
+    font-size: x-small;
+  }
+  .botones button{
+    text-align:center;
+    width: 10rem;
+    height: 2.3rem;
+    border-radius: 60px ;
+    background-color:#3887bd;
+    color:#ffffff;
+    //margin-right: 5%;
+    justify-content: space-between;
+    font-family:'hp265';
+    font-size: 1.2rem;
+  
+  }
+  .botones {
+    margin-top: 15%;
+    justify-content: space-between;
+    text-align:center;
+    margin-left: 5%;
+    .guardar{
+        background-color:#3da631;
+        width:13rem;
+    }
+    .cancelar{
+        background-color: #fc5759;
+        width: 7rem;
+    }
+  }
+
+  .item-background-color{
+    --ion-item-background:transparent;
+  }
+  ion-input {
+    background-color: #ffffff;
+    border-radius: 25rem;
+    justify-content: space-between;
+    text-align:center;
+  }
+  ion-label{
+    justify-content: space-between;
+    text-align:center;
+    color: #000;
+    font-family:'hp265';
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  .itemdatos{
+    justify-content: space-between;
+    text-align:center;
+  }
+  .terminos{
+    color: #000;
+    font-family:'hp265';
+    font-size: 0.7rem;
+  }
+  ion-checkbox{
+    --border-radius: 0;
+    --border-color: #000; 
+  }

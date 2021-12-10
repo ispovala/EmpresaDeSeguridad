@@ -9,52 +9,73 @@ import { UbicacionComponent } from 'src/app/ubicacion/ubicacion.component';
   styleUrls: ['./custodia.page.scss'],
 })
 export class CustodiaPage implements OnInit {
+
+  origen = {
+    lat: -2.1676746,
+    lng: -79.8956897
+  };
+  destino = {
+    lat: -2.1676746,
+    lng: -79.8956897
+  };
   currentNumber = 0;
 
   increment() {
     this.currentNumber++;
- }
- 
- decrement() {
-    if (this.currentNumber > 0) {
-       this.currentNumber--;
-    }
- }
+  }
 
- constructor(private navCtrl: NavController,private modalController: ModalController){
-    
-}
-solicitud(){
-  this.navCtrl.navigateForward("/servicios/n/solicitud");
-  
-}
-cancelar(){
-  this.navCtrl.navigateForward("/servicios");
-}
+  decrement() {
+    if (this.currentNumber > 0) {
+      this.currentNumber--;
+    }
+  }
+
+  constructor(private navCtrl: NavController, private modalController: ModalController) {
+
+  }
+  solicitud() {
+    this.navCtrl.navigateForward("/servicios/n/solicitud");
+
+  }
+  cancelar() {
+    this.navCtrl.navigateForward("/servicios");
+  }
   ngOnInit() {
 
   }
 
-  async addDirection() {
+  async addDirection(tipo: number) {
 
-    let positionInput = {  
-      lat: -2.1676746,
-      lng: -79.8956897
-    };
+    if (tipo === 0) {
+      const modalAdd = await this.modalController.create({
+        component: UbicacionComponent,
+        mode: 'ios',
+        swipeToClose: true,
+        componentProps: { position: this.origen }
+      });
 
-    const modalAdd  = await this.modalController.create({
-      component: UbicacionComponent,
-      mode: 'ios',
-      swipeToClose: true,
-      componentProps: {position: positionInput}
-    });
-    await modalAdd.present();
+      await modalAdd.present();
+      const { data } = await modalAdd.onWillDismiss();
+      if (data) {
+        this.origen = data.pos;
+        console.log('Origen -> ', this.origen);
+      }
 
-    const {data} = await modalAdd.onWillDismiss();
-    if (data) {
-      console.log('data -> ', data);
     }
+    else if (tipo === 1) {
+      const modalAdd = await this.modalController.create({
+        component: UbicacionComponent,
+        mode: 'ios',
+        swipeToClose: true,
+        componentProps: { position: this.destino }
+      });
 
+      await modalAdd.present();
+      const { data } = await modalAdd.onWillDismiss();
+      if (data) {
+        this.destino = data.pos;
+        console.log('Destino -> ', this.destino);
+      }
+    }
   }
-
 }

@@ -12,6 +12,6 @@ export class AppComponent {
   myDate: String = new Date().toISOString();
   
   openPage(){
-    this.navCtrl.navigateForward("/perfil");
+    this.navCtrl.navigateForward("/homeperfil");
   }
 }
