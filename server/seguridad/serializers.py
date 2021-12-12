@@ -8,10 +8,27 @@ class ColorSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class MarcaCandadoSatelitalSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MarcaCandadoSatelital
+        fields = '__all__'
+
+
+class TipoCandadoSatelitalSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TipoCandadoSatelital
+        fields = '__all__'
+
+
 class CandadoSatelitalSerializer(serializers.ModelSerializer):
     class Meta:
         model = CandadoSatelital
-        fields = '__all__'
+        fields = ('id',
+                  'color',
+                  'is_deleted',
+                  'marca',
+                  'observaciones',
+                  'tipo')
 
 
 class MarcaVehiculoSerializer(serializers.ModelSerializer):
@@ -44,10 +61,12 @@ class UsuarioSerializer(serializers.ModelSerializer):
         model = Usuario
         fields = '__all__'
 
+
 class PersonaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Persona
         fields = '__all__'
+
 
 class CargoSerializer(serializers.ModelSerializer):
     class Meta:

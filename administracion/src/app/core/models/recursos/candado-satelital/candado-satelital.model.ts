@@ -1,6 +1,12 @@
 export class CandadoSatelital {
   id?: any;
-  marca?: string;
-  tipo?: string;
-  color?: string;
+  color?: any;
+  nombreColor?: string;
+  is_deleted?: boolean;
+  marca?: any;
+  nombreMarca?: string;
+  observaciones?: any;
+  ruta_foto?: string;
+  tipo?: any;
+  nombreTipo?: string;
 }

@@ -91,10 +91,28 @@ def color_list(request):
         # 'safe=False' for objects serialization
 
 
-@api_view(['GET', 'POST', 'DELETE'])
-def candadosatelital_list(request):
+@api_view(['GET'])
+def marca_candado_satelital_list(request):
     if request.method == 'GET':
-        candados_satelitales = CandadoSatelital.objects.all()
+        marcas = MarcaCandadoSatelital.objects.all()
+        marcas = MarcaCandadoSatelitalSerializer(marcas, many=True)
+        return JsonResponse(marcas.data, safe=False)
+        # 'safe=False' for objects serialization
+
+
+@api_view(['GET'])
+def tipo_candado_satelital_list(request):
+    if request.method == 'GET':
+        tipos = TipoCandadoSatelital.objects.all()
+        tipos = TipoCandadoSatelitalSerializer(tipos, many=True)
+        return JsonResponse(tipos.data, safe=False)
+        # 'safe=False' for objects serialization
+
+
+@api_view(['GET', 'POST', 'DELETE'])
+def candado_satelital_list(request):
+    if request.method == 'GET':
+        candados_satelitales = CandadoSatelital.objects.filter(is_deleted=False)
         candados_satelitales = CandadoSatelitalSerializer(candados_satelitales, many=True)
         return JsonResponse(candados_satelitales.data, safe=False)
         # 'safe=False' for objects serialization
@@ -112,8 +130,8 @@ def candadosatelital_list(request):
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
-def candadosatelital_detail(request, pk):
-    candadosatelital = CandadoSatelital.objects.get(pk=pk)
+def candado_satelital_detail(request, pk):
+    candadosatelital = CandadoSatelital.objects.get(pk=pk, is_deleted=False)
     if request.method == 'GET':
         candadosatelital_serializer = CandadoSatelitalSerializer(candadosatelital)
         return JsonResponse(candadosatelital_serializer.data)
@@ -169,7 +187,7 @@ def vehiculo_list(request):
 
 @api_view(['GET', 'PUT', 'DELETE'])
 def vehiculo_detail(request, pk):
-    vehiculo = Vehiculo.objects.get(pk=pk)
+    vehiculo = Vehiculo.objects.get(pk=pk, is_deleted=False)
     if request.method == 'GET':
         vehiculo_serializer = VehiculoSerializer(vehiculo)
         return JsonResponse(vehiculo_serializer.data)

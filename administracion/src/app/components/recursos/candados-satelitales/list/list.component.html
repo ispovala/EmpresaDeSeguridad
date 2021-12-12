@@ -8,20 +8,20 @@
         <th class="w150px">Tipo</th>
         <th class="w150px">Color</th>
         <th class="w100px">
-          <button class="btn btn-success text-white w-100" (click)="openCM(createModal)">AGREGAR</button>
+          <button class="btn btn-success text-white w-100" (click)="openCM(createModal)">Agregar</button>
         </th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let candadosSatelital of getCandadosSatelitales()">
           <td class="w150px">
-              {{ candadosSatelital.marca }}
+              {{ candadosSatelital.nombreMarca }}
           </td>
           <td class="w150px">
-              {{ candadosSatelital.tipo }}
+              {{ candadosSatelital.nombreTipo }}
           </td>
           <td class="w150px">
-              {{ candadosSatelital.color }}
+              {{ candadosSatelital.nombreColor }}
           </td>
           <td class="w100px">
               <a (click)="setActiveCandadoSatelital(candadosSatelital); openDM(deleteModal)" class="pe-auto link-danger px-3">Eliminar</a>
@@ -41,34 +41,46 @@
     </button>
   </div>
   <div class="modal-body">
-    <div class="form-group m-form__group">
-      <label for="Marca">Marca</label>
-      <select name="currentCandadoSatelital.marca" [(ngModel)]="currentCandadoSatelital.marca" class="form-control" >
-        <option value="GeoLock">GeoLock</option>
-      </select>
-    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="form-group m-form__group">
+            <label for="Marca">Marca</label>
+            <select name="currentCandadoSatelital.marca" [(ngModel)]="currentCandadoSatelital.marca" class="form-control" >
+              <option [value]="marca.id" *ngFor="let marca of getMarcasCandadoSatelital()">{{ marca.nombre }}</option>
+            </select>
+          </div>
 
-    <label for="Num">Numeración</label>
-    <hr class="solid">
+          <h6>Numeración</h6>
+          <hr class="solid">
 
-    <div class="form-group m-form__group">
-      <label for="Tipo">Tipo</label>
-      <select name="currentCandadoSatelital.tipo" [(ngModel)]="currentCandadoSatelital.tipo" class="form-control" >
-        <option value="H14">H14</option>
-      </select>
-    </div>
-    <div class="form-group m-form__group">
-      <label for="Color">Color</label>
-      <select name="currentCandadoSatelital.color" [(ngModel)]="currentCandadoSatelital.color" class="form-control" >
-        <option value="Rojo">Rojo</option>
-        <option value="Negro">Negro</option>
-        <option value="Blanco">Blanco</option>
-        <option value="Azul">Azul</option>
-      </select>
+          <div class="form-group m-form__group">
+            <label for="Tipo">Tipo</label>
+            <select name="currentCandadoSatelital.tipo" [(ngModel)]="currentCandadoSatelital.tipo" class="form-control" >
+              <option [value]="tipo.id" *ngFor="let tipo of getTiposCandadoSatelital()">{{ tipo.nombre }}</option>
+            </select>
+          </div>
+          <div class="form-group m-form__group">
+            <label for="Color">Color</label>
+            <select name="currentCandadoSatelital.color" [(ngModel)]="currentCandadoSatelital.color" class="form-control" >
+              <option [value]="color.id" *ngFor="let color of getColores()">{{ color.nombre }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group m-form__group">
+            <label for="Observaciones" class="pb-3">Observaciones</label>
+            <textarea class="form-control" name="observaciones" id="observaciones" rows="5" [(ngModel)]="currentCandadoSatelital.observaciones" required></textarea>
+          </div>
+          <div class="form-group m-form__group">
+            <!--<input type="file">  guardarRutaFoto() -->
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-success" (click)="modal.close(currentCandadoSatelital)">Guardar</button>
+    <button type="button" class="btn btn-outline-success" (click)="modal.close(currentCandadoSatelital)">Agregar</button>
   </div>
 </ng-template>
 
@@ -80,30 +92,42 @@
     </button>
   </div>
   <div class="modal-body">
-    <div class="form-group m-form__group">
-      <label for="Marca">Marca</label>
-      <select name="currentCandadoSatelital.marca" [(ngModel)]="currentCandadoSatelital.marca" class="form-control" >
-        <option value="GeoLock">GeoLock</option>
-      </select>
-    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="form-group m-form__group">
+            <label for="Marca">Marca</label>
+            <select name="currentCandadoSatelital.marca" [(ngModel)]="currentCandadoSatelital.marca" class="form-control" >
+              <option [value]="marca.id" *ngFor="let marca of getMarcasCandadoSatelital()">{{ marca.nombre }}</option>
+            </select>
+          </div>
 
-    <label for="Num">Numeración</label>
-    <hr class="solid">
+          <h6>Numeración</h6>
+          <hr class="solid">
 
-    <div class="form-group m-form__group">
-      <label for="Tipo">Tipo</label>
-      <select name="currentCandadoSatelital.tipo" [(ngModel)]="currentCandadoSatelital.tipo" class="form-control" >
-        <option value="H14">H14</option>
-      </select>
-    </div>
-    <div class="form-group m-form__group">
-      <label for="Color">Color</label>
-      <select name="currentCandadoSatelital.color" [(ngModel)]="currentCandadoSatelital.color" class="form-control" >
-        <option value="Rojo">Rojo</option>
-        <option value="Negro">Negro</option>
-        <option value="Blanco">Blanco</option>
-        <option value="Azul">Azul</option>
-      </select>
+          <div class="form-group m-form__group">
+            <label for="Tipo">Tipo</label>
+            <select name="currentCandadoSatelital.tipo" [(ngModel)]="currentCandadoSatelital.tipo" class="form-control" >
+              <option [value]="tipo.id" *ngFor="let tipo of getTiposCandadoSatelital()">{{ tipo.nombre }}</option>
+            </select>
+          </div>
+          <div class="form-group m-form__group">
+            <label for="Color">Color</label>
+            <select name="currentCandadoSatelital.color" [(ngModel)]="currentCandadoSatelital.color" class="form-control" >
+              <option [value]="color.id" *ngFor="let color of getColores()">{{ color.nombre }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group m-form__group">
+            <label for="Observaciones" class="pb-3">Observaciones</label>
+            <textarea class="form-control" name="observaciones" id="observaciones" rows="5" [(ngModel)]="currentCandadoSatelital.observaciones" required></textarea>
+          </div>
+          <div class="form-group m-form__group">
+            <!--<input type="file">  guardarRutaFoto() -->
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="modal-footer">
@@ -138,25 +162,25 @@
         <div class="col">
           <div class="form-group">
             <img src="#" alt="CandadoSatelital">
-            <!-- {{ currentCandadoSatelital.imgpath }} -->
+            <!-- {{ currentCandadoSatelital.ruta_foto }} -->
           </div>
         </div>
         <div class="col">
           <div class="form-group">
             <label for="CSMarca" class="text-secondary">Marca:</label>
-            <label for="Marca" class="px-2">{{ currentCandadoSatelital.marca }}</label>
+            <label for="Marca" class="px-2">{{ currentCandadoSatelital.nombreMarca }}</label>
           </div>
           <div class="form-group">
             <label for="CSTipo" class="text-secondary">Tipo:</label>
-            <label for="Tipo" class="px-2">{{ currentCandadoSatelital.tipo }}</label>
+            <label for="Tipo" class="px-2">{{ currentCandadoSatelital.nombreTipo }}</label>
           </div>
           <div class="form-group">
             <label for="CSColor" class="text-secondary">Color:</label>
-            <label for="Color" class="px-2">{{ currentCandadoSatelital.color }}</label>
+            <label for="Color" class="px-2">{{ currentCandadoSatelital.nombreColor }}</label>
           </div>
           <div class="form-group">
             <label for="CSObservaciones" class="text-secondary">Observaciones:</label>
-            <label for="Observaciones" class="px-2"><!--{{ currentCandadoSatelital.observaciones }}--></label>
+            <label for="Observaciones" class="px-2">{{ currentCandadoSatelital.observaciones }}</label>
           </div>
         </div>
       </div>

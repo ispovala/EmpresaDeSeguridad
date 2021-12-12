@@ -69,10 +69,36 @@ class Color(models.Model):
         verbose_name_plural = 'colores'
 
 
+class MarcaCandadoSatelital(models.Model):
+    nombre = models.CharField(verbose_name="nombre", max_length=255, default='')
+
+    class Meta:
+        db_table = 'marca_candado_satelital'
+        verbose_name_plural = 'marcas_candado_satelital'
+
+
+class TipoCandadoSatelital(models.Model):
+    nombre = models.CharField(verbose_name="nombre", max_length=255, default='')
+
+    class Meta:
+        db_table = 'tipo_candado_satelital'
+        verbose_name_plural = 'tipos_candado_satelital'
+
+
 class CandadoSatelital(models.Model):
-    marca = models.CharField(verbose_name="marca", max_length=255, default='')
-    tipo = models.CharField(verbose_name="tipo", max_length=255, default='')
-    color = models.CharField(verbose_name="color", max_length=255, default='')
+    color = models.ForeignKey(Color, verbose_name="color", null=True, on_delete=models.RESTRICT)
+    created_by = models.ForeignKey(Usuario, verbose_name="created_by", null=True, on_delete=models.RESTRICT,
+                                   related_name="candado_satelital_creator")
+    created_date = models.DateField(verbose_name="created_date", auto_now_add=True, null=True)
+    deleted_date = models.DateField(verbose_name="deleted_date", null=True)
+    is_deleted = models.BooleanField(verbose_name="is_deleted", default=False)
+    marca = models.ForeignKey(MarcaCandadoSatelital, verbose_name="marca", null=True, on_delete=models.RESTRICT)
+    modified_by = models.ForeignKey(Usuario, verbose_name="modified_by", null=True, on_delete=models.RESTRICT,
+                                    related_name="candado_satelital_modifier")
+    modified_date = models.DateField(verbose_name="modified_date", default=date.today)
+    observaciones = models.TextField(verbose_name="observaciones", default='')
+    ruta_foto = models.CharField(verbose_name="ruta_foto", max_length=255, default='')
+    tipo = models.ForeignKey(TipoCandadoSatelital, verbose_name="tipo", null=True, on_delete=models.RESTRICT)
 
     class Meta:
         db_table = 'candado_satelital'
@@ -97,14 +123,16 @@ class TipoVehiculo(models.Model):
 
 class Vehiculo(models.Model):
     placa = models.CharField(verbose_name="placa", max_length=255, default='', primary_key=True)
-    created_by = models.ForeignKey(Usuario, verbose_name="created_by", null=True, on_delete=models.RESTRICT, related_name="creator")
-    created_date = models.DateField(verbose_name="created_date", auto_now_add=True, null=True)
     color = models.ForeignKey(Color, verbose_name="color", null=True, on_delete=models.RESTRICT)
+    created_by = models.ForeignKey(Usuario, verbose_name="created_by", null=True, on_delete=models.RESTRICT,
+                                   related_name="vehiculo_creator")
+    created_date = models.DateField(verbose_name="created_date", auto_now_add=True, null=True)
     deleted_date = models.DateField(verbose_name="deleted_date", null=True)
     is_deleted = models.BooleanField(verbose_name="is_deleted", default=False)
     marca = models.ForeignKey(MarcaVehiculo, verbose_name="marca", null=True, on_delete=models.RESTRICT)
-    modified_by = models.ForeignKey(Usuario, verbose_name="modified_by", null=True, on_delete=models.RESTRICT, related_name="modifier")
-    modified_date = models.DateField(verbose_name="deleted_date", default=date.today)
+    modified_by = models.ForeignKey(Usuario, verbose_name="modified_by", null=True, on_delete=models.RESTRICT,
+                                    related_name="vehiculo_modifier")
+    modified_date = models.DateField(verbose_name="modified_date", default=date.today)
     motor = models.CharField(verbose_name="motor", max_length=255, default='')
     observaciones = models.TextField(verbose_name="observaciones", default='')
     ruta_foto = models.CharField(verbose_name="ruta_foto", max_length=255, default='')

@@ -16,8 +16,8 @@ import { VehiculoService } from 'src/app/core/services/recursos/vehiculo/vehicul
 })
 export class VehiculosListComponent implements OnInit {
   private vehiculos?: Vehiculo[];
-  private tipos_vehiculo?: TipoVehiculo[];
-  private marcas_vehiculo?: MarcaVehiculo[];
+  private tiposVehiculo?: TipoVehiculo[];
+  private marcasVehiculo?: MarcaVehiculo[];
   private colores?: Color[];
   currentVehiculo: Vehiculo = new Vehiculo();
 
@@ -40,19 +40,17 @@ export class VehiculosListComponent implements OnInit {
     this.vehiculoService.getAll().subscribe(
       (data) => {
         this.vehiculos = data;
-        this.vehiculos?.forEach(
-          (value: Vehiculo) => {
-            value.nombreColor = this.colores?.find(
-              (color) => color.id === value.color
-            )?.nombre;
-            value.nombreMarca = this.marcas_vehiculo?.find(
-              (marca) => marca.id === value.marca
-            )?.nombre;
-            value.nombreTipo = this.tipos_vehiculo?.find(
-              (tipo) => tipo.id === value.tipo
-            )?.nombre;
-          }
-        );
+        this.vehiculos?.forEach((value: Vehiculo) => {
+          value.nombreColor = this.colores?.find(
+            (color) => color.id === value.color
+          )?.nombre;
+          value.nombreMarca = this.marcasVehiculo?.find(
+            (marca) => marca.id === value.marca
+          )?.nombre;
+          value.nombreTipo = this.tiposVehiculo?.find(
+            (tipo) => tipo.id === value.tipo
+          )?.nombre;
+        });
       },
       (error) => {}
     );
@@ -61,7 +59,7 @@ export class VehiculosListComponent implements OnInit {
   private retrieveTiposVehiculo(): void {
     this.tipoVehiculoService.getAll().subscribe(
       (data) => {
-        this.tipos_vehiculo = data;
+        this.tiposVehiculo = data;
       },
       (error) => {}
     );
@@ -70,7 +68,7 @@ export class VehiculosListComponent implements OnInit {
   private retrieveMarcasVehiculo(): void {
     this.marcaVehiculoService.getAll().subscribe(
       (data) => {
-        this.marcas_vehiculo = data;
+        this.marcasVehiculo = data;
       },
       (error) => {}
     );
@@ -90,11 +88,11 @@ export class VehiculosListComponent implements OnInit {
   }
 
   getTiposVehiculo(): TipoVehiculo[] | undefined {
-    return this.tipos_vehiculo;
+    return this.tiposVehiculo;
   }
 
   getMarcasVehiculo(): MarcaVehiculo[] | undefined {
-    return this.marcas_vehiculo;
+    return this.marcasVehiculo;
   }
 
   getColores(): Color[] | undefined {
