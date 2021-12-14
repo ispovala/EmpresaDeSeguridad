@@ -2,7 +2,6 @@ from django.http import JsonResponse
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.parsers import JSONParser
-from seguridad.models import *
 from seguridad.serializers import *
 
 
@@ -82,6 +81,7 @@ def usuario(request, pk):
         return JsonResponse({'message': '¡Recurso eliminado satisfactoriamente!'}, status=status.HTTP_204_NO_CONTENT)
 
 
+# Recursos section
 @api_view(['GET'])
 def color_list(request):
     if request.method == 'GET':
@@ -92,21 +92,69 @@ def color_list(request):
 
 
 @api_view(['GET'])
-def marca_candado_satelital_list(request):
+def marca_list(request, recurso):
     if request.method == 'GET':
-        marcas = MarcaCandadoSatelital.objects.all()
-        marcas = MarcaCandadoSatelitalSerializer(marcas, many=True)
+        marcas = Marca.objects.get(recurso=recurso)
+        marcas = MarcaSerializer(marcas, many=True)
         return JsonResponse(marcas.data, safe=False)
         # 'safe=False' for objects serialization
 
 
 @api_view(['GET'])
-def tipo_candado_satelital_list(request):
+def tipo_list(request, recurso):
     if request.method == 'GET':
-        tipos = TipoCandadoSatelital.objects.all()
-        tipos = TipoCandadoSatelitalSerializer(tipos, many=True)
+        tipos = Tipo.objects.get(recurso=recurso)
+        tipos = TipoSerializer(tipos, many=True)
         return JsonResponse(tipos.data, safe=False)
         # 'safe=False' for objects serialization
+
+
+@api_view(['GET'])
+def calibre_arma_list(request):
+    if request.method == 'GET':
+        calibres = CalibreArma.objects.all()
+        calibres = CalibreArmaSerializer(calibres, many=True)
+        return JsonResponse(calibres.data, safe=False)
+        # 'safe=False' for objects serialization
+
+
+@api_view(['GET', 'POST', 'DELETE'])
+def arma_list(request):
+    if request.method == 'GET':
+        armas = Arma.objects.filter(is_deleted=False)
+        armas = ArmaSerializer(armas, many=True)
+        return JsonResponse(armas.data, safe=False)
+        # 'safe=False' for objects serialization
+    elif request.method == 'POST':
+        arma_data = JSONParser().parse(request)
+        arma_serializer = ArmaSerializer(data=arma_data)
+        if arma_serializer.is_valid():
+            arma_serializer.save()
+            return JsonResponse(arma_serializer.data, status=status.HTTP_201_CREATED)
+        return JsonResponse(arma_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == 'DELETE':
+        count = Arma.objects.all().delete()
+        return JsonResponse({'message': '¡{} armas fueron eliminadas satisfactoriamente!'.format(count[0])},
+                            status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def arma_detail(request, pk):
+    arma = Arma.objects.get(pk=pk, is_deleted=False)
+    if request.method == 'GET':
+        arma_serializer = ArmaSerializer(arma)
+        return JsonResponse(arma_serializer.data)
+    elif request.method == 'PUT':
+        celular_data = JSONParser().parse(request)
+        arma_serializer = ArmaSerializer(arma, data=celular_data)
+        if arma_serializer.is_valid():
+            arma_serializer.save()
+            return JsonResponse(arma_serializer.data)
+        return JsonResponse(arma_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == 'DELETE':
+        arma.delete()
+        return JsonResponse({'message': '¡El arma fue eliminada satisfactoriamente!'},
+                            status=status.HTTP_204_NO_CONTENT)
 
 
 @api_view(['GET', 'POST', 'DELETE'])
@@ -125,8 +173,9 @@ def candado_satelital_list(request):
         return JsonResponse(candadosatelital_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'DELETE':
         count = CandadoSatelital.objects.all().delete()
-        return JsonResponse({'message': '¡{} recursos eliminados satisfactoriamente!'.format(count[0])},
-                            status=status.HTTP_204_NO_CONTENT)
+        return JsonResponse(
+            {'message': '¡{} candados satelitales fueron eliminados satisfactoriamente!'.format(count[0])},
+            status=status.HTTP_204_NO_CONTENT)
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
@@ -144,25 +193,65 @@ def candado_satelital_detail(request, pk):
         return JsonResponse(candadosatelital_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'DELETE':
         candadosatelital.delete()
-        return JsonResponse({'message': '¡Recurso eliminado satisfactoriamente!'}, status=status.HTTP_204_NO_CONTENT)
+        return JsonResponse({'message': '¡El candado satelital fue eliminado satisfactoriamente!'},
+                            status=status.HTTP_204_NO_CONTENT)
 
 
 @api_view(['GET'])
-def marca_vehiculo_list(request):
+def modelo_celular_list(request):
     if request.method == 'GET':
-        marcas = MarcaVehiculo.objects.all()
-        marcas = MarcaVehiculoSerializer(marcas, many=True)
-        return JsonResponse(marcas.data, safe=False)
+        modelos = ModeloCelular.objects.all()
+        modelos = ModeloCelularSerializer(modelos, many=True)
+        return JsonResponse(modelos.data, safe=False)
         # 'safe=False' for objects serialization
 
 
 @api_view(['GET'])
-def tipo_vehiculo_list(request):
+def operadora_celular_list(request):
     if request.method == 'GET':
-        tipos = TipoVehiculo.objects.all()
-        tipos = TipoVehiculoSerializer(tipos, many=True)
-        return JsonResponse(tipos.data, safe=False)
+        operadoras = OperadoraCelular.objects.all()
+        operadoras = OperadoraCelularSerializer(operadoras, many=True)
+        return JsonResponse(operadoras.data, safe=False)
         # 'safe=False' for objects serialization
+
+
+@api_view(['GET', 'POST', 'DELETE'])
+def celular_list(request):
+    if request.method == 'GET':
+        celulares = Celular.objects.filter(is_deleted=False)
+        celulares = CelularSerializer(celulares, many=True)
+        return JsonResponse(celulares.data, safe=False)
+        # 'safe=False' for objects serialization
+    elif request.method == 'POST':
+        celular_data = JSONParser().parse(request)
+        celular_serializer = CelularSerializer(data=celular_data)
+        if celular_serializer.is_valid():
+            celular_serializer.save()
+            return JsonResponse(celular_serializer.data, status=status.HTTP_201_CREATED)
+        return JsonResponse(celular_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == 'DELETE':
+        count = Celular.objects.all().delete()
+        return JsonResponse({'message': '¡{} celulares fueron eliminados satisfactoriamente!'.format(count[0])},
+                            status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def celular_detail(request, pk):
+    celular = Celular.objects.get(pk=pk, is_deleted=False)
+    if request.method == 'GET':
+        celular_serializer = CelularSerializer(celular)
+        return JsonResponse(celular_serializer.data)
+    elif request.method == 'PUT':
+        celular_data = JSONParser().parse(request)
+        celular_serializer = CelularSerializer(celular, data=celular_data)
+        if celular_serializer.is_valid():
+            celular_serializer.save()
+            return JsonResponse(celular_serializer.data)
+        return JsonResponse(celular_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == 'DELETE':
+        celular.delete()
+        return JsonResponse({'message': '¡El celular fue eliminado satisfactoriamente!'},
+                            status=status.HTTP_204_NO_CONTENT)
 
 
 @api_view(['GET', 'POST', 'DELETE'])
@@ -181,7 +270,7 @@ def vehiculo_list(request):
         return JsonResponse(vehiculo_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'DELETE':
         count = Vehiculo.objects.all().delete()
-        return JsonResponse({'message': '¡{} recursos eliminados satisfactoriamente!'.format(count[0])},
+        return JsonResponse({'message': '¡{} vehiculos fueron eliminados satisfactoriamente!'.format(count[0])},
                             status=status.HTTP_204_NO_CONTENT)
 
 
@@ -200,4 +289,5 @@ def vehiculo_detail(request, pk):
         return JsonResponse(vehiculo_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'DELETE':
         vehiculo.delete()
-        return JsonResponse({'message': '¡Recurso eliminado satisfactoriamente!'}, status=status.HTTP_204_NO_CONTENT)
+        return JsonResponse({'message': '¡El vehiculo fue eliminado satisfactoriamente!'},
+                            status=status.HTTP_204_NO_CONTENT)

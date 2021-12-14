@@ -8,16 +8,35 @@ class ColorSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class MarcaCandadoSatelitalSerializer(serializers.ModelSerializer):
+class MarcaSerializer(serializers.ModelSerializer):
     class Meta:
-        model = MarcaCandadoSatelital
+        model = Marca
         fields = '__all__'
 
 
-class TipoCandadoSatelitalSerializer(serializers.ModelSerializer):
+class TipoSerializer(serializers.ModelSerializer):
     class Meta:
-        model = TipoCandadoSatelital
+        model = Tipo
         fields = '__all__'
+
+
+class CalibreArmaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CalibreArma
+        fields = '__all__'
+
+
+class ArmaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Arma
+        fields = ('id',
+                  'calibre',
+                  'color',
+                  'is_deleted',
+                  'marca',
+                  'observaciones',
+                  'ruta_foto',
+                  'tipo')
 
 
 class CandadoSatelitalSerializer(serializers.ModelSerializer):
@@ -28,19 +47,34 @@ class CandadoSatelitalSerializer(serializers.ModelSerializer):
                   'is_deleted',
                   'marca',
                   'observaciones',
+                  'ruta_foto',
                   'tipo')
 
 
-class MarcaVehiculoSerializer(serializers.ModelSerializer):
+class ModeloCelularSerializer(serializers.ModelSerializer):
     class Meta:
-        model = MarcaVehiculo
+        model = ModeloCelular
         fields = '__all__'
 
 
-class TipoVehiculoSerializer(serializers.ModelSerializer):
+class OperadoraCelularSerializer(serializers.ModelSerializer):
     class Meta:
-        model = TipoVehiculo
+        model = OperadoraCelular
         fields = '__all__'
+
+
+class CelularSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Celular
+        fields = ('id',
+                  'color',
+                  'is_deleted',
+                  'marca',
+                  'modelo',
+                  'numero_contacto',
+                  'observaciones',
+                  'operadora',
+                  'ruta_foto')
 
 
 class VehiculoSerializer(serializers.ModelSerializer):
@@ -52,6 +86,7 @@ class VehiculoSerializer(serializers.ModelSerializer):
                   'marca',
                   'motor',
                   'observaciones',
+                  'ruta_foto',
                   'tipo',
                   'year')
 

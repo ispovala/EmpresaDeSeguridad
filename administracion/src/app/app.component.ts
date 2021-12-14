@@ -6,22 +6,15 @@ import { UserService } from './core/services/user/user.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
-
-
-
 export class AppComponent implements OnInit {
-
   private nextPath?: string;
   public usernameField: FormControl;
   public passwordField: FormControl;
   public loginError: boolean = false;
 
-  constructor(
-    public userService: UserService,
-    private router: ActivatedRoute
-  ) {
+  constructor(public userService: UserService, private router: ActivatedRoute) {
     this.usernameField = new FormControl('', [
       Validators.required,
       Validators.minLength(4),
@@ -52,6 +45,4 @@ export class AppComponent implements OnInit {
       authResult.catch((err) => (this.loginError = true));
     }
   }
-
 }
-

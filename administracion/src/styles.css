@@ -7,6 +7,19 @@ a:not([href]){
   text-decoration: underline;
 }
 
+input.fileInputDN {
+  display: none;
+}
+
+a.pd-afile {
+  padding: 0 1.2891rem;
+}
+
+a:not([href]).ffile{
+  color: blue;
+  text-decoration: underline;
+}
+
 a:hover {
   cursor: pointer;
 }
@@ -30,3 +43,6 @@ a:hover {
 .w250px {
   width: 250px;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

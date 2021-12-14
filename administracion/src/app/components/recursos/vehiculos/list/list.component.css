@@ -2,3 +2,7 @@
 textarea.resized {
   width: 16rem;
 }
+
+.cdk-overlay-container {
+    z-index: 1200;
+}

@@ -1,14 +1,14 @@
 export class Vehiculo {
   placa?: string;
-  color?: any;
+  color?: number;
   nombreColor?: string;
   is_deleted?: boolean;
-  marca?: any;
+  marca?: number;
   nombreMarca?: string;
   motor?: string;
   observaciones?: any;
   ruta_foto?: string;
-  tipo?: any;
+  tipo?: number;
   nombreTipo?: string;
   year?: Date;
 }

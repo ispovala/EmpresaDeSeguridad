@@ -15,6 +15,8 @@ import { CandadosSatelitalesListComponent } from './recursos/candados-satelitale
 import { RouterRecursosComponent } from './recursos/router-recursos/router-recursos.component';
 import { VehiculosListComponent } from './recursos/vehiculos/list/list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 @NgModule({
@@ -36,6 +38,8 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
   ],
 })
 export class ComponentsModule {}

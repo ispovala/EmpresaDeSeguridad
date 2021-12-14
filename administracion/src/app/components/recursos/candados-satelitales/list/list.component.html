@@ -50,23 +50,27 @@
               <option [value]="marca.id" *ngFor="let marca of getMarcasCandadoSatelital()">{{ marca.nombre }}</option>
             </select>
           </div>
-
-          <h6>Numeración</h6>
-          <hr class="solid">
-
-          <div class="form-group m-form__group">
-            <label for="Tipo">Tipo</label>
-            <select name="currentCandadoSatelital.tipo" [(ngModel)]="currentCandadoSatelital.tipo" class="form-control" >
-              <option [value]="tipo.id" *ngFor="let tipo of getTiposCandadoSatelital()">{{ tipo.nombre }}</option>
-            </select>
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <div class="form-group m-form__group">
+                  <label for="Tipo">Tipo</label>
+                  <select name="currentCandadoSatelital.tipo" [(ngModel)]="currentCandadoSatelital.tipo" class="form-control" >
+                    <option [value]="tipo.id" *ngFor="let tipo of getTiposCandadoSatelital()">{{ tipo.nombre }}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group m-form__group">
+                  <label for="Color">Color</label>
+                  <select name="currentCandadoSatelital.color" [(ngModel)]="currentCandadoSatelital.color" class="form-control" >
+                    <option [value]="color.id" *ngFor="let color of getColores()">{{ color.nombre }}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="form-group m-form__group">
-            <label for="Color">Color</label>
-            <select name="currentCandadoSatelital.color" [(ngModel)]="currentCandadoSatelital.color" class="form-control" >
-              <option [value]="color.id" *ngFor="let color of getColores()">{{ color.nombre }}</option>
-            </select>
           </div>
-        </div>
         <div class="col">
           <div class="form-group m-form__group">
             <label for="Observaciones" class="pb-3">Observaciones</label>

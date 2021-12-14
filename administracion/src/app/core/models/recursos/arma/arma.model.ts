@@ -1,5 +1,7 @@
-export class CandadoSatelital {
+export class Arma {
   id?: number;
+  calibre?: number;
+  nombreCalibre?: string;
   color?: number;
   nombreColor?: string;
   is_deleted?: boolean;

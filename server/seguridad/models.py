@@ -69,20 +69,48 @@ class Color(models.Model):
         verbose_name_plural = 'colores'
 
 
-class MarcaCandadoSatelital(models.Model):
+class Marca(models.Model):
+    nombre = models.CharField(verbose_name="nombre", max_length=255, default='')
+    recurso = models.PositiveSmallIntegerField(verbose_name="recurso")
+
+    class Meta:
+        db_table = 'marca'
+
+
+class Tipo(models.Model):
+    nombre = models.CharField(verbose_name="nombre", max_length=255, default='')
+    recurso = models.PositiveSmallIntegerField(verbose_name="recurso")
+
+    class Meta:
+        db_table = 'tipo'
+
+
+class CalibreArma(models.Model):
     nombre = models.CharField(verbose_name="nombre", max_length=255, default='')
 
     class Meta:
-        db_table = 'marca_candado_satelital'
-        verbose_name_plural = 'marcas_candado_satelital'
+        db_table = 'calibre_arma'
+        verbose_name_plural = 'calibres_arma'
 
 
-class TipoCandadoSatelital(models.Model):
-    nombre = models.CharField(verbose_name="nombre", max_length=255, default='')
+class Arma(models.Model):
+    calibre = models.ForeignKey(CalibreArma, verbose_name="calibre", null=True, on_delete=models.RESTRICT)
+    color = models.ForeignKey(Color, verbose_name="color", null=True, on_delete=models.RESTRICT)
+    created_by = models.ForeignKey(Usuario, verbose_name="created_by", null=True, on_delete=models.RESTRICT,
+                                   related_name="arma_creator")
+    created_date = models.DateField(verbose_name="created_date", auto_now_add=True, null=True)
+    deleted_date = models.DateField(verbose_name="deleted_date", null=True)
+    is_deleted = models.BooleanField(verbose_name="is_deleted", default=False)
+    marca = models.ForeignKey(Marca, verbose_name="marca", null=True, on_delete=models.RESTRICT)
+    modified_by = models.ForeignKey(Usuario, verbose_name="modified_by", null=True, on_delete=models.RESTRICT,
+                                    related_name="arma_modifier")
+    modified_date = models.DateField(verbose_name="modified_date", default=date.today)
+    observaciones = models.TextField(verbose_name="observaciones", default='')
+    ruta_foto = models.CharField(verbose_name="ruta_foto", max_length=255, default='')
+    tipo = models.ForeignKey(Tipo, verbose_name="tipo", null=True, on_delete=models.RESTRICT)
 
     class Meta:
-        db_table = 'tipo_candado_satelital'
-        verbose_name_plural = 'tipos_candado_satelital'
+        db_table = 'arma'
 
 
 class CandadoSatelital(models.Model):
@@ -92,33 +120,55 @@ class CandadoSatelital(models.Model):
     created_date = models.DateField(verbose_name="created_date", auto_now_add=True, null=True)
     deleted_date = models.DateField(verbose_name="deleted_date", null=True)
     is_deleted = models.BooleanField(verbose_name="is_deleted", default=False)
-    marca = models.ForeignKey(MarcaCandadoSatelital, verbose_name="marca", null=True, on_delete=models.RESTRICT)
+    marca = models.ForeignKey(Marca, verbose_name="marca", null=True, on_delete=models.RESTRICT)
     modified_by = models.ForeignKey(Usuario, verbose_name="modified_by", null=True, on_delete=models.RESTRICT,
                                     related_name="candado_satelital_modifier")
     modified_date = models.DateField(verbose_name="modified_date", default=date.today)
     observaciones = models.TextField(verbose_name="observaciones", default='')
     ruta_foto = models.CharField(verbose_name="ruta_foto", max_length=255, default='')
-    tipo = models.ForeignKey(TipoCandadoSatelital, verbose_name="tipo", null=True, on_delete=models.RESTRICT)
+    tipo = models.ForeignKey(Tipo, verbose_name="tipo", null=True, on_delete=models.RESTRICT)
 
     class Meta:
         db_table = 'candado_satelital'
         verbose_name_plural = 'candados_satelitales'
 
 
-class MarcaVehiculo(models.Model):
+class ModeloCelular(models.Model):
     nombre = models.CharField(verbose_name="nombre", max_length=255, default='')
 
     class Meta:
-        db_table = 'marca_vehiculo'
-        verbose_name_plural = 'marcas_vehiculo'
+        db_table = 'modelo_celular'
+        verbose_name_plural = 'modelos_celular'
 
 
-class TipoVehiculo(models.Model):
+class OperadoraCelular(models.Model):
     nombre = models.CharField(verbose_name="nombre", max_length=255, default='')
 
     class Meta:
-        db_table = 'tipo_vehiculo'
-        verbose_name_plural = 'tipos_vehiculo'
+        db_table = 'operadora_celular'
+        verbose_name_plural = 'operadoras_celular'
+
+
+class Celular(models.Model):
+    color = models.ForeignKey(Color, verbose_name="color", null=True, on_delete=models.RESTRICT)
+    created_by = models.ForeignKey(Usuario, verbose_name="created_by", null=True, on_delete=models.RESTRICT,
+                                   related_name="celular_creator")
+    created_date = models.DateField(verbose_name="created_date", auto_now_add=True, null=True)
+    deleted_date = models.DateField(verbose_name="deleted_date", null=True)
+    is_deleted = models.BooleanField(verbose_name="is_deleted", default=False)
+    marca = models.ForeignKey(Marca, verbose_name="marca", null=True, on_delete=models.RESTRICT)
+    modelo = models.ForeignKey(ModeloCelular, verbose_name="modelo", null=True, on_delete=models.RESTRICT)
+    modified_by = models.ForeignKey(Usuario, verbose_name="modified_by", null=True, on_delete=models.RESTRICT,
+                                    related_name="celular_modifier")
+    modified_date = models.DateField(verbose_name="modified_date", default=date.today)
+    numero_contacto = models.CharField(verbose_name="numero_contacto", max_length=10, default='')
+    observaciones = models.TextField(verbose_name="observaciones", default='')
+    operadora = models.ForeignKey(OperadoraCelular, verbose_name="operadora", null=True, on_delete=models.RESTRICT)
+    ruta_foto = models.CharField(verbose_name="ruta_foto", max_length=255, default='')
+
+    class Meta:
+        db_table = 'celular'
+        verbose_name_plural = 'celulares'
 
 
 class Vehiculo(models.Model):
@@ -129,14 +179,14 @@ class Vehiculo(models.Model):
     created_date = models.DateField(verbose_name="created_date", auto_now_add=True, null=True)
     deleted_date = models.DateField(verbose_name="deleted_date", null=True)
     is_deleted = models.BooleanField(verbose_name="is_deleted", default=False)
-    marca = models.ForeignKey(MarcaVehiculo, verbose_name="marca", null=True, on_delete=models.RESTRICT)
+    marca = models.ForeignKey(Marca, verbose_name="marca", null=True, on_delete=models.RESTRICT)
     modified_by = models.ForeignKey(Usuario, verbose_name="modified_by", null=True, on_delete=models.RESTRICT,
                                     related_name="vehiculo_modifier")
     modified_date = models.DateField(verbose_name="modified_date", default=date.today)
     motor = models.CharField(verbose_name="motor", max_length=255, default='')
     observaciones = models.TextField(verbose_name="observaciones", default='')
     ruta_foto = models.CharField(verbose_name="ruta_foto", max_length=255, default='')
-    tipo = models.ForeignKey(TipoVehiculo, verbose_name="tipo", null=True, on_delete=models.RESTRICT)
+    tipo = models.ForeignKey(Tipo, verbose_name="tipo", null=True, on_delete=models.RESTRICT)
     year = models.PositiveSmallIntegerField(verbose_name="year", default=0)
 
     class Meta:

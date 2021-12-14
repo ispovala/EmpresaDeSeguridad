@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CandadoSatelital } from 'src/app/core/models/recursos/candado-satelital/candado-satelital.model';
-import { MarcaCandadoSatelital } from 'src/app/core/models/recursos/candado-satelital/marca-candado-satelital.model';
-import { TipoCandadoSatelital } from 'src/app/core/models/recursos/candado-satelital/tipo-candado-satelital.model';
 import { Color } from 'src/app/core/models/recursos/color.model';
+import { Marcas } from 'src/app/core/models/recursos/marcas.model';
+import { Tipos } from 'src/app/core/models/recursos/tipos.model';
 import { CandadoSatelitalService } from 'src/app/core/services/recursos/candado-satelital/candado-satelital.service';
-import { MarcaCandadoSatelitalService } from 'src/app/core/services/recursos/candado-satelital/marca-candado-satelital.service';
-import { TipoCandadoSatelitalService } from 'src/app/core/services/recursos/candado-satelital/tipo-candado-satelital.service';
 import { ColorService } from 'src/app/core/services/recursos/color.service';
+import { MarcasService } from 'src/app/core/services/recursos/marcas.service';
+import { TiposService } from 'src/app/core/services/recursos/tipos.service';
 
 @Component({
   selector: 'candados-satelitales-list',
@@ -16,15 +16,15 @@ import { ColorService } from 'src/app/core/services/recursos/color.service';
 })
 export class CandadosSatelitalesListComponent implements OnInit {
   private candadosSatelitales?: CandadoSatelital[];
-  private tiposCandadoSatelital?: TipoCandadoSatelital[];
-  private marcasCandadoSatelital?: MarcaCandadoSatelital[];
+  private tiposCandadoSatelital?: Tipos[];
+  private marcasCandadoSatelital?: Marcas[];
   private colores?: Color[];
   currentCandadoSatelital: CandadoSatelital = new CandadoSatelital();
 
   constructor(
     private candadoSatelitalService: CandadoSatelitalService,
-    private tipoCandadoSatelitalService: TipoCandadoSatelitalService,
-    private marcaCandadoSatelitalService: MarcaCandadoSatelitalService,
+    private tiposService: TiposService,
+    private marcasService: MarcasService,
     private colorService: ColorService,
     private modalService: NgbModal
   ) {}
@@ -57,7 +57,7 @@ export class CandadosSatelitalesListComponent implements OnInit {
   }
 
   private retrieveTiposCandadoSatelital(): void {
-    this.tipoCandadoSatelitalService.getAll().subscribe(
+    this.tiposService.getAll(2).subscribe(
       (data) => {
         this.tiposCandadoSatelital = data;
       },
@@ -66,7 +66,7 @@ export class CandadosSatelitalesListComponent implements OnInit {
   }
 
   private retrieveMarcasCandadoSatelital(): void {
-    this.marcaCandadoSatelitalService.getAll().subscribe(
+    this.marcasService.getAll(2).subscribe(
       (data) => {
         this.marcasCandadoSatelital = data;
       },
@@ -87,11 +87,11 @@ export class CandadosSatelitalesListComponent implements OnInit {
     return this.candadosSatelitales;
   }
 
-  getTiposCandadoSatelital(): TipoCandadoSatelital[] | undefined {
+  getTiposCandadoSatelital(): Tipos[] | undefined {
     return this.tiposCandadoSatelital;
   }
 
-  getMarcasCandadoSatelital(): MarcaCandadoSatelital[] | undefined {
+  getMarcasCandadoSatelital(): Marcas[] | undefined {
     return this.marcasCandadoSatelital;
   }
 
