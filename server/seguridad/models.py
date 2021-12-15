@@ -77,6 +77,14 @@ class Marca(models.Model):
         db_table = 'marca'
 
 
+class Modelo(models.Model):
+    nombre = models.CharField(verbose_name="nombre", max_length=255, default='')
+    marca = models.ForeignKey(Marca, verbose_name="marca", null=True, on_delete=models.RESTRICT)
+
+    class Meta:
+        db_table = 'modelo'
+
+
 class Tipo(models.Model):
     nombre = models.CharField(verbose_name="nombre", max_length=255, default='')
     recurso = models.PositiveSmallIntegerField(verbose_name="recurso")
@@ -133,14 +141,6 @@ class CandadoSatelital(models.Model):
         verbose_name_plural = 'candados_satelitales'
 
 
-class ModeloCelular(models.Model):
-    nombre = models.CharField(verbose_name="nombre", max_length=255, default='')
-
-    class Meta:
-        db_table = 'modelo_celular'
-        verbose_name_plural = 'modelos_celular'
-
-
 class OperadoraCelular(models.Model):
     nombre = models.CharField(verbose_name="nombre", max_length=255, default='')
 
@@ -157,7 +157,7 @@ class Celular(models.Model):
     deleted_date = models.DateField(verbose_name="deleted_date", null=True)
     is_deleted = models.BooleanField(verbose_name="is_deleted", default=False)
     marca = models.ForeignKey(Marca, verbose_name="marca", null=True, on_delete=models.RESTRICT)
-    modelo = models.ForeignKey(ModeloCelular, verbose_name="modelo", null=True, on_delete=models.RESTRICT)
+    modelo = models.ForeignKey(Modelo, verbose_name="modelo", null=True, on_delete=models.RESTRICT)
     modified_by = models.ForeignKey(Usuario, verbose_name="modified_by", null=True, on_delete=models.RESTRICT,
                                     related_name="celular_modifier")
     modified_date = models.DateField(verbose_name="modified_date", default=date.today)
@@ -180,6 +180,7 @@ class Vehiculo(models.Model):
     deleted_date = models.DateField(verbose_name="deleted_date", null=True)
     is_deleted = models.BooleanField(verbose_name="is_deleted", default=False)
     marca = models.ForeignKey(Marca, verbose_name="marca", null=True, on_delete=models.RESTRICT)
+    modelo = models.ForeignKey(Modelo, verbose_name="modelo", null=True, on_delete=models.RESTRICT)
     modified_by = models.ForeignKey(Usuario, verbose_name="modified_by", null=True, on_delete=models.RESTRICT,
                                     related_name="vehiculo_modifier")
     modified_date = models.DateField(verbose_name="modified_date", default=date.today)

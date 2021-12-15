@@ -101,6 +101,15 @@ def marca_list(request, recurso):
 
 
 @api_view(['GET'])
+def modelo_list(request, marca):
+    if request.method == 'GET':
+        modelos = Modelo.objects.get(marca=marca)
+        modelos = ModeloSerializer(modelos, many=True)
+        return JsonResponse(modelos.data, safe=False)
+        # 'safe=False' for objects serialization
+
+
+@api_view(['GET'])
 def tipo_list(request, recurso):
     if request.method == 'GET':
         tipos = Tipo.objects.get(recurso=recurso)
@@ -195,15 +204,6 @@ def candado_satelital_detail(request, pk):
         candadosatelital.delete()
         return JsonResponse({'message': '¡El candado satelital fue eliminado satisfactoriamente!'},
                             status=status.HTTP_204_NO_CONTENT)
-
-
-@api_view(['GET'])
-def modelo_celular_list(request):
-    if request.method == 'GET':
-        modelos = ModeloCelular.objects.all()
-        modelos = ModeloCelularSerializer(modelos, many=True)
-        return JsonResponse(modelos.data, safe=False)
-        # 'safe=False' for objects serialization
 
 
 @api_view(['GET'])

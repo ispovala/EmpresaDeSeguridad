@@ -14,6 +14,12 @@ class MarcaSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class ModeloSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Modelo
+        fields = '__all__'
+
+
 class TipoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tipo
@@ -49,12 +55,6 @@ class CandadoSatelitalSerializer(serializers.ModelSerializer):
                   'observaciones',
                   'ruta_foto',
                   'tipo')
-
-
-class ModeloCelularSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ModeloCelular
-        fields = '__all__'
 
 
 class OperadoraCelularSerializer(serializers.ModelSerializer):
