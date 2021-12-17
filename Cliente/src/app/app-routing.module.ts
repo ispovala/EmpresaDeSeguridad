@@ -142,6 +142,10 @@ const routes: Routes = [
   },  {
     path: 'sucursales',
     loadChildren: () => import('./sucursales/sucursales.module').then( m => m.SucursalesPageModule)
+  },
+  {
+    path: 'sucursal',
+    loadChildren: () => import('./sucursal/sucursal.module').then( m => m.SucursalPageModule)
   }
 
 
