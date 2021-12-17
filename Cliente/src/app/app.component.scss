@@ -28,12 +28,10 @@ p{
     position: absolute;
     text-align: buttom;
     z-index:1;
-    margin-top: 70%;
-    margin-bottom: 0;
-    margin-left: 0;
-    margin-right: 0;
     opacity:0.3;
-    height: 200px;
+    min-width: 80%;
+    bottom: 0;
+
   }
 ion-menu-toggle ion-img{
     text-align: center;
@@ -75,9 +73,11 @@ p{
     text-align: center;
 }
 .cerrarsesion{
+    bottom: 4px;
     display: flex;
     text-align: center;
     justify-content: center;
+
 }
 .cerrarsesion ion-img{
     width: 2.3em;
@@ -87,7 +87,7 @@ p{
     color: black;
 }
 .cerrarsesion button{
-    background-color:#828181; 
+    background-color:transparent; 
 }
 .opciones ion-label{
     padding-left: 7%;

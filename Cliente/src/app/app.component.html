@@ -8,7 +8,7 @@
           </div>
         </ion-toolbar>
       </ion-header>
-      <ion-content>
+      <ion-content scroll-y=false>
         <ion-menu-toggle auto-hide="false" text-center>
           <p align="center"><ion-img menuClose src="assets/img/backcliente.png" (click)="openPage()"></ion-img></p>
           <p ion-text header-subtitle>HAYLEEN CARRILLO</p>
@@ -74,13 +74,13 @@
               
             </ion-menu-toggle>
           </ion-list>
-          <div class="hora">  
+          <!-- <div class="hora">  
             <ion-item lines="none">
               <ion-label>hora:</ion-label>
               <ion-datetime displayFormat="hh:mm A" [(ngModel)]="myDate"></ion-datetime>
             </ion-item>
                 
-          </div>
+          </div> -->
           <div class="cerrarsesion">
             <ion-item lines="none">
               <ion-img src="assets/img/cerrarsesion.png"></ion-img>
@@ -90,7 +90,7 @@
           </div>
         </div>
         <div class="back">
-          <ion-img style="width: 100; height: 200;" src="../../assets/img/appseprovectores-01.png"></ion-img>
+          <ion-img  src="../../assets/img/appseprovectores-01.png"></ion-img>
         </div>
       </ion-content>
     </ion-menu> 
