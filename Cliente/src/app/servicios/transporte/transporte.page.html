@@ -4,6 +4,10 @@
 
 <ion-content>
   <div class="front">
+    <div class="regresar">
+      <ion-img src="assets/img/retroceder.png" (click)="cancelar()"></ion-img>
+      
+    </div>
     <div class="titulo">
       <h1>TRANSPORTAR MERCADERIA</h1>
       <div class="logo">
@@ -50,9 +54,7 @@
       <div class="solicitar-servicio">
         <button ion-button color="secondary" (click)="solicitud()">Solicitar Servicio</button>
       </div>
-      <div class="cancelar-servicio">
-        <button ion-button color="secondary" (click)="cancelar()">Cancelar</button>
-      </div>
+      
   
     </div>
   </div>

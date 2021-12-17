@@ -19,7 +19,13 @@ ion-content{
   margin-left: 0;
   margin-right: 0;
 }
-
+.regresar ion-img{
+  margin-top: 5%;
+  margin-left: 5%;
+  width: 2.3em;
+  height: 2.3em;
+  
+}
 .titulo h1{
   margin: 1rem;
   padding: 0;
@@ -31,7 +37,7 @@ ion-content{
   max-width:650px;
 	margin-left: 30%;
   margin-right: 30%;
-  margin-top: 10%;
+
 }
 .logo ion-img{
    display:block;
