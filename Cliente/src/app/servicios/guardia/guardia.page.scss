@@ -99,10 +99,21 @@ margin-right: 0;
   font-size: 90%;
   //opacity: 0.50;
 }
-.dat ion-datatime{
+ion-datetime {
+  height: auto;
+  width: auto;
 
-  font-weight: bold;
-  font-size: 70%;
+  
+}
+
+ion-modal {
+  --width: 290px;
+  --height: 382px;
+  --border-radius: 8px;
+}
+
+ion-modal ion-datetime {
+  height: 382px;
 }
 .mapa ion-label{
   font-family: hp265;

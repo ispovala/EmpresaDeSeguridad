@@ -92,24 +92,4 @@ p{
 .opciones ion-label{
     padding-left: 7%;
 }
-.hora{
-    display: flex;
-    flex-direction: row;
-    text-align: center;
-    
-    justify-content: flex-end;
-  
-}
-.hora ion-label{
-    margin-top: 3%;
-    font-size: 20px;
-    margin-right: 0px;
-    border-right: 0px;
-}
-.hora ion-datetime{
-    margin-top: 0%;
-    border-top: 0%;
-    font-size: 20px;
-    margin-left: 0px;
-    border-left: 0px;
-}
+

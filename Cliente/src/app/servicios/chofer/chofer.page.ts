@@ -38,14 +38,8 @@ export class ChoferPage implements OnInit {
     this.navCtrl.navigateForward("/servicios");
   }
   solicitud() {
-    let pokemon: NavigationExtras = {
-      state: {
-        servicio: 'Chofer seguro',
-        po:50
-      }
-    };
+ 
     this.fechaInicio = moment(this.fechaInicio, "DD-MM-YYYY").toDate()
-    console.log(pokemon);
     this.navCtrl.navigateForward("/servicios/n/solicitud/hola",{ queryParams: {
       servicio: "Chofer seguro", datos:this.ionicForm.value
     }});

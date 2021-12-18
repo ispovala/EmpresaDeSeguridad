@@ -15,28 +15,55 @@
       </div>
     </div>
     <div class="datos">
-      <ion-list class="dat">
-       
+      <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" validate>
+        <ion-list class="dat">
           <ion-label>Fecha de Inicio</ion-label>
           <div class="seleccion">
-            <ion-item >
-              <ion-datetime [max]="maxFecha" [min]="minFecha" displayFormat="DD/MM/YYYY" pickerFormat="DD MM YYYY"></ion-datetime>
-              <ion-icon name="calendar-clear-outline" ></ion-icon>
-            </ion-item>
+            <ion-item button="true" id="open-date-input" >
+              <ion-label>{{dateValue | date: 'dd/MM/yyyy'}}</ion-label>
+              <ion-icon name="calendar-clear-outline" id="open-modal" item-right></ion-icon>
+              <ion-modal trigger="open-modal">
+                <ion-popover trigger="open-date-input" show-backdrop="false">
+                <ng-template>
+                  <ion-content >
+                    <ion-datetime formControlName="fechaInicio" [max]="maxFecha" [min]="minFecha" displayFormat="DD/MM/YYYY" pickerFormat="DD MM YYYY" #popoverDatetime
+                    presentation="date"
+                    (ionChange)="dateValue =popoverDatetime.value">   
+                      <div slot="title">     
+                      </div>
+                    </ion-datetime>
+                  </ion-content>
+                </ng-template>
+              </ion-popover>
+              </ion-modal>
+            </ion-item> 
           </div>
-        
-      
+    
           <ion-label>Hora de Inicio</ion-label>
           <div class="seleccion">
-            <ion-item >
-              <ion-datetime displayFormat="hh:mma"></ion-datetime>
-              <ion-icon name="time-outline" ></ion-icon>
+            <ion-item button="true" id="open-date-input2" >
+              <ion-label>{{dateValue3 | date: 'hh:mma'}}</ion-label>
+              <ion-icon name="calendar-clear-outline" id="open-modal3" item-right></ion-icon>
+              <ion-modal trigger="open-modal3"> 
+                <ion-popover trigger="open-date-input3" show-backdrop="false">
+                <ng-template>
+                  <ion-content >
+                    <ion-datetime formControlName="horaInicio" displayFormat="hh:mma" presentation="time" #popoverDatetime
+                    (ionChange)="dateValue3 =popoverDatetime.value"> 
+                    </ion-datetime>
+                  </ion-content>
+                </ng-template>
+              </ion-popover>
+              </ion-modal>
             </ion-item>
             
           </div>
-       
         
-      </ion-list>
+     
+
+        </ion-list>
+
+      </form>
     </div>
     <div class="mapa">
      

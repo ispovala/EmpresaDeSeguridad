@@ -14,6 +14,8 @@ export class CustodiaPage implements OnInit {
   defaultDate = "1970-12-16";
   maxFecha: string = (new Date().getFullYear()+1).toString();
   minFecha: string = (new Date().getFullYear()).toString();
+  fechaInicio:any;
+  horaInicio:any;
 
   origen = {
     lat: -2.1676746,
@@ -39,7 +41,11 @@ export class CustodiaPage implements OnInit {
 
   }
   solicitud() {
-    this.navCtrl.navigateForward("/servicios/n/solicitud");
+    this.navCtrl.navigateForward("/servicios/n/solicitud/hola",{ queryParams: {
+      servicio: "Custodia", datos:this.ionicForm.value
+    }});
+    console.log(this.ionicForm.value);
+
 
   }
   cancelar() {
@@ -47,10 +53,10 @@ export class CustodiaPage implements OnInit {
   }
   ngOnInit() {
     this.ionicForm = this.formBuilder.group({
+      fechaInicio:[""],
+      horaInicio:[""],
       
-      inicioDate: [this.defaultDate],
-      
-    })
+   })
 
   }
 

@@ -49,10 +49,21 @@ ion-content{
   font-size: 90%;
   //opacity: 0.50;
 }
-.dat ion-datatime{
+ion-datetime {
+  height: auto;
+  width: auto;
 
-  font-weight: bold;
-  font-size: 70%;
+  
+}
+
+ion-modal {
+  --width: 290px;
+  --height: 382px;
+  --border-radius: 8px;
+}
+
+ion-modal ion-datetime {
+  height: 382px;
 }
 .ubicacion ion-label{
   font-family: hp265;
@@ -180,4 +191,8 @@ ion-checkbox{
   font-size: 125%;
   //font-family: hp265;
   //font-weight: bold;
+}
+:root {
+  --ion-safe-area-top: 20px;
+  --ion-safe-area-bottom: 22px;
 }

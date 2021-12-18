@@ -14,7 +14,8 @@ import { ChoferPage } from './chofer.page';
     FormsModule,
     IonicModule,
     ChoferPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
   ],
   declarations: [ChoferPage]
 })
