@@ -19,24 +19,25 @@
         <ion-list class="dat">
           <ion-label>Fecha de Inicio</ion-label>
           <div class="seleccion">
-            <ion-item button="true" id="open-date-input" >
-              <ion-label>{{dateValue | date: 'dd/MM/yyyy'}}</ion-label>
-              <ion-icon name="calendar-clear-outline" id="open-modal" item-right></ion-icon>
-              <ion-modal trigger="open-modal">
-                <ion-popover trigger="open-date-input" show-backdrop="false">
+            <ion-item button="true" id="open-date-input2" >
+              <ion-label>{{dateValue2 | date: 'dd/MM/yyyy'}}</ion-label>
+              <ion-icon name="calendar-clear-outline" id="open-modal2" item-right></ion-icon>
+              <ion-modal trigger="open-modal2">    
+                <ion-popover trigger="open-date-input2" show-backdrop="false">
                 <ng-template>
                   <ion-content >
                     <ion-datetime formControlName="fechaInicio" [max]="maxFecha" [min]="minFecha" displayFormat="DD/MM/YYYY" pickerFormat="DD MM YYYY" #popoverDatetime
                     presentation="date"
-                    (ionChange)="dateValue =popoverDatetime.value">   
+                    (ionChange)="dateValue2 =popoverDatetime.value">   
                       <div slot="title">     
                       </div>
+                      
                     </ion-datetime>
                   </ion-content>
                 </ng-template>
               </ion-popover>
               </ion-modal>
-            </ion-item> 
+            </ion-item>
           </div>
     
           <ion-label>Hora de Inicio</ion-label>

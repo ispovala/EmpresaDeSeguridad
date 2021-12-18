@@ -17,6 +17,10 @@ export class GuardiaPage implements OnInit {
   defaultDate = "1970-12-16";
   maxFecha: string = (new Date().getFullYear()+1).toString();
   minFecha: string = (new Date().getFullYear()).toString();
+  fechaInicio:any;
+  horaInicio:any;
+  fechaFinalizacion:any;
+  horaFinalizacion:any;
 
   origen = {
     lat: -2.1676746,
@@ -45,16 +49,21 @@ export class GuardiaPage implements OnInit {
     this.navCtrl.navigateForward("/servicios");
   }
   solicitud() {
-    this.navCtrl.navigateForward("/servicios/n/solicitud");
+    this.navCtrl.navigateForward("/servicios/n/solicitud/hola",{ queryParams: {
+      servicio: "Guardia", datos:this.ionicForm.value
+    }});
+    console.log(this.ionicForm.value);
 
   }
 
   ngOnInit() {
     this.ionicForm = this.formBuilder.group({
+      fechaInicio:[""],
+      horaInicio:[""],
+      fechaFinalizacion:[""],
+      horaFinalizacion:[""],
       
-      inicioDate: [this.defaultDate],
-      
-    })
+   })
   }
 
   async addDirection(tipo: number) {
