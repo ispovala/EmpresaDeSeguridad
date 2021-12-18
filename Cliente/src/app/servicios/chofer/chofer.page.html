@@ -17,12 +17,12 @@
     </div>
     <div class="datos">
       
-      
+      <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" validate>
         <ion-list class="dat">
           <ion-label>Fecha de Inicio</ion-label>
           <div class="seleccion">
             <ion-item >
-              <ion-datetime  [max]="maxFecha" [min]="minFecha" displayFormat="DD/MM/YYYY" pickerFormat="DD MM YYYY" ></ion-datetime>
+              <ion-datetime  formControlName="fechaInicio" [max]="maxFecha" [min]="minFecha" displayFormat="DD/MM/YYYY" pickerFormat="DD MM YYYY" ></ion-datetime>
               <ion-icon name="calendar-clear-outline" item-right></ion-icon>
             </ion-item>
             
@@ -32,8 +32,8 @@
           <ion-label>Hora de Inicio</ion-label>
           <div class="seleccion">
             <ion-item >
-              <ion-datetime displayFormat="hh:mma"></ion-datetime>
-              <ion-icon [min]="minhour" name="time-outline" ></ion-icon>
+              <ion-datetime formControlName="horaInicio" displayFormat="hh:mma"></ion-datetime>
+              <ion-icon  [min]="minhour" name="time-outline" ></ion-icon>
             </ion-item>
             
           </div>
@@ -41,7 +41,7 @@
           <ion-label>Fecha de Finalización</ion-label>
           <div class="seleccion">
             <ion-item >
-              <ion-datetime  [max]="maxFecha" [min]="minFecha" displayFormat="DD/MM/YYYY" pickerFormat="DD MM YYYY"></ion-datetime>
+              <ion-datetime  formControlName="fechaFinalizacion" [max]="maxFecha" [min]="minFecha" displayFormat="DD/MM/YYYY" pickerFormat="DD MM YYYY"></ion-datetime>
               <ion-icon  name="calendar-clear-outline" ></ion-icon>
             </ion-item>
           </div>
@@ -49,16 +49,15 @@
           <ion-label>Hora de Finalizacion</ion-label>
           <div class="seleccion">
             <ion-item >
-              <ion-datetime displayFormat="hh:mma" ></ion-datetime>
+              <ion-datetime formControlName="horaFinalizacion" displayFormat="hh:mma" ></ion-datetime>
               <ion-icon name="time-outline" ></ion-icon>
             </ion-item>
           </div>
 
         </ion-list>
-      
-          
-        
-      
+
+      </form>
+
     </div>
     <div class="mapa">
         <div class="ubicacion">

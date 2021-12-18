@@ -1,9 +1,10 @@
 import { Component, OnInit} from '@angular/core';
-import { ModalController, NavController } from '@ionic/angular';
+import { ModalController, NavController, NavParams } from '@ionic/angular';
 import { UbicacionComponent } from 'src/app/ubicacion/ubicacion.component';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { NavigationExtras } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-
+import * as moment from 'moment';
 @Component({
   selector: 'app-chofer',
   templateUrl: './chofer.page.html',
@@ -17,7 +18,10 @@ export class ChoferPage implements OnInit {
   maxFecha2: string = (new Date().getFullYear()+1).toString();
   minFecha2: string = (new Date().getFullYear()).toString();
   minhour: String = new Date().toISOString();
-  
+  fechaInicio:any;
+  horaInicio:any;
+  fechaFinalizacion:any;
+  horaFinalizacion:any;
   
   origen = {
     lat: -2.1676746,
@@ -29,22 +33,36 @@ export class ChoferPage implements OnInit {
   };
 
   constructor(private navCtrl: NavController, private modalController: ModalController,public formBuilder: FormBuilder) {
-
   }
   cancelar() {
     this.navCtrl.navigateForward("/servicios");
   }
   solicitud() {
-    this.navCtrl.navigateForward("/servicios/n/solicitud");
+    let pokemon: NavigationExtras = {
+      state: {
+        servicio: 'Chofer seguro',
+        po:50
+      }
+    };
+    this.fechaInicio = moment(this.fechaInicio, "DD-MM-YYYY").toDate()
+    console.log(pokemon);
+    this.navCtrl.navigateForward("/servicios/n/solicitud/hola",{ queryParams: {
+      servicio: "Chofer seguro", datos:this.ionicForm.value
+    }});
+    console.log(this.ionicForm.value);
+
 
   }
+  
 
   ngOnInit() {
     this.ionicForm = this.formBuilder.group({
+      fechaInicio:[""],
+      horaInicio:[""],
+      fechaFinalizacion:[""],
+      horaFinalizacion:[""],
       
-      inicioDate: [this.defaultDate],
-      
-    })
+   })
     
   
   }

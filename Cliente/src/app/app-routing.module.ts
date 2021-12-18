@@ -49,7 +49,7 @@ const routes: Routes = [
         loadChildren: () => import('./servicios/transporte/transporte.module').then( m => m.TransportePageModule)
       },
       {
-        path: 'solicitud',
+        path: 'solicitud/:id',
         loadChildren: () => import('./servicios/solicitud-servicio/solicitud-servicio.module').then( m => m.SolicitudServicioPageModule)
       },
     ]
@@ -139,7 +139,8 @@ const routes: Routes = [
   {
     path: 'registrar',
     loadChildren: () => import('./registrar/registrar.module').then( m => m.RegistrarPageModule)
-  },  {
+  },
+  {
     path: 'sucursales',
     loadChildren: () => import('./sucursales/sucursales.module').then( m => m.SucursalesPageModule)
   },
