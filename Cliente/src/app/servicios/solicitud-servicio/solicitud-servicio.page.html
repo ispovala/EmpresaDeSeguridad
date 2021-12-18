@@ -46,8 +46,12 @@
           <ion-label class="negrita "> <br/>Lugar: </ion-label>
 
           <ion-label class="negrita "> <br/>Vehículo: </ion-label>
+          <ion-label *ngIf=" datosrecibidos.valorvehiculo == true" > Sí</ion-label>
+          <ion-label *ngIf=" datosrecibidos.valorvehiculo != true" > No</ion-label>
 
           <ion-label class="negrita "> <br/>Chofer Guardespaldas: </ion-label>
+          <ion-label *ngIf=" datosrecibidos.valorguardaespaldas == true" > Sí</ion-label>
+          <ion-label *ngIf=" datosrecibidos.valorguardaespaldas != true" > No</ion-label>
       
     </div>
     <div class="datosChofer" *ngIf=" datosrecibidos.servicio == 'Custodia'" >
@@ -67,8 +71,12 @@
       <ion-label class="negrita "> <br/>Lugar de destino: </ion-label>
 
       <ion-label class="negrita "> <br/>Número de vehículos: </ion-label>
+      <ion-label> {{datosrecibidos.cantVehiculo}}</ion-label>
 
-      <ion-label class="negrita "> <br/>Incluir candado satelital: </ion-label>
+      <ion-label class="negrita "> <br/>Incluir candado satelital:</ion-label>
+      <ion-label *ngIf=" datosrecibidos.valorcandado == true" > Sí</ion-label>
+      <ion-label *ngIf=" datosrecibidos.valorcandado != true" > No</ion-label>
+  
   
     </div>
     <div class="datosChofer" *ngIf=" datosrecibidos.servicio == 'Guardia'" >
@@ -87,9 +95,10 @@
       <ion-label class="negrita "> <br/>Hora de Finalización: </ion-label>
       <ion-label> {{horaFinalizacion}}</ion-label>
 
-      <ion-label class="negrita "> <br/>Lugar de origen: </ion-label>
+      <ion-label class="negrita "> <br/>Lugar: </ion-label>
 
-      <ion-label class="negrita "> <br/>Lugar de destino: </ion-label>
+      <ion-label class="negrita "> <br/>Número de guardias: </ion-label>
+      <ion-label> {{datosrecibidos.cantGuardia}}</ion-label>
 
 
   
@@ -104,9 +113,11 @@
       <ion-label class="negrita "> <br/>Hora de inicio: </ion-label>
       <ion-label> {{horaInicio}}</ion-label>
 
-      <ion-label class="negrita "> <br/>Lugar: </ion-label>
+      <ion-label class="negrita "> <br/>Lugar de origen: </ion-label>
 
-      <ion-label class="negrita "> <br/>Número de guardias: </ion-label>
+      <ion-label class="negrita "> <br/>Lugar de destino: </ion-label>
+
+      
 
   
     </div>

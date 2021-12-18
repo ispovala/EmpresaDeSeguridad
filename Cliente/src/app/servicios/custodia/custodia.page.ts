@@ -16,6 +16,10 @@ export class CustodiaPage implements OnInit {
   minFecha: string = (new Date().getFullYear()).toString();
   fechaInicio:any;
   horaInicio:any;
+  candado:boolean;
+  update() {
+    console.log('Esta habilitado' + this.candado);
+  }
 
   origen = {
     lat: -2.1676746,
@@ -42,7 +46,7 @@ export class CustodiaPage implements OnInit {
   }
   solicitud() {
     this.navCtrl.navigateForward("/servicios/n/solicitud/hola",{ queryParams: {
-      servicio: "Custodia", datos:this.ionicForm.value
+      servicio: "Custodia", datos:this.ionicForm.value, cantVehiculo:this.currentNumber, valorcandado:this.candado
     }});
     console.log(this.ionicForm.value);
 

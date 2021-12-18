@@ -22,7 +22,14 @@ export class ChoferPage implements OnInit {
   horaInicio:any;
   fechaFinalizacion:any;
   horaFinalizacion:any;
-  
+  vehiculo:boolean;
+  update() {
+    console.log('Esta habilitado' + this.vehiculo);
+  }
+  guardaespalda:boolean;
+  update2() {
+    console.log('Esta habilitado' + this.vehiculo);
+  }
   origen = {
     lat: -2.1676746,
     lng: -79.8956897
@@ -41,7 +48,7 @@ export class ChoferPage implements OnInit {
  
     this.fechaInicio = moment(this.fechaInicio, "DD-MM-YYYY").toDate()
     this.navCtrl.navigateForward("/servicios/n/solicitud/hola",{ queryParams: {
-      servicio: "Chofer seguro", datos:this.ionicForm.value
+      servicio: "Chofer seguro", datos:this.ionicForm.value, valorvehiculo:this.vehiculo, valorguardaespaldas:this.guardaespalda
     }});
     console.log(this.ionicForm.value);
 

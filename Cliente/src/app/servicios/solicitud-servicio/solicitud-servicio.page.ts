@@ -30,6 +30,7 @@ export class SolicitudServicioPage implements OnInit {
         this.fechaFinalizacion=moment(this.datosrecibidos.datos.fechaFinalizacion).format("DD/MM/YYYY");
         this.horaInicio=moment(this.datosrecibidos.datos.horaInicio).format("hh:mma");
         this.horaFinalizacion=moment(this.datosrecibidos.datos.horaFinalizacion).format("hh:mma");
+        
       }
     );
   }
