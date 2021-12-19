@@ -4,7 +4,7 @@ import { UbicacionComponent } from 'src/app/ubicacion/ubicacion.component';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { NavigationExtras } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-import * as moment from 'moment';
+
 @Component({
   selector: 'app-chofer',
   templateUrl: './chofer.page.html',
@@ -46,7 +46,7 @@ export class ChoferPage implements OnInit {
   }
   solicitud() {
  
-    this.fechaInicio = moment(this.fechaInicio, "DD-MM-YYYY").toDate()
+
     this.navCtrl.navigateForward("/servicios/n/solicitud/hola",{ queryParams: {
       servicio: "Chofer seguro", datos:this.ionicForm.value, valorvehiculo:this.vehiculo, valorguardaespaldas:this.guardaespalda
     }});
