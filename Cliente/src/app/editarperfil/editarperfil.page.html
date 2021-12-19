@@ -63,13 +63,16 @@
           <ion-label>Cédula de identidad</ion-label>
         <ion-item lines="full">
           
-          <ion-input maxlength="10" formControlName="cedula" type="tel" maxlength="10" required></ion-input>
+          <ion-input  formControlName="cedula" type="tel" maxlength="10" required ></ion-input>
         </ion-item>
         <span class="error ion-padding" *ngIf="isSubmitted && errorControl.cedula.errors?.required">
           Es necesario ingresar su cédula de identidad.
         </span>
         <span class="error ion-padding" *ngIf="isSubmitted && errorControl.cedula.errors?.pattern">
           Solo se permiten caracteres numéricos.
+        </span>
+        <span class="error ion-padding" *ngIf="ingresoCedula()">
+          Ingrese una cedula valida.
         </span>
         </div>
         
@@ -88,12 +91,30 @@
         </div>
         
         <div class="itemdatos">
-          <ion-label >Fecha de nacimiento</ion-label>
-          <ion-item lines="full">
-            
-            <ion-datetime (ionChange)="getDate($event)" done-text= "Aceptar" cancel-text= "Cancelar" formControlName="dob"  [max]="maxFecha" [min]="minFecha"  pickerFormat= "DD MMM YYYY " displayFormat="DD/MM/YYYY" 
-                          monthShortNames="Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre"></ion-datetime>
-          </ion-item>
+          <ion-label>Fecha de nacimiento</ion-label>
+          <div class="seleccion">
+            <ion-item button="true" id="open-date-input2" >
+              <ion-label>{{dateValue2 | date: 'dd/MM/yyyy'}}</ion-label>
+              <ion-icon name="calendar-clear-outline" id="open-modal2" item-right></ion-icon>
+              <ion-modal trigger="open-modal2">    
+                <ion-popover trigger="open-date-input2" show-backdrop="false">
+                <ng-template>
+                  <ion-content >
+                    <ion-datetime formControlName="fechaFinalizacion"  formControlName="dob" [max]="maxFecha" [min]="minFecha" displayFormat="DD/MM/YYYY" pickerFormat="DD MM YYYY" #popoverDatetime
+                    presentation="date"
+                    (ionChange)="dateValue2 =popoverDatetime.value" >   
+                      <div slot="title">     
+                      </div>                     
+                    </ion-datetime>
+                  </ion-content>
+                </ng-template>
+              </ion-popover>
+              </ion-modal>
+            </ion-item>
+          </div>
+
+
+          
         </div>
         
         <div class="itemdatos">
@@ -137,5 +158,7 @@
     </ion-list>
     </form>
   </div>
+
+  <script src= "app/scripts/validarcedula.js"></script>
 </ion-content>
 
