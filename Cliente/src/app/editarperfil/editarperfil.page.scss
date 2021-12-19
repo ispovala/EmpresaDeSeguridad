@@ -64,7 +64,6 @@ span.circle-grey ion-img{
 
 
 .datos ion-item{
-    display: flex;
     text-align: center;
     border-radius: 60px ;
     width: auto;
@@ -73,6 +72,14 @@ span.circle-grey ion-img{
       --ion-background-color: #e1e6eb;
   
 }
+
+.seleccion ion-icon {
+    margin-right: 0%;
+    top: 0.2em;
+    position: absolute;
+    margin-left: 80%;
+    color: black;
+  }
 
 
 .logo{
