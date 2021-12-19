@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NavController,NavParams } from '@ionic/angular';
+import { ModalController, NavController} from '@ionic/angular';
+import { TrackServicioComponent } from '../track-servicio/track-servicio.component';
+import { modalController } from '@ionic/core';
 import * as moment from 'moment';
 
 @Component({
@@ -16,7 +18,16 @@ export class SolicitudServicioPage implements OnInit {
   horaInicio:any;
   horaFinalizacion:any;
 
-  constructor(private route: ActivatedRoute, private router: Router, public navCtrl: NavController) {
+  origen = {
+    lat: -2.1676746,
+    lng: -79.8956897
+  };
+  destino = {
+    lat: -2.1676746,
+    lng: -79.8956897
+  };
+
+  constructor(private route: ActivatedRoute, private router: Router, public navCtrl: NavController, private modalController: ModalController) {
     
   }
   
@@ -41,4 +52,23 @@ export class SolicitudServicioPage implements OnInit {
     this.navCtrl.navigateForward("/servicios");
   }
 
+  async dibujarRuta() {
+
+      const modalAdd = await this.modalController.create({
+        component: TrackServicioComponent,
+        mode: 'ios',
+        swipeToClose: true,
+        componentProps: { position: this.origen }
+      });
+      modalAdd.setAttribute('style','--background: transparent; --backdrop-opacity: 0.0');
+
+
+      await modalAdd.present();
+      const { data } = await modalAdd.onWillDismiss();
+      if (data) {
+        this.origen = data.pos;
+        this.destino = data.pos
+        console.log('Origen -> ', this.origen);
+      }
+  }
 }

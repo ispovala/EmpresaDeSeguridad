@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { GuardiaPage } from '../servicios/guardia/guardia.page';
 import { MenuController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 
@@ -129,5 +128,8 @@ export class ServiciosPage implements OnInit {
     this.menu.enable(true, 'custom');
     this.menu.open('custom');
   }
+
+
+
 
 }
