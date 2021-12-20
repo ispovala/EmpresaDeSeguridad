@@ -1,4 +1,4 @@
-ion-content{
+ion-content {
     //font-family: hp556;
 }
 .tope span {
@@ -9,15 +9,15 @@ ion-content{
     top: 96px;
     z-index: 1;
 }
-.negrita{
+.negrita {
     font-family: hp556;
 }
-.regresar ion-img{
+.regresar ion-img {
     margin-top: 5%;
     margin-left: 5%;
     width: 2.3em;
     height: 2.3em;
-}   
+}
 .logosepro ion-img {
     position: absolute;
     top: 18px;
@@ -29,97 +29,97 @@ div.logosepro {
     justify-content: center;
 }
 .imagen {
-    position:absolute;
-    width:5rem;
-    height:5rem;
+    position: absolute;
+    width: 5rem;
+    height: 5rem;
     border-radius: 50%;
-    margin:auto;
-    top: 31%; left: 0; bottom: 10; right: 0;
+    margin: auto;
+    top: 31%;
+    left: 0;
+    bottom: 10;
+    right: 0;
 }
-.titulo{
+.titulo {
     font-family: hp556;
-    
-    text-align:center;
-    position: relative;
-    margin-top: 110px;
- 
-    margin-left:15% ;
-    margin-right:15% ;  
-}
-.titulo ion-label{
-    font-size: 2vm;
-    text-align:center;
-    border: 3px solid #4A4A4A;
-    display: block;
-    margin-top: 0.1rem;
-    margin-bottom: 0.8rem;
-    padding: 10px;
-    width: 100%;    
-    height: 2.5rem;
-    border-radius: 60px ;
-    background-position: center center;
 
+    position: relative;
+    margin-top: 7rem;
+
+    margin-left: 15%;
+    margin-right: 15%;
+}
+.titulo ion-label {
+    font-size: 2vm;
+    text-align: center;
+    border: 3px solid #4a4a4a;
+    display: block;
+    border-radius: 60px;
     font-size: 120%;
 }
 
-.datos{
-    position:absolute;
-    top: 43%; left: 18%; bottom: 10; right: 18%;
-    
-
+.datos {
+    position: absolute;
+    top: 43%;
+    left: 18%;
+    bottom: 10;
+    right: 18%;
 }
-.datos ion-item{
-    position:absolute;
-    padding:0px !important;
+.datos ion-item {
+    position: absolute;
+    padding: 0px !important;
     margin: 0px !important;
 }
-.datos{
-    padding-top:0px !important;
-    padding-bottom:0px !important;
-  }
-  .botones{
-    position:absolute;
-    top: 90%; left: 20%; bottom: 10; right: 20%;
+.datos {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+.botones {
+    position: absolute;
+    top: 90%;
+    left: 20%;
+    bottom: 10;
+    right: 20%;
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
+}
 
-  }
-
-.confirmar-servicio button{
-    text-align:center;
+.confirmar-servicio button {
+    text-align: center;
     margin-left: 0rem;
     width: 6rem;
     height: 2.3rem;
-    border-radius: 60px ;
-    background-color:#38bd4e;
-    color:#ffffff;
-  }
-  .cancelar-servicio button{
-      text-align:center;
-      margin-left: 0rem;
-      width: 6rem;
-      height: 2.3rem;
-      border-radius: 60px ;
-      background-color:#c43834;
-      color:#ffffff;
-    }
-.ruta{
+    border-radius: 60px;
+    background-color: #38bd4e;
+    color: #ffffff;
+}
+.cancelar-servicio button {
+    text-align: center;
+    margin-left: 0rem;
+    width: 6rem;
+    height: 2.3rem;
+    border-radius: 60px;
+    background-color: #c43834;
+    color: #ffffff;
+}
+.ruta {
     display: flex;
-    position:absolute;
-    top: 75%; left: 35%; bottom: 10; right: 20%;
+    position: absolute;
+    top: 75%;
+    left: 35%;
+    bottom: 10;
+    right: 20%;
     background-color: #ffffff;
-    
-
 }
-.metodo-pago{
-    position:absolute;
-    top: 78%; left: 35%; bottom: 10; right: 20%;
+.metodo-pago {
+    position: absolute;
+    top: 78%;
+    left: 35%;
+    bottom: 10;
+    right: 20%;
     background-color: #ffffff;
-
 }
-.botonruta{
+.botonruta {
     margin-left: auto;
     margin-right: auto;
     display: block;
-
 }
