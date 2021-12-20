@@ -55,9 +55,21 @@ export class CustodiaPage implements OnInit {
 
     await alert.present();
 
+  
+  }
+  ngOnInit() {
+    this.ionicForm = this.formBuilder.group({
+      fechaInicio:[""],
+      horaInicio:[""],
+      
+   })
+
   }
   solicitud() {
-    if (this.fechaInicio == null || this.horaInicio==null) {
+ 
+    if (this.ionicForm.value.fechaInicio == "" || this.ionicForm.value.horaInicio=="") {
+      console.log(this.ionicForm.value.fechaInicio)
+      console.log(this.horaInicio)
       this.presentAlert();
       
     } else{
@@ -74,14 +86,7 @@ export class CustodiaPage implements OnInit {
   cancelar() {
     this.navCtrl.navigateForward("/servicios");
   }
-  ngOnInit() {
-    this.ionicForm = this.formBuilder.group({
-      fechaInicio:[""],
-      horaInicio:[""],
-      
-   })
-
-  }
+  
 
   async addDirection(tipo: number) {
 
