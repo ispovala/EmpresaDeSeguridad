@@ -104,22 +104,36 @@ div.logosepro {
 .ruta {
     display: flex;
     position: absolute;
-    top: 75%;
-    left: 35%;
-    bottom: 10;
-    right: 20%;
+    text-align: center;
+    justify-content: space-between;
+    left: 30%;
+   
+    right: 50%;
     background-color: #ffffff;
 }
+
 .metodo-pago {
+    text-align: center;
     position: absolute;
     top: 78%;
-    left: 35%;
+    left: 20%;
     bottom: 10;
     right: 20%;
     background-color: #ffffff;
 }
 .botonruta {
-    margin-left: auto;
-    margin-right: auto;
+
     display: block;
+    text-align: center;
+    bottom: -60%;
+}
+.botonruta ion-img{
+    text-align: center;
+    width: 7em;
+    height: 7em;
+}
+.metodo-pago ion-select{
+    background-color: #d8d6d7;
+ 
+    border-radius: 60px;
 }
