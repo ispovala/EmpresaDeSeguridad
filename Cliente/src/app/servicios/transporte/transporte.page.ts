@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController, NavController,AlertController } from '@ionic/angular';
+import { ModalController, NavController, AlertController } from '@ionic/angular';
 import { UbicacionComponent } from 'src/app/ubicacion/ubicacion.component';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
@@ -12,13 +12,13 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 export class TransportePage implements OnInit {
   ionicForm: FormGroup;
   defaultDate = "1970-12-16";
-  maxFecha: string = (new Date().getFullYear()+1).toString();
+  maxFecha: string = (new Date().getFullYear() + 1).toString();
   minFecha: string = (new Date().getFullYear()).toString();
-  fechaInicio:any;
-  horaInicio:any;
-  fechaFinalizacion:any;
-  horaFinalizacion:any;
-  
+  fechaInicio: any;
+  horaInicio: any;
+  fechaFinalizacion: any;
+  horaFinalizacion: any;
+
 
   origen = {
     lat: -2.1676746,
@@ -30,7 +30,7 @@ export class TransportePage implements OnInit {
   };
   item = "transporte"
 
-  constructor(public alertController: AlertController,private navCtrl: NavController, private modalController: ModalController,public formBuilder: FormBuilder) {
+  constructor(public alertController: AlertController, private navCtrl: NavController, private modalController: ModalController, public formBuilder: FormBuilder) {
 
   }
   cancelar() {
@@ -60,19 +60,19 @@ export class TransportePage implements OnInit {
       console.log(this.ionicForm.value);
 
     }
-    
+
 
   }
 
 
   ngOnInit() {
     this.ionicForm = this.formBuilder.group({
-      fechaInicio:[""],
-      horaInicio:[""],
-      fechaFinalizacion:[""],
-      horaFinalizacion:[""],
-      
-   })
+      fechaInicio: [""],
+      horaInicio: [""],
+      fechaFinalizacion: [""],
+      horaFinalizacion: [""],
+
+    })
   }
 
   async addDirection(tipo: number) {

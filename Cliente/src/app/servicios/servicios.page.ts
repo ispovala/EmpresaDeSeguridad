@@ -127,8 +127,4 @@ export class ServiciosPage implements OnInit {
     this.menu.enable(true, 'custom');
     this.menu.open('custom');
   }
-
-
-
-
 }
