@@ -18,10 +18,19 @@
 .datosperfilhome{
     margin-top: 40%;
     .gridperfil{
+        justify-content: stretch;
+
+        .coldatosuser{
+            margin-right: 5%;
+        }
         .logo{
             margin:auto;
-            width: 50%;
+            width: 60%;
         }  
+        ion-row{
+            justify-content: center;
+        }
+            
         .bienvenido{
             color: #bf1a24;
             font-weight: bold;
@@ -29,8 +38,10 @@
             font-size: x-large;
         }
         .user{
-            font-family: 'BebasRegular';
-            font-stretch: narrower;
+            font-family: 'BebasBold';
+            font-size: x-large;
+            font-weight: lighter;
+            justify-content: center;
             
         }
     }
@@ -56,5 +67,12 @@
 }
 
 ion-content{
-    
-}
+    --background: none;
+    background-image: url("../../assets/img/rayasbottom.png");
+    background-position:bottom;
+    background-repeat: no-repeat; 
+    //background-image: url("../../assets/img/aguilarojafondo.png");
+    //background-position: center;
+    background-size: 100%;
+    margin-bottom: 50%;
+  }

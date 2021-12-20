@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController, NavController } from '@ionic/angular';
+import { ModalController, NavController, AlertController } from '@ionic/angular';
 import { UbicacionComponent } from 'src/app/ubicacion/ubicacion.component';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
@@ -12,8 +12,13 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 export class TransportePage implements OnInit {
   ionicForm: FormGroup;
   defaultDate = "1970-12-16";
-  maxFecha: string = (new Date().getFullYear()+1).toString();
+  maxFecha: string = (new Date().getFullYear() + 1).toString();
   minFecha: string = (new Date().getFullYear()).toString();
+  fechaInicio: any;
+  horaInicio: any;
+  fechaFinalizacion: any;
+  horaFinalizacion: any;
+
 
   origen = {
     lat: -2.1676746,
@@ -25,23 +30,48 @@ export class TransportePage implements OnInit {
   };
   item = "transporte"
 
-  constructor(private navCtrl: NavController, private modalController: ModalController,public formBuilder: FormBuilder) {
+  constructor(public alertController: AlertController, private navCtrl: NavController, private modalController: ModalController, public formBuilder: FormBuilder) {
 
   }
   cancelar() {
     this.navCtrl.navigateForward("/servicios");
   }
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Campos vacíos',
+      //subHeader: 'Subtitle',
+      message: 'Existen campos sin completar en la solicitud',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+
+  }
   solicitud() {
-    this.navCtrl.navigateForward("/servicios/n/solicitud");
+    if (this.ionicForm.value.fechaInicio == "" ||   this.ionicForm.value.horaInicio=="") {
+      this.presentAlert();
+      
+      
+    }else{
+      this.navCtrl.navigateForward("/servicios/n/solicitud/hola",{ queryParams: {
+        servicio: "Transportar Mercadería", datos:this.ionicForm.value
+      }});
+      console.log(this.ionicForm.value);
+
+    }
+
 
   }
 
 
   ngOnInit() {
     this.ionicForm = this.formBuilder.group({
-      
-      inicioDate: [this.defaultDate],
-      
+      fechaInicio: [""],
+      horaInicio: [""],
+      fechaFinalizacion: [""],
+      horaFinalizacion: [""],
+
     })
   }
 

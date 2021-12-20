@@ -3,57 +3,157 @@
 </ion-header>
 
 <ion-content>
+  <div class="regresar">
+    <ion-img src="assets/img/retroceder.png" (click)="regresar()"></ion-img>
+    
+  </div>
   <div class="tope">
     <span>
     </span>
+
     <div class="logosepro">
       <ion-img style="width: 150px; height: 150px;" src="assets/img/logosepro.png"></ion-img>
     </div>
   </div>
-  <span class="titulo">
-    <ion-card>Solicitud de servicio</ion-card>
-  </span>
-  <span class="imagen">   
+  <div class="titulo">
+    <ion-label>Solicitud de servicio</ion-label>
+  </div>
+  <div class="imagen">   
     <div class="logo">
       <ion-img  src="assets/img/perfilcliente.png"></ion-img>
     </div>
-  </span>
+  </div>
   <div class="datos">
-    <ion-list >
-      <ion-item lines="none">
-        <ion-label>Servicio:</ion-label>
-      </ion-item>
-      <ion-item lines="none">
-        <ion-label>Fecha de inicio:</ion-label>
-      </ion-item>
-      <ion-item lines="none">
-        <ion-label>Hora de inicio:</ion-label>
-      </ion-item>
-      <ion-item lines="none">
-        <ion-label>Lugar de origen:</ion-label>
-      </ion-item >
-      <ion-item lines="none">
-        <ion-label>Lugar de destino:</ion-label>
-      </ion-item>
-      <ion-item lines="none">
-        <ion-label>Numero de vehiculos:</ion-label>
-      </ion-item>
-      <ion-item lines="none">
-        <ion-label>Candado satelital:</ion-label>
-      </ion-item>
-      <ion-item lines="none">
-        <ion-label>Monto:</ion-label>
-      </ion-item>
+    
+    <div class="datosChofer" *ngIf=" datosrecibidos.servicio == 'Chofer seguro'" >
+      
+    
+          <ion-label class="negrita ">Servicio:</ion-label>
+          <ion-label> {{datosrecibidos.servicio}}</ion-label>
+        
+          <ion-label class="negrita "> <br/>Fecha de inicio:</ion-label>
+          <ion-label> {{fechaInicio}}</ion-label>
 
-    </ion-list>
+          <ion-label class="negrita "> <br/>Hora de inicio: </ion-label>
+          <ion-label> {{horaInicio}}</ion-label>
+
+          <ion-label class="negrita "> <br/>Fecha de Finalización: </ion-label>
+          <ion-label> {{fechaFinalizacion}}</ion-label>
+
+          <ion-label class="negrita "> <br/>Hora de Finalización: </ion-label>
+          <ion-label> {{horaFinalizacion}}</ion-label>
+
+          <ion-label class="negrita "> <br/>Lugar: </ion-label>
+
+          <ion-label class="negrita "> <br/>Vehículo: </ion-label>
+          <ion-label *ngIf=" datosrecibidos.valorvehiculo == true" > Sí</ion-label>
+          <ion-label *ngIf=" datosrecibidos.valorvehiculo != true" > No</ion-label>
+
+          <ion-label class="negrita "> <br/>Chofer Guardespaldas: </ion-label>
+          <ion-label *ngIf=" datosrecibidos.valorguardaespaldas == true" > Sí</ion-label>
+          <ion-label *ngIf=" datosrecibidos.valorguardaespaldas != true" > No</ion-label>
+          <ion-label class="negrita "> <br/>Monto: </ion-label>
+          <ion-label> Pendiente</ion-label>
+      
+    </div>
+    <div class="datosChofer" *ngIf=" datosrecibidos.servicio == 'Custodia'" >
+      
+    
+      <ion-label class="negrita ">Servicio:</ion-label>
+      <ion-label> {{datosrecibidos.servicio}}</ion-label>
+    
+      <ion-label class="negrita "> <br/>Fecha de inicio:</ion-label>
+      <ion-label> {{fechaInicio}}</ion-label>
+
+      <ion-label class="negrita "> <br/>Hora de inicio: </ion-label>
+      <ion-label> {{horaInicio}}</ion-label>
+
+      <ion-label class="negrita "> <br/>Lugar de origen: </ion-label>
+
+      <ion-label class="negrita "> <br/>Lugar de destino: </ion-label>
+
+      <ion-label class="negrita "> <br/>Número de vehículos: </ion-label>
+      <ion-label> {{datosrecibidos.cantVehiculo}}</ion-label>
+
+      <ion-label class="negrita "> <br/>Incluir candado satelital:</ion-label>
+      <ion-label *ngIf=" datosrecibidos.valorcandado == true" > Sí</ion-label>
+      <ion-label *ngIf=" datosrecibidos.valorcandado != true" > No</ion-label>
+      <ion-label class="negrita "> <br/>Monto: </ion-label>
+      <ion-label> Pendiente</ion-label>
+      <div class="botonruta" >
+        <button (click)="dibujarRuta()" class="ruta">
+            <label >Ver ruta</label>
+            <ion-img style="width: 30px; height: 30px;" src="assets/img/ruta.png"></ion-img>
+        </button>
+      </div>
+  
+  
+    </div>
+    <div class="datosChofer" *ngIf=" datosrecibidos.servicio == 'Guardia'" >
+      <ion-label class="negrita ">Servicio:</ion-label>
+      <ion-label> {{datosrecibidos.servicio}}</ion-label>
+    
+      <ion-label class="negrita "> <br/>Fecha de inicio:</ion-label>
+      <ion-label> {{fechaInicio}}</ion-label>
+
+      <ion-label class="negrita "> <br/>Hora de inicio: </ion-label>
+      <ion-label> {{horaInicio}}</ion-label>
+
+      <ion-label class="negrita "> <br/>Fecha de Finalización: </ion-label>
+      <ion-label> {{fechaFinalizacion}}</ion-label>
+
+      <ion-label class="negrita "> <br/>Hora de Finalización: </ion-label>
+      <ion-label> {{horaFinalizacion}}</ion-label>
+
+      <ion-label class="negrita "> <br/>Lugar: </ion-label>
+
+      <ion-label class="negrita "> <br/>Número de guardias: </ion-label>
+      <ion-label> {{datosrecibidos.cantGuardia}}</ion-label>
+      <ion-label class="negrita "> <br/>Monto: </ion-label>
+      <ion-label> Pendiente</ion-label>
+
+
+  
+    </div>
+    <div class="datosChofer" *ngIf=" datosrecibidos.servicio == 'Transportar Mercadería'" >
+      <ion-label class="negrita ">Servicio:</ion-label>
+      <ion-label> {{datosrecibidos.servicio}}</ion-label>
+    
+      <ion-label class="negrita "> <br/>Fecha de inicio:</ion-label>
+      <ion-label> {{fechaInicio}}</ion-label>
+
+      <ion-label class="negrita "> <br/>Hora de inicio: </ion-label>
+      <ion-label> {{horaInicio}}</ion-label>
+
+      <ion-label class="negrita "> <br/>Lugar de origen: </ion-label>
+
+      <ion-label class="negrita "> <br/>Lugar de destino: </ion-label>
+      <ion-label class="negrita "> <br/>Monto: </ion-label>
+      <ion-label> Pendiente</ion-label>
+      <div class="botonruta" >
+        <label >Ver ruta</label>
+        <button (click)="dibujarRuta()" class="ruta">
+            
+            <ion-img  src="assets/img/ruta.png"></ion-img>
+        </button>
+      </div>
+
+      
+
+  
+    </div>
+    
+    
 
   </div>
   
-  <div class="botonruta" >
-    <button class="ruta">
-        <label>Ver ruta</label>
-        <ion-img style="width: 30px; height: 30px;" src="assets/img/ruta.png"></ion-img>
-    </button>
+  <div class="metodo-pago">
+    <ion-label > Elegir metodo de pago</ion-label>
+    <ion-select >
+      <ion-select-option value="tarjeta">TARJETA CREDITO/DEBITO</ion-select-option>
+      <ion-select-option value="efectivo">EFECTIVO</ion-select-option>
+    </ion-select>
+
   </div>
   <div class="botones">
     <div class="confirmar-servicio">
@@ -64,14 +164,7 @@
     </div>
 
   </div>
-  <div class="metodo-pago">
-    <ion-label > Elegir metodo de pago</ion-label>
-    <ion-select >
-      <ion-select-option value="tarjeta">TARJETA CREDITO/DEBITO</ion-select-option>
-      <ion-select-option value="efectivo">EFECTIVO</ion-select-option>
-    </ion-select>
-
-  </div>
+  
   
 
 </ion-content>

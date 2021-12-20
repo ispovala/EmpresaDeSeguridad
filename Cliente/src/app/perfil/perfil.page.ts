@@ -46,6 +46,11 @@ export class PerfilPage implements OnInit {
     console.log(result);
   }
 
+
+  home(){
+    this.navCtrl.navigateForward("/homeperfil");
+  }
+
 }
 
 
