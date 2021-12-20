@@ -52,6 +52,8 @@
           <ion-label class="negrita "> <br/>Chofer Guardespaldas: </ion-label>
           <ion-label *ngIf=" datosrecibidos.valorguardaespaldas == true" > Sí</ion-label>
           <ion-label *ngIf=" datosrecibidos.valorguardaespaldas != true" > No</ion-label>
+          <ion-label class="negrita "> <br/>Monto: </ion-label>
+          <ion-label> Pendiente</ion-label>
       
     </div>
     <div class="datosChofer" *ngIf=" datosrecibidos.servicio == 'Custodia'" >
@@ -76,6 +78,14 @@
       <ion-label class="negrita "> <br/>Incluir candado satelital:</ion-label>
       <ion-label *ngIf=" datosrecibidos.valorcandado == true" > Sí</ion-label>
       <ion-label *ngIf=" datosrecibidos.valorcandado != true" > No</ion-label>
+      <ion-label class="negrita "> <br/>Monto: </ion-label>
+      <ion-label> Pendiente</ion-label>
+      <div class="botonruta" >
+        <button (click)="dibujarRuta()" class="ruta">
+            <label >Ver ruta</label>
+            <ion-img style="width: 30px; height: 30px;" src="assets/img/ruta.png"></ion-img>
+        </button>
+      </div>
   
   
     </div>
@@ -99,6 +109,8 @@
 
       <ion-label class="negrita "> <br/>Número de guardias: </ion-label>
       <ion-label> {{datosrecibidos.cantGuardia}}</ion-label>
+      <ion-label class="negrita "> <br/>Monto: </ion-label>
+      <ion-label> Pendiente</ion-label>
 
 
   
@@ -116,23 +128,25 @@
       <ion-label class="negrita "> <br/>Lugar de origen: </ion-label>
 
       <ion-label class="negrita "> <br/>Lugar de destino: </ion-label>
+      <ion-label class="negrita "> <br/>Monto: </ion-label>
+      <ion-label> Pendiente</ion-label>
+      <div class="botonruta" >
+        <button (click)="dibujarRuta()" class="ruta">
+            <label >Ver ruta</label>
+            <ion-img style="width: 30px; height: 30px;" src="assets/img/ruta.png"></ion-img>
+        </button>
+      </div>
 
       
 
   
     </div>
-    <ion-label class="negrita "> <br/>Monto: </ion-label>
-    <ion-label> Pendiente</ion-label>
+    
     
 
   </div>
   
-  <div class="botonruta" >
-    <button (click)="dibujarRuta()" class="ruta">
-        <label >Ver ruta</label>
-        <ion-img style="width: 30px; height: 30px;" src="assets/img/ruta.png"></ion-img>
-    </button>
-  </div>
+  
   <div class="botones">
     <div class="confirmar-servicio">
       <button ion-button color="secondary" (click)="confirmar()">Confirmar</button>
