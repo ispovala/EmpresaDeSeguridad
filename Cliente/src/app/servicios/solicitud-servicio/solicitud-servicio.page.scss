@@ -29,14 +29,14 @@ div.logosepro {
     justify-content: center;
 }
 .imagen {
-    position: absolute;
+
     width: 5rem;
     height: 5rem;
     border-radius: 50%;
     margin: auto;
-    top: 31%;
+    margin-top: 5%;
+    margin-bottom: 0;
     left: 0;
-    bottom: 10;
     right: 0;
 }
 .titulo {
@@ -58,14 +58,14 @@ div.logosepro {
 }
 
 .datos {
-    position: absolute;
-    top: 43%;
-    left: 18%;
+
+    margin-top: 5%;
+    margin-left: 18%;
     bottom: 10;
-    right: 18%;
+    margin-right: 18%;
 }
 .datos ion-item {
-    position: absolute;
+
     padding: 0px !important;
     margin: 0px !important;
 }
@@ -74,11 +74,11 @@ div.logosepro {
     padding-bottom: 0px !important;
 }
 .botones {
-    position: absolute;
-    top: 90%;
-    left: 20%;
+ 
+    margin-top: 5%;
+    margin-left: 20%;
     bottom: 10;
-    right: 20%;
+    margin-right: 20%;
     display: flex;
     justify-content: space-between;
 }
@@ -103,23 +103,37 @@ div.logosepro {
 }
 .ruta {
     display: flex;
-    position: absolute;
-    top: 75%;
-    left: 35%;
-    bottom: 10;
-    right: 20%;
+  
+    text-align: center;
+    justify-content: space-between;
+    margin-left: 30%;
+   
+    margin-right: 50%;
     background-color: #ffffff;
 }
+
 .metodo-pago {
-    position: absolute;
-    top: 78%;
-    left: 35%;
-    bottom: 10;
-    right: 20%;
+    text-align: center;
+
+    top: 50%;
+    margin-left: 20%;
+    bottom: 0;
+    margin-right: 20%;
     background-color: #ffffff;
 }
 .botonruta {
-    margin-left: auto;
-    margin-right: auto;
+
     display: block;
+    text-align: center;
+    bottom: -60%;
+}
+.botonruta ion-img{
+    text-align: center;
+    width: 7em;
+    height: 7em;
+}
+.metodo-pago ion-select{
+    background-color: #d8d6d7;
+ 
+    border-radius: 60px;
 }

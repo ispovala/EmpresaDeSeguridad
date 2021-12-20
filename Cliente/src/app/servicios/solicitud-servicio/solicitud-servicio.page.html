@@ -136,9 +136,10 @@
       <ion-label class="negrita "> <br/>Monto: </ion-label>
       <ion-label> Pendiente</ion-label>
       <div class="botonruta" >
+        <label >Ver ruta</label>
         <button (click)="dibujarRuta()" class="ruta">
-            <label >Ver ruta</label>
-            <ion-img style="width: 30px; height: 30px;" src="assets/img/ruta.png"></ion-img>
+            
+            <ion-img  src="assets/img/ruta.png"></ion-img>
         </button>
       </div>
 
@@ -151,7 +152,14 @@
 
   </div>
   
-  
+  <div class="metodo-pago">
+    <ion-label > Elegir metodo de pago</ion-label>
+    <ion-select >
+      <ion-select-option value="tarjeta">TARJETA CREDITO/DEBITO</ion-select-option>
+      <ion-select-option value="efectivo">EFECTIVO</ion-select-option>
+    </ion-select>
+
+  </div>
   <div class="botones">
     <div class="confirmar-servicio">
       <button ion-button color="secondary" (click)="confirmar()">Confirmar</button>
@@ -161,14 +169,7 @@
     </div>
 
   </div>
-  <div class="metodo-pago">
-    <ion-label > Elegir metodo de pago</ion-label>
-    <ion-select >
-      <ion-select-option value="tarjeta">TARJETA CREDITO/DEBITO</ion-select-option>
-      <ion-select-option value="efectivo">EFECTIVO</ion-select-option>
-    </ion-select>
-
-  </div>
+  
   
 
 </ion-content>
