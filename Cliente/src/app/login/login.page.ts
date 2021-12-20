@@ -61,7 +61,7 @@ export class LoginPage implements OnInit {
 
   redirigir(){
     this.navCtrl.navigateForward("/pin-login");
-    this.ionicForm.reset()
+    this.ionicForm.reset();
   }
 
 }

@@ -36,3 +36,20 @@ div.logosepro {
     display: flex;
     justify-content: center;
 }
+.img-logo{
+    max-width: 70%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 6rem;
+  }
+  .boxed {
+    text-align:justify;
+    max-height: 25rem;
+    max-width: 80%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3rem;
+    overflow: scroll;
+    }
