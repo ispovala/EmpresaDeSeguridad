@@ -30,9 +30,11 @@ ion-content{
     margin-top: 10rem;
     margin-left: 3rem;
   }
-  
+  .container-omitir{
+    justify-content: space-between;
+    text-align:center;
+  }
   a{
-    text-decoration: none;
     color: white;
   }
   .datos{
