@@ -10,9 +10,13 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 export class RegistrarPage implements OnInit {
   condiciones: boolean;
   ionicForm: FormGroup;
+  
+  item1Details = "lorem ipsum";
+  defaultDate = "1990-12-16";
+  maxFecha: string = (new Date().getFullYear()-18).toString();
+  minFecha: string = (new Date().getFullYear()-80).toString();
+
   isSubmitted = false;
-
-
   constructor(private navCtrl: NavController, public formBuilder: FormBuilder, public alertController: AlertController) { }
 
   ngOnInit() {
@@ -20,9 +24,16 @@ export class RegistrarPage implements OnInit {
       name: ['', [Validators.required, Validators.minLength(2), Validators.pattern('[a-zA-Z ]*')]],
       lastname: ['', [Validators.required, Validators.minLength(2), Validators.pattern('[a-zA-Z ]*')]],
       email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-      password: ['', [Validators.required, Validators.minLength(6),  Validators.pattern('[a-zA-Z0-9- .#]*')]],
+      dob: [this.defaultDate],
+      convencional: ['', [Validators.required, Validators.pattern('\d*') ]],
     })
   }
+  getDate(e) {
+    let date = new Date(e.target.value).toISOString().substring(0, 10);
+    this.ionicForm.get('dob').setValue(date, {
+       onlyself: true
+    })
+ }
 
  get errorControl() {
   return this.ionicForm.controls;
@@ -46,6 +57,6 @@ submitForm() {
     this.navCtrl.navigateForward("/servicios");
     this.ionicForm.reset()
   }
- 
+  
 
-} 
+}

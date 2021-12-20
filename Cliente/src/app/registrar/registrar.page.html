@@ -62,16 +62,31 @@
         </div>
 
         <div class="itemdatos">
-          <ion-label >Contraseña</ion-label>
-          <ion-item lines="full">
-            <ion-input formControlName="password" type="password"></ion-input>
+          <ion-item>
+            <ion-label>Género</ion-label>
+            <ion-select  placeholder="Escoja uno">
+              <ion-select-option value="f">Femenino</ion-select-option>
+              <ion-select-option value="m">Masculino</ion-select-option>
+            </ion-select>
           </ion-item>
-          <span class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.required">
-            Es necesario que escriba una contraseña.
-          </span>
-          <span class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.pattern">
-            Por favor, ingrese una contraseña válida.
-          </span>
+        </div>
+
+        <div class="itemdatos">
+          <ion-label>Número convencional</ion-label>
+          <ion-item lines="full">
+            
+            <ion-input formControlName="convencional" input type="tel " maxlength="10" required ></ion-input>
+          </ion-item>
+          
+        </div>
+        
+        <div class="itemdatos">
+          <ion-label >Fecha de nacimiento</ion-label>
+          <ion-item lines="full">
+            
+            <ion-datetime (ionChange)="getDate($event)" formControlName="fechanacimiento" done-text= "Aceptar" cancel-text= "Cancelar" formControlName="dob"  [max]="maxFecha" [min]="minFecha"  pickerFormat= "DD MMM YYYY " displayFormat="DD/MM/YYYY" 
+                          monthShortNames="Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre"></ion-datetime>
+          </ion-item>
         </div>
         
         <ion-row>
@@ -89,7 +104,7 @@
     <div class="container-terminos">
       <ion-item>
         <ion-label class="terminos">He leído y acepto las políticas de privacidad</ion-label>
-        <ion-checkbox [(ngModel)]="condiciones" color="primary" slot="start"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="condiciones" color="primary" slot="start" item-right checked={{isValidCheckbox.item1}></ion-checkbox>
       </ion-item>
     </div> 
   </div>
