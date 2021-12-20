@@ -84,7 +84,7 @@ export class TrackServicioComponent implements OnInit {
 
   }
 
-  private calculateRoute() {
+  public calculateRoute() {
     this.directionsService.route({
       origin: this.origen,
       destination: this.destino,

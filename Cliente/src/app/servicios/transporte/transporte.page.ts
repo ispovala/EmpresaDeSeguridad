@@ -39,7 +39,8 @@ export class TransportePage implements OnInit {
   solicitud() {
 
     this.navCtrl.navigateForward("/servicios/n/solicitud/hola",{ queryParams: {
-      servicio: "Transportar Mercadería", datos:this.ionicForm.value
+      servicio: "Transportar Mercadería", datos:this.ionicForm.value,
+      origen: this.origen, destino:this.destino
     }});
     console.log(this.ionicForm.value);
 

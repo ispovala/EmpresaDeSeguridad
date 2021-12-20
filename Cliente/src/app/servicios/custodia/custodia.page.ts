@@ -46,7 +46,8 @@ export class CustodiaPage implements OnInit {
   }
   solicitud() {
     this.navCtrl.navigateForward("/servicios/n/solicitud/hola",{ queryParams: {
-      servicio: "Custodia", datos:this.ionicForm.value, cantVehiculo:this.currentNumber, valorcandado:this.candado
+      servicio: "Custodia", datos:this.ionicForm.value, cantVehiculo:this.currentNumber, valorcandado:this.candado,
+      origen: this.origen, destino:this.destino
     }});
     console.log(this.ionicForm.value);
 

@@ -50,7 +50,8 @@ export class GuardiaPage implements OnInit {
   }
   solicitud() {
     this.navCtrl.navigateForward("/servicios/n/solicitud/hola",{ queryParams: {
-      servicio: "Guardia", datos:this.ionicForm.value, cantGuardia:this.currentNumber
+      servicio: "Guardia", datos:this.ionicForm.value, cantGuardia:this.currentNumber,
+      origen: this.origen, destino:this.destino
     }});
     console.log(this.ionicForm.value);
 

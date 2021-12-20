@@ -41,7 +41,8 @@ export class SolicitudServicioPage implements OnInit {
         this.fechaFinalizacion=moment(this.datosrecibidos.datos.fechaFinalizacion).format("DD/MM/YYYY");
         this.horaInicio=moment(this.datosrecibidos.datos.horaInicio).format("hh:mma");
         this.horaFinalizacion=moment(this.datosrecibidos.datos.horaFinalizacion).format("hh:mma");
-        
+        this.origen=this.datosrecibidos.origen
+        this.destino=this.datosrecibidos.destino
       }
     );
   }
@@ -58,17 +59,10 @@ export class SolicitudServicioPage implements OnInit {
         component: TrackServicioComponent,
         mode: 'ios',
         swipeToClose: true,
-        componentProps: { position: this.origen }
+        componentProps: { origen: this.origen, destino: this.destino }
       });
       modalAdd.setAttribute('style','--background: transparent; --backdrop-opacity: 0.0');
 
-
       await modalAdd.present();
-      const { data } = await modalAdd.onWillDismiss();
-      if (data) {
-        this.origen = data.pos;
-        this.destino = data.pos
-        console.log('Origen -> ', this.origen);
-      }
   }
 }
