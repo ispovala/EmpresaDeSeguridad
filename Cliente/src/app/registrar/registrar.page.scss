@@ -147,3 +147,36 @@ ion-content.background{
   .container-terminos{
     margin-bottom: 2rem;
   }
+  ion-input{
+    font-family: hp265;
+    font-weight: lighter;
+}   
+
+ion-datetime{
+    font-family: hp265;
+    font-weight: lighter;
+}   
+
+.regresar ion-img{
+    margin-top: 5%;
+    margin-left: 5%;
+    width: 2.3em;
+    height: 2.3em;
+}  
+
+ion-datetime {
+    height: auto;
+    width: auto;
+  
+    
+  }
+  
+  ion-modal {
+    --width: 290px;
+    --height: 382px;
+    --border-radius: 8px;
+  }
+  
+  ion-modal ion-datetime {
+    height: 382px;
+  }
