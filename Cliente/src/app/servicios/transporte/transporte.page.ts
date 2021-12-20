@@ -49,16 +49,14 @@ export class TransportePage implements OnInit {
 
   }
   solicitud() {
-    if (this.fechaInicio == null || this.fechaFinalizacion == null ||
-      this.horaFinalizacion == null || this.horaInicio == null) {
+    if (this.ionicForm.value.fechaInicio == "" ||   this.ionicForm.value.horaInicio=="") {
       this.presentAlert();
-
-    } else {
-      this.navCtrl.navigateForward("/servicios/n/solicitud/hola", {
-        queryParams: {
-          servicio: "Transportar Mercadería", datos: this.ionicForm.value, origen: this.origen, destino: this.destino
-        }
-      });
+      
+      
+    }else{
+      this.navCtrl.navigateForward("/servicios/n/solicitud/hola",{ queryParams: {
+        servicio: "Transportar Mercadería", datos:this.ionicForm.value
+      }});
       console.log(this.ionicForm.value);
 
     }

@@ -62,8 +62,8 @@ export class GuardiaPage implements OnInit {
 
   }
   solicitud() {
-    if (this.fechaInicio == null || this.fechaFinalizacion == null ||
-      this.horaFinalizacion == null || this.horaInicio == null) {
+    if (this.ionicForm.value.fechaInicio == "" || this.ionicForm.value.fechaFinalizacion == ""
+      || this.ionicForm.value.horaFinalizacion == "" || this.ionicForm.value.horaInicio == "") {
       this.presentAlert();
 
     } else {
