@@ -30,7 +30,7 @@ export class RegistrarPage implements OnInit {
   }
   getDate(e) {
     let date = new Date(e.target.value).toISOString().substring(0, 10);
-    this.ionicForm.get('dob').setValue(date, {
+    this.ionicForm.get('fechanacimiento').setValue(date, {
        onlyself: true
     })
  }
@@ -57,6 +57,9 @@ submitForm() {
     this.navCtrl.navigateForward("/servicios");
     this.ionicForm.reset()
   }
-  
+
+  onClick() {
+    this.navCtrl.navigateForward("/item1-modal");
+    }
 
 }

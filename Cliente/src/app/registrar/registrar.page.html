@@ -81,12 +81,28 @@
         </div>
         
         <div class="itemdatos">
-          <ion-label >Fecha de nacimiento</ion-label>
-          <ion-item lines="full">
-            
-            <ion-datetime (ionChange)="getDate($event)" formControlName="fechanacimiento" done-text= "Aceptar" cancel-text= "Cancelar" formControlName="dob"  [max]="maxFecha" [min]="minFecha"  pickerFormat= "DD MMM YYYY " displayFormat="DD/MM/YYYY" 
-                          monthShortNames="Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre"></ion-datetime>
-          </ion-item>
+          <ion-label>Fecha de Nacimiento</ion-label>
+          <div class="seleccion">
+            <ion-item button="true" id="open-date-input2" >
+              <ion-label>{{dateValue2 | date: 'dd/MM/yyyy'}}</ion-label>
+              <ion-icon name="calendar-clear-outline" id="open-modal2" item-right></ion-icon>
+              <ion-modal trigger="open-modal2">    
+                <ion-popover trigger="open-date-input2" show-backdrop="false">
+                <ng-template>
+                  <ion-content >
+                    <ion-datetime formControlName="dob" [max]="maxFecha" [min]="minFecha" displayFormat="DD/MM/YYYY" pickerFormat="DD MM YYYY" #popoverDatetime
+                    presentation="date"
+                    (ionChange)="dateValue2 =popoverDatetime.value">   
+                      <div slot="title">     
+                      </div>
+                      
+                    </ion-datetime>
+                  </ion-content>
+                </ng-template>
+              </ion-popover>
+              </ion-modal>
+            </ion-item>
+          </div>
         </div>
         
         <ion-row>
@@ -104,7 +120,7 @@
     <div class="container-terminos">
       <ion-item>
         <ion-label class="terminos">He leído y acepto las políticas de privacidad</ion-label>
-        <ion-checkbox [(ngModel)]="condiciones" color="primary" slot="start" item-right checked={{isValidCheckbox.item1}></ion-checkbox>
+        <ion-checkbox (click)="onClick()" [(ngModel)]="condiciones" color="primary" slot="start" item-right checked={{isValidCheckbox.item1}></ion-checkbox>
       </ion-item>
     </div> 
   </div>

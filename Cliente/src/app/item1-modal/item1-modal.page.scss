@@ -1,3 +1,11 @@
+ion-content{
+    --background: none;
+    background-image: url("../../assets/img/rayasbottom.png");
+    background-position:bottom;
+    background-repeat: no-repeat; 
+    background-size: 100%;
+    margin-bottom: 50%;
+  }
 ion-buttons{
     margin-left: 20px;
     margin-top: 14px;
