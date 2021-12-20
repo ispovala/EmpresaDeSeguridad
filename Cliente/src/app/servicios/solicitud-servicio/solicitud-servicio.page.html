@@ -44,6 +44,7 @@
           <ion-label> {{horaFinalizacion}}</ion-label>
 
           <ion-label class="negrita "> <br/>Lugar: </ion-label>
+          <ion-label> {{direccionOrigen}}</ion-label>
 
           <ion-label class="negrita "> <br/>Vehículo: </ion-label>
           <ion-label *ngIf=" datosrecibidos.valorvehiculo == true" > Sí</ion-label>
@@ -69,8 +70,9 @@
       <ion-label> {{horaInicio}}</ion-label>
 
       <ion-label class="negrita "> <br/>Lugar de origen: </ion-label>
-
+      <ion-label> {{direccionOrigen}}</ion-label>
       <ion-label class="negrita "> <br/>Lugar de destino: </ion-label>
+      <ion-label> {{direccionDestino}}</ion-label>
 
       <ion-label class="negrita "> <br/>Número de vehículos: </ion-label>
       <ion-label> {{datosrecibidos.cantVehiculo}}</ion-label>
@@ -106,6 +108,8 @@
       <ion-label> {{horaFinalizacion}}</ion-label>
 
       <ion-label class="negrita "> <br/>Lugar: </ion-label>
+      <ion-label> {{direccionOrigen}}</ion-label>
+
 
       <ion-label class="negrita "> <br/>Número de guardias: </ion-label>
       <ion-label> {{datosrecibidos.cantGuardia}}</ion-label>
@@ -126,8 +130,9 @@
       <ion-label> {{horaInicio}}</ion-label>
 
       <ion-label class="negrita "> <br/>Lugar de origen: </ion-label>
-
+      <ion-label> {{direccionOrigen}}</ion-label>
       <ion-label class="negrita "> <br/>Lugar de destino: </ion-label>
+      <ion-label> {{direccionDestino}}</ion-label>
       <ion-label class="negrita "> <br/>Monto: </ion-label>
       <ion-label> Pendiente</ion-label>
       <div class="botonruta" >

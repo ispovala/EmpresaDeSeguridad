@@ -4,6 +4,7 @@ import { ModalController } from '@ionic/angular';
 import { UbicacionComponent } from 'src/app/ubicacion/ubicacion.component';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
+
 @Component({
   selector: 'app-custodia',
   templateUrl: './custodia.page.html',
@@ -17,6 +18,7 @@ export class CustodiaPage implements OnInit {
   fechaInicio: any;
   horaInicio: any;
   candado: boolean;
+
   update() {
     console.log('Esta habilitado' + this.candado);
   }

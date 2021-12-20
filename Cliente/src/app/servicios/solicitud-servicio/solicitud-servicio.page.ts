@@ -5,6 +5,8 @@ import { TrackServicioComponent } from '../track-servicio/track-servicio.compone
 import { modalController } from '@ionic/core';
 import * as moment from 'moment';
 
+declare var google: any;
+
 @Component({
   selector: 'app-solicitud-servicio',
   templateUrl: './solicitud-servicio.page.html',
@@ -17,6 +19,8 @@ export class SolicitudServicioPage implements OnInit {
   fechaFinalizacion: any;
   horaInicio: any;
   horaFinalizacion: any;
+  direccionOrigen: any;
+  direccionDestino: any;
 
   origen = {
     lat: -2.1676746,
@@ -42,8 +46,9 @@ export class SolicitudServicioPage implements OnInit {
       this.fechaFinalizacion = moment(this.datosrecibidos.datos.fechaFinalizacion).format("DD/MM/YYYY");
       this.horaInicio = moment(this.datosrecibidos.datos.horaInicio).format("hh:mma");
       this.horaFinalizacion = moment(this.datosrecibidos.datos.horaFinalizacion).format("hh:mma");
-      this.origen = this.datosrecibidos.origen
-      this.destino = this.datosrecibidos.destino
+      this.origen = this.datosrecibidos.origen;
+      this.destino = this.datosrecibidos.destino;
+      this.findPlaces(this.origen,this.destino);
     }
     );
   }
@@ -79,5 +84,32 @@ export class SolicitudServicioPage implements OnInit {
     modalAdd.setAttribute('style', '--background: transparent; --backdrop-opacity: 0.0');
 
     await modalAdd.present();
+  }
+
+  findPlaces(salida: any, llegada: any) {
+
+    const geocoder = new google.maps.Geocoder();
+
+    geocoder.geocode({ location: salida })
+      .then(({ results }) => {
+        if (results[0]) {
+          this.direccionOrigen =  results[0].formatted_address;
+        }
+        else {
+          this.direccionOrigen =  "Dirección Imprecisa"
+        }
+      })
+      .catch((e) => window.alert("Geocoder failed due to: " + e));
+
+    geocoder.geocode({ location: llegada })
+      .then(({ results }) => {
+        if (results[0]) {
+          this.direccionDestino =  results[0].formatted_address;
+        }
+        else {
+          this.direccionDestino =  "Dirección Imprecisa"
+        }
+      })
+      .catch((e) => window.alert("Geocoder failed due to: " + e));
   }
 }
