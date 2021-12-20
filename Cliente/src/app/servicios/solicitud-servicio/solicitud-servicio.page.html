@@ -147,7 +147,14 @@
 
   </div>
   
-  
+  <div class="metodo-pago">
+    <ion-label > Elegir metodo de pago</ion-label>
+    <ion-select >
+      <ion-select-option value="tarjeta">TARJETA CREDITO/DEBITO</ion-select-option>
+      <ion-select-option value="efectivo">EFECTIVO</ion-select-option>
+    </ion-select>
+
+  </div>
   <div class="botones">
     <div class="confirmar-servicio">
       <button ion-button color="secondary" (click)="confirmar()">Confirmar</button>
@@ -157,14 +164,7 @@
     </div>
 
   </div>
-  <div class="metodo-pago">
-    <ion-label > Elegir metodo de pago</ion-label>
-    <ion-select >
-      <ion-select-option value="tarjeta">TARJETA CREDITO/DEBITO</ion-select-option>
-      <ion-select-option value="efectivo">EFECTIVO</ion-select-option>
-    </ion-select>
-
-  </div>
+  
   
 
 </ion-content>
