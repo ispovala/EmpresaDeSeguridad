@@ -3,9 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
-
 import { CalificarServicioPageRoutingModule } from './calificar-servicio-routing.module';
-
 import { CalificarServicioPage } from './calificar-servicio.page';
 
 @NgModule({

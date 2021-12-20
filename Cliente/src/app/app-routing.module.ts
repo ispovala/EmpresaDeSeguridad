@@ -80,10 +80,6 @@ const routes: Routes = [
     loadChildren: () => import('./menuprueba/menuprueba.module').then( m => m.MenupruebaPageModule)
   },
   {
-    path: 'calificar-servicio',
-    loadChildren: () => import('./calificar-servicio/calificar-servicio.module').then( m => m.CalificarServicioPageModule)
-  },
-  {
     path: 'perfil',
     loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
   },
@@ -144,7 +140,11 @@ const routes: Routes = [
   {
     path: 'sucursal',
     loadChildren: () => import('./sucursal/sucursal.module').then( m => m.SucursalPageModule)
+  },  {
+    path: 'calificar-servicio',
+    loadChildren: () => import('./calificar-servicio/calificar-servicio.module').then( m => m.CalificarServicioPageModule)
   },
+
 
 
 

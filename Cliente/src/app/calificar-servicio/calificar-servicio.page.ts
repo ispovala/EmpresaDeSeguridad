@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-calificar-servicio',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalificarServicioPage implements OnInit {
 
-  constructor() { }
+  currentRate=5;
+
+  constructor(private navCtrl: NavController) { }
 
   ngOnInit() {
+  }
+
+  regresar() {
+      this.navCtrl.navigateForward("/servicios/n/chofer");
   }
 
 }
