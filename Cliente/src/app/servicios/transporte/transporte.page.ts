@@ -49,8 +49,9 @@ export class TransportePage implements OnInit {
 
   }
   solicitud() {
-    if (this.ionicForm.value.fechaInicio == "" || this.ionicForm.value.fechaFinalizacion=="" || this.ionicForm.value.horaFinalizacion=="" || this.ionicForm.value.horaInicio=="") {
+    if (this.ionicForm.value.fechaInicio == "" ||   this.ionicForm.value.horaInicio=="") {
       this.presentAlert();
+      
       
     }else{
       this.navCtrl.navigateForward("/servicios/n/solicitud/hola",{ queryParams: {
