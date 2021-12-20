@@ -45,6 +45,20 @@ export class SolicitudServicioPage implements OnInit {
       }
     );
   }
+  regresar(){
+    if (this.datosrecibidos.servicio == 'Chofer seguro') {
+      this.navCtrl.navigateForward("/servicios/n/chofer");
+    }
+    if (this.datosrecibidos.servicio == 'Guardia') {
+      this.navCtrl.navigateForward("/servicios/n/guardia");
+    }
+    if (this.datosrecibidos.servicio == 'Transportar Mercadería') {
+      this.navCtrl.navigateForward("/servicios/n/transporte");
+    }
+    if (this.datosrecibidos.servicio == 'Custodia') {
+      this.navCtrl.navigateForward("/servicios/n/custodia");
+    }
+  }
   cancelar(){
     this.navCtrl.navigateForward("/servicios");
   }

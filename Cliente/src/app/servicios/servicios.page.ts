@@ -12,7 +12,6 @@ export class ServiciosPage implements OnInit {
 
   
   constructor(private navCtrl: NavController, private menu: MenuController,public alertController: AlertController){
-    
   }
   irPaginaChofer(){
     this.presentAlertChofer();

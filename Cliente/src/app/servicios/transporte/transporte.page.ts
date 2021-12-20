@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController, NavController } from '@ionic/angular';
+import { ModalController, NavController,AlertController } from '@ionic/angular';
 import { UbicacionComponent } from 'src/app/ubicacion/ubicacion.component';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
@@ -30,18 +30,36 @@ export class TransportePage implements OnInit {
   };
   item = "transporte"
 
-  constructor(private navCtrl: NavController, private modalController: ModalController,public formBuilder: FormBuilder) {
+  constructor(public alertController: AlertController,private navCtrl: NavController, private modalController: ModalController,public formBuilder: FormBuilder) {
 
   }
   cancelar() {
     this.navCtrl.navigateForward("/servicios");
   }
-  solicitud() {
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Campos vacíos',
+      //subHeader: 'Subtitle',
+      message: 'Existen campos sin completar en la solicitud',
+      buttons: ['OK']
+    });
 
-    this.navCtrl.navigateForward("/servicios/n/solicitud/hola",{ queryParams: {
-      servicio: "Transportar Mercadería", datos:this.ionicForm.value
-    }});
-    console.log(this.ionicForm.value);
+    await alert.present();
+
+  }
+  solicitud() {
+    if (this.fechaInicio == null || this.fechaFinalizacion==null || this.horaFinalizacion==null || this.horaInicio==null) {
+      this.presentAlert();
+      
+    }else{
+      this.navCtrl.navigateForward("/servicios/n/solicitud/hola",{ queryParams: {
+        servicio: "Transportar Mercadería", datos:this.ionicForm.value
+      }});
+      console.log(this.ionicForm.value);
+
+    }
+    
 
   }
 

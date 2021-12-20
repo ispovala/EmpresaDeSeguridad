@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, AlertController} from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { UbicacionComponent } from 'src/app/ubicacion/ubicacion.component';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
@@ -41,14 +41,33 @@ export class CustodiaPage implements OnInit {
     }
   }
 
-  constructor(private navCtrl: NavController, private modalController: ModalController, public formBuilder: FormBuilder) {
+  constructor(public alertController: AlertController,private navCtrl: NavController, private modalController: ModalController, public formBuilder: FormBuilder) {
+
+  }
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Campos vacíos',
+      //subHeader: 'Subtitle',
+      message: 'Existen campos sin completar en la solicitud',
+      buttons: ['OK']
+    });
+
+    await alert.present();
 
   }
   solicitud() {
-    this.navCtrl.navigateForward("/servicios/n/solicitud/hola",{ queryParams: {
-      servicio: "Custodia", datos:this.ionicForm.value, cantVehiculo:this.currentNumber, valorcandado:this.candado
-    }});
-    console.log(this.ionicForm.value);
+    if (this.fechaInicio == null || this.horaInicio==null) {
+      this.presentAlert();
+      
+    } else{
+      this.navCtrl.navigateForward("/servicios/n/solicitud/hola",{ queryParams: {
+        servicio: "Custodia", datos:this.ionicForm.value, cantVehiculo:this.currentNumber, valorcandado:this.candado
+      }});
+      console.log(this.ionicForm.value);
+
+    }
+    
 
 
   }
