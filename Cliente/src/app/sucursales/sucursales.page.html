@@ -2,7 +2,9 @@
 
   <div>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-menu-button>
+        <ion-img src="assets/img/menuHamburguesa.png"></ion-img>
+      </ion-menu-button>
     </ion-buttons>
     <div class="tope">
       <span>
@@ -14,29 +16,29 @@
   </div>
 
   <div class="sucursales">
-  <ion-list>
+    <ion-list>
 
-    <ion-item>
-      <ion-thumbnail slot="start">
-      </ion-thumbnail>
-      <ion-label></ion-label>
-    </ion-item>
+      <ion-item>
+        <ion-thumbnail slot="start">
+        </ion-thumbnail>
+        <ion-label></ion-label>
+      </ion-item>
 
-    <ion-item (click)="irPaginaSucursal()">
-      <ion-thumbnail slot="start">
-        <img src="assets/img/sucursalesicono0.png">
-      </ion-thumbnail>
-      <ion-label style="font-family: BebasBold;">MATRIZ NORTE</ion-label>
-    </ion-item>
+      <ion-item (click)="irPaginaSucursal()">
+        <ion-thumbnail slot="start">
+          <img src="assets/img/sucursalesicono0.png">
+        </ion-thumbnail>
+        <ion-label style="font-family: BebasBold;">MATRIZ NORTE</ion-label>
+      </ion-item>
 
-    <ion-item (click)="irPaginaSucursal()">
-      <ion-thumbnail slot="start">
-        <img src="assets/img/sucursalesicono1.png">
-      </ion-thumbnail>
-      <ion-label style="font-family: BebasBold;">MATRIZ SUR</ion-label>
-    </ion-item>
-  </ion-list>
-</div>
+      <ion-item (click)="irPaginaSucursal()">
+        <ion-thumbnail slot="start">
+          <img src="assets/img/sucursalesicono1.png">
+        </ion-thumbnail>
+        <ion-label style="font-family: BebasBold;">MATRIZ SUR</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
   <div class="back">
     <ion-img style="width: 10; height: 10;" src="../../assets/img/aguilarojafondo.png"></ion-img>
   </div>

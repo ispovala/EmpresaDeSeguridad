@@ -1,35 +1,8 @@
-ion-content {
-    //font-family: hp556;
-}
-.tope span {
-    width: 100%;
-    position: absolute;
-    background-color: #aaafb4;
-    height: 26px;
-    top: 96px;
-    z-index: 1;
-}
 .negrita {
     font-family: hp556;
 }
-.regresar ion-img {
-    margin-top: 5%;
-    margin-left: 5%;
-    width: 2.3em;
-    height: 2.3em;
-}
-.logosepro ion-img {
-    position: absolute;
-    top: 18px;
-    left: auto;
-    z-index: 2;
-}
-div.logosepro {
-    display: flex;
-    justify-content: center;
-}
-.imagen {
 
+.imagen {
     width: 5rem;
     height: 5rem;
     border-radius: 50%;
@@ -39,15 +12,15 @@ div.logosepro {
     left: 0;
     right: 0;
 }
+
 .titulo {
     font-family: hp556;
-
     position: relative;
     margin-top: 7rem;
-
     margin-left: 15%;
     margin-right: 15%;
 }
+
 .titulo ion-label {
     font-size: 2vm;
     text-align: center;
@@ -58,23 +31,23 @@ div.logosepro {
 }
 
 .datos {
-
     margin-top: 5%;
     margin-left: 18%;
     bottom: 10;
     margin-right: 18%;
 }
-.datos ion-item {
 
+.datos ion-item {
     padding: 0px !important;
     margin: 0px !important;
 }
+
 .datos {
     padding-top: 0px !important;
     padding-bottom: 0px !important;
 }
+
 .botones {
- 
     margin-top: 5%;
     margin-left: 20%;
     bottom: 10;
@@ -92,6 +65,7 @@ div.logosepro {
     background-color: #38bd4e;
     color: #ffffff;
 }
+
 .cancelar-servicio button {
     text-align: center;
     margin-left: 0rem;
@@ -101,39 +75,69 @@ div.logosepro {
     background-color: #c43834;
     color: #ffffff;
 }
+
 .ruta {
     display: flex;
-  
     text-align: center;
     justify-content: space-between;
     margin-left: 30%;
-   
     margin-right: 50%;
     background-color: #ffffff;
 }
 
 .metodo-pago {
     text-align: center;
-
     top: 50%;
     margin-left: 20%;
     bottom: 0;
     margin-right: 20%;
     background-color: #ffffff;
 }
-.botonruta {
 
+.botonruta {
     display: block;
     text-align: center;
     bottom: -60%;
 }
-.botonruta ion-img{
+
+.botonruta ion-img {
     text-align: center;
     width: 7em;
     height: 7em;
 }
-.metodo-pago ion-select{
+
+.metodo-pago ion-select {
     background-color: #d8d6d7;
- 
     border-radius: 60px;
+}
+
+ion-buttons{
+    margin-left: 20px;
+    margin-top: 14px;
+    max-width: 40px;
+    ion-img{
+        padding: 2px;
+        width: 60px;
+    }
+}
+
+.tope span {
+    width: 100%;
+    position: absolute;
+    background-color: #aaafb4;
+    height: 26px;
+    top: 62px;
+    z-index: 1;
+}
+
+.logosepro ion-img {
+    position: absolute;
+    top: 18px;
+    left: auto;
+    z-index: 2;
+}
+
+div.logosepro {
+    display: flex;
+    justify-content: center;
 }

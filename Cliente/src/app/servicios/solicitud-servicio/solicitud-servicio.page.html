@@ -1,20 +1,19 @@
-<ion-header>
- 
-</ion-header>
-
 <ion-content>
-  <div class="regresar">
-    <ion-img src="assets/img/retroceder.png" (click)="regresar()"></ion-img>
-    
-  </div>
-  <div class="tope">
-    <span>
-    </span>
-
-    <div class="logosepro">
-      <ion-img style="width: 150px; height: 150px;" src="assets/img/logosepro.png"></ion-img>
+  
+  <div>
+    <ion-buttons slot="start">
+        <ion-img src="assets/img/retroceder.png" (click)="regresar()"></ion-img>
+    </ion-buttons>
+    <div class="tope">
+      <span>
+      </span>
+      <div class="logosepro">
+        <ion-img style="width: 160px; height: 150spx;" src="assets/img/logosepro.png"></ion-img>
+      </div>
     </div>
   </div>
+
+  
   <div class="titulo">
     <ion-label>Solicitud de servicio</ion-label>
   </div>
@@ -44,6 +43,7 @@
           <ion-label> {{horaFinalizacion}}</ion-label>
 
           <ion-label class="negrita "> <br/>Lugar: </ion-label>
+          <ion-label> {{direccionOrigen}}</ion-label>
 
           <ion-label class="negrita "> <br/>Vehículo: </ion-label>
           <ion-label *ngIf=" datosrecibidos.valorvehiculo == true" > Sí</ion-label>
@@ -69,8 +69,9 @@
       <ion-label> {{horaInicio}}</ion-label>
 
       <ion-label class="negrita "> <br/>Lugar de origen: </ion-label>
-
+      <ion-label> {{direccionOrigen}}</ion-label>
       <ion-label class="negrita "> <br/>Lugar de destino: </ion-label>
+      <ion-label> {{direccionDestino}}</ion-label>
 
       <ion-label class="negrita "> <br/>Número de vehículos: </ion-label>
       <ion-label> {{datosrecibidos.cantVehiculo}}</ion-label>
@@ -83,7 +84,7 @@
       <div class="botonruta" >
         <button (click)="dibujarRuta()" class="ruta">
             <label >Ver ruta</label>
-            <ion-img style="width: 30px; height: 30px;" src="assets/img/ruta.png"></ion-img>
+            <ion-img src="assets/img/ruta.png"></ion-img>
         </button>
       </div>
   
@@ -106,6 +107,8 @@
       <ion-label> {{horaFinalizacion}}</ion-label>
 
       <ion-label class="negrita "> <br/>Lugar: </ion-label>
+      <ion-label> {{direccionOrigen}}</ion-label>
+
 
       <ion-label class="negrita "> <br/>Número de guardias: </ion-label>
       <ion-label> {{datosrecibidos.cantGuardia}}</ion-label>
@@ -126,8 +129,9 @@
       <ion-label> {{horaInicio}}</ion-label>
 
       <ion-label class="negrita "> <br/>Lugar de origen: </ion-label>
-
+      <ion-label> {{direccionOrigen}}</ion-label>
       <ion-label class="negrita "> <br/>Lugar de destino: </ion-label>
+      <ion-label> {{direccionDestino}}</ion-label>
       <ion-label class="negrita "> <br/>Monto: </ion-label>
       <ion-label> Pendiente</ion-label>
       <div class="botonruta" >

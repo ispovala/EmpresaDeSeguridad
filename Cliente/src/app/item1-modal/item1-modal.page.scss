@@ -3,8 +3,36 @@ ion-content{
     background-image: url("../../assets/img/rayasbottom.png");
     background-position:bottom;
     background-repeat: no-repeat; 
-    //background-image: url("../../assets/img/aguilarojafondo.png");
-    //background-position: center;
     background-size: 100%;
     margin-bottom: 50%;
   }
+ion-buttons{
+    margin-left: 20px;
+    margin-top: 14px;
+    max-width: 40px;
+    ion-img{
+        padding: 2px;
+        width: 60px;
+    }
+}
+
+.tope span {
+    width: 100%;
+    position: absolute;
+    background-color: #aaafb4;
+    height: 26px;
+    top: 62px;
+    z-index: 1;
+}
+
+.logosepro ion-img {
+    position: absolute;
+    top: 18px;
+    left: auto;
+    z-index: 2;
+}
+
+div.logosepro {
+    display: flex;
+    justify-content: center;
+}
