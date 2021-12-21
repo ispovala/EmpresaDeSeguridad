@@ -110,10 +110,10 @@ export class GuardiaPage implements OnInit {
       //var fin= this.ionicForm.value.fechaFinalizacion;
       //var inicio= 
       //(this.maxiFecha2.getFullYear()).toString()+"-"+(this.maxiFecha2.getMonth()+1).toString()+"-"+(this.maxiFecha2.getDate()).toString()
-      console.log(this.ionicForm.value.fechaInicio);
-      console.log(this.ionicForm.value.fechaFinalizacion);
-      console.log(ini);
-      console.log(diaini);
+      //console.log(this.ionicForm.value.fechaInicio);
+      //console.log(this.ionicForm.value.fechaFinalizacion);
+     // console.log(ini);
+     // console.log(diaini);
 
     }else {
       this.navCtrl.navigateForward("/servicios/n/solicitud/hola", {
