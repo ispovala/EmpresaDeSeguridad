@@ -7,7 +7,7 @@ declare var google: any;
 })
 export class UbicacionService {
 
-  apiKey = "AIzaSyD1JXu53cs8TkImjjMNv2ZCxJh4BI7V1Lo";
+  apiKey = "PUT_YOUR_API_KEY_HERE_HOMIE";
   mapsLoaded = false;
 
   constructor() { }

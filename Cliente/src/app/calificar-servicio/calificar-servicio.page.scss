@@ -29,7 +29,34 @@ div.logosepro {
     justify-content: center;
 }
 
-.calificacion{
-    margin-top: 10rem;
+.calificacion {
+    width: 100%;
+    margin-top: 6rem;
+    display: flex;
+    flex-direction: column;
+    ion-img{
+        width: 80%;
+        margin: 0 auto;
+    }
 }
 
+.estrellas {
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+ion-label{
+    font-family: "BebasBold";
+    font-size: 1.6em;
+    margin: 0 auto;
+    p{
+        font-size: 0.8em;
+    }
+}
+
+ion-button{
+    max-width: 30%;
+    margin: 0 auto;
+    margin-top: 2em;
+}
