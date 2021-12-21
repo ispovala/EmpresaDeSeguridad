@@ -109,7 +109,10 @@ ion-content.background{
   }
   .itemdatos{
     justify-content: space-between;
-    text-align:center;
+    text-align:left;
+    ion-label{
+      margin-left: 2rem;
+    }
   }
   .terminos{
     color: #000;
@@ -183,6 +186,10 @@ ion-datetime {
   .seleccion{
     border-radius: 25rem;
     background-color: #ffffff;
+    width: 19rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
   .img-logo{
     max-width: 70%;
