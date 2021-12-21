@@ -66,12 +66,49 @@ export class ChoferPage implements OnInit {
     await alert.present();
 
   }
+
+
+  async presentAlertFechas() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Fechas no válidas',
+      //subHeader: 'Subtitle',
+      message: 'Ingrese las fechas correctamente.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+
+  }
+
   solicitud() {
     if (this.ionicForm.value.fechaInicio == "" || this.ionicForm.value.fechaFinalizacion == ""
       || this.ionicForm.value.horaFinalizacion == "" || this.ionicForm.value.horaInicio == "") {
       this.presentAlert();
-    }
-    else {
+    }else if (this.ionicForm.value.fechaInicio != "" || this.ionicForm.value.fechaFinalizacion != ""){
+      var ini= this.ionicForm.value.fechaInicio.split("-", 3);
+      var diaini= ini[2].substring(0,2);
+      var fin= this.ionicForm.value.fechaFinalizacion.split("-", 3);
+      var diafin= fin[2].substring(0,2);
+
+      if(ini[0]== fin[0]){ //se verifican años
+        if (ini[1] == fin[1]){ //en caso de que el mes sea igual
+          if(diaini <= diafin){
+            console.log("fechas elegidas validas");
+          }else{
+            this.presentAlertFechas();
+          }
+        }else if (ini[1] < fin[1]){
+          console.log("fechas elegidas validas");
+        }else{
+          this.presentAlertFechas();
+        }
+      }else if (ini[0] < fin[0]){
+        console.log("fechas elegidas validas");
+      }else{
+        this.presentAlertFechas();
+      }
+    }else {
       this.navCtrl.navigateForward("/servicios/n/solicitud/hola", {
         queryParams: {
           servicio: "Chofer seguro", datos: this.ionicForm.value, valorvehiculo: this.vehiculo,
