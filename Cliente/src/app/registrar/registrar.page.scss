@@ -19,7 +19,7 @@ ion-content.background{
   height: 7rem;
 }
 .rectangle {
-  height: 6rem;
+  height: 5rem;
   max-width: 100%;
   background-color: #BF1A24;
   margin:0;
@@ -114,7 +114,12 @@ ion-content.background{
   .terminos{
     color: #000;
     font-family:'hp265';
-    font-size: 0.7rem;
+    font-size: 1rem;
+    font-weight: lighter;
+    span{
+      font-weight: bold;
+    }
+    
   }
   ion-checkbox{
     --border-radius: 0;
