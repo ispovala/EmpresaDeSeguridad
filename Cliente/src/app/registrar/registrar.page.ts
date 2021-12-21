@@ -24,6 +24,7 @@ export class RegistrarPage implements OnInit {
       lastname: ['', [Validators.required, Validators.minLength(2), Validators.pattern('[a-zA-Z ]*')]],
       email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
       dob: [this.defaultDate],
+      f2_edudetail : ['', [Validators.required]],
       mobile: ['', [Validators.pattern('^[0-9]{0,7}$') ]],
     })
   }
