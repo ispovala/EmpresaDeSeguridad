@@ -13,8 +13,9 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 export class CustodiaPage implements OnInit {
   ionicForm: FormGroup;
   defaultDate = "1970-12-16";
-  maxFecha: string = (new Date().getFullYear() + 1).toString();
-  minFecha: string = (new Date().getFullYear()).toString();
+  hoy= new Date();
+  minFecha: string= (this.hoy.getFullYear()).toString()+"-"+(this.hoy.getMonth()+1).toString()+"-"+(this.hoy.getDate()).toString() ;
+  maxFecha: string = (new Date().getFullYear()+2).toString();
   fechaInicio: any;
   horaInicio: any;
   candado: boolean;

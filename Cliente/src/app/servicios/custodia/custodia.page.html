@@ -26,7 +26,7 @@
                 <ion-popover trigger="open-date-input2" show-backdrop="false">
                 <ng-template>
                   <ion-content >
-                    <ion-datetime formControlName="fechaInicio" [max]="maxFecha" [min]="minFecha" displayFormat="DD/MM/YYYY" pickerFormat="DD MM YYYY" #popoverDatetime
+                    <ion-datetime formControlName="fechaInicio" [min]= "minFecha" [max]="maxFecha" displayFormat="DD/MM/YYYY" pickerFormat="DD MM YYYY" #popoverDatetime
                     presentation="date"
                     (ionChange)="dateValue2 =popoverDatetime.value">   
                       <div slot="title">     

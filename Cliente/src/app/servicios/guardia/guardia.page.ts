@@ -15,8 +15,13 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 export class GuardiaPage implements OnInit {
   ionicForm: FormGroup;
   defaultDate = "1970-12-16";
-  maxFecha: string = (new Date().getFullYear() + 1).toString();
-  minFecha: string = (new Date().getFullYear()).toString();
+  //maxFecha: string = (new Date().getFullYear() + 1).toString();
+  hoy= new Date();
+  minFecha: string= (this.hoy.getFullYear()).toString()+"-"+(this.hoy.getMonth()+1).toString()+"-"+(this.hoy.getDate()).toString() ;
+  maxFecha: string = (new Date().getFullYear()+2).toString();
+  maxiFecha2= addDaysToDate(new Date(), 1);
+  minFecha2: string= (this.maxiFecha2.getFullYear()).toString()+"-"+(this.maxiFecha2.getMonth()+1).toString()+"-"+(this.maxiFecha2.getDate()).toString() ;
+  maxFecha2: string = (new Date().getFullYear() + 2).toString();
   fechaInicio: any;
   horaInicio: any;
   fechaFinalizacion: any;
@@ -65,8 +70,11 @@ export class GuardiaPage implements OnInit {
     if (this.ionicForm.value.fechaInicio == "" || this.ionicForm.value.fechaFinalizacion == ""
       || this.ionicForm.value.horaFinalizacion == "" || this.ionicForm.value.horaInicio == "") {
       this.presentAlert();
+      
+    }/*else if (this.ionicForm.value.fechaFinalizacion > this.ionicForm.value.fechaInicio){
+      console.log("fecha no valida");
 
-    } else {
+    } */else {
       this.navCtrl.navigateForward("/servicios/n/solicitud/hola", {
         queryParams: {
           servicio: "Guardia", datos: this.ionicForm.value, cantGuardia: this.currentNumber,
@@ -124,4 +132,10 @@ export class GuardiaPage implements OnInit {
       }
     }
   }
+}
+
+function addDaysToDate(date, days){
+  var res = new Date(date);
+  res.setDate(res.getDate() + days);
+  return res;
 }
