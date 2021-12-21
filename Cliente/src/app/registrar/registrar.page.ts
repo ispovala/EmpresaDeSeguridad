@@ -11,8 +11,7 @@ export class RegistrarPage implements OnInit {
   condiciones: boolean;
   ionicForm: FormGroup;
   
-  item1Details = "lorem ipsum";
-  defaultDate = "1990-12-16";
+  defaultDate = "";
   maxFecha: string = (new Date().getFullYear()-18).toString();
   minFecha: string = (new Date().getFullYear()-80).toString();
 
@@ -25,14 +24,18 @@ export class RegistrarPage implements OnInit {
       lastname: ['', [Validators.required, Validators.minLength(2), Validators.pattern('[a-zA-Z ]*')]],
       email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
       dob: [this.defaultDate],
-      convencional: ['', [Validators.required, Validators.pattern('\d*') ]],
+      mobile: ['', [Validators.pattern('^[0-9]{0,7}$') ]],
     })
   }
   getDate(e) {
     let date = new Date(e.target.value).toISOString().substring(0, 10);
-    this.ionicForm.get('fechanacimiento').setValue(date, {
-       onlyself: true
+    
+    console.log(date);
+    this.ionicForm.get('dob').setValue(date, {
+        onlyself: true
     })
+   
+    
  }
 
  get errorControl() {
@@ -41,7 +44,7 @@ export class RegistrarPage implements OnInit {
 
 submitForm() {
   this.isSubmitted = true;
-  if (!this.ionicForm.valid || !this.condiciones) {
+  if (!this.ionicForm.valid || !this.condiciones || this.ionicForm.get('dob').valid) {
     console.log('Please provide all the required values!')
 
     return false;

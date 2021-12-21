@@ -2,7 +2,7 @@
 <ion-content no-scroll padding class="background">
   <div class="tope">
     <div class="logosepro">
-      <ion-img style="width: 150px; height: 150px;" src="assets/img/logosepro.png"></ion-img>
+      <ion-img style="width: 150px; height: 150px;" src="assets/img/logosepro.png" class="img-logo"></ion-img>
     </div>
   </div>
 
@@ -72,10 +72,10 @@
         </div>
 
         <div class="itemdatos">
-          <ion-label>Número convencional</ion-label>
+          <ion-label>Número convencional (opcional)</ion-label>
           <ion-item lines="full">
             
-            <ion-input formControlName="convencional" input type="tel " maxlength="10" required ></ion-input>
+            <ion-input formControlName="mobile" input type="tel " maxlength="7"></ion-input>
           </ion-item>
           
         </div>
@@ -92,7 +92,7 @@
                   <ion-content >
                     <ion-datetime formControlName="dob" [max]="maxFecha" [min]="minFecha" displayFormat="DD/MM/YYYY" pickerFormat="DD MM YYYY" #popoverDatetime
                     presentation="date"
-                    (ionChange)="dateValue2 =popoverDatetime.value">   
+                    (ionChange)="dateValue2=popoverDatetime.value" (ionChange)="getDate($event)" >   
                       <div slot="title">     
                       </div>
                       
@@ -117,11 +117,13 @@
         
     </ion-list>
     </form>
+    <ion-row>
     <div class="container-terminos">
       <ion-item>
         <ion-label class="terminos">He leído y acepto las políticas de privacidad</ion-label>
-        <ion-checkbox (click)="onClick()" [(ngModel)]="condiciones" color="primary" slot="start" item-right checked={{isValidCheckbox.item1}></ion-checkbox>
+        <ion-checkbox (click)="onClick()" [(ngModel)]="condiciones" color="primary" slot="start" item-right></ion-checkbox>
       </ion-item>
     </div> 
+    </ion-row>
   </div>
 </ion-content>
