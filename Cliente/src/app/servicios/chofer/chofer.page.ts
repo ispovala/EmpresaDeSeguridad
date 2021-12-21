@@ -14,16 +14,23 @@ import { NULL_EXPR } from '@angular/compiler/src/output/output_ast';
 export class ChoferPage implements OnInit {
   ionicForm: FormGroup;
   defaultDate = "1970-12-16";
-  maxFecha: string = (new Date().getFullYear() + 1).toString();
-  minFecha: string = (new Date().getFullYear()).toString();
-  maxFecha2: string = (new Date().getFullYear() + 1).toString();
-  minFecha2: string = (new Date().getFullYear()).toString();
+  //maxFecha: string = (new Date().getFullYear() + 1).toString();
+  hoy= new Date();
+  minFecha: string= (this.hoy.getFullYear()).toString()+"-"+(this.hoy.getMonth()+1).toString()+"-"+(this.hoy.getDate()).toString() ;
+  maxFecha: string = (new Date().getFullYear()+1).toString();
+  maxiFecha2= addDaysToDate(new Date(), 1);
+  minFecha2: string= (this.maxiFecha2.getFullYear()).toString()+"-"+(this.maxiFecha2.getMonth()+1).toString()+"-"+(this.maxiFecha2.getDate()).toString() ;
+  maxFecha2: string = (new Date().getFullYear() + 2).toString();
   minhour: String = new Date().toISOString();
   fechaInicio: null;
   horaInicio: any;
   fechaFinalizacion: any;
   horaFinalizacion: any;
   vehiculo: boolean;
+
+  
+
+ 
   update() {
     console.log('Esta habilitado' + this.vehiculo);
   }
@@ -47,6 +54,7 @@ export class ChoferPage implements OnInit {
     this.navCtrl.navigateForward("/servicios");
   }
   async presentAlert() {
+    console.log(this.minFecha2);
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'Campos vacíos',
@@ -58,12 +66,49 @@ export class ChoferPage implements OnInit {
     await alert.present();
 
   }
+
+
+  async presentAlertFechas() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Fechas no válidas',
+      //subHeader: 'Subtitle',
+      message: 'Ingrese las fechas correctamente.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+
+  }
+
   solicitud() {
     if (this.ionicForm.value.fechaInicio == "" || this.ionicForm.value.fechaFinalizacion == ""
       || this.ionicForm.value.horaFinalizacion == "" || this.ionicForm.value.horaInicio == "") {
       this.presentAlert();
-    }
-    else {
+    }else if (this.ionicForm.value.fechaInicio != "" || this.ionicForm.value.fechaFinalizacion != ""){
+      var ini= this.ionicForm.value.fechaInicio.split("-", 3);
+      var diaini= ini[2].substring(0,2);
+      var fin= this.ionicForm.value.fechaFinalizacion.split("-", 3);
+      var diafin= fin[2].substring(0,2);
+
+      if(ini[0]== fin[0]){ //se verifican años
+        if (ini[1] == fin[1]){ //en caso de que el mes sea igual
+          if(diaini <= diafin){
+            console.log("fechas elegidas validas");
+          }else{
+            this.presentAlertFechas();
+          }
+        }else if (ini[1] < fin[1]){
+          console.log("fechas elegidas validas");
+        }else{
+          this.presentAlertFechas();
+        }
+      }else if (ini[0] < fin[0]){
+        console.log("fechas elegidas validas");
+      }else{
+        this.presentAlertFechas();
+      }
+    }else {
       this.navCtrl.navigateForward("/servicios/n/solicitud/hola", {
         queryParams: {
           servicio: "Chofer seguro", datos: this.ionicForm.value, valorvehiculo: this.vehiculo,
@@ -126,4 +171,10 @@ export class ChoferPage implements OnInit {
     }
   }
 
+}
+
+function addDaysToDate(date, days){
+  var res = new Date(date);
+  res.setDate(res.getDate() + days);
+  return res;
 }

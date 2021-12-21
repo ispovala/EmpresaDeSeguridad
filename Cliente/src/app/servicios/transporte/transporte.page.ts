@@ -12,12 +12,15 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 export class TransportePage implements OnInit {
   ionicForm: FormGroup;
   defaultDate = "1970-12-16";
-  maxFecha: string = (new Date().getFullYear() + 1).toString();
-  minFecha: string = (new Date().getFullYear()).toString();
   fechaInicio: any;
   horaInicio: any;
   fechaFinalizacion: any;
   horaFinalizacion: any;
+  hoy= new Date();
+  //minFecha: string= (this.hoy.getDate()).toString()+"/"+(this.hoy.getMonth()).toString()+"/"+(this.hoy.getFullYear()).toString() ;
+  minFecha: string= (this.hoy.getFullYear()).toString()+"-"+(this.hoy.getMonth()+1).toString()+"-"+(this.hoy.getDate()).toString() ;
+  maxFecha: string = (new Date().getFullYear()+2).toString();
+
 
 
   origen = {
@@ -37,12 +40,14 @@ export class TransportePage implements OnInit {
     this.navCtrl.navigateForward("/servicios");
   }
   async presentAlert() {
+    //console.log(this.minFecha);
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'Campos vacíos',
       //subHeader: 'Subtitle',
       message: 'Existen campos sin completar en la solicitud',
       buttons: ['OK']
+      
     });
 
     await alert.present();

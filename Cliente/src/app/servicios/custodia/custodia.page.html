@@ -26,7 +26,7 @@
                 <ion-popover trigger="open-date-input2" show-backdrop="false">
                 <ng-template>
                   <ion-content >
-                    <ion-datetime formControlName="fechaInicio" [max]="maxFecha" [min]="minFecha" displayFormat="DD/MM/YYYY" pickerFormat="DD MM YYYY" #popoverDatetime
+                    <ion-datetime formControlName="fechaInicio" [min]= "minFecha" [max]="maxFecha" displayFormat="DD/MM/YYYY" pickerFormat="DD MM YYYY" #popoverDatetime
                     presentation="date"
                     (ionChange)="dateValue2 =popoverDatetime.value">   
                       <div slot="title">     
@@ -45,7 +45,7 @@
             <ion-item button="true" id="open-date-input2" >
               <ion-label>{{dateValue3 | date: 'hh:mma'}}</ion-label>
               <ion-icon name="time-outline" id="open-modal3" item-right></ion-icon>
-              <ion-modal trigger="open-modal3"> 
+              <ion-modal class="horaval" trigger="open-modal3"> 
                 <ion-popover trigger="open-date-input3" show-backdrop="false">
                 <ng-template>
                   <ion-content >
