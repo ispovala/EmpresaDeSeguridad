@@ -11,7 +11,7 @@ export class RegistrarPage implements OnInit {
   condiciones: boolean;
   ionicForm: FormGroup;
   
-  defaultDate = "";
+  defaultDate = "1990-12-16";
   maxFecha: string = (new Date().getFullYear()-18).toString();
   minFecha: string = (new Date().getFullYear()-80).toString();
 
@@ -44,7 +44,7 @@ export class RegistrarPage implements OnInit {
 
 submitForm() {
   this.isSubmitted = true;
-  if (!this.ionicForm.valid || !this.condiciones || this.ionicForm.get('dob').valid) {
+  if (!this.ionicForm.valid || !this.condiciones) {
     console.log('Please provide all the required values!')
 
     return false;
