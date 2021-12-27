@@ -1,4 +1,4 @@
 export class Color {
-  id?: any;
-  nombre?: any;
+  id?: number;
+  nombre?: string;
 }

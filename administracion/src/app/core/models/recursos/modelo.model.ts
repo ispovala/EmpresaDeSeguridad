@@ -1,4 +1,4 @@
-export class ModeloCelular {
+export class Modelo {
   id?: number;
   nombre?: string;
 }

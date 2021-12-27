@@ -5,6 +5,8 @@ export class Celular {
   is_deleted?: boolean;
   marca?: number;
   nombreMarca?: string;
+  modelo?: number;
+  nombreModelo?: string;
   numero_contacto?: string;
   observaciones?: any;
   operadora?: number;

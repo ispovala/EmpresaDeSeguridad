@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'seguridad',
     'corsheaders',
+    'clear_cache',
     'rest_framework',
 ]
 

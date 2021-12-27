@@ -25,7 +25,7 @@ export class VehiculoService {
     return this.http.get<Vehiculo[]>(baseUrl);
   }
 
-  get(placa?: string): Observable<Vehiculo> {
+  get(placa: string): Observable<Vehiculo> {
     return this.http.get<Vehiculo>(`${baseUrl}/` + placa, {
       headers: this.httpOptions.headers,
     });
@@ -43,7 +43,7 @@ export class VehiculoService {
     });
   }
 
-  delete(placa: string): Observable<Vehiculo> {
+  delete(placa?: string): Observable<Vehiculo> {
     return this.http.delete<Vehiculo>(`${baseUrl}/` + placa, {
       headers: this.httpOptions.headers,
     });

@@ -41,7 +41,7 @@ class ArmaSerializer(serializers.ModelSerializer):
                   'is_deleted',
                   'marca',
                   'observaciones',
-                  'ruta_foto',
+                  #'ruta_foto',
                   'tipo')
 
 
@@ -53,7 +53,7 @@ class CandadoSatelitalSerializer(serializers.ModelSerializer):
                   'is_deleted',
                   'marca',
                   'observaciones',
-                  'ruta_foto',
+                  #'ruta_foto',
                   'tipo')
 
 
@@ -74,7 +74,8 @@ class CelularSerializer(serializers.ModelSerializer):
                   'numero_contacto',
                   'observaciones',
                   'operadora',
-                  'ruta_foto')
+                  #'ruta_foto'
+                    )
 
 
 class VehiculoSerializer(serializers.ModelSerializer):
@@ -84,9 +85,10 @@ class VehiculoSerializer(serializers.ModelSerializer):
                   'color',
                   'is_deleted',
                   'marca',
+                  #'modelo',
                   'motor',
                   'observaciones',
-                  'ruta_foto',
+                  #'ruta_foto',
                   'tipo',
                   'year')
 

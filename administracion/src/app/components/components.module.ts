@@ -17,6 +17,12 @@ import { VehiculosListComponent } from './recursos/vehiculos/list/list.component
 import { HttpClientModule } from '@angular/common/http';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { YearPickerComponent } from './utilities/year-picker/year-picker.component';
+import { CreateOrEditVehiculoModalComponent } from './recursos/vehiculos/ce-modal/create-or-edit-vehiculo-modal.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
+import { CelularesListComponent } from './recursos/celulares/list/list.component';
+import { ArmasListComponent } from './recursos/armas/list/list.component';
 
 
 @NgModule({
@@ -31,6 +37,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     VehiculosListComponent,
     CandadosSatelitalesListComponent,
     RouterRecursosComponent,
+    CelularesListComponent,
+    ArmasListComponent,
+    /*YearPickerComponent,
+    CreateOrEditVehiculoModalComponent,*/
   ],
   imports: [
     CommonModule,
@@ -39,7 +49,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     FormsModule,
     HttpClientModule,
     MatDatepickerModule,
+    MatNativeDateModule,
     MatFormFieldModule,
+    MatInputModule,
   ],
+  bootstrap: [/*YearPickerComponent*/],
 })
 export class ComponentsModule {}

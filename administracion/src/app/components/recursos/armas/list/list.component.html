@@ -1,0 +1,387 @@
+<router-recursos></router-recursos>
+
+<div class="p-5">
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="w150px">Marca</th>
+        <th class="w150px">Tipo</th>
+        <th class="w150px">Color</th>
+        <th class="w150px">Calibre</th>
+        <th class="w100px">
+          <button
+            class="btn btn-success text-white w-100"
+            (click)="openCM(createModal)"
+          >
+            Agregar
+          </button>
+        </th>
+      </tr>
+    </thead>
+    <tbody [hidden]="getArmas().length == 0">
+      <tr *ngFor="let arma of getArmas()">
+        <td class="w150px">
+          {{ arma.nombreMarca }}
+        </td>
+        <td class="w150px">
+          {{ arma.nombreTipo }}
+        </td>
+        <td class="w150px">
+          {{ arma.nombreColor }}
+        </td>
+        <td class="w150px">
+          {{ arma.nombreCalibre }}
+        </td>
+        <td class="w100px">
+          <a
+            (click)="setActiveArma(arma); openDM(deleteModal)"
+            class="pe-auto link-danger px-3"
+            >Eliminar</a
+          >
+          <button
+            class="btn bg-primary text-white w-50"
+            (click)="setActiveArma(arma); openVM(viewModal)"
+          >
+            DETALLES
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="position-relative p-2" [hidden]="getArmas().length != 0">
+    <div class="position-absolute top-50 start-50 translate-middle">
+      <span>No hay armas</span>
+    </div>
+  </div>
+</div>
+
+<ng-template #createModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Agregar Arma</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <div class="form-group pb-3">
+                  <label for="Marca">Marca</label>
+                  <select
+                    name="marca"
+                    [(ngModel)]="currentArma.marca"
+                    class="form-control"
+                  >
+                    <option
+                      [value]="marca.id"
+                      *ngFor="let marca of getMarcasArma()"
+                    >
+                      {{ marca.nombre }}
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="Tipo">Tipo</label>
+                  <select
+                    name="tipo"
+                    [(ngModel)]="currentArma.tipo"
+                    class="form-control"
+                  >
+                    <option
+                      [value]="tipo.id"
+                      *ngFor="let tipo of getTiposArma()"
+                    >
+                      {{ tipo.nombre }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group pb-3">
+                  <label for="Calibre">Calibre</label>
+                  <select
+                    name="calibre"
+                    [(ngModel)]="currentArma.calibre"
+                    class="form-control"
+                  >
+                    <option
+                      [value]="calibre.id"
+                      *ngFor="let calibre of getCalibresArma()"
+                    >
+                      {{ calibre.nombre }}
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="Color">Color</label>
+                  <select
+                    name="color"
+                    [(ngModel)]="currentArma.color"
+                    class="form-control"
+                  >
+                    <option
+                      [value]="color.id"
+                      *ngFor="let color of getColores()"
+                    >
+                      {{ color.nombre }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="Observaciones" class="pb-3">Observaciones</label>
+            <textarea
+              class="form-control"
+              name="observaciones"
+              id="observaciones"
+              rows="5"
+              [(ngModel)]="currentArma.observaciones"
+              required
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <!--<input type="file">  guardarRutaFoto() -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-success"
+      (click)="modal.close(currentArma)"
+    >
+      Agregar
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #editModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Editar Arma</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <div class="form-group pb-3">
+                  <label for="Marca">Marca</label>
+                  <select
+                    name="marca"
+                    [(ngModel)]="currentArma.marca"
+                    class="form-control"
+                  >
+                    <option
+                      [value]="marca.id"
+                      *ngFor="let marca of getMarcasArma()"
+                    >
+                      {{ marca.nombre }}
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="Tipo">Tipo</label>
+                  <select
+                    name="tipo"
+                    [(ngModel)]="currentArma.tipo"
+                    class="form-control"
+                  >
+                    <option
+                      [value]="tipo.id"
+                      *ngFor="let tipo of getTiposArma()"
+                    >
+                      {{ tipo.nombre }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group pb-3">
+                  <label for="Calibre">Calibre</label>
+                  <select
+                    name="calibre"
+                    [(ngModel)]="currentArma.calibre"
+                    class="form-control"
+                  >
+                    <option
+                      [value]="calibre.id"
+                      *ngFor="let calibre of getCalibresArma()"
+                    >
+                      {{ calibre.nombre }}
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="Color">Color</label>
+                  <select
+                    name="color"
+                    [(ngModel)]="currentArma.color"
+                    class="form-control"
+                  >
+                    <option
+                      [value]="color.id"
+                      *ngFor="let color of getColores()"
+                    >
+                      {{ color.nombre }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="Observaciones" class="pb-3">Observaciones</label>
+            <textarea
+              class="form-control"
+              name="observaciones"
+              id="observaciones"
+              rows="5"
+              [(ngModel)]="currentArma.observaciones"
+              required
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <!--<input type="file">  guardarRutaFoto() -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-success"
+      (click)="modal.close(currentArma)"
+    >
+      Guardar
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #deleteModal let-modal>
+  <div class="modal-body">
+    <h4 class="modal-title pt-3 pb-5" id="modal-basic-title">
+      ELIMINAR RECURSO
+    </h4>
+    <label class="text-info pb-4">¿Está seguro de eliminar el recurso?</label>
+    <div class="form-group pb-5">
+      <label for="Observaciones" class="pb-3">Observaciones</label>
+      <textarea
+        class="form-control resized"
+        name="observaciones"
+        id="observaciones"
+        [(ngModel)]="currentArma.observaciones"
+        required
+      ></textarea>
+    </div>
+    <div class="text-center">
+      <button
+        type="submit"
+        class="btn btn-sm btn-danger w-50"
+        (click)="modal.close(currentArma)"
+      >
+        Eliminar
+      </button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #viewModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Detalles del Arma</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.close('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col">
+          <div class="form-group">
+            <img src="#" alt="Arma" />
+            <!-- {{ currentArma.ruta_foto }} -->
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="Marca" class="text-secondary">Marca:</label>
+            <label for="Marca" class="px-2">{{
+              currentArma.nombreMarca
+            }}</label>
+          </div>
+          <div class="form-group">
+            <label for="Tipo" class="text-secondary">Tipo:</label>
+            <label for="Tipo" class="px-2">{{ currentArma.nombreTipo }}</label>
+          </div>
+          <div class="form-group">
+            <label for="Color" class="text-secondary">Color:</label>
+            <label for="Color" class="px-2">{{
+              currentArma.nombreColor
+            }}</label>
+          </div>
+          <div class="form-group">
+            <label for="Color" class="text-secondary">Color:</label>
+            <label for="Color" class="px-2">{{
+              currentArma.nombreColor
+            }}</label>
+          </div>
+          <div class="form-group">
+            <label for="Calibre" class="text-secondary">Calibre:</label>
+            <label for="ColoCalibrer" class="px-2">{{
+              currentArma.nombreCalibre
+            }}</label>
+          </div>
+          <div class="form-group">
+            <label for="Observaciones" class="text-secondary"
+              >Observaciones:</label
+            >
+            <label for="Observaciones" class="px-2">{{
+              currentArma.observaciones
+            }}</label>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-end">
+        <button
+          type="button"
+          class="btn btn-outline-dark"
+          (click)="modal.close('edit'); openEM(editModal)"
+        >
+          Editar <i class="fas fa-edit"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-template>

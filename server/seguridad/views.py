@@ -94,7 +94,7 @@ def color_list(request):
 @api_view(['GET'])
 def marca_list(request, recurso):
     if request.method == 'GET':
-        marcas = Marca.objects.get(recurso=recurso)
+        marcas = Marca.objects.filter(recurso=recurso)
         marcas = MarcaSerializer(marcas, many=True)
         return JsonResponse(marcas.data, safe=False)
         # 'safe=False' for objects serialization
@@ -103,7 +103,7 @@ def marca_list(request, recurso):
 @api_view(['GET'])
 def modelo_list(request, marca):
     if request.method == 'GET':
-        modelos = Modelo.objects.get(marca=marca)
+        modelos = Modelo.objects.filter(marca=marca)
         modelos = ModeloSerializer(modelos, many=True)
         return JsonResponse(modelos.data, safe=False)
         # 'safe=False' for objects serialization
@@ -112,7 +112,7 @@ def modelo_list(request, marca):
 @api_view(['GET'])
 def tipo_list(request, recurso):
     if request.method == 'GET':
-        tipos = Tipo.objects.get(recurso=recurso)
+        tipos = Tipo.objects.filter(recurso=recurso)
         tipos = TipoSerializer(tipos, many=True)
         return JsonResponse(tipos.data, safe=False)
         # 'safe=False' for objects serialization

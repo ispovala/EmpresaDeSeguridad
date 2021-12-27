@@ -1,0 +1,421 @@
+<router-recursos></router-recursos>
+
+<div class="p-5">
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="w150px">Marca</th>
+        <th class="w150px">Modelo</th>
+        <th class="w150px">Color</th>
+        <th class="w150px">Número</th>
+        <th class="w100px">
+          <button
+            class="btn btn-success text-white w-100"
+            (click)="openCM(createModal)"
+          >
+            Agregar
+          </button>
+        </th>
+      </tr>
+    </thead>
+    <tbody [hidden]="getCelulares().length == 0">
+      <tr *ngFor="let celular of getCelulares()">
+        <td class="w150px">
+          {{ celular.nombreMarca }}
+        </td>
+        <td class="w150px">
+          {{ celular.nombreModelo }}
+        </td>
+        <td class="w150px">
+          {{ celular.nombreColor }}
+        </td>
+        <td class="w150px">
+          {{ celular.numero_contacto }}
+        </td>
+        <td class="w100px">
+          <a
+            (click)="setActiveCelular(celular); openDM(deleteModal)"
+            class="pe-auto link-danger px-3"
+            >Eliminar</a
+          >
+          <button
+            class="btn bg-primary text-white w-50"
+            (click)="setActiveCelular(celular); openVM(viewModal)"
+          >
+            DETALLES
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="position-relative p-2" [hidden]="getCelulares().length != 0">
+    <div class="position-absolute top-50 start-50 translate-middle">
+      <span>No hay celulares</span>
+    </div>
+  </div>
+</div>
+
+<ng-template #createModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Agregar Celular</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="form-group pb-3">
+            <label for="Numero">Número</label>
+            <input
+              type="text"
+              #Numero="ngModel"
+              id="Numero"
+              name="Numero"
+              class="form-control"
+              [(ngModel)]="currentCelular.numero_contacto"
+              minlength="10"
+              maxlength="10"
+              required
+            />
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <div class="form-group pb-3">
+                  <label for="Marca">Marca</label>
+                  <select
+                    name="marca"
+                    [(ngModel)]="currentCelular.marca"
+                    class="form-control"
+                    (change)="retrieveModelosCelular()"
+                  >
+                    <option
+                      [value]="marca.id"
+                      *ngFor="let marca of getMarcasCelular()"
+                    >
+                      {{ marca.nombre }}
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="Operadora">Operadora</label>
+                  <select
+                    name="operadora"
+                    [(ngModel)]="currentCelular.operadora"
+                    class="form-control"
+                  >
+                    <option
+                      [value]="operadora.id"
+                      *ngFor="let operadora of getOperadorasCelular()"
+                    >
+                      {{ operadora.nombre }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group pb-3">
+                  <label for="Modelo">Modelo</label>
+                  <select
+                    name="modelo"
+                    [(ngModel)]="currentCelular.modelo"
+                    class="form-control"
+                    [disabled]="currentCelular.marca == undefined"
+                  >
+                    <option
+                      [value]="modelo.id"
+                      *ngFor="let modelo of getModelosCelular()"
+                    >
+                      {{ modelo.nombre }}
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="Color">Color</label>
+                  <select
+                    name="color"
+                    [(ngModel)]="currentCelular.color"
+                    class="form-control"
+                  >
+                    <option
+                      [value]="color.id"
+                      *ngFor="let color of getColores()"
+                    >
+                      {{ color.nombre }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="Observaciones" class="pb-3">Observaciones</label>
+            <textarea
+              class="form-control"
+              name="observaciones"
+              id="observaciones"
+              rows="5"
+              [(ngModel)]="currentCelular.observaciones"
+              required
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <!--<input type="file">  guardarRutaFoto() -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-success"
+      (click)="modal.close(currentCelular)"
+    >
+      Agregar
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #editModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Editar Celular</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="form-group pb-3">
+            <label for="Numero">Número</label>
+            <input
+              type="text"
+              #Numero="ngModel"
+              id="Numero"
+              name="Numero"
+              class="form-control"
+              [(ngModel)]="currentCelular.numero_contacto"
+              minlength="10"
+              maxlength="10"
+              required
+            />
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <div class="form-group pb-3">
+                  <label for="Marca">Marca</label>
+                  <select
+                    name="marca"
+                    [(ngModel)]="currentCelular.marca"
+                    class="form-control"
+                    (change)="retrieveModelosCelular()"
+                  >
+                    <option
+                      [value]="marca.id"
+                      *ngFor="let marca of getMarcasCelular()"
+                    >
+                      {{ marca.nombre }}
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="Operadora">Operadora</label>
+                  <select
+                    name="operadora"
+                    [(ngModel)]="currentCelular.operadora"
+                    class="form-control"
+                  >
+                    <option
+                      [value]="operadora.id"
+                      *ngFor="let operadora of getOperadorasCelular()"
+                    >
+                      {{ operadora.nombre }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group pb-3">
+                  <label for="Modelo">Modelo</label>
+                  <select
+                    name="modelo"
+                    [(ngModel)]="currentCelular.modelo"
+                    class="form-control"
+                    [disabled]="currentCelular.marca == undefined"
+                  >
+                    <option
+                      [value]="modelo.id"
+                      *ngFor="let modelo of getModelosCelular()"
+                    >
+                      {{ modelo.nombre }}
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="Color">Color</label>
+                  <select
+                    name="color"
+                    [(ngModel)]="currentCelular.color"
+                    class="form-control"
+                  >
+                    <option
+                      [value]="color.id"
+                      *ngFor="let color of getColores()"
+                    >
+                      {{ color.nombre }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="Observaciones" class="pb-3">Observaciones</label>
+            <textarea
+              class="form-control"
+              name="observaciones"
+              id="observaciones"
+              rows="5"
+              [(ngModel)]="currentCelular.observaciones"
+              required
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <!--<input type="file">  guardarRutaFoto() -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-success"
+      (click)="modal.close(currentCelular)"
+    >
+      Guardar
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #deleteModal let-modal>
+  <div class="modal-body">
+    <h4 class="modal-title pt-3 pb-5" id="modal-basic-title">
+      ELIMINAR RECURSO
+    </h4>
+    <label class="text-info pb-4">¿Está seguro de eliminar el recurso?</label>
+    <div class="form-group pb-5">
+      <label for="Observaciones" class="pb-3">Observaciones</label>
+      <textarea
+        class="form-control"
+        name="observaciones"
+        id="observaciones"
+        [(ngModel)]="currentCelular.observaciones"
+        required
+      ></textarea>
+    </div>
+    <div class="text-center">
+      <button
+        type="submit"
+        class="btn btn-sm btn-danger w-50"
+        (click)="modal.close(currentCelular)"
+      >
+        Eliminar
+      </button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #viewModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Detalles del Celular</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.close('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col">
+          <div class="form-group">
+            <img src="#" alt="CandadoSatelital" />
+            <!-- {{ currentCandadoSatelital.ruta_foto }} -->
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="Numero" class="text-secondary">Número:</label>
+            <label for="Numero" class="px-2">{{
+              currentCelular.numero_contacto
+            }}</label>
+          </div>
+          <div class="form-group">
+            <label for="Marca" class="text-secondary">Marca:</label>
+            <label for="Marca" class="px-2">{{
+              currentCelular.nombreMarca
+            }}</label>
+          </div>
+          <div class="form-group">
+            <label for="Modelo" class="text-secondary">Modelo:</label>
+            <label for="Modelo" class="px-2">{{
+              currentCelular.nombreModelo
+            }}</label>
+          </div>
+          <div class="form-group">
+            <label for="Operadora" class="text-secondary">Operadora:</label>
+            <label for="Operadora" class="px-2">{{
+              currentCelular.nombreOperadora
+            }}</label>
+          </div>
+          <div class="form-group">
+            <label for="Color" class="text-secondary">Color:</label>
+            <label for="Color" class="px-2">{{
+              currentCelular.nombreColor
+            }}</label>
+          </div>
+          <div class="form-group">
+            <label for="Observaciones" class="text-secondary"
+              >Observaciones:</label
+            >
+            <label for="Observaciones" class="px-2">{{
+              currentCelular.observaciones
+            }}</label>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-end">
+        <button
+          type="button"
+          class="btn btn-outline-dark"
+          (click)="modal.close('edit'); openEM(editModal)"
+        >
+          Editar <i class="fas fa-edit"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-template>

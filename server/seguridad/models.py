@@ -61,8 +61,12 @@ class Usuario(AbstractUser):
         db_table = 'usuario'
 
 
+# Recursos
 class Color(models.Model):
     nombre = models.CharField(verbose_name="nombre", max_length=255, default='')
+
+    def __str__(self):
+        return self.nombre
 
     class Meta:
         db_table = 'color'
@@ -73,6 +77,17 @@ class Marca(models.Model):
     nombre = models.CharField(verbose_name="nombre", max_length=255, default='')
     recurso = models.PositiveSmallIntegerField(verbose_name="recurso")
 
+    def __str__(self):
+        if self.recurso == 1:
+            return "Arma: " + self.nombre
+        elif self.recurso == 2:
+            return "Candado Satelital: " + self.nombre
+        elif self.recurso == 3:
+            return "Celular: " + self.nombre
+        elif self.recurso == 4:
+            return "Vehiculo: " + self.nombre
+        return self.nombre
+
     class Meta:
         db_table = 'marca'
 
@@ -80,6 +95,9 @@ class Marca(models.Model):
 class Modelo(models.Model):
     nombre = models.CharField(verbose_name="nombre", max_length=255, default='')
     marca = models.ForeignKey(Marca, verbose_name="marca", null=True, on_delete=models.RESTRICT)
+
+    def __str__(self):
+        return self.marca.nombre + " " + self.nombre
 
     class Meta:
         db_table = 'modelo'
@@ -89,12 +107,26 @@ class Tipo(models.Model):
     nombre = models.CharField(verbose_name="nombre", max_length=255, default='')
     recurso = models.PositiveSmallIntegerField(verbose_name="recurso")
 
+    def __str__(self):
+        if self.recurso == 1:
+            return "Arma: " + self.nombre
+        elif self.recurso == 2:
+            return "Candado Satelital: " + self.nombre
+        elif self.recurso == 3:
+            return "Celular: " + self.nombre
+        elif self.recurso == 4:
+            return "Vehiculo: " + self.nombre
+        return self.nombre
+
     class Meta:
         db_table = 'tipo'
 
 
 class CalibreArma(models.Model):
     nombre = models.CharField(verbose_name="nombre", max_length=255, default='')
+
+    def __str__(self):
+        return self.nombre
 
     class Meta:
         db_table = 'calibre_arma'
@@ -117,6 +149,9 @@ class Arma(models.Model):
     ruta_foto = models.CharField(verbose_name="ruta_foto", max_length=255, default='')
     tipo = models.ForeignKey(Tipo, verbose_name="tipo", null=True, on_delete=models.RESTRICT)
 
+    def __str__(self):
+        return "Marca: " + self.marca.nombre + ", Tipo: " + self.tipo.nombre
+
     class Meta:
         db_table = 'arma'
 
@@ -136,6 +171,9 @@ class CandadoSatelital(models.Model):
     ruta_foto = models.CharField(verbose_name="ruta_foto", max_length=255, default='')
     tipo = models.ForeignKey(Tipo, verbose_name="tipo", null=True, on_delete=models.RESTRICT)
 
+    def __str__(self):
+        return "Marca: " + self.marca.nombre + ", Tipo: " + self.tipo.nombre
+
     class Meta:
         db_table = 'candado_satelital'
         verbose_name_plural = 'candados_satelitales'
@@ -143,6 +181,9 @@ class CandadoSatelital(models.Model):
 
 class OperadoraCelular(models.Model):
     nombre = models.CharField(verbose_name="nombre", max_length=255, default='')
+
+    def __str__(self):
+        return self.nombre
 
     class Meta:
         db_table = 'operadora_celular'
@@ -165,6 +206,9 @@ class Celular(models.Model):
     observaciones = models.TextField(verbose_name="observaciones", default='')
     operadora = models.ForeignKey(OperadoraCelular, verbose_name="operadora", null=True, on_delete=models.RESTRICT)
     ruta_foto = models.CharField(verbose_name="ruta_foto", max_length=255, default='')
+
+    def __str__(self):
+        return "Marca: " + self.marca.nombre + ", Modelo: " + self.modelo.nombre
 
     class Meta:
         db_table = 'celular'
@@ -189,6 +233,9 @@ class Vehiculo(models.Model):
     ruta_foto = models.CharField(verbose_name="ruta_foto", max_length=255, default='')
     tipo = models.ForeignKey(Tipo, verbose_name="tipo", null=True, on_delete=models.RESTRICT)
     year = models.PositiveSmallIntegerField(verbose_name="year", default=0)
+
+    def __str__(self):
+        return "Placa: " + self.placa + ", Marca: " + self.marca.nombre + ", Modelo: " + self.modelo.nombre
 
     class Meta:
         db_table = 'vehiculo'

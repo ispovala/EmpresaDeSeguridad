@@ -1,4 +1,4 @@
 export class OperadoraCelular {
   id?: number;
-  nombre?: number;
+  nombre?: string;
 }

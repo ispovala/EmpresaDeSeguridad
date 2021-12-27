@@ -5,7 +5,7 @@ urlpatterns = [
     # Recursos section
     url(r'^api/colores$', views.color_list),
     url(r'^api/marcas/(?P<recurso>[1-4])$', views.marca_list),
-    url(r'^api/modelos/(?P<marca>[0-9]+)$', views.modelo_list),
+    url(r'^api/modelos/(?P<marca>([0-9]| [1-9]+[0-9]+))$', views.modelo_list),
     url(r'^api/tipos/(?P<recurso>[1-4])$', views.tipo_list),
     # Arma
     url(r'^api/calibres_armas$', views.calibre_arma_list),

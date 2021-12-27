@@ -5,10 +5,12 @@ export class Vehiculo {
   is_deleted?: boolean;
   marca?: number;
   nombreMarca?: string;
+  modelo?: number;
+  nombreModelo?: string;
   motor?: string;
   observaciones?: any;
   ruta_foto?: string;
   tipo?: number;
   nombreTipo?: string;
-  year?: Date;
+  year?: number;
 }

@@ -2,6 +2,10 @@ hr.solid {
   border-top: 3px solid #bbb;
 }
 
+.yPckr .mat-calendar-period-button {
+  display: none;
+}
+
 a:not([href]){
   color: red;
   text-decoration: underline;

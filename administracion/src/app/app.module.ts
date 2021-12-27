@@ -7,13 +7,20 @@ import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './core/services/user/user.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatDatepickerModule } from '@angular/material/datepicker';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+
+import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   exports: [
     MatFormFieldModule,
+    MatInputModule,
     MatDatepickerModule,
+    MatNativeDateModule,
   ],
 })
 export class MaterialModule {}
@@ -24,10 +31,12 @@ export class MaterialModule {}
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    NgbModule,
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MaterialModule,
+    TooltipModule.forRoot(),
   ],
   providers: [UserService],
   bootstrap: [AppComponent],
