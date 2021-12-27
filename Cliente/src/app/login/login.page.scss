@@ -12,6 +12,14 @@ ion-content{
   ion-text{
     font-family:"hp265";
   }
+  .img-logo{
+    max-width: 70%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 6rem;
+  }
+
   /*ion-input{
     background-color: white;
     color: black;
@@ -30,25 +38,29 @@ ion-content{
     margin-top: 10rem;
     margin-left: 3rem;
   }
-  
-  a{
-    text-decoration: none;
-    color: white;
-  }
-  .datos{
-    margin: 1rem;
-    padding: 0.5rem 3.5rem 0.5rem 3.5rem;
-    border: 2px ;
-    margin-top: 30%;
-    justify-items:center;
+  .container-omitir{
     justify-content: space-between;
-    color:black;
+    text-align:center;
+    margin-top: 5%;
+    font-size: 0.7rem;
+  }
+  a{
+    color: white;
+    text-decoration: none;
   }
   .datos{
     margin-top: 7rem;
     .itemdatos{
         margin-top: 5%;
+        max-width: 75%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
     }
+  }
+  .centrar-text{
+    display: flex;
+    justify-content: center
   }
   .error{
     font-size: x-small;
@@ -67,17 +79,13 @@ ion-content{
   
   }
   .botones {
-    margin-top: 15%;
+    margin-top: 35%;
     justify-content: space-between;
     text-align:center;
-    margin-left: 5%;
     .guardar{
         background-color:#3da631;
-        width:13rem;
-    }
-    .cancelar{
-        background-color: #fc5759;
-        width: 7rem;
+        width: 65%;
+        padding: 0;
     }
   }
 
@@ -95,5 +103,5 @@ ion-content{
     text-align:center;
     color: #ffffff;
     font-family:'hp265';
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }

@@ -8,7 +8,7 @@
           </div>
         </ion-toolbar>
       </ion-header>
-      <ion-content>
+      <ion-content scroll-y=true>
         <ion-menu-toggle auto-hide="false" text-center>
           <p align="center"><ion-img menuClose src="assets/img/backcliente.png" (click)="openPage()"></ion-img></p>
           <p ion-text header-subtitle>HAYLEEN CARRILLO</p>
@@ -63,7 +63,7 @@
                   Escanear código QR
                 </ion-label>
               </ion-item>
-              <ion-item [routerDirection]="'root'" [routerLink]=""style="--ion-background-color:rgb(107, 107, 107);">
+              <ion-item [routerDirection]="'root'" [routerLink]="'/sucursales'">
                 <ion-img menuClose src="assets/img/sucursalesicono.png"></ion-img>
                 <ion-label>
                   Sucursales
@@ -74,13 +74,7 @@
               
             </ion-menu-toggle>
           </ion-list>
-          <div class="hora">  
-            <ion-item lines="none">
-              <ion-label>hora:</ion-label>
-              <ion-datetime displayFormat="hh:mm A" [(ngModel)]="myDate"></ion-datetime>
-            </ion-item>
-                
-          </div>
+          
           <div class="cerrarsesion">
             <ion-item lines="none">
               <ion-img src="assets/img/cerrarsesion.png"></ion-img>
@@ -90,7 +84,7 @@
           </div>
         </div>
         <div class="back">
-          <ion-img style="width: 100; height: 200;" src="../../assets/img/appseprovectores-01.png"></ion-img>
+          <ion-img  src="../../assets/img/appseprovectores-01.png"></ion-img>
         </div>
       </ion-content>
     </ion-menu> 

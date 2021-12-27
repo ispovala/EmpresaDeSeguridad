@@ -21,7 +21,13 @@ margin-right: 0;
 }
 
 
-
+.regresar ion-img{
+  margin-top: 5%;
+  margin-left: 5%;
+  width: 2.3em;
+  height: 2.3em;
+  
+}
 
 .titulo h1{
   margin: 1rem;
@@ -34,7 +40,7 @@ margin-right: 0;
   max-width:650px;
 	margin-left: 20%;
   margin-right: 20%;
-  margin-top: 10%;
+ 
 }
 .logo ion-img{
    display:block;
@@ -47,23 +53,21 @@ margin-right: 0;
   
 }
 
-.seleccion ion-item{
-  --ion-background-color:#ffffff;
- 
-  display: flex;
+.seleccion ion-item {
+  --ion-background-color: #ffffff;
   text-align: center;
-  border-radius: 60px ;
+  border-radius: 60px;
   width: 100%;
   height: 2.3rem;
   margin: 0%;
-  
 }
-.seleccion ion-icon{
+
+.seleccion ion-icon {
   margin-right: 0%;
-  position:absolute;
+  top: 0.3em;
+  position: absolute;
   margin-left: 80%;
-  border-left: 0%;
-  color:black;
+  color: black;
 }
 
 .cantidad-guardias{
@@ -93,10 +97,26 @@ margin-right: 0;
   font-size: 90%;
   //opacity: 0.50;
 }
-.dat ion-datatime{
+ion-datetime {
+  height: auto;
+  width: auto;
 
-  font-weight: bold;
-  font-size: 70%;
+  
+}
+
+ion-modal {
+  --width: 290px;
+  --height: 382px;
+  --border-radius: 8px;
+}
+.horaval{
+  --width: 290px;
+  --height: 248px;
+}
+
+
+ion-modal ion-datetime {
+  height: 382px;
 }
 .mapa ion-label{
   font-family: hp265;

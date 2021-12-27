@@ -1,115 +1,104 @@
-ion-content{ 
-    --ion-background-color:#828181; 
+ion-content {
+    --ion-background-color: #828181;
     font-family: hp265;
 }
-p{
+
+p {
     font-family: BebasBold;
-    font-size:150%;
+    font-size: 150%;
 }
-.front{
-    z-index:2;
-      position:absolute;
-    
+
+.front {
+    z-index: 2;
+    position: absolute;
     height: 100%;
     width: 100%;
-    
-  }
-  ion-item{
+}
+
+ion-item {
     --ion-background-color: transparent !important;
     --ion-border-color: transparent !important;
-  }
-  ion-list {
+}
+
+ion-list {
     --ion-item-background: transparent;
 }
-.front .linea{
+
+.front .linea {
     border-bottom-style: dot-dash;
 }
-  .back{
-    position: absolute;
-    text-align: buttom;
-    z-index:1;
-    margin-top: 70%;
-    margin-bottom: 0;
-    margin-left: 0;
-    margin-right: 0;
-    opacity:0.3;
-    height: 200px;
-  }
-ion-menu-toggle ion-img{
+
+.back {
+    position: fixed;
+    z-index: 1;
+    opacity: 0.3;
+    min-width: 80%;
+    bottom: 0;
+}
+
+ion-menu-toggle ion-img {
     text-align: center;
-    width:35%;
+    width: 35%;
     margin-top: 4%;
 }
-.logo{
+
+.logo {
     --background: #d8d6d7;
 }
-ion-toolbar .logo{
-    width:35%;
+
+ion-toolbar .logo {
+    width: 35%;
     margin-top: 4%;
 }
-ion-toolbar .imagen{
+
+ion-toolbar .imagen {
     text-align: center;
     margin-top: 10%;
     margin-left: 25%;
     margin-right: 25%;
-    
 }
-ion-menu-toggle{
+
+ion-menu-toggle {
     text-align: center;
+}
 
+.opciones ion-item {
+    color: #ffffff;
 }
-.opciones ion-item{
-    color:#ffffff;
-}
-p{
-    color:#ffffff;
 
+p {
+    color: #ffffff;
 }
-.opciones ion-img{
+
+.opciones ion-img {
     //mask-size: contain;
-//mask-position: 50% 50%;
-//mask-repeat: no-repeat;
+    //mask-position: 50% 50%;
+    //mask-repeat: no-repeat;
     width: 2.3em;
     height: 2.3em;
     padding-bottom: 3%;
     text-align: center;
 }
-.cerrarsesion{
+
+.cerrarsesion {
+    bottom: 4px;
     display: flex;
     text-align: center;
     justify-content: center;
 }
-.cerrarsesion ion-img{
+
+.cerrarsesion ion-img {
     width: 2.3em;
     height: 2.3em;
     padding-bottom: 3%;
     text-align: center;
     color: black;
 }
-.cerrarsesion button{
-    background-color:#828181; 
+
+.cerrarsesion button {
+    background-color: transparent;
 }
-.opciones ion-label{
+
+.opciones ion-label {
     padding-left: 7%;
-}
-.hora{
-    display: flex;
-    flex-direction: row;
-    text-align: center;
-    
-    justify-content: flex-end;
-  
-}
-.hora ion-label{
-    margin-top: 3%;
-    font-size: 20px;
-    margin-right: 0px;
-    border-right: 0px;
-}
-.hora ion-datetime{
-    margin-top: 0%;
-    border-top: 0%;
-    font-size: 20px;
-    margin-left: 0px;
-    border-left: 0px;
 }

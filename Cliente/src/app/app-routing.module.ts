@@ -17,14 +17,6 @@ const routes: Routes = [
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'registro',
-    loadChildren: () => import('./registro/registro.module').then( m => m.RegistroPageModule)
-  },
-  {
-    path: 'phone-login',
-    loadChildren: () => import('./phone-login/phone-login.module').then( m => m.PhoneLoginPageModule)
-  },
-  {
     path: 'servicios',
     loadChildren: () => import('./servicios/servicios.module').then( m => m.ServiciosPageModule),
 
@@ -49,7 +41,7 @@ const routes: Routes = [
         loadChildren: () => import('./servicios/transporte/transporte.module').then( m => m.TransportePageModule)
       },
       {
-        path: 'solicitud',
+        path: 'solicitud/:id',
         loadChildren: () => import('./servicios/solicitud-servicio/solicitud-servicio.module').then( m => m.SolicitudServicioPageModule)
       },
     ]
@@ -86,10 +78,6 @@ const routes: Routes = [
   {
     path: 'menuprueba',
     loadChildren: () => import('./menuprueba/menuprueba.module').then( m => m.MenupruebaPageModule)
-  },
-  {
-    path: 'calificar-servicio',
-    loadChildren: () => import('./calificar-servicio/calificar-servicio.module').then( m => m.CalificarServicioPageModule)
   },
   {
     path: 'perfil',
@@ -139,7 +127,25 @@ const routes: Routes = [
   {
     path: 'registrar',
     loadChildren: () => import('./registrar/registrar.module').then( m => m.RegistrarPageModule)
-  }
+  },
+  {
+    path: 'sucursales',
+    loadChildren: () => import('./sucursales/sucursales.module').then( m => m.SucursalesPageModule)
+  },
+  {
+    path: 'item1-modal',
+    loadChildren: () => import('./item1-modal/item1-modal.module').then( m => m.Item1ModalPageModule)
+    
+  },
+  {
+    path: 'sucursal',
+    loadChildren: () => import('./sucursal/sucursal.module').then( m => m.SucursalPageModule)
+  },  {
+    path: 'calificar-servicio',
+    loadChildren: () => import('./calificar-servicio/calificar-servicio.module').then( m => m.CalificarServicioPageModule)
+  },
+
+
 
 
 

@@ -13,7 +13,7 @@
 
         
         <div class="itemdatos">
-          <ion-label>Ingresar código de 4 dígitos:</ion-label>
+          <ion-label class="centrar-text">Ingresar código de 4 dígitos:</ion-label>
           <ion-item lines="full">
             
             <ion-input formControlName="mobile" input type="tel " maxlength="4" required ></ion-input>
@@ -33,5 +33,8 @@
         </div>
       </ion-list>
     </form>
+    <div class="container-omitir">
+      <a [routerLink]="['/login']">Cambiar número ingresado</a>
+    </div>
   </div>
 </ion-content>

@@ -1,6 +1,0 @@
-{
-	"appId": "io.cliente.sepro",
-	"appName": "ClienteApp",
-	"webDir": "www",
-	"bundledWebRuntime": false
-}

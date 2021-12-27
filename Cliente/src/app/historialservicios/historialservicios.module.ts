@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 import { HistorialserviciosPageRoutingModule } from './historialservicios-routing.module';
 
 import { HistorialserviciosPage } from './historialservicios.page';
-import { CalificarServicioComponent } from '../calificar-servicio/calificar-servicio.component';
 
 @NgModule({
   imports: [
@@ -16,7 +15,6 @@ import { CalificarServicioComponent } from '../calificar-servicio/calificar-serv
     IonicModule,
     HistorialserviciosPageRoutingModule
   ],
-  declarations: [HistorialserviciosPage, CalificarServicioComponent],
-  entryComponents: [CalificarServicioComponent]
+  declarations: [HistorialserviciosPage]
 })
 export class HistorialserviciosPageModule {}

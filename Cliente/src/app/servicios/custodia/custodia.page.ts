@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, AlertController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { UbicacionComponent } from 'src/app/ubicacion/ubicacion.component';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+
 
 @Component({
   selector: 'app-custodia',
@@ -12,8 +13,16 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 export class CustodiaPage implements OnInit {
   ionicForm: FormGroup;
   defaultDate = "1970-12-16";
-  maxFecha: string = (new Date().getFullYear()+1).toString();
-  minFecha: string = (new Date().getFullYear()).toString();
+  hoy= new Date();
+  minFecha: string= (this.hoy.getFullYear()).toString()+"-"+(this.hoy.getMonth()+1).toString()+"-"+(this.hoy.getDate()).toString() ;
+  maxFecha: string = (new Date().getFullYear()+2).toString();
+  fechaInicio: any;
+  horaInicio: any;
+  candado: boolean;
+
+  update() {
+    console.log('Esta habilitado' + this.candado);
+  }
 
   origen = {
     lat: -2.1676746,
@@ -35,24 +44,56 @@ export class CustodiaPage implements OnInit {
     }
   }
 
-  constructor(private navCtrl: NavController, private modalController: ModalController, public formBuilder: FormBuilder) {
+  constructor(public alertController: AlertController, private navCtrl: NavController,
+    private modalController: ModalController, public formBuilder: FormBuilder) {
+
+  }
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Campos vacíos',
+      //subHeader: 'Subtitle',
+      message: 'Existen campos sin completar en la solicitud',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+
+  
+  }
+  ngOnInit() {
+    this.ionicForm = this.formBuilder.group({
+      fechaInicio:[""],
+      horaInicio:[""],
+      
+   })
 
   }
   solicitud() {
-    this.navCtrl.navigateForward("/servicios/n/solicitud");
+ 
+    if (this.ionicForm.value.fechaInicio == "" || this.ionicForm.value.horaInicio=="") {
+      console.log(this.ionicForm.value.fechaInicio)
+      console.log(this.horaInicio)
+      this.presentAlert();
+
+    } else {
+      this.navCtrl.navigateForward("/servicios/n/solicitud/hola", {
+        queryParams: {
+          servicio: "Custodia", datos: this.ionicForm.value, cantVehiculo: this.currentNumber,
+          valorcandado: this.candado, origen: this.origen, destino: this.destino
+        }
+      });
+      console.log(this.ionicForm.value);
+
+    }
+
+
 
   }
   cancelar() {
     this.navCtrl.navigateForward("/servicios");
   }
-  ngOnInit() {
-    this.ionicForm = this.formBuilder.group({
-      
-      inicioDate: [this.defaultDate],
-      
-    })
-
-  }
+  
 
   async addDirection(tipo: number) {
 
