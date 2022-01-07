@@ -27,10 +27,11 @@ export class CalificarServicioPage implements OnInit {
     this.currentRate = numero;
     if (!this.boolClick) {
       this.boolClick = true;
-      var num = numero.toString();
       for (var i = 1; i <= numero; i++) {
         var id = i.toString();
         document.getElementById(id).setAttribute("name", "star");
+        document.getElementById(id).setAttribute("style", "color:#00B7FF");
+        
       }
     }
     else {
@@ -50,6 +51,8 @@ export class CalificarServicioPage implements OnInit {
   seleccionar() {
     console.log("Calificación: " + this.currentRate + " estrellas")
     alert("Calificación recibida: " + this.currentRate + " estrellas")
+    this.navCtrl.navigateForward("/historialservicios");
+
   }
 
 }
