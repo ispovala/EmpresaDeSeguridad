@@ -6,7 +6,7 @@ hr.solid {
   display: none;
 }
 
-a:not([href]){
+a:not([href]) {
   color: red;
   text-decoration: underline;
 }
@@ -19,7 +19,7 @@ a.pd-afile {
   padding: 0 1.2891rem;
 }
 
-a:not([href]).ffile{
+a:not([href]).ffile {
   color: blue;
   text-decoration: underline;
 }
@@ -48,5 +48,16 @@ a:hover {
   width: 250px;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.tb-custom-style {
+  font-size: small;
+  text-align: center;
+}
