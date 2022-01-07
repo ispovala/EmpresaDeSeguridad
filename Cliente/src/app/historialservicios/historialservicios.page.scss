@@ -12,7 +12,7 @@ div h4{
     font-weight: bold;
     color:#912020;
     text-align: center;
-    margin-top: 40%;
+    margin-top: 5rem;
 }
 
 
@@ -102,6 +102,11 @@ ion-menu-button {
 }
 
 div.logosepro {
+    display: flex;
+    justify-content: center;
+}
+
+.datos2{
     display: flex;
     justify-content: center;
 }
