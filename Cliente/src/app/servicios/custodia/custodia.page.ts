@@ -37,6 +37,10 @@ export class CustodiaPage implements OnInit {
     lat: -2.1676746,
     lng: -79.8956897
   };
+
+  dirOrigen:any;
+  dirDestino:any;
+
   currentNumber = 1;
 
   increment() {
@@ -99,6 +103,91 @@ export class CustodiaPage implements OnInit {
     this.navCtrl.navigateForward("/servicios");
   }
 
+  async presentAlertOrigen() {
+    const alert = await this.alertController.create({
+      header: 'Ubicación de Origen',
+      message: 'Seleccione con el puntero su ubicación de origen y luego de click en el botón de Aceptar. También puede usar el buscador de lugares o activar su ubicación mediante GPS',
+      buttons: [
+        {
+          text: 'ACEPTAR',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('ORIGEN');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+    let result = await alert.onDidDismiss();
+    console.log(result);
+  }
+
+  async presentAlertDestino() {
+    const alert = await this.alertController.create({
+      header: 'Ubicación de Destino',
+      message: 'Seleccione con el puntero su ubicación de destino y luego de click en el botón de Aceptar. También puede usar el buscador de lugares o activar su ubicación mediante GPS',
+      buttons: [
+        {
+          text: 'ACEPTAR',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('ORIGEN');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+    let result = await alert.onDidDismiss();
+    console.log(result);
+  }
+
+  async presentAlertDirOrigen() {
+    const alert = await this.alertController.create({
+      header: 'Ubicación de Origen',
+      message: 'Su servicio inicia en: ' + this.dirOrigen,
+      buttons: [
+        {
+          text: 'ACEPTAR',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('ORIGEN');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+    let result = await alert.onDidDismiss();
+    console.log(result);
+  }
+
+  async presentAlertDirDestino() {
+    const alert = await this.alertController.create({
+      header: 'Ubicación de Destino',
+      message: 'Su servicio termina en: '+ this.dirDestino,
+      buttons: [
+        {
+          text: 'ACEPTAR',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('ORIGEN');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+    let result = await alert.onDidDismiss();
+    console.log(result);
+  }
+
+
 
   async addDirection(tipo: number) {
 
@@ -111,12 +200,13 @@ export class CustodiaPage implements OnInit {
       });
 
       await modalAdd.present();
-      alert("Seleccione con el puntero la dirección de origen");
+      this.presentAlertOrigen();
       const { data } = await modalAdd.onWillDismiss();
       if (data) {
         this.origen = data.pos;
+        this.dirOrigen = data.dir;
         console.log('Origen -> ', this.origen);
-        alert("El servicio inicia desde: " + data.dir);
+        this.presentAlertDirOrigen();
       }
     }
 
@@ -129,12 +219,13 @@ export class CustodiaPage implements OnInit {
       });
 
       await modalAdd.present();
-      alert("Seleccione con el puntero la dirección de destino");
+      this.presentAlertDestino();
       const { data } = await modalAdd.onWillDismiss();
       if (data) {
         this.destino = data.pos;
+        this.dirDestino = data.dir;
         console.log('Destino -> ', this.destino);
-        alert("Su servicio termina en: " + data.dir);
+        this.presentAlertDirDestino();
       }
     }
   }

@@ -35,6 +35,9 @@ export class GuardiaPage implements OnInit {
     lat: -2.1676746,
     lng: -79.8956897
   };
+
+  dirOrigen:any;
+  dirDestino:any;
   currentNumber = 1;
 
   increment() {
@@ -139,6 +142,49 @@ export class GuardiaPage implements OnInit {
     })
   }
 
+  async presentAlertOrigen() {
+    const alert = await this.alertController.create({
+      header: 'Ubicación',
+      message: 'Seleccione con el puntero la ubicación donde necesita el servicio y luego de click en el botón de Aceptar. También puede usar el buscador de lugares o activar su ubicación mediante GPS',
+      buttons: [
+        {
+          text: 'ACEPTAR',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('ORIGEN');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+    let result = await alert.onDidDismiss();
+    console.log(result);
+  }
+
+
+  async presentAlertDirOrigen() {
+    const alert = await this.alertController.create({
+      header: 'Ubicación de Origen',
+      message: 'Su servicio inicia en: ' + this.dirOrigen,
+      buttons: [
+        {
+          text: 'ACEPTAR',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('ORIGEN');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+    let result = await alert.onDidDismiss();
+    console.log(result);
+  }
+
   async addDirection(tipo: number) {
 
     if (tipo === 0) {
@@ -150,10 +196,13 @@ export class GuardiaPage implements OnInit {
       });
 
       await modalAdd.present();
+      this.presentAlertOrigen();
       const { data } = await modalAdd.onWillDismiss();
       if (data) {
         this.origen = data.pos;
+        this.dirOrigen = data.dir;
         console.log('Origen -> ', this.origen);
+        this.presentAlertDirOrigen();
       }
 
     }

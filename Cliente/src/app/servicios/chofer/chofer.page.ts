@@ -15,11 +15,11 @@ export class ChoferPage implements OnInit {
   ionicForm: FormGroup;
   defaultDate = "1970-12-16";
   //maxFecha: string = (new Date().getFullYear() + 1).toString();
-  hoy= new Date();
-  minFecha: string= (this.hoy.getFullYear()).toString()+"-"+(this.hoy.getMonth()+1).toString()+"-"+(this.hoy.getDate()).toString() ;
-  maxFecha: string = (new Date().getFullYear()+1).toString();
-  maxiFecha2= addDaysToDate(new Date(), 1);
-  minFecha2: string= (this.maxiFecha2.getFullYear()).toString()+"-"+(this.maxiFecha2.getMonth()+1).toString()+"-"+(this.maxiFecha2.getDate()).toString() ;
+  hoy = new Date();
+  minFecha: string = (this.hoy.getFullYear()).toString() + "-" + (this.hoy.getMonth() + 1).toString() + "-" + (this.hoy.getDate()).toString();
+  maxFecha: string = (new Date().getFullYear() + 1).toString();
+  maxiFecha2 = addDaysToDate(new Date(), 1);
+  minFecha2: string = (this.maxiFecha2.getFullYear()).toString() + "-" + (this.maxiFecha2.getMonth() + 1).toString() + "-" + (this.maxiFecha2.getDate()).toString();
   maxFecha2: string = (new Date().getFullYear() + 2).toString();
   minhour: String = new Date().toISOString();
   fechaInicio: null;
@@ -28,9 +28,9 @@ export class ChoferPage implements OnInit {
   horaFinalizacion: any;
   vehiculo: boolean;
 
-  
 
- 
+
+
   update() {
     console.log('Esta habilitado' + this.vehiculo);
   }
@@ -46,6 +46,9 @@ export class ChoferPage implements OnInit {
     lat: -2.1676746,
     lng: -79.8956897
   };
+
+  dirOrigen:any;
+  dirDestino:any;
 
   constructor(private navCtrl: NavController, private modalController: ModalController,
     public formBuilder: FormBuilder, public alertController: AlertController) {
@@ -85,30 +88,30 @@ export class ChoferPage implements OnInit {
     if (this.ionicForm.value.fechaInicio == "" || this.ionicForm.value.fechaFinalizacion == ""
       || this.ionicForm.value.horaFinalizacion == "" || this.ionicForm.value.horaInicio == "") {
       this.presentAlert();
-    }else if (this.ionicForm.value.fechaInicio != "" || this.ionicForm.value.fechaFinalizacion != ""){
-      var ini= this.ionicForm.value.fechaInicio.split("-", 3);
-      var diaini= ini[2].substring(0,2);
-      var fin= this.ionicForm.value.fechaFinalizacion.split("-", 3);
-      var diafin= fin[2].substring(0,2);
+    } else if (this.ionicForm.value.fechaInicio != "" || this.ionicForm.value.fechaFinalizacion != "") {
+      var ini = this.ionicForm.value.fechaInicio.split("-", 3);
+      var diaini = ini[2].substring(0, 2);
+      var fin = this.ionicForm.value.fechaFinalizacion.split("-", 3);
+      var diafin = fin[2].substring(0, 2);
 
-      if(ini[0]== fin[0]){ //se verifican años
-        if (ini[1] == fin[1]){ //en caso de que el mes sea igual
-          if(diaini <= diafin){
+      if (ini[0] == fin[0]) { //se verifican años
+        if (ini[1] == fin[1]) { //en caso de que el mes sea igual
+          if (diaini <= diafin) {
             console.log("fechas elegidas validas");
-          }else{
+          } else {
             this.presentAlertFechas();
           }
-        }else if (ini[1] < fin[1]){
+        } else if (ini[1] < fin[1]) {
           console.log("fechas elegidas validas");
-        }else{
+        } else {
           this.presentAlertFechas();
         }
-      }else if (ini[0] < fin[0]){
+      } else if (ini[0] < fin[0]) {
         console.log("fechas elegidas validas");
-      }else{
+      } else {
         this.presentAlertFechas();
       }
-    }else {
+    } else {
       this.navCtrl.navigateForward("/servicios/n/solicitud/hola", {
         queryParams: {
           servicio: "Chofer seguro", datos: this.ionicForm.value, valorvehiculo: this.vehiculo,
@@ -118,9 +121,6 @@ export class ChoferPage implements OnInit {
       console.log(this.ionicForm.value);
 
     }
-
-
-
   }
 
 
@@ -132,8 +132,49 @@ export class ChoferPage implements OnInit {
       horaFinalizacion: [""],
 
     })
+  }
+
+  async presentAlertOrigen() {
+    const alert = await this.alertController.create({
+      header: 'Ubicación',
+      message: 'Seleccione con el puntero la ubicación donde necesita el servicio y luego de click en el botón de Aceptar. También puede usar el buscador de lugares o activar su ubicación mediante GPS',
+      buttons: [
+        {
+          text: 'ACEPTAR',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('ORIGEN');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+    let result = await alert.onDidDismiss();
+    console.log(result);
+  }
 
 
+  async presentAlertDirOrigen() {
+    const alert = await this.alertController.create({
+      header: 'Ubicación de Origen',
+      message: 'Su servicio inicia en: ' + this.dirOrigen,
+      buttons: [
+        {
+          text: 'ACEPTAR',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('ORIGEN');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+    let result = await alert.onDidDismiss();
+    console.log(result);
   }
 
   async addDirection(tipo: number) {
@@ -147,10 +188,13 @@ export class ChoferPage implements OnInit {
       });
 
       await modalAdd.present();
+      this.presentAlertOrigen();
       const { data } = await modalAdd.onWillDismiss();
       if (data) {
         this.origen = data.pos;
+        this.dirOrigen = data.dir;
         console.log('Origen -> ', this.origen);
+        this.presentAlertDirOrigen();
       }
 
     }
@@ -173,7 +217,7 @@ export class ChoferPage implements OnInit {
 
 }
 
-function addDaysToDate(date, days){
+function addDaysToDate(date, days) {
   var res = new Date(date);
   res.setDate(res.getDate() + days);
   return res;

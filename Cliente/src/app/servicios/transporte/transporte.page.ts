@@ -31,6 +31,10 @@ export class TransportePage implements OnInit {
     lat: -2.1676746,
     lng: -79.8956897
   };
+
+  dirOrigen:any;
+  dirDestino:any;
+
   item = "transporte"
 
   constructor(public alertController: AlertController, private navCtrl: NavController, private modalController: ModalController, public formBuilder: FormBuilder) {
@@ -80,6 +84,90 @@ export class TransportePage implements OnInit {
     })
   }
 
+  async presentAlertOrigen() {
+    const alert = await this.alertController.create({
+      header: 'Ubicación de Origen',
+      message: 'Seleccione con el puntero su ubicación de origen y luego de click en el botón de Aceptar. También puede usar el buscador de lugares o activar su ubicación mediante GPS',
+      buttons: [
+        {
+          text: 'ACEPTAR',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('ORIGEN');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+    let result = await alert.onDidDismiss();
+    console.log(result);
+  }
+
+  async presentAlertDestino() {
+    const alert = await this.alertController.create({
+      header: 'Ubicación de Destino',
+      message: 'Seleccione con el puntero su ubicación de destino y luego de click en el botón de Aceptar. También puede usar el buscador de lugares o activar su ubicación mediante GPS',
+      buttons: [
+        {
+          text: 'ACEPTAR',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('ORIGEN');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+    let result = await alert.onDidDismiss();
+    console.log(result);
+  }
+
+  async presentAlertDirOrigen() {
+    const alert = await this.alertController.create({
+      header: 'Ubicación de Origen',
+      message: 'Su servicio inicia en: ' + this.dirOrigen,
+      buttons: [
+        {
+          text: 'ACEPTAR',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('ORIGEN');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+    let result = await alert.onDidDismiss();
+    console.log(result);
+  }
+
+  async presentAlertDirDestino() {
+    const alert = await this.alertController.create({
+      header: 'Ubicación de Destino',
+      message: 'Su servicio termina en: '+ this.dirDestino,
+      buttons: [
+        {
+          text: 'ACEPTAR',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('ORIGEN');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+    let result = await alert.onDidDismiss();
+    console.log(result);
+  }
+
   async addDirection(tipo: number) {
 
     if (tipo === 0) {
@@ -91,13 +179,16 @@ export class TransportePage implements OnInit {
       });
 
       await modalAdd.present();
+      this.presentAlertOrigen();
       const { data } = await modalAdd.onWillDismiss();
       if (data) {
         this.origen = data.pos;
+        this.dirOrigen = data.dir;
         console.log('Origen -> ', this.origen);
+        this.presentAlertDirOrigen();
       }
-
     }
+
     else if (tipo === 1) {
       const modalAdd = await this.modalController.create({
         component: UbicacionComponent,
@@ -107,10 +198,13 @@ export class TransportePage implements OnInit {
       });
 
       await modalAdd.present();
+      this.presentAlertDestino();
       const { data } = await modalAdd.onWillDismiss();
       if (data) {
         this.destino = data.pos;
+        this.dirDestino = data.dir;
         console.log('Destino -> ', this.destino);
+        this.presentAlertDirDestino();
       }
     }
   }
