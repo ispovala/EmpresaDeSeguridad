@@ -4,6 +4,8 @@ import { ModalController } from '@ionic/angular';
 import { UbicacionComponent } from 'src/app/ubicacion/ubicacion.component';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
+declare var google: any;
+
 
 @Component({
   selector: 'app-custodia',
@@ -13,12 +15,15 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 export class CustodiaPage implements OnInit {
   ionicForm: FormGroup;
   defaultDate = "1970-12-16";
-  hoy= new Date();
-  minFecha: string= (this.hoy.getFullYear()).toString()+"-"+(this.hoy.getMonth()+1).toString()+"-"+(this.hoy.getDate()).toString() ;
-  maxFecha: string = (new Date().getFullYear()+2).toString();
+  hoy = new Date();
+  minFecha: string = (this.hoy.getFullYear()).toString() + "-" + (this.hoy.getMonth() + 1).toString() + "-" + (this.hoy.getDate()).toString();
+  maxFecha: string = (new Date().getFullYear() + 2).toString();
   fechaInicio: any;
   horaInicio: any;
   candado: boolean;
+  direccionOrigen: any;
+  direccionDestino: any;
+
 
   update() {
     console.log('Esta habilitado' + this.candado);
@@ -59,19 +64,19 @@ export class CustodiaPage implements OnInit {
 
     await alert.present();
 
-  
+
   }
   ngOnInit() {
     this.ionicForm = this.formBuilder.group({
-      fechaInicio:[""],
-      horaInicio:[""],
-      
-   })
+      fechaInicio: [""],
+      horaInicio: [""],
+
+    })
 
   }
   solicitud() {
- 
-    if (this.ionicForm.value.fechaInicio == "" || this.ionicForm.value.horaInicio=="") {
+
+    if (this.ionicForm.value.fechaInicio == "" || this.ionicForm.value.horaInicio == "") {
       console.log(this.ionicForm.value.fechaInicio)
       console.log(this.horaInicio)
       this.presentAlert();
@@ -93,7 +98,7 @@ export class CustodiaPage implements OnInit {
   cancelar() {
     this.navCtrl.navigateForward("/servicios");
   }
-  
+
 
   async addDirection(tipo: number) {
 
@@ -106,13 +111,15 @@ export class CustodiaPage implements OnInit {
       });
 
       await modalAdd.present();
+      alert("Seleccione con el puntero la dirección de origen");
       const { data } = await modalAdd.onWillDismiss();
       if (data) {
         this.origen = data.pos;
         console.log('Origen -> ', this.origen);
+        alert("El servicio inicia desde: " + data.dir);
       }
-
     }
+
     else if (tipo === 1) {
       const modalAdd = await this.modalController.create({
         component: UbicacionComponent,
@@ -122,11 +129,15 @@ export class CustodiaPage implements OnInit {
       });
 
       await modalAdd.present();
+      alert("Seleccione con el puntero la dirección de destino");
       const { data } = await modalAdd.onWillDismiss();
       if (data) {
         this.destino = data.pos;
         console.log('Destino -> ', this.destino);
+        alert("Su servicio termina en: " + data.dir);
       }
     }
   }
+
+
 }

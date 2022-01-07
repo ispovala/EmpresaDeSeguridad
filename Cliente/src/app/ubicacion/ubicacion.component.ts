@@ -33,6 +33,7 @@ export class UbicacionComponent implements OnInit {
   marker: any;
   infowindow: any;
   positionSet: any;
+  direction: any;
 
   @ViewChild('map') divMap: ElementRef;
 
@@ -124,7 +125,7 @@ export class UbicacionComponent implements OnInit {
     this.clickHandleEvent();
     this.infowindow = new google.maps.InfoWindow();
     this.addMarker(position);
-    this.setInfoWindow(this.marker, this.label.titulo, this.label.subtitulo);
+    //this.setInfoWindow(this.marker, this.label.titulo, this.label.subtitulo);
 
   }
 
@@ -147,6 +148,7 @@ export class UbicacionComponent implements OnInit {
     this.marker.setPosition(latLng);
     this.map.panTo(position);
     this.positionSet = position;
+    this.findPlaces(this.positionSet);
 
   }
 
@@ -185,9 +187,25 @@ export class UbicacionComponent implements OnInit {
 
   }
 
+  findPlaces(direction: any) {
+
+    const geocoder = new google.maps.Geocoder();
+
+    geocoder.geocode({ location: direction })
+      .then(({ results }) => {
+        if (results[0]) {
+          this.direction = results[0].formatted_address;
+        }
+        else {
+          this.direction = this.position;
+        }
+      })
+      .catch((e) => window.alert("Geocoder failed due to: " + e));
+  }
+
   aceptar() {
-    console.log('click aceptar -> ', this.positionSet);
-    this.modalController.dismiss({ pos: this.positionSet })
+    //console.log('click aceptar -> ', this.positionSet);
+    this.modalController.dismiss({ pos: this.positionSet, dir: this.direction })
   }
 
 }
