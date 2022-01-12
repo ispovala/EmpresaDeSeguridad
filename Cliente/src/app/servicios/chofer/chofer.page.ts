@@ -17,8 +17,10 @@ export class ChoferPage implements OnInit {
   ionicForm: FormGroup;
   defaultDate = "1970-12-16";
   //maxFecha: string = (new Date().getFullYear() + 1).toString();
+  min=new Date().toJSON().split('T')[0];
+  ho=(moment(new Date).format("YYYY-MM-DD")).toString();
+  minFecha=this.ho;
   
-  //minFecha: string = (this.hoy.getFullYear()).toString() + "-" + (this.hoy.getMonth() + 1).toString() + "-" + (this.hoy.getDate()).toString();
   maxFecha: string = (new Date().getFullYear() + 1).toString();
   maxiFecha2 = addDaysToDate(new Date(), 1);
   minFecha2: string = (this.maxiFecha2.getFullYear()).toString() + "-" + (this.maxiFecha2.getMonth() + 1).toString() + "-" + (this.maxiFecha2.getDate()).toString();
@@ -88,6 +90,7 @@ export class ChoferPage implements OnInit {
   
 
   solicitud() {
+    console.log(new Date());
     var h=new Date();
     var hoy = moment(h).format("DD/MM/YYYY");
     var horahoy=moment(h).format("hh/mm/A");
