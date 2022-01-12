@@ -3,7 +3,7 @@ import { NavController, AlertController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { UbicacionComponent } from 'src/app/ubicacion/ubicacion.component';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-
+import * as moment from 'moment';
 declare var google: any;
 
 
@@ -15,14 +15,14 @@ declare var google: any;
 export class CustodiaPage implements OnInit {
   ionicForm: FormGroup;
   defaultDate = "1970-12-16";
-  hoy = new Date();
-  minFecha: string = (this.hoy.getFullYear()).toString() + "-" + (this.hoy.getMonth() + 1).toString() + "-" + (this.hoy.getDate()).toString();
-  maxFecha: string = (new Date().getFullYear() + 2).toString();
+  ho=(moment(new Date).format("YYYY-MM-DD")).toString();
+  minFecha=this.ho;
   fechaInicio: any;
   horaInicio: any;
   candado: boolean;
   direccionOrigen: any;
   direccionDestino: any;
+  mensaje: any;
 
 
   update() {
@@ -78,26 +78,89 @@ export class CustodiaPage implements OnInit {
     })
 
   }
+  async presentAlertFechas() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Fechas no válidas',
+      //subHeader: 'Subtitle',
+      message: this.mensaje,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+    
+  }
   solicitud() {
-
-    if (this.ionicForm.value.fechaInicio == "" || this.ionicForm.value.horaInicio == "") {
-      console.log(this.ionicForm.value.fechaInicio)
-      console.log(this.horaInicio)
+    var h=new Date();
+    var hoy = moment(h).format("DD/MM/YYYY");
+    var horahoy=moment(h).format("hh/mm/A");
+    var finicio=this.ionicForm.value.fechaInicio;
+    var hinicio=this.ionicForm.value.horaInicio;
+    var listahorainicio=(moment(this.ionicForm.value.horaInicio).format("hh/mm/A")).split("/", 3);   
+    var finiciolista=(moment(this.ionicForm.value.fechaInicio).format("DD/MM/YYYY")).split("/", 3);
+    var listahoy=hoy.split("/", 3)
+    var meshoy=parseInt(listahoy[1]); 
+    var diahoy=parseInt(listahoy[0]); 
+    var anohoy=parseInt(listahoy[2]); 
+    var horaini=parseInt(listahorainicio[0]); 
+    var minutoini=parseInt(listahorainicio[1]); 
+    var dianocheini=listahorainicio[2];  
+    var listahorahoy=(horahoy).split("/", 3);
+    console.log(diahoy);
+    console.log(finiciolista);
+    if (finicio== "" || hinicio== "") { //si hay campos vacios
       this.presentAlert();
+    }else{
+      var fechainicioigualhoy=parseInt(finiciolista[0]) == diahoy && parseInt(finiciolista[1]) ==meshoy && parseInt(finiciolista[2]) ==anohoy ;
+      var horainicioigualhoraactual= parseInt(listahorahoy[0]) ==horaini && parseInt(listahorahoy[1]) ==minutoini && listahorahoy[2] ==dianocheini;
+      var minutosmas1hora=false;
+      if (!minutosmas1hora){
+          if(parseInt(listahorahoy[1]) ==minutoini){
+            minutosmas1hora=true;
+          }
+          else if(minutoini>parseInt(listahorahoy[1]) ){
+            console.log(minutoini);
+            console.log(listahorahoy[1]);
+            minutosmas1hora=true;
+          }else{
+            console.log(minutoini);
+            console.log(listahorahoy[1]);
+            console.log(false);
+            minutosmas1hora=false;
+          }
+      }
 
-    } else {
-      this.navCtrl.navigateForward("/servicios/n/solicitud/hola", {
-        queryParams: {
-          servicio: "Custodia", datos: this.ionicForm.value, cantVehiculo: this.currentNumber,
-          valorcandado: this.candado, origen: this.origen, destino: this.destino
+      var horainiciodespues1horaactual=(horaini>(parseInt(listahorahoy[0]) ) && minutosmas1hora && listahorahoy[2] ==dianocheini) ||(horaini>(parseInt(listahorahoy[0]) +1));
+      console.log(horainiciodespues1horaactual);
+      console.log(listahorahoy[0]+1);
+      console.log(horaini+1);
+        if(fechainicioigualhoy){
+          console.log("fecha inicio igual a fecha actual");
+          if(!horainiciodespues1horaactual){
+            console.log("la hora de inicio o fin es la actual o la hora de inicio no es mayor a una hora de la hora actual");
+            this.mensaje="La hora de Inicio del servicio debe ser mínimo 1 hora después de la hora actual";
+            this.presentAlertFechas();
+          }else{
+            this.solicitando();
+          }
+        }else if(parseInt(finiciolista[0])<diahoy){
+          console.log("dia de inicio es menor a la fecha actual");
+          this.mensaje="La fecha de inicio no puede ser menor a la fecha actual.";
+          this.presentAlertFechas();
+        }else{
+          this.solicitando();
         }
-      });
-      console.log(this.ionicForm.value);
-
-    }
-
-
-
+    } 
+  
+  }
+  solicitando(){
+    this.navCtrl.navigateForward("/servicios/n/solicitud/hola", {
+      queryParams: {
+        servicio: "Custodia", datos: this.ionicForm.value, cantVehiculo: this.currentNumber,
+        valorcandado: this.candado, origen: this.origen, destino: this.destino
+      }
+    });
+    console.log(this.ionicForm.value);
   }
   cancelar() {
     this.navCtrl.navigateForward("/servicios");

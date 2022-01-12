@@ -31,6 +31,7 @@ export class ChoferPage implements OnInit {
   fechaFinalizacion: any;
   horaFinalizacion: any;
   vehiculo: boolean;
+  mensaje:any;
 
 
 
@@ -80,12 +81,12 @@ export class ChoferPage implements OnInit {
       cssClass: 'my-custom-class',
       header: 'Fechas no válidas',
       //subHeader: 'Subtitle',
-      message: 'Ingrese las fechas correctamente.',
+      message: this.mensaje,
       buttons: ['OK']
     });
 
     await alert.present();
-
+    
   }
   
 
@@ -127,7 +128,6 @@ export class ChoferPage implements OnInit {
     if (finicio== "" || ffin== "" || hinicio== "" || hfin== "") { //si hay campos vacios
       this.presentAlert();
     }else{
-      parseInt(listahorahoy[0]) 
       var fechainicioigualhoy=parseInt(finiciolista[0]) == diahoy && parseInt(finiciolista[1]) ==meshoy && parseInt(finiciolista[2]) ==anohoy ;
       var fechaifinigualhoy=parseInt(ffinlista[0]) ==diahoy && parseInt(ffinlista[1]) ==meshoy && parseInt(ffinlista[2]) ==anohoy;
       var horainicioigualhoraactual= parseInt(listahorahoy[0]) ==horaini && parseInt(listahorahoy[1]) ==minutoini && listahorahoy[2] ==dianocheini;
@@ -165,25 +165,29 @@ export class ChoferPage implements OnInit {
       console.log(listahorahoy[0]+1);
       var horainiciodespues1horafin=((horafin>(horaini)) && minutosmas1horafin && dianochefin==dianocheini)||(horafin>(horaini+1));
       console.log(horaini+1);
-      if(finicio==ffin){ 
+      var fechainicioyfiniguales=finiciolista[0]==ffinlista[0] && finiciolista[1]==ffinlista[1] && finiciolista[2]==ffinlista[2];
+      if(fechainicioyfiniguales){ 
         console.log("fecha inicio y fin iguales");
         if(fechainicioigualhoy){
           console.log("fecha inicio igual a fecha actual");
           if(horainicioigualhoraactual || horafinigualhoraactual || !horainiciodespues1horaactual){
             console.log("la hora de inicio o fin es la actual o la hora de inicio no es mayor a una hora de la hora actual");
+            this.mensaje="La hora de Inicio del servicio debe ser mínimo 1 hora después de la hora actual";
             this.presentAlertFechas();
           }else if(!horainiciodespues1horafin){
             console.log("la hora de fin no es despues de una hora de la de inicio");
+            this.mensaje="El servicio debe durar mínimo 1 hora, es decir, la hora de fin del servicio debe ser mínimo 1 hora después de la hora de inicio.";
             this.presentAlertFechas();
-
           }else{
             this.solicitando();
           }
         }else if(parseInt(finiciolista[0])<diahoy){
           console.log("dia de inicio es menor a la fecha actual");
+          this.mensaje="La fecha de inicio no puede ser menor a la fecha actual.";
           this.presentAlertFechas();
         }else if(!horainiciodespues1horafin){
           console.log("la hora de fin no es despues de una hora de la de inicio");
+          this.mensaje="El servicio debe durar mínimo 1 hora, es decir, la hora de fin del servicio debe ser mínimo 1 hora después de la hora de inicio.";
           this.presentAlertFechas();
         }else{
           this.solicitando();
@@ -194,9 +198,14 @@ export class ChoferPage implements OnInit {
           console.log("mismo mes");
           if(parseInt(finiciolista[0])>parseInt(ffinlista[0])){
             console.log("dia de inicio es mayor a la de fin");
+            this.mensaje="La fecha de inicio no puede ser mayor a la fecha de finalización del servicio.";
             this.presentAlertFechas();
           }else if(parseInt(finiciolista[0])<diahoy){
             console.log("dia de inicio es menor a la fecha actual");
+            this.mensaje="La fecha de inicio no puede ser menor a la fecha actual.";
+            this.presentAlertFechas();
+          }else if(!horainiciodespues1horaactual){
+            this.mensaje="La hora de Inicio del servicio debe ser mínimo 1 hora despúes de la hora actual";
             this.presentAlertFechas();
           }else{
             this.solicitando();
@@ -204,6 +213,7 @@ export class ChoferPage implements OnInit {
 
         }else if(parseInt(finiciolista[1])>parseInt(ffinlista[1])){
           console.log("mes de inicio es mayor al mes de fin");
+          this.mensaje="La fecha de inicio no puede ser mayor a la fecha de finalización del servicio.";
           this.presentAlertFechas();
         }else{
           this.solicitando();
