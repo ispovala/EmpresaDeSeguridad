@@ -13,7 +13,7 @@ import {validarCedulaAlg} from 'src/app/editarperfil/cedula.validator';
 export class EditarperfilPage implements OnInit {
   public validador=true;
   ionicForm: FormGroup;
-  defaultDate = "1970-12-16";
+  defaultDate = "";
   maxFecha: string = (new Date().getFullYear()-18).toString();
   minFecha: string = (new Date().getFullYear()-80).toString();
   
@@ -58,20 +58,30 @@ export class EditarperfilPage implements OnInit {
   return this.ionicForm.controls;
 }
 
+
 submitForm() {
   this.isSubmitted = true;
   if (!this.ionicForm.valid) {
-    console.log('Please provide all the required values!')
+    console.log('Campos incompletos!')
+    console.log(this.ionicForm.value)
+
+    this.presentAlertIncompleto();
+    
 
     return false;
   } else {
     console.log(this.ionicForm.value)
-    /*Si llena todos los datos, y pone cancelar tambien aparece esto: SOLUCIONAR*/
+    //console.log(this.ionicForm.value.name)
+    //Si llena todos los datos, y pone cancelar tambien aparece esto: SOLUCIONAR
       this.presentAlertGuardar()
       this.finEdicion()
+      return true
     
   }
 }
+
+
+
 
   async presentAlertEditar() {
     const alert = await this.alertController.create({
@@ -120,6 +130,22 @@ submitForm() {
     let result = await alert.onDidDismiss();
     console.log(result);
   }
+
+  async presentAlertIncompleto() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Editar perfil',
+      //subHeader: 'Subtitle',
+      message: 'Para editar su perfil debe completar todos los campos solicitados',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+
+   // const { role } = await alert.onDidDismiss();
+    //console.log('onDidDismiss resolved with role', role);
+  }
+
 
   finEdicion(){
     this.navCtrl.navigateForward("/perfil");
