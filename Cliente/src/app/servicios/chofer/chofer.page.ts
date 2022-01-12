@@ -176,6 +176,9 @@ export class ChoferPage implements OnInit {
           }else{
             this.solicitando();
           }
+        }else if(parseInt(finiciolista[0])<diahoy){
+          console.log("dia de inicio es menor a la fecha actual");
+          this.presentAlertFechas();
         }else if(!horainiciodespues1horafin){
           console.log("la hora de fin no es despues de una hora de la de inicio");
           this.presentAlertFechas();
@@ -188,6 +191,9 @@ export class ChoferPage implements OnInit {
           console.log("mismo mes");
           if(parseInt(finiciolista[0])>parseInt(ffinlista[0])){
             console.log("dia de inicio es mayor a la de fin");
+            this.presentAlertFechas();
+          }else if(parseInt(finiciolista[0])<diahoy){
+            console.log("dia de inicio es menor a la fecha actual");
             this.presentAlertFechas();
           }else{
             this.solicitando();
