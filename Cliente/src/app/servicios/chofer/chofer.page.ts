@@ -183,14 +183,18 @@ export class ChoferPage implements OnInit {
           this.solicitando();
         }
       }else if(parseInt(finiciolista[2])==parseInt(ffinlista[2])){ 
+        console.log("mismo año");
         if(parseInt(finiciolista[1])==parseInt(ffinlista[1])){
-          if(parseInt(finiciolista[0])<parseInt(ffinlista[0])){
+          console.log("mismo mes");
+          if(parseInt(finiciolista[0])>parseInt(ffinlista[0])){
+            console.log("dia de inicio es mayor a la de fin");
             this.presentAlertFechas();
           }else{
             this.solicitando();
           }
 
-        }else if(parseInt(finiciolista[1])<parseInt(ffinlista[1])){
+        }else if(parseInt(finiciolista[1])>parseInt(ffinlista[1])){
+          console.log("mes de inicio es mayor al mes de fin");
           this.presentAlertFechas();
         }else{
           this.solicitando();
