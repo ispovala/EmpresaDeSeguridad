@@ -61,7 +61,8 @@ export class EditarperfilPage implements OnInit {
 
 submitForm() {
   this.isSubmitted = true;
-  if (!this.ionicForm.valid) {
+  //!this.ionicForm.valid
+  if (this.ionicForm.value.name==''|| this.ionicForm.value.lastname=='' || this.ionicForm.value.email=='' ) {
     console.log('Campos incompletos!')
     console.log(this.ionicForm.value)
 
@@ -184,4 +185,3 @@ submitForm() {
 
 
 }
-
