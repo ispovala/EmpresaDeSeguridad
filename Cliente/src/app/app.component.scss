@@ -64,13 +64,22 @@ ion-menu-toggle {
 
 .opciones ion-item {
     color: #ffffff;
+    margin-left: 10%;
 }
 
 p {
     color: #ffffff;
 }
+.linea ion-img{
+    width: 86%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    //margin:0px;
 
-.opciones ion-img {
+}
+.opcion ion-img {
     //mask-size: contain;
     //mask-position: 50% 50%;
     //mask-repeat: no-repeat;
