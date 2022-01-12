@@ -223,38 +223,8 @@ export class ChoferPage implements OnInit {
         this.solicitando();
       }
 
-    } /*else if (this.ionicForm.value.fechaInicio != "" || this.ionicForm.value.fechaFinalizacion != "") {
-      var ini = this.ionicForm.value.fechaInicio.split("-", 3);
-      console.log(ini);
-      
-      //var fechahoy= this.hoy.split("-", 3);
-      var diaini = ini[2].substring(0, 2);
-      var fin = this.ionicForm.value.fechaFinalizacion.split("-", 3);
-      var diafin = fin[2].substring(0, 2);
+    } 
 
-      if (ini[0] == fin[0]) { //se verifican años
-        if (ini[1] == fin[1]) { //en caso de que el mes sea igual
-          if (diaini <= diafin) {
-            console.log("fechas elegidas validas");
-            
-            this.solicitando();
-          } else {
-            this.presentAlertFechas();
-          }
-        } else if (ini[1] < fin[1]) { // en caso de que el mes de inicio sea menor al mes de fin
-          console.log("fechas elegidas validas");
-          this.solicitando();
-        } else {
-          this.presentAlertFechas();
-        }
-      } else if (ini[0] < fin[0]) {
-        console.log("fechas elegidas validas");
-        this.solicitando();
-      } else {
-        this.presentAlertFechas();
-      }
-  
-    } */
   }
   solicitando(){
     this.navCtrl.navigateForward("/servicios/n/solicitud/hola", {

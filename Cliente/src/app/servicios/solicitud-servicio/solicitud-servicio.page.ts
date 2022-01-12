@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ModalController, NavController } from '@ionic/angular';
+import { ModalController, NavController,AlertController } from '@ionic/angular';
 import { TrackServicioComponent } from '../track-servicio/track-servicio.component';
 import { modalController } from '@ionic/core';
 import * as moment from 'moment';
@@ -32,7 +32,7 @@ export class SolicitudServicioPage implements OnInit {
   };
 
   constructor(private route: ActivatedRoute, private router: Router, public navCtrl: NavController,
-    private modalController: ModalController) {
+    private modalController: ModalController,public alertController: AlertController) {
 
   }
 
@@ -66,11 +66,39 @@ export class SolicitudServicioPage implements OnInit {
       this.navCtrl.navigateForward("/servicios/n/custodia");
     }
   }
+  async presentAlertConfirmacion() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Confirmación del servicio',
+      message: 'La solicitud ha sido enviada.',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          id: 'cancel-button',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Ok',
+          id: 'confirm-button',
+          handler: () => {
+            console.log('Confirm Okay');
+            this.navCtrl.navigateForward("/servicios");
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+    
+  }
   cancelar() {
     this.navCtrl.navigateForward("/servicios");
   }
   confirmar() {
-    this.navCtrl.navigateForward("/servicios");
+    this.presentAlertConfirmacion();
   }
 
   async dibujarRuta() {
