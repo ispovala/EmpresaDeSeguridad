@@ -16,9 +16,15 @@ export class EditarperfilPage implements OnInit {
   defaultDate = "";
   maxFecha: string = (new Date().getFullYear()-18).toString();
   minFecha: string = (new Date().getFullYear()-80).toString();
-  
   isSubmitted = false;
-
+  
+  nombreu: null;
+  apellidou: null;
+  emailu: null;
+  fechanacimientou:null;
+  celularu: null;
+  cedulau: null;
+  direccionu: null;
 
   constructor(private navCtrl: NavController, public formBuilder: FormBuilder, public alertController: AlertController) { }
 
@@ -76,6 +82,10 @@ submitForm() {
     //Si llena todos los datos, y pone cancelar tambien aparece esto: SOLUCIONAR
       this.presentAlertGuardar()
       this.finEdicion()
+      this.cambiarNombreUser()
+      //this.cambiarNombreUserMenu()
+      this.ionicForm.reset()
+      
       return true
     
   }
@@ -149,9 +159,32 @@ submitForm() {
 
 
   finEdicion(){
-    this.navCtrl.navigateForward("/perfil");
-    this.ionicForm.reset()
+    this.navCtrl.navigateForward("/perfil", {
+      queryParams: {
+              servicio: "EditarPerfil", datos: this.ionicForm.value, nombreusua: this.nombreu, apellidousua: this.apellidou,
+              emailusua: this.emailu, fechanacimientousua: this.fechanacimientou, celularusua: this.celularu, cedulausua: this.cedulau,
+              direccionusua: this.direccionu
+      }
+    });
+    
   }
+
+  cambiarNombreUser(){
+    this.navCtrl.navigateForward("/homeperfil",{
+      queryParams: {
+        datos: this.ionicForm.value, nameus: this.nombreu, apells: this.apellidou
+      }
+    });
+  }
+
+  /*
+  cambiarNombreUserMenu(){
+    this.navCtrl.navigateForward("/homeperfil",{
+      queryParams: {
+        datos: this.ionicForm.value, nameus: this.nombreu, apells: this.apellidou
+      }
+    });
+  }*/
 
   validacionCed(){
     let cedula = this.ionicForm.get("cedula").value;
