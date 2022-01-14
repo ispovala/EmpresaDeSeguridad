@@ -8,13 +8,14 @@ import { ModalController, NavController } from '@ionic/angular';
 })
 export class HistorialserviciosPage implements OnInit {
 
-  arrayServicios = [ ["en proceso", "guardia", "ceibos", "14/01/2022", "21:30", "14/01/2022", "2", "100", "efectivo", "rutaElegida"], 
-			["finalizado", "guardia", "Espol", "21/03/2021", "21:30", "22/03/2021", "0", "50", "efectivo", "rutaElegida"],
-			["pendiente", "guardia", "Mall del Sol", "21/03/2022", "21:30", "22/03/2022", "2", "100", "efectivo", "rutaElegida"] ];
+  mapaServicios = [ {"estado": "en proceso", "servicio": "guardia", "lugarini": "ceibos", "fechaini": "14/01/2022", "horaini": "21:30", "fechafin": "14/01/2022", "numeroguardias": "2", "monto": "100", "pago": "efectivo", "ruta": "rutaElegida"}, 
+			{"estado": "finalizado", "servicio": "guardia", "lugarini": "Espol", "fechaini": "21/03/2021", "horaini": "21:30", "fechafin": "22/03/2021", "numeroguardias": "0", "monto": "50", "pago": "efectivo", "ruta": "rutaElegida"},			
+			{"estado": "pendiente", "servicio": "guardia", "lugarini": "Mall del Sol", "fechaini": "21/03/2022", "horaini": "21:30", "fechafin": "22/03/2022", "numeroguardias":"2", "monto": "100", "pago": "efectivo", "ruta": "rutaElegida"} ]
   
   constructor(private modalController: ModalController, private navCtrl: NavController) { }
 
   ngOnInit() {
+
   }
 
   calificar(){
