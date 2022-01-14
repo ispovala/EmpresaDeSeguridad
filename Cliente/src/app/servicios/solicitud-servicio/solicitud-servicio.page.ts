@@ -21,6 +21,7 @@ export class SolicitudServicioPage implements OnInit {
   horaFinalizacion: any;
   direccionOrigen: any;
   direccionDestino: any;
+  seleccion: any;
 
   origen = {
     lat: -2.1676746,
@@ -39,7 +40,6 @@ export class SolicitudServicioPage implements OnInit {
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       console.log(params); // { order: "popular" }
-
       this.datosrecibidos = params;
       console.log(this.datosrecibidos); // popular
       this.fechaInicio = moment(this.datosrecibidos.datos.fechaInicio).format("DD/MM/YYYY");
@@ -85,7 +85,12 @@ export class SolicitudServicioPage implements OnInit {
           id: 'confirm-button',
           handler: () => {
             console.log('Confirm Okay');
-            this.navCtrl.navigateForward("/servicios");
+            this.navCtrl.navigateForward("/historialservicios", {
+              queryParams: {
+                descripcion: this.datosrecibidos, origen:this.direccionOrigen, destino:this.direccionDestino, service:this.datosrecibidos.servicio, pago:this.seleccion
+              }
+            });
+
           }
         }
       ]
@@ -99,6 +104,10 @@ export class SolicitudServicioPage implements OnInit {
   }
   confirmar() {
     this.presentAlertConfirmacion();
+  }
+  obtenermetodo(sel: any) {
+    this.seleccion= sel;
+    console.log(this.seleccion);
   }
 
   async dibujarRuta() {

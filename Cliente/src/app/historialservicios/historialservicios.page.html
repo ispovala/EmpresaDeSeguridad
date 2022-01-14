@@ -1,4 +1,5 @@
 
+
 <ion-content>
   <div>
     <ion-buttons slot="start">
@@ -23,8 +24,8 @@
 
 	<div class="datos2">
     <ion-list>
-      <div *ngFor="let servi of mapaServicios">
-        <ion-chip  button (click)="calificar()">
+      <div *ngFor="let servi of mapaServicios" (click)="verdescripcion(servi)">
+        <ion-chip  button >
         <div class="serviciosdetalles">
           <div class="topservicios">
             <ion-label class="fecha">

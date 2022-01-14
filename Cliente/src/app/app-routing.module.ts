@@ -62,7 +62,10 @@ const routes: Routes = [
     path: 'historialservicios',
     loadChildren: () => import('./historialservicios/historialservicios.module').then( m => m.HistorialserviciosPageModule)
   },
-
+  {
+    path: 'historialservicios/:id',
+    loadChildren: () => import('./historialservicios/description/description.module').then( m => m.DescriptionPageModule)
+  },
   {
     path: 'detallesservicio',
     loadChildren: () => import('./detallesservicio/detallesservicio.module').then( m => m.DetallesservicioPageModule)
@@ -140,7 +143,8 @@ const routes: Routes = [
   {
     path: 'sucursal',
     loadChildren: () => import('./sucursal/sucursal.module').then( m => m.SucursalPageModule)
-  },  {
+  },
+  {
     path: 'calificar-servicio',
     loadChildren: () => import('./calificar-servicio/calificar-servicio.module').then( m => m.CalificarServicioPageModule)
   },
