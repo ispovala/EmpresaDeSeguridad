@@ -23,15 +23,15 @@
 
 	<div class="datos2">
     <ion-list>
-      <div *ngFor="let serv of mapaServicios">
+      <div *ngFor="let servi of mapaServicios">
         <ion-chip  button (click)="calificar()">
         <div class="serviciosdetalles">
           <div class="topservicios">
             <ion-label class="fecha">
-              {{serv.fechaini}}
+              {{servi.fechaini}}
             </ion-label> 
             <ion-label class="tiposervicio">
-              {{serv.servicio}}
+              {{servi.servicio}}
             </ion-label>
             <ion-label class="detalles">
               Ver detalles
@@ -39,7 +39,7 @@
             </div>
             <div class="bottservicios">
               <label class="estado">
-                {{serv.estado}}
+                {{servi.estado}}
               </label>
             </div>    
           
