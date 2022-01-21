@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalController, NavController,AlertController } from '@ionic/angular';
 import { TrackServicioComponent } from '../track-servicio/track-servicio.component';
-import { modalController } from '@ionic/core';
 import * as moment from 'moment';
 
 declare var google: any;
