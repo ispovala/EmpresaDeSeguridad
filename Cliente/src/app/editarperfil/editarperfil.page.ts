@@ -5,6 +5,8 @@ import { FormGroup, FormBuilder, Validators, ValidationErrors, ValidatorFn } fro
 import * as validarcedula from 'src/scripts/validarcedula.js';
 import {validarCedulaAlg} from 'src/app/editarperfil/cedula.validator';
 
+
+
 @Component({
   selector: 'app-editarperfil',
   templateUrl: './editarperfil.page.html',
@@ -79,12 +81,12 @@ submitForm() {
   } else {
     console.log(this.ionicForm.value)
     //console.log(this.ionicForm.value.name)
-    //Si llena todos los datos, y pone cancelar tambien aparece esto: SOLUCIONAR
+    //Si llena todos los datos, y pone cancelar tambien aparece esto
       this.presentAlertGuardar()
       this.finEdicion()
-      this.cambiarNombreUser()
+      //this.cambiarNombreUser()
       //this.cambiarNombreUserMenu()
-      this.ionicForm.reset()
+      
       
       return true
     
@@ -153,8 +155,6 @@ submitForm() {
 
     await alert.present();
 
-   // const { role } = await alert.onDidDismiss();
-    //console.log('onDidDismiss resolved with role', role);
   }
 
 
@@ -166,9 +166,11 @@ submitForm() {
               direccionusua: this.direccionu
       }
     });
+
+    this.ionicForm.reset()
     
   }
-
+  /*
   cambiarNombreUser(){
     this.navCtrl.navigateForward("/homeperfil",{
       queryParams: {
@@ -176,7 +178,7 @@ submitForm() {
       }
     });
   }
-
+/*
   /*
   cambiarNombreUserMenu(){
     this.navCtrl.navigateForward("/homeperfil",{

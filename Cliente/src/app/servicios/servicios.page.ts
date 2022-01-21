@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { MenuController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
+import { FulltrackComponent } from '../fulltrack/fulltrack.component';
 
 @Component({
   selector: 'app-servicios',
@@ -10,8 +12,17 @@ import { AlertController } from '@ionic/angular';
 })
 export class ServiciosPage implements OnInit {
 
+  origen = {
+    lat: -2.2676746,
+    lng: -79.9956897
+  };
+  destino = {
+    lat: -2.0676746,
+    lng: -79.7956897
+  };
+
   
-  constructor(private navCtrl: NavController, private menu: MenuController,public alertController: AlertController){
+  constructor(private navCtrl: NavController, private menu: MenuController,public alertController: AlertController, private modalController: ModalController){
   }
   irPaginaChofer(){
     this.presentAlertChofer();
@@ -126,5 +137,18 @@ export class ServiciosPage implements OnInit {
   openCustom() {
     this.menu.enable(true, 'custom');
     this.menu.open('custom');
+  }
+
+  async dibujarRuta() {
+
+    const modalAdd = await this.modalController.create({
+      component: FulltrackComponent,
+      mode: 'ios',
+      swipeToClose: true,
+      componentProps: { origen: this.origen, destino: this.destino }
+    });
+    modalAdd.setAttribute('style', '--background: transparent; --backdrop-opacity: 0.0');
+
+    await modalAdd.present();
   }
 }
