@@ -43,6 +43,7 @@ export class DescriptionPage implements OnInit {
       cssClass: 'my-custom-class',
       header: 'Confirmación',
       message: '¿Está seguro de cancelar el servicio?.',
+
       buttons: [
         {
           text: 'No',
@@ -57,7 +58,8 @@ export class DescriptionPage implements OnInit {
           id: 'confirm-button',
           handler: () => {
             console.log('Confirm Okay');
-            this.navCtrl.navigateForward("/historialservicios");
+            this.navCtrl.navigateForward("/historialservicios");   
+          console.log(this.seleccion);
 
           }
         }

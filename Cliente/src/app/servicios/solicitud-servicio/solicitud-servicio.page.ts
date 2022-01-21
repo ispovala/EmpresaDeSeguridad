@@ -87,7 +87,7 @@ export class SolicitudServicioPage implements OnInit {
             console.log('Confirm Okay');
             this.navCtrl.navigateForward("/historialservicios", {
               queryParams: {
-                descripcion: this.datosrecibidos, origen:this.direccionOrigen, destino:this.direccionDestino, service:this.datosrecibidos.servicio, pago:this.seleccion
+                descripcion: this.datosrecibidos, origen:this.direccionOrigen, destino:this.direccionDestino, service:this.datosrecibidos.servicio, pago:this.seleccion,cance:""
               }
             });
 
