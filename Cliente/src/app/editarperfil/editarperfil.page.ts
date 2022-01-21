@@ -5,6 +5,8 @@ import { FormGroup, FormBuilder, Validators, ValidationErrors, ValidatorFn } fro
 import * as validarcedula from 'src/scripts/validarcedula.js';
 import {validarCedulaAlg} from 'src/app/editarperfil/cedula.validator';
 
+
+
 @Component({
   selector: 'app-editarperfil',
   templateUrl: './editarperfil.page.html',
