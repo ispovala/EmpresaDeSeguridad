@@ -24,7 +24,7 @@
     "@awesome-cordova-plugins/core": "^5.37.3",
     "@capacitor/android": "^3.3.0",
     "@capacitor/app": "1.0.3",
-    "@capacitor/camera": "^1.2.1",
+    "@capacitor/camera": "^1.2.4",
     "@capacitor/core": "3.2.4",
     "@capacitor/filesystem": "^1.0.6",
     "@capacitor/geolocation": "^1.2.0",

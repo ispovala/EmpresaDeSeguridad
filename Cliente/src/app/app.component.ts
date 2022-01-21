@@ -32,6 +32,7 @@ export class AppComponent {
       this.apellidour = this.recibido.datos.lastname;
     }
     );
+  
   }
 
   startScan() {

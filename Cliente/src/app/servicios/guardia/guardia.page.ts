@@ -145,11 +145,26 @@ export class GuardiaPage implements OnInit {
           minutosmas1horafin=false;
         }
     }
+    var horaini3despues=false;
+    if(horaini==12){
+      console.log("ini igual a 12");
+      if(horafin>=3){
+        console.log("fin mayor a 3");
+        horaini3despues=true;
+      }
+      
+    }else{
+      if((horafin>(horaini)+2) ){
+        horaini3despues=true;
+      }else{
+        horaini3despues=false;
+      }
+    }
 
       var horainiciodespues1horaactual=(horaini>(parseInt(listahorahoy[0]) ) && minutosmas1hora && listahorahoy[2] ==dianocheini) ||(horaini>(parseInt(listahorahoy[0]) +1));
       console.log(horainiciodespues1horaactual);
       console.log(listahorahoy[0]+1);
-      var horainiciodespues1horafin=((horafin>(horaini)) && minutosmas1horafin && dianochefin==dianocheini)||(horafin>(horaini+1));
+      var horainiciodespues1horafin=(horaini3despues && minutosmas1horafin);
       console.log(horaini+1);
       var fechainicioyfiniguales=finiciolista[0]==ffinlista[0] && finiciolista[1]==ffinlista[1] && finiciolista[2]==ffinlista[2];
       if(fechainicioyfiniguales){ 
@@ -162,7 +177,7 @@ export class GuardiaPage implements OnInit {
             this.presentAlertFechas();
           }else if(!horainiciodespues1horafin){
             console.log("la hora de fin no es despues de una hora de la de inicio");
-            this.mensaje="El servicio debe durar mínimo 1 hora, es decir, la hora de fin del servicio debe ser mínimo 1 hora después de la hora de inicio.";
+            this.mensaje="El servicio debe durar mínimo 3 horas, es decir, la hora de fin del servicio debe ser mínimo 3 horas después de la hora de inicio.";
             this.presentAlertFechas();
           }else{
             this.solicitando();
