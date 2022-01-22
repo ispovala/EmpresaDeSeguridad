@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  main_url: 'http://[user].pythonanywhere.com',
+  main_url: 'https://pauldbm.pythonanywhere.com',
 };

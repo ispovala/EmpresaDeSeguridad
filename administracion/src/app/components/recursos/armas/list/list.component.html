@@ -1,42 +1,42 @@
 <router-recursos></router-recursos>
 
-<div class="p-5">
+<div class="p-4 bg-resources">
   <table class="table tb-custom-style">
     <thead>
       <tr>
-        <th class="w150px">Marca</th>
-        <th class="w150px">Tipo</th>
-        <th class="w150px">Color</th>
-        <th class="w150px">Calibre</th>
-        <th class="w100px">
+        <th class="w100px">MARCA</th>
+        <th class="w100px">TIPO</th>
+        <th class="w100px">COLOR</th>
+        <th class="w100px">CALIBRE</th>
+        <th class="w200px">
           <button
-            class="btn btn-success text-white w-100"
+            class="btn btn-success text-white w-75"
             (click)="openCM(createModal)"
           >
-            Agregar
+            AGREGAR
           </button>
         </th>
       </tr>
     </thead>
     <tbody [hidden]="getArmas().length == 0">
       <tr *ngFor="let arma of getArmas()">
-        <td class="w150px">
+        <td class="w100px">
           {{ arma.nombreMarca }}
         </td>
-        <td class="w150px">
+        <td class="w100px">
           {{ arma.nombreTipo }}
         </td>
-        <td class="w150px">
+        <td class="w100px">
           {{ arma.nombreColor }}
         </td>
-        <td class="w150px">
+        <td class="w100px">
           {{ arma.nombreCalibre }}
         </td>
-        <td class="w100px">
+        <td class="w200px">
           <a
             (click)="setActiveArma(arma); openDM(deleteModal)"
             class="pe-auto link-danger px-3"
-            >Eliminar</a
+            >ELIMINAR</a
           >
           <button
             class="btn bg-primary text-white w-50"
@@ -57,15 +57,13 @@
 
 <ng-template #createModal let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Agregar Arma</h4>
+    <h2 class="modal-title" id="modal-basic-title">Agregar Arma</h2>
     <button
       type="button"
-      class="close"
+      class="btn-close mx-3"
       aria-label="Close"
       (click)="modal.dismiss('Cross click')"
-    >
-      <span aria-hidden="true">&times;</span>
-    </button>
+    ></button>
   </div>
   <div class="modal-body">
     <div class="container">
@@ -172,15 +170,13 @@
 
 <ng-template #editModal let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Editar Arma</h4>
+    <h2 class="modal-title" id="modal-basic-title">Editar Arma</h2>
     <button
       type="button"
-      class="close"
+      class="btn-close mx-3"
       aria-label="Close"
       (click)="modal.dismiss('Cross click')"
-    >
-      <span aria-hidden="true">&times;</span>
-    </button>
+    ></button>
   </div>
   <div class="modal-body">
     <div class="container">
@@ -315,23 +311,23 @@
 
 <ng-template #viewModal let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Detalles del Arma</h4>
+    <h2 class="modal-title" id="modal-basic-title">Detalles del Arma</h2>
     <button
       type="button"
-      class="close"
+      class="btn-close mx-3"
       aria-label="Close"
       (click)="modal.close('Cross click')"
-    >
-      <span aria-hidden="true">&times;</span>
-    </button>
+    ></button>
   </div>
   <div class="modal-body">
     <div class="container">
       <div class="row align-items-center">
         <div class="col">
           <div class="form-group">
+            <!--
             <img src="#" alt="Arma" />
-            <!-- {{ currentArma.ruta_foto }} -->
+            {{ currentArma.ruta_foto }}
+            -->
           </div>
         </div>
         <div class="col">

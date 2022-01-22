@@ -1,59 +1,51 @@
 <router-recursos></router-recursos>
 
-<div class="p-5">
+<div class="p-4 bg-resources">
   <table class="table tb-custom-style">
     <thead>
       <tr>
-        <th class="w150px">Marca</th>
-        <th class="w150px">Tipo</th>
-        <th class="w150px">Color</th>
-        <th class="w100px">Placa</th>
-        <th class="w50px">Año</th>
-        <th class="w200px">Motor</th>
+        <th class="w100px">MARCA</th>
+        <th class="w100px">TIPO</th>
+        <th class="w100px">COLOR</th>
+        <th class="w100px">PLACA</th>
+        <th class="w100px">AÑO</th>
+        <th class="w150px">MOTOR</th>
         <th class="w200px">
-          <!--
           <button
             type="button"
-            class="btn bg-success text-white w-100"
-            data-bs-toggle="modal"
-            data-bs-target="#createOrEditVehiculoModal"
-            (click)="crearVehiculo()"
-          >-->
-          <button
-            type="button"
-            class="btn bg-success text-white w-100"
+            class="btn bg-success text-white w-75"
             (click)="openCM(createModal)"
           >
-            Agregar
+            AGREGAR
           </button>
         </th>
       </tr>
     </thead>
     <tbody [hidden]="getVehiculos().length == 0">
       <tr *ngFor="let vehiculo of getVehiculos()">
-        <td class="w150px">
+        <td class="w100px">
           {{ vehiculo.nombreMarca }}
         </td>
-        <td class="w150px">
+        <td class="w100px">
           {{ vehiculo.nombreTipo }}
         </td>
-        <td class="w150px">
+        <td class="w100px">
           {{ vehiculo.nombreColor }}
         </td>
         <td class="w100px">
           {{ vehiculo.placa }}
         </td>
-        <td class="w50px">
+        <td class="w100px">
           {{ vehiculo.year }}
         </td>
-        <td class="w200px">
+        <td class="w150px">
           {{ vehiculo.motor }}
         </td>
         <td class="w200px">
           <a
             (click)="setActiveVehiculo(vehiculo); openDM(deleteModal)"
             class="pe-auto px-3"
-            >Eliminar</a
+            >ELIMINAR</a
           >
           <button
             class="btn bg-primary text-white w-50"
@@ -61,14 +53,6 @@
           >
             DETALLES
           </button>
-          <!--
-          <button
-            class="btn bg-primary text-white w-50"
-            (click)="setActiveVehiculo(vehiculo); crearVehiculo()"
-          >
-            DETALLES
-          </button>
-          -->
         </td>
       </tr>
     </tbody>
@@ -80,24 +64,15 @@
   </div>
 </div>
 
-<!--
-<createOrEditVehiculoModal
-  #createOrEditVehiculoModal
-  (modalSave)="refreshList()"
-></createOrEditVehiculoModal>
--->
-
 <ng-template #createModal let-modal>
   <div class="modal-header">
     <h2 class="modal-title" id="modal-basic-title">Agregar Vehículo</h2>
     <button
       type="button"
-      class="close"
+      class="btn-close mx-3"
       aria-label="Close"
       (click)="modal.dismiss('Cross click')"
-    >
-      <span aria-hidden="true">&times;</span>
-    </button>
+    ></button>
   </div>
   <div class="modal-body">
     <div class="container">
@@ -180,28 +155,21 @@
               <div class="col">
                 <div class="form-group">
                   <label for="Year">Año</label>
-                  <select
-                    name="year"
-                    [(ngModel)]="currentVehiculo.year"
+                  <input
+                    autocomplete="off"
                     class="form-control"
-                    required
-                  >
-                    <option value="2010">2010</option>
-                    <option value="2011">2011</option>
-                    <option value="2012">2012</option>
-                    <option value="2013">2013</option>
-                    <option value="2014">2014</option>
-                    <option value="2015">2015</option>
-                    <option value="2016">2016</option>
-                    <option value="2017">2017</option>
-                    <option value="2018">2018</option>
-                  </select>
-                  <!--<year-picker>Loading</year-picker>-->
+                    name="date"
+                    bsDatepicker
+                    [bsConfig]="{ dateInputFormat: 'YYYY' }"
+                    (onShown)="onOpenCalendar($event)"
+                    [minDate]="minDate"
+                    [maxDate]="maxDate"
+                  />
                 </div>
               </div>
             </div>
           </div>
-          <div class="form-group">
+          <div class="form-group py-3">
             <label for="Motor">Motor</label>
             <input
               type="text"
@@ -265,21 +233,19 @@
 
 <ng-template #editModal let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Editar Vehículo</h4>
+    <h2 class="modal-title" id="modal-basic-title">Editar Vehículo</h2>
     <button
       type="button"
-      class="close"
+      class="btn-close mx-3"
       aria-label="Close"
       (click)="modal.dismiss('Cross click')"
-    >
-      <span aria-hidden="true">&times;</span>
-    </button>
+    ></button>
   </div>
   <div class="modal-body">
     <div class="container">
       <div class="row">
         <div class="col">
-          <div class="form-group">
+          <div class="form-group pb-3">
             <label for="Marca">Marca</label>
             <select
               name="marca"
@@ -295,66 +261,83 @@
               </option>
             </select>
           </div>
-          <div class="form-group">
-            <label for="Tipo">Tipo</label>
-            <select
-              name="tipo"
-              [(ngModel)]="currentVehiculo.tipo"
-              class="form-control"
-              required
-            >
-              <option [value]="tipo.id" *ngFor="let tipo of getTiposVehiculo()">
-                {{ tipo.nombre }}
-              </option>
-            </select>
+          <div class="container pb-3">
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="Tipo">Tipo</label>
+                  <select
+                    name="tipo"
+                    [(ngModel)]="currentVehiculo.tipo"
+                    class="form-control"
+                    required
+                  >
+                    <option
+                      [value]="tipo.id"
+                      *ngFor="let tipo of getTiposVehiculo()"
+                    >
+                      {{ tipo.nombre }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="Color">Color</label>
+                  <select
+                    name="color"
+                    [(ngModel)]="currentVehiculo.color"
+                    class="form-control"
+                    required
+                  >
+                    <option
+                      [value]="color.id"
+                      *ngFor="let color of getColores()"
+                    >
+                      {{ color.nombre }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="Color">Color</label>
-            <select
-              name="color"
-              [(ngModel)]="currentVehiculo.color"
-              class="form-control"
-              required
-            >
-              <option [value]="color.id" *ngFor="let color of getColores()">
-                {{ color.nombre }}
-              </option>
-            </select>
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="Placa">Placa</label>
+                  <input
+                    type="text"
+                    #Placa="ngModel"
+                    id="Placa"
+                    class="form-control"
+                    [(ngModel)]="currentVehiculo.placa"
+                    name="Placa"
+                    minlength="8"
+                    maxlength="255"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="Year">Año</label>
+                  <input
+                    [(ngModel)]="currentVehiculo.year"
+                    autocomplete="off"
+                    class="form-control"
+                    name="date"
+                    bsDatepicker
+                    [bsConfig]="{ dateInputFormat: 'YYYY' }"
+                    (onShown)="onOpenCalendar($event)"
+                    [minDate]="minDate"
+                    [maxDate]="maxDate"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="Placa">Placa</label>
-            <input
-              type="text"
-              #Placa="ngModel"
-              id="Placa"
-              class="form-control"
-              [(ngModel)]="currentVehiculo.placa"
-              name="Placa"
-              minlength="8"
-              maxlength="255"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="Year">Año</label>
-            <select
-              name="Year"
-              [(ngModel)]="currentVehiculo.year"
-              class="form-control"
-              required
-            >
-              <option value="2010">2010</option>
-              <option value="2011">2011</option>
-              <option value="2012">2012</option>
-              <option value="2013">2013</option>
-              <option value="2014">2014</option>
-              <option value="2015">2015</option>
-              <option value="2016">2016</option>
-              <option value="2017">2017</option>
-              <option value="2018">2018</option>
-            </select>
-          </div>
-          <div class="form-group">
+          <div class="form-group py-3">
             <label for="Motor">Motor</label>
             <input
               type="text"
@@ -435,23 +418,23 @@
 
 <ng-template #viewModal let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Detalles del Vehículo</h4>
+    <h2 class="modal-title" id="modal-basic-title">Detalles del Vehículo</h2>
     <button
       type="button"
-      class="close"
+      class="btn-close mx-3"
       aria-label="Close"
       (click)="modal.dismiss('Cross click')"
-    >
-      <span aria-hidden="true">&times;</span>
-    </button>
+    ></button>
   </div>
   <div class="modal-body">
     <div class="container">
       <div class="row align-items-center">
         <div class="col">
           <div class="form-group">
+            <!--
             <img src="#" alt="Vehiculo" />
-            <!-- {{ currentVehiculo.ruta_foto }} -->
+            {{ currentVehiculo.ruta_foto }}
+            -->
           </div>
         </div>
         <div class="col">

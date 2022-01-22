@@ -1,10 +1,4 @@
-import {
-  Component,
-  //Input,
-  OnInit,
-  //ViewChild,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Color } from 'src/app/core/models/recursos/color.model';
 import { Vehiculo } from 'src/app/core/models/recursos/vehiculo/vehiculo.model';
@@ -14,8 +8,7 @@ import { Tipos } from 'src/app/core/models/recursos/tipos.model';
 import { Marcas } from 'src/app/core/models/recursos/marcas.model';
 import { TipoService } from 'src/app/core/services/recursos/tipo.service';
 import { MarcaService } from 'src/app/core/services/recursos/marca.service';
-//import { FormControl } from '@angular/forms';
-//import { CreateOrEditVehiculoModalComponent } from '../ce-modal/create-or-edit-vehiculo-modal.component';
+import { CalendarCellViewModel } from 'ngx-bootstrap/datepicker/models';
 
 @Component({
   selector: 'vehiculos-list',
@@ -24,12 +17,15 @@ import { MarcaService } from 'src/app/core/services/recursos/marca.service';
   encapsulation: ViewEncapsulation.None,
 })
 export class VehiculosListComponent implements OnInit {
-  //@ViewChild('createOrEditVehiculoModal') createOrEditVehiculoModal: CreateOrEditVehiculoModalComponent = new CreateOrEditVehiculoModalComponent(this.vehiculoService, this.tiposService, this.marcasService, this.colorService);
   currentVehiculo: Vehiculo = new Vehiculo();
   private vehiculos: Vehiculo[];
   private tiposVehiculo?: Tipos[];
   private marcasVehiculo?: Marcas[];
   private colores?: Color[];
+
+  minDate = new Date(1950, 1, 1);
+  maxDate = new Date();
+  //date = new FormControl({ value: moment() });
 
   /*private selectedFile?: File;*/
 
@@ -49,10 +45,15 @@ export class VehiculosListComponent implements OnInit {
     this.retrieveColores();
     this.refreshList();
   }
-  /*
-  crearVehiculo(): void {
-    this.createOrEditVehiculoModal.show(this.currentVehiculo.placa);
-  }*/
+
+  onOpenCalendar(container: any) {
+    container.setViewMode('year');
+    container.yearSelectHandler = (event: CalendarCellViewModel): void => {
+      container.value = event.date;
+      this.currentVehiculo.year = event.date.getFullYear();
+      return;
+    };
+  }
 
   private retrieveVehiculos(): void {
     this.vehiculoService.getAll().subscribe(

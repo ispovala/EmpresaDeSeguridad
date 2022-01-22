@@ -1,18 +1,18 @@
 <router-recursos></router-recursos>
 
-<div class="p-5">
+<div class="p-4 bg-resources">
   <table class="table tb-custom-style">
     <thead>
       <tr>
-        <th class="w150px">Marca</th>
-        <th class="w150px">Tipo</th>
-        <th class="w150px">Color</th>
-        <th class="w100px">
+        <th class="w150px">MARCA</th>
+        <th class="w150px">TIPO</th>
+        <th class="w150px">COLOR</th>
+        <th class="w200px">
           <button
-            class="btn btn-success text-white w-100"
+            class="btn btn-success text-white w-75"
             (click)="openCM(createModal)"
           >
-            Agregar
+            AGREGAR
           </button>
         </th>
       </tr>
@@ -28,13 +28,13 @@
         <td class="w150px">
           {{ candadosSatelital.nombreColor }}
         </td>
-        <td class="w100px">
+        <td class="w200px">
           <a
             (click)="
               setActiveCandadoSatelital(candadosSatelital); openDM(deleteModal)
             "
             class="pe-auto link-danger px-3"
-            >Eliminar</a
+            >ELIMINAR</a
           >
           <button
             class="btn bg-primary text-white w-50"
@@ -60,17 +60,15 @@
 
 <ng-template #createModal let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">
+    <h2 class="modal-title" id="modal-basic-title">
       Agregar Candado Satelital
-    </h4>
+    </h2>
     <button
       type="button"
-      class="close"
+      class="btn-close mx-3"
       aria-label="Close"
       (click)="modal.dismiss('Cross click')"
-    >
-      <span aria-hidden="true">&times;</span>
-    </button>
+    ></button>
   </div>
   <div class="modal-body">
     <div class="container">
@@ -91,7 +89,7 @@
               </option>
             </select>
           </div>
-          <div class="container">
+          <div class="container my-3">
             <div class="row">
               <div class="col">
                 <div class="form-group">
@@ -162,15 +160,13 @@
 
 <ng-template #editModal let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Editar Candado Satelital</h4>
+    <h2 class="modal-title" id="modal-basic-title">Editar Candado Satelital</h2>
     <button
       type="button"
-      class="close"
+      class="btn-close mx-3"
       aria-label="Close"
       (click)="modal.dismiss('Cross click')"
-    >
-      <span aria-hidden="true">&times;</span>
-    </button>
+    ></button>
   </div>
   <div class="modal-body">
     <div class="container">
@@ -279,25 +275,25 @@
 
 <ng-template #viewModal let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">
+    <h2 class="modal-title" id="modal-basic-title">
       Detalles del Candado Satelital
-    </h4>
+    </h2>
     <button
       type="button"
-      class="close"
+      class="btn-close mx-3"
       aria-label="Close"
       (click)="modal.close('Cross click')"
-    >
-      <span aria-hidden="true">&times;</span>
-    </button>
+    ></button>
   </div>
   <div class="modal-body">
     <div class="container">
       <div class="row align-items-center">
         <div class="col">
           <div class="form-group">
+            <!--
             <img src="#" alt="CandadoSatelital" />
-            <!-- {{ currentCandadoSatelital.ruta_foto }} -->
+            {{ currentCandadoSatelital.ruta_foto }}
+            -->
           </div>
         </div>
         <div class="col">

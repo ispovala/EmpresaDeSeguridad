@@ -28,6 +28,10 @@ a:hover {
   cursor: pointer;
 }
 
+li.nav-item {
+  list-style-type: none;
+}
+
 .w50px {
   width: 50px;
 }
@@ -60,4 +64,32 @@ body {
 .tb-custom-style {
   font-size: small;
   text-align: center;
+}
+
+div.bg-resources {
+  background-color: lightgray;
+}
+
+th {
+  color: red;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 0 0.8rem;
+}
+
+table > thead > tr > th {
+  border: 0 !important;
+}
+
+tbody tr {
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+}
+
+tbody > tr > td.w100px,
+tbody > tr > td.w150px {
+  background-color: white;
 }
