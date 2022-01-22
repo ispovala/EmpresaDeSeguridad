@@ -38,9 +38,9 @@ div h4{
 }
 
 ion-chip{
-    width:16rem;
-    height: auto;
-    align-self: center;
+    width:25em;
+    height: 4.2em;
+    //align-self: center;
     background-color: #7b7c7e;
 }
 
@@ -52,25 +52,32 @@ ion-chip{
 }
 
 .topservicios{
-    justify-content: center;
-    font-co
+    justify-content: space-between;
+    //font-co
+    display: flex;
+    flex-direction: row;
     .fecha{
-        margin-left: 0;
-        margin-right: 15px;
-        font-size: 0.5rem;
-        justify-content:left;
+        margin-left: 0em;
+        margin-right: 2em;
+        font-size: 0.8em;
+        //justify-content:left;
+        padding-left: 0%;
     }
     .tiposervicio{
-        justify-content: center;
+        //justify-content: center;
         font-weight: bold;
-        margin-left: 30px;
+        width: 5em;
+        padding-right: 3em;
+        padding-left: 3em;
+        //margin-left: 30px;
     }
     .detalles{
-        font-size: 0.5rem;
-        justify-content: center;
-        margin-right: 0;
-        margin-left: 40px;
-        justify-content: right;
+        font-size: 0.9em;
+        //justify-content: center;
+        margin-right: 0em;
+        margin-left: 2em;
+        padding-right: 0%;
+        //justify-content: right;
     }
 }
 

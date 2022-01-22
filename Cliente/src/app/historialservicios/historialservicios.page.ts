@@ -21,9 +21,9 @@ export class HistorialserviciosPage implements OnInit {
   seleccion:any;
   selec:any;
 
-  mapaServicios = [ {"estado": "en proceso", "servicio": "Guardia", "lugarini": "ceibos", "fechaini": "14/01/2022", "horaini": "21:30", "fechafin": "14/01/2022","horafin":"14/01/2022", "numeroguardias": "2", "monto": "100", "pago": "efectivo", "ruta": "rutaElegida", "candado":"Si","numerovehiculo": "2", "vehiculo":"Si","guardaespalda":"Si"}, 
-		  {"estado": "finalizado", "servicio": "Guardia", "lugarini": "Espol", "fechaini": "21/03/2021", "horaini": "21:30", "fechafin": "22/03/2021","horafin":"14/01/2022", "numeroguardias": "1", "monto": "50", "pago": "efectivo", "ruta": "rutaElegida", "candado":"Si","numerovehiculo": "2", "vehiculo":"Si","guardaespalda":"Si"},			
-			{"estado": "pendiente", "servicio": "Guardia", "lugarini": "Mall del Sol", "fechaini": "21/03/2022", "horaini": "21:30", "fechafin": "22/03/2022","horafin":"14/01/2022", "numeroguardias":"2", "monto": "100", "pago": "efectivo", "ruta": "rutaElegida", "candado":"Si","numerovehiculo": "2", "vehiculo":"Si","guardaespalda":"Si"} ]
+  mapaServicios = [ {"estado": "en proceso", "servicio": "Guardia", "lugarini": "ceibos", "fechaini": "14/01/2022", "horaini": "09:30pm", "fechafin": "14/01/2022","horafin":"11:00pm", "numeroguardias": "2", "monto": "100", "pago": "efectivo", "ruta": "rutaElegida", "candado":"Si","numerovehiculo": "2", "vehiculo":"Si","guardaespalda":"Si"}, 
+		  {"estado": "finalizado", "servicio": "Guardia", "lugarini": "Espol", "fechaini": "21/03/2021", "horaini": "09:30pm", "fechafin": "22/03/2021","horafin":"11:00pm", "numeroguardias": "1", "monto": "50", "pago": "efectivo", "ruta": "rutaElegida", "candado":"Si","numerovehiculo": "2", "vehiculo":"Si","guardaespalda":"Si"},			
+			{"estado": "pendiente", "servicio": "Guardia", "lugarini": "Mall del Sol", "fechaini": "21/03/2022", "horaini": "09:30pm", "fechafin": "22/03/2022","horafin":"11:00pm", "numeroguardias":"2", "monto": "100", "pago": "efectivo", "ruta": "rutaElegida", "candado":"Si","numerovehiculo": "2", "vehiculo":"Si","guardaespalda":"Si"} ]
 
   constructor(private route: ActivatedRoute,private modalController: ModalController, private navCtrl: NavController) { }
 
@@ -31,12 +31,12 @@ export class HistorialserviciosPage implements OnInit {
     this.route.queryParams.subscribe(params => {
 
       this.datosrecibidos = params;
-      //this.cance=this.datosrecibidos.cance;
+      this.cance=this.datosrecibidos.cance;
       
-      //console.log(this.datosrecibidos.cance);
-      //console.log(this.datosrecibidos.sele);
-      //if(!(this.datosrecibidos.descripcion.fechaInicio=="")){
-        console.log("ingresando")
+      console.log(params);
+      console.log(this.datosrecibidos);
+      if(!(this.datosrecibidos.descripcion.fechaInicio=="")){
+        //console.log("ingresando")
         this.fechaInicio = moment(this.datosrecibidos.descripcion.datos.fechaInicio).format("DD/MM/YYYY");
         this.fechaFinalizacion = moment(this.datosrecibidos.descripcion.datos.fechaFinalizacion).format("DD/MM/YYYY");
         this.horaInicio = moment(this.datosrecibidos.descripcion.datos.horaInicio).format("hh:mma");
@@ -44,7 +44,7 @@ export class HistorialserviciosPage implements OnInit {
         this.direccionOrigen = this.datosrecibidos.origen;
         this.direccionDestino = this.datosrecibidos.destino;
      
-     // }
+     }
       
       
       

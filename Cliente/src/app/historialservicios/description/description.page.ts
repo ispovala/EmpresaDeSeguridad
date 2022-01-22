@@ -38,6 +38,13 @@ export class DescriptionPage implements OnInit {
   cancelar() {
     this.presentAlertConfirmacion();
   }
+  enviar(){
+    this.navCtrl.navigateForward("/historialservicios",{
+      queryParams: {
+        cance:"cancelado",selec:this.datosrecibidos.des
+      }
+    }); 
+  }
   async presentAlertConfirmacion() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
@@ -58,7 +65,7 @@ export class DescriptionPage implements OnInit {
           id: 'confirm-button',
           handler: () => {
             console.log('Confirm Okay');
-            this.navCtrl.navigateForward("/historialservicios");   
+            this.enviar();
           console.log(this.seleccion);
 
           }

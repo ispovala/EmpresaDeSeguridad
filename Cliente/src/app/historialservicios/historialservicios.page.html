@@ -28,21 +28,27 @@
         <ion-chip  button >
         <div class="serviciosdetalles">
           <div class="topservicios">
-            <ion-label class="fecha">
-              {{servi.fechaini}}
-            </ion-label> 
-            <ion-label class="tiposervicio">
-              {{servi.servicio}}
-            </ion-label>
-            <ion-label class="detalles">
-              Ver detalles
-            </ion-label>
+            <div>
+              <ion-label class="fecha">
+                {{servi.fechaini}}
+              </ion-label> 
             </div>
-            <div class="bottservicios">
-              <label class="estado">
-                {{servi.estado}}
-              </label>
-            </div>    
+            
+              <div class="bottservicios">
+                <ion-label class="tiposervicio">
+                  {{servi.servicio}}
+                </ion-label>
+                <label class="estado">
+                  {{servi.estado}}
+                </label>
+              </div>  
+              <div>
+                <ion-label class="detalles">
+                  Ver detalles
+                </ion-label>
+              </div>
+            </div>
+              
           
         </div>     
       </ion-chip>
