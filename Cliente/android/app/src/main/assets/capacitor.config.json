@@ -1,6 +1,6 @@
 {
 	"appId": "io.cliente.sepro",
-	"appName": "ClienteApp",
+	"appName": "empresadeseguridad",
 	"webDir": "www",
 	"bundledWebRuntime": false
 }

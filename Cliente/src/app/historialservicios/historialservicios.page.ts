@@ -49,8 +49,10 @@ export class HistorialserviciosPage implements OnInit {
       
       
     }
+    
     );
     console.log(this.datosrecibidos);
+
 
     if(!(this.fechaInicio=="")){
       this.mapaServicios.push({"estado": "pendiente", "servicio": this.datosrecibidos.service, "lugarini": this.direccionOrigen, "fechaini": this.fechaInicio, "horaini": this.horaInicio, "fechafin": this.fechaFinalizacion,"horafin":this.horaFinalizacion, "numeroguardias": this.datosrecibidos.cantGuardia, "monto": "Pendiente", "pago": this.datosrecibidos.pago, "ruta": "rutaElegida", "candado":this.datosrecibidos.descripcion.valorcandado,"numerovehiculo": this.datosrecibidos.descripcion.cantVehiculo, "vehiculo":this.datosrecibidos.descripcion.valorvehiculo,"guardaespalda":this.datosrecibidos.descripcion.valorguardaespaldas});

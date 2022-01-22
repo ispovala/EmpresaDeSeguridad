@@ -46,7 +46,19 @@ div.logosepro {
     justify-content: center;
     color: #aaafb4;
 }
+.comentarios{
+    padding-top: 6%;
+    display: flex;
+    justify-content: center;
+    
 
+}
+.comentarios textarea{
+    width: 15em;
+    height: 7em;
+    font-family: "hp265";
+    padding:2%;
+}
 ion-label{
     font-family: "BebasBold";
     font-size: 1.6em;
