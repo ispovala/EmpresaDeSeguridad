@@ -10,12 +10,17 @@ SECRET_KEY = 'django-insecure-9i2nuj3i3g2ojs5va7feex2&l1jhl%$lq3vt&76r+7exct+o6n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# Custom Settings
+# PythonAnyWhere Settings
+PAW = True
+
 ALLOWED_HOSTS = [
-    #'[user].pythonanywhere.com'
+    'pauldbm.pythonanywhere.com'
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:4200",
+    #'http://localhost:4200'
+    'https://pauldbm.pythonanywhere.com/administrador'
 ]
 
 AUTH_USER_MODEL = 'seguridad.Usuario'
@@ -33,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'seguridad',
     'corsheaders',
-    'clear_cache',
     'rest_framework',
 ]
 
@@ -68,16 +72,28 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'server.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'seguridadseproamerica',
-        'USER': 'dbAdminSeproAmerica',
-        'PASSWORD': '2k21%SeproAm%',
-        'HOST': 'localhost',
-        'PORT': 3306,
+if PAW:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'PaulDBM$seguridadseproamerica',
+            'USER': 'PaulDBM',
+            'PASSWORD': '2k21%SeproAm%',
+            'HOST': 'PaulDBM.mysql.pythonanywhere-services.com',
+            'PORT': 3306,
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'seguridadseproamerica',
+            'USER': 'dbAdminSeproAmerica',
+            'PASSWORD': '2k21%SeproAm%',
+            'HOST': 'localhost',
+            'PORT': 3306,
+        }
+    }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -105,7 +121,7 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = '/home/[user]/EmpresaDeSeguridad/server'
+STATIC_ROOT = '/home/PaulDBM/EmpresaDeSeguridad/server/static'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
