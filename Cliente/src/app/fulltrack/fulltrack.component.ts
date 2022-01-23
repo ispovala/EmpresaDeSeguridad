@@ -9,6 +9,11 @@ import { isDefined } from '@angular/compiler/src/util';
 
 declare var google: any;
 
+// La diferencia entre fulltrack y track-servicio es que
+// track servicio se encarga de mostrar la ruta al inicio en la solicitud
+// mientras que el objetivo de fulltrack es realizar el seguimiento gps
+// del vehículo que presta el servicio.
+
 @Component({
   selector: 'app-fulltrack',
   templateUrl: './fulltrack.component.html',
