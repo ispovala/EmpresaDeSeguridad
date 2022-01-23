@@ -13,12 +13,12 @@ import { FulltrackComponent } from '../fulltrack/fulltrack.component';
 export class ServiciosPage implements OnInit {
 
   origen = {
-    lat: -2.2676746,
-    lng: -79.9956897
+    lat: 0,
+    lng: 0
   };
   destino = {
-    lat: -2.0676746,
-    lng: -79.7956897
+    lat: 0,
+    lng: 0
   };
 
   
@@ -140,7 +140,12 @@ export class ServiciosPage implements OnInit {
   }
 
   async dibujarRuta() {
-
+    if (this.origen.lat==0 && this.origen.lng==0 && this.destino.lat==0 && this.destino.lng==0){
+      this.origen = { lat: 4.6583, lng: -74.0939 };
+      this.destino = { lat: 4.6568, lng: -74.0982 };    
+      this.presentAlertNoServicio();
+    }
+    else{
     const modalAdd = await this.modalController.create({
       component: FulltrackComponent,
       mode: 'ios',
@@ -150,5 +155,26 @@ export class ServiciosPage implements OnInit {
     modalAdd.setAttribute('style', '--background: transparent; --backdrop-opacity: 0.0');
 
     await modalAdd.present();
+  }}
+
+  async presentAlertNoServicio() {
+    const alert = await this.alertController.create({
+      header: 'No tiene un servicio en ejecución',
+      message: 'Para realizar un seguimiento de su servicio debe tener un servicio activo',
+      buttons: [
+        {
+          text: 'ACEPTAR',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('No tiene servicio activo');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+    let result = await alert.onDidDismiss();
+    console.log(result);
   }
 }

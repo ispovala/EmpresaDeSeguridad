@@ -5,6 +5,7 @@ import { AlertController, ModalController } from '@ionic/angular';
 import { NgZone } from '@angular/core';
 
 import { Geolocation } from '@capacitor/geolocation';
+import { isDefined } from '@angular/compiler/src/util';
 
 declare var google: any;
 
@@ -15,19 +16,9 @@ declare var google: any;
 })
 export class FulltrackComponent implements OnInit {
 
-  origen = { lat: 4.6583, lng: -74.0939 };
-  destino = { lat: 4.6768, lng: -74.0482 };
-
-  @Input() position = {
-    lat: -2.1676746,
-    lng: -79.8956897
-  };
-
-  label = {
-    titulo: 'Ubicación',
-    subtitulo: 'Seleccione la ubicación'
-  }
-
+  origen : { lat: 0, lng: 0 };
+  destino = { lat: 0, lng: 0 };
+ 
   map: any;
   marker: any;
   infowindow: any;
@@ -51,7 +42,6 @@ export class FulltrackComponent implements OnInit {
 
 
   async init() {
-    
     this.ubicacionService.init(this.renderer, this.document).then(() => {
       this.initMap();
     }).catch((err) => {
@@ -59,7 +49,6 @@ export class FulltrackComponent implements OnInit {
   }
 
   initMap() {
-
     const position = this.origen;
 
     let latLng = new google.maps.LatLng(position.lat, position.lng);
@@ -83,7 +72,6 @@ export class FulltrackComponent implements OnInit {
     this.directionsDisplay.setMap(this.map);
     this.calculateRoute();
     //this.setInfoWindow(this.marker, this.label.titulo, this.label.subtitulo);
-
   }
 
   public calculateRoute() {
@@ -157,7 +145,7 @@ export class FulltrackComponent implements OnInit {
 
   }
 
-  aceptar() {
+  aceptar() {  
     this.modalController.dismiss({ pos: this.positionSet })
   }
 
