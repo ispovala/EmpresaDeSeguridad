@@ -35,6 +35,9 @@ export class AppComponent {
   
   }
 
+// Idealmente con el QR Generado por el BackEnd 
+// Se redirecciona a la ventana de calificación
+
   startScan() {
     this.barcodeScanner.scan().then(barcodeData => {
       console.log('Barcode data', barcodeData);
