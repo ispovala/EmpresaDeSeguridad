@@ -62,12 +62,17 @@ ion-datetime {
 
 ion-modal {
   --width: 290px;
-  --height: 382px;
+  --height: 460px;
   --border-radius: 8px;
 }
 
 ion-modal ion-datetime {
-  height: 382px;
+  height: 460px;
+}
+.seleccion ion-label{
+  text-align: center;
+  margin-bottom: 1.5%;
+  margin-top: 0%;
 }
 .ubicacion ion-label{
   font-family: hp265;
@@ -135,24 +140,29 @@ ion-modal ion-datetime {
     padding: 1.5rem 3.5rem 0.5rem 3.5rem;
     border: 0px ;
 }
-.ubicacion{
-    display: flex;
+.ubicacion {
+  display: flex;
+  margin-bottom: 1%;
+
 }
-.ubicacion h6{
-  margin: 0rem;
-  padding: 0.5rem 2rem 0.5rem 0rem;
-  border: 0px ;
+.ubicacion ion-label{
+  width:30em;
 }
 
-.ubicacion button{
-  text-align:center;
-  margin-left: 0rem;
-  width: 10rem;
+.ubicacion button {
+  text-align: center;
+  margin-right: 5%;
+  margin-left: 10%;
+  width: 30em;
   height: 2.6rem;
-  border-radius: 60px ;
-  background-color:#4a7edd;
-  color:#ffffff;
+  border-radius: 60px;
+  background-color: #4a7edd;
+  color: #ffffff;
   font-size: 120%;
+}
+.botones{
+  height: 15em;
+  text-align: center;
 }
 ion-checkbox{
   border:0;
