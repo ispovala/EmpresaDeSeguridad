@@ -5,6 +5,10 @@ import { FormGroup, FormBuilder, Validators, ValidationErrors, ValidatorFn } fro
 import * as validarcedula from 'src/scripts/validarcedula.js';
 import {validarCedulaAlg} from 'src/app/editarperfil/cedula.validator';
 
+import { ModalController } from '@ionic/angular';
+import { ProfilePhotoOptionComponent } from '../components/profile-photo-option/profile-photo-option.component';
+
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 
 
 @Component({
@@ -13,6 +17,9 @@ import {validarCedulaAlg} from 'src/app/editarperfil/cedula.validator';
   styleUrls: ['./editarperfil.page.scss'],
 })
 export class EditarperfilPage implements OnInit {
+  
+  photo = 'assets/img/perfilcliente.png';
+  
   public validador=true;
   ionicForm: FormGroup;
   defaultDate = "";
@@ -28,7 +35,7 @@ export class EditarperfilPage implements OnInit {
   cedulau: null;
   direccionu: null;
 
-  constructor(private navCtrl: NavController, public formBuilder: FormBuilder, public alertController: AlertController) { }
+  constructor(private modalController: ModalController, private navCtrl: NavController, public formBuilder: FormBuilder, public alertController: AlertController) { }
 
   ngOnInit() {
     this.initForm();
@@ -163,9 +170,9 @@ submitForm() {
   finEdicion(){
     this.navCtrl.navigateForward("/perfil", {
       queryParams: {
-              servicio: "EditarPerfil", datos: this.ionicForm.value, nombreusua: this.nombreu, apellidousua: this.apellidou,
+              datos: this.ionicForm.value, nombreusua: this.nombreu, apellidousua: this.apellidou,
               emailusua: this.emailu, fechanacimientousua: this.fechanacimientou, celularusua: this.celularu, cedulausua: this.cedulau,
-              direccionusua: this.direccionu
+              direccionusua: this.direccionu, perfil: this.photo
       }
     });
 
@@ -209,6 +216,37 @@ submitForm() {
    
   
   }
+
+  async takePicture(type) {
+    const image = await Camera.getPhoto({
+      quality: 90,
+      allowEditing: false,
+      resultType: CameraResultType.Base64,
+      source: CameraSource.Photos }).then (res=>{ 
+        //alert(res.base64String); 
+        this.photo= 'data:image/jpeg;base64,' + res.base64String; 
+    });
+    //this.photo = image.webPath;
+    
+  }
+
+  async openOptionSelection() {
+    const modal = await this.modalController.create({
+      component: ProfilePhotoOptionComponent,
+      cssClass: 'transparent-modal'
+    });
+    modal.onDidDismiss()
+    .then(res => {
+      console.log(res);
+      if (res.role !== 'backdrop') {
+        this.takePicture(res.data);
+      }
+    });
+    return await modal.present();
+  }
+  
+    
+
   
   
 

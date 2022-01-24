@@ -18,6 +18,7 @@ export class PerfilPage implements OnInit {
   celularur: any;
   cedulaur: any;
   direccionur: any;
+  perfil = "assets/img/perfilcliente.png";
 
   constructor(private route: ActivatedRoute, private navCtrl: NavController, public alertController: AlertController){
     
@@ -38,6 +39,7 @@ export class PerfilPage implements OnInit {
       this.celularur = this.recibido.datos.mobile;
       this.cedulaur = this.recibido.datos.cedula;
       this.direccionur = this.recibido.datos.direccion;
+      this.perfil = this.recibido.photo
 
       console.log (this.fechanacimientour);
       console.log(this.apellidour);
