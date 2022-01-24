@@ -253,7 +253,7 @@ export class ChoferPage implements OnInit {
   solicitando(){
     this.navCtrl.navigateForward("/servicios/n/solicitud/hola", {
       queryParams: {
-        servicio: "Chofer seguro", datos: this.ionicForm.value, valorvehiculo: this.vehiculo,
+        servicio: "Chofer", datos: this.ionicForm.value, valorvehiculo: this.vehiculo,
         valorguardaespaldas: this.guardaespalda, origen: this.origen, destino: this.destino
       }
     });

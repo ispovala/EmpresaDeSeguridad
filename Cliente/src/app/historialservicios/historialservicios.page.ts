@@ -21,9 +21,9 @@ export class HistorialserviciosPage implements OnInit {
   seleccion:any;
   selec:any;
 
-  mapaServicios = [ {"estado": "en proceso", "servicio": "Guardia", "lugarini": "ceibos", "fechaini": "14/01/2022", "horaini": "09:30pm", "fechafin": "14/01/2022","horafin":"11:00pm", "numeroguardias": "2", "monto": "100", "pago": "efectivo", "ruta": "rutaElegida", "candado":"Si","numerovehiculo": "2", "vehiculo":"Si","guardaespalda":"Si"}, 
-		  {"estado": "finalizado", "servicio": "Guardia", "lugarini": "Espol", "fechaini": "21/03/2021", "horaini": "09:30pm", "fechafin": "22/03/2021","horafin":"11:00pm", "numeroguardias": "1", "monto": "50", "pago": "efectivo", "ruta": "rutaElegida", "candado":"Si","numerovehiculo": "2", "vehiculo":"Si","guardaespalda":"Si"},			
-			{"estado": "pendiente", "servicio": "Guardia", "lugarini": "Mall del Sol", "fechaini": "21/03/2022", "horaini": "09:30pm", "fechafin": "22/03/2022","horafin":"11:00pm", "numeroguardias":"2", "monto": "100", "pago": "efectivo", "ruta": "rutaElegida", "candado":"Si","numerovehiculo": "2", "vehiculo":"Si","guardaespalda":"Si"} ]
+  mapaServicios = [ {"estado": "en proceso", "servicio": "Guardia", "lugarini": "ceibos", "fechaini": "14/01/2022", "horaini": "09:30pm", "fechafin": "14/01/2022","horafin":"11:00pm", "numeroguardias": "2", "monto": "100", "pago": "efectivo", "ruta": "rutaElegida", "candado":"Si","numerovehiculo": "2", "vehiculo":"Si","guardaespalda":"Si","lugarfin":"Manta"}, 
+		  {"estado": "finalizado", "servicio": "Guardia", "lugarini": "Espol", "fechaini": "21/03/2021", "horaini": "09:30pm", "fechafin": "22/03/2021","horafin":"11:00pm", "numeroguardias": "1", "monto": "50", "pago": "efectivo", "ruta": "rutaElegida", "candado":"Si","numerovehiculo": "2", "vehiculo":"Si","guardaespalda":"Si","lugarfin":"Manta"},			
+			{"estado": "pendiente", "servicio": "Guardia", "lugarini": "Mall del Sol", "fechaini": "21/03/2022", "horaini": "09:30pm", "fechafin": "22/03/2022","horafin":"11:00pm", "numeroguardias":"2", "monto": "100", "pago": "efectivo", "ruta": "rutaElegida", "candado":"Si","numerovehiculo": "2", "vehiculo":"Si","guardaespalda":"Si","lugarfin":"Manta"} ]
 
   constructor(private route: ActivatedRoute,private modalController: ModalController, private navCtrl: NavController) { }
 
@@ -55,7 +55,7 @@ export class HistorialserviciosPage implements OnInit {
 
 
     if(!(this.fechaInicio=="")){
-      this.mapaServicios.push({"estado": "pendiente", "servicio": this.datosrecibidos.service, "lugarini": this.direccionOrigen, "fechaini": this.fechaInicio, "horaini": this.horaInicio, "fechafin": this.fechaFinalizacion,"horafin":this.horaFinalizacion, "numeroguardias": this.datosrecibidos.cantGuardia, "monto": "Pendiente", "pago": this.datosrecibidos.pago, "ruta": "rutaElegida", "candado":this.datosrecibidos.descripcion.valorcandado,"numerovehiculo": this.datosrecibidos.descripcion.cantVehiculo, "vehiculo":this.datosrecibidos.descripcion.valorvehiculo,"guardaespalda":this.datosrecibidos.descripcion.valorguardaespaldas});
+      this.mapaServicios.push({"estado": "pendiente", "servicio": this.datosrecibidos.service, "lugarini": this.direccionOrigen, "fechaini": this.fechaInicio, "horaini": this.horaInicio, "fechafin": this.fechaFinalizacion,"horafin":this.horaFinalizacion, "numeroguardias": this.datosrecibidos.cantGuardia, "monto": "Pendiente", "pago": this.datosrecibidos.pago, "ruta": "rutaElegida", "candado":this.datosrecibidos.descripcion.valorcandado,"numerovehiculo": this.datosrecibidos.descripcion.cantVehiculo, "vehiculo":this.datosrecibidos.descripcion.valorvehiculo,"guardaespalda":this.datosrecibidos.descripcion.valorguardaespaldas,"lugarfin":this.direccionDestino});
     }
     if((this.cance=="cancelado")){
       //this.seleccion.estado="Cancelado";
