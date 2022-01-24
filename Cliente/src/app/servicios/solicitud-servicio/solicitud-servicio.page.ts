@@ -21,6 +21,7 @@ export class SolicitudServicioPage implements OnInit {
   direccionOrigen: any;
   direccionDestino: any;
   seleccion: any;
+  haymetodopago: boolean=false;
 
   origen = {
     lat: -2.1676746,
@@ -98,14 +99,31 @@ export class SolicitudServicioPage implements OnInit {
     await alert.present();
     
   }
+  async presentAlertPago() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Sin ubicación.',
+      //subHeader: 'Subtitle',
+      message: "No ha seleccionado un método de pago.",
+      buttons: ['OK']
+    });
+
+    await alert.present();
+    
+  }
   cancelar() {
     this.navCtrl.navigateForward("/servicios");
   }
   confirmar() {
-    this.presentAlertConfirmacion();
+    if(this.haymetodopago){
+      this.presentAlertConfirmacion();
+    }else{
+      this.presentAlertPago()
+    }
   }
   obtenermetodo(sel: any) {
     this.seleccion= sel;
+    this.haymetodopago=true;
     console.log(this.seleccion);
   }
 
