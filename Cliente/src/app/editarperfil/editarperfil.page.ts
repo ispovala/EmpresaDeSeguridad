@@ -83,7 +83,7 @@ submitForm() {
     //console.log(this.ionicForm.value.name)
     //Si llena todos los datos, y pone cancelar tambien aparece esto
       this.presentAlertGuardar()
-      this.finEdicion()
+      //this.finEdicion()
       //this.cambiarNombreUser()
       //this.cambiarNombreUserMenu()
       
@@ -137,7 +137,9 @@ submitForm() {
           }
         }
       ]
-    });
+    })
+    this.finEdicion();
+    ;
 
     await alert.present();
     let result = await alert.onDidDismiss();
@@ -170,15 +172,7 @@ submitForm() {
     this.ionicForm.reset()
     
   }
-  /*
-  cambiarNombreUser(){
-    this.navCtrl.navigateForward("/homeperfil",{
-      queryParams: {
-        datos: this.ionicForm.value, nameus: this.nombreu, apells: this.apellidou
-      }
-    });
-  }
-/*
+
   /*
   cambiarNombreUserMenu(){
     this.navCtrl.navigateForward("/homeperfil",{

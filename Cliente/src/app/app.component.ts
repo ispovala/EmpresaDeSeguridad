@@ -24,7 +24,7 @@ export class AppComponent {
 
 
   ngOnInit() {
-
+/*
     this.route.queryParams.subscribe(params => {
       console.log(params); // { order: "popular" 
       this.recibido = params;
@@ -32,7 +32,7 @@ export class AppComponent {
       this.apellidour = this.recibido.datos.lastname;
     }
     );
-  
+  */
   }
 
 // Idealmente con el QR Generado por el BackEnd 
