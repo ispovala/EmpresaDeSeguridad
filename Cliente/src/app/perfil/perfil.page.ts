@@ -39,7 +39,7 @@ export class PerfilPage implements OnInit {
       this.celularur = this.recibido.datos.mobile;
       this.cedulaur = this.recibido.datos.cedula;
       this.direccionur = this.recibido.datos.direccion;
-      this.perfil = this.recibido.photo
+      this.perfil = this.recibido.perfil
 
       console.log (this.fechanacimientour);
       console.log(this.apellidour);
