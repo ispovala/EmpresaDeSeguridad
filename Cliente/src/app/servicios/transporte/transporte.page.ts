@@ -22,6 +22,8 @@ export class TransportePage implements OnInit {
   //minFecha: string= (this.hoy.getFullYear()).toString()+"-"+(this.hoy.getMonth()+1).toString()+"-"+(this.hoy.getDate()).toString() ;
   maxFecha: string = (new Date().getFullYear()+2).toString();
   mensaje: any;
+  haydirOrigen: boolean=false;
+  haydirDestino: boolean=false;
 
 
   origen = {
@@ -62,6 +64,18 @@ export class TransportePage implements OnInit {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'Fechas no válidas',
+      //subHeader: 'Subtitle',
+      message: this.mensaje,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+    
+  }
+  async presentAlertUbicacion() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Sin ubicación.',
       //subHeader: 'Subtitle',
       message: this.mensaje,
       buttons: ['OK']
@@ -121,14 +135,34 @@ export class TransportePage implements OnInit {
             this.mensaje="La hora de Inicio del servicio debe ser mínimo 1 hora después de la hora actual";
             this.presentAlertFechas();
           }else{
-            this.solicitando();
+            if(this.haydirOrigen){
+              if(this.haydirDestino){
+                this.solicitando();
+              }else{
+                this.mensaje="No ha seleccionado una ubicación de destino."
+                this.presentAlertUbicacion();
+              }
+            }else{
+              this.mensaje="No ha seleccionado una ubicación de origen."
+              this.presentAlertUbicacion();
+            }
           }
         }else if(parseInt(finiciolista[0])<diahoy && parseInt(finiciolista[1]) ==meshoy && parseInt(finiciolista[2]) ==anohoy){
           console.log("dia de inicio es menor a la fecha actual");
           this.mensaje="La fecha de inicio no puede ser menor a la fecha actual.";
           this.presentAlertFechas();
         }else{
-          this.solicitando();
+          if(this.haydirOrigen){
+            if(this.haydirDestino){
+              this.solicitando();
+            }else{
+              this.mensaje="No ha seleccionado una ubicación de destino."
+              this.presentAlertUbicacion();
+            }
+          }else{
+            this.mensaje="No ha seleccionado una ubicación de origen."
+            this.presentAlertUbicacion();
+          }
         }
     } 
 
@@ -204,6 +238,8 @@ export class TransportePage implements OnInit {
           cssClass: 'secondary',
           handler: (blah) => {
             console.log('ORIGEN');
+            this.haydirOrigen=true;
+            console.log(this.haydirOrigen);
           }
         }
       ]
@@ -225,6 +261,8 @@ export class TransportePage implements OnInit {
           cssClass: 'secondary',
           handler: (blah) => {
             console.log('ORIGEN');
+            this.haydirDestino=true;
+            console.log(this.haydirDestino);
           }
         }
       ]

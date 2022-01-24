@@ -52,13 +52,13 @@ export class SolicitudServicioPage implements OnInit {
     );
   }
   regresar() {
-    if (this.datosrecibidos.servicio == 'Chofer seguro') {
+    if (this.datosrecibidos.servicio == 'Chofer') {
       this.navCtrl.navigateForward("/servicios/n/chofer");
     }
     if (this.datosrecibidos.servicio == 'Guardia') {
       this.navCtrl.navigateForward("/servicios/n/guardia");
     }
-    if (this.datosrecibidos.servicio == 'Transportar Mercadería') {
+    if (this.datosrecibidos.servicio == 'Transporte') {
       this.navCtrl.navigateForward("/servicios/n/transporte");
     }
     if (this.datosrecibidos.servicio == 'Custodia') {

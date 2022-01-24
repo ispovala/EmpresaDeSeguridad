@@ -32,7 +32,8 @@ export class ChoferPage implements OnInit {
   horaFinalizacion: any;
   vehiculo: boolean;
   mensaje:any;
-
+  haydirOrigen: boolean=false;
+  haydirDestino: boolean=false;
 
 
 
@@ -80,6 +81,18 @@ export class ChoferPage implements OnInit {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'Fechas no válidas',
+      //subHeader: 'Subtitle',
+      message: this.mensaje,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+    
+  }
+  async presentAlertUbicacion() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Sin ubicación.',
       //subHeader: 'Subtitle',
       message: this.mensaje,
       buttons: ['OK']
@@ -203,7 +216,13 @@ export class ChoferPage implements OnInit {
             this.mensaje="El servicio debe durar mínimo 3 horas, es decir, la hora de fin del servicio debe ser mínimo 3 horas después de la hora de inicio.";
             this.presentAlertFechas();
           }else{
-            this.solicitando();
+            if(this.haydirOrigen){
+              this.solicitando();
+            }else{
+              this.mensaje="No ha seleccionado una ubicación."
+              this.presentAlertUbicacion();
+            }
+            
           }
         }else if(parseInt(finiciolista[0])<diahoy && parseInt(finiciolista[1]) ==meshoy && parseInt(finiciolista[2]) ==anohoy){
           console.log("dia de inicio es menor a la fecha actual");
@@ -214,7 +233,12 @@ export class ChoferPage implements OnInit {
           this.mensaje="El servicio debe durar mínimo 3 horas, es decir, la hora de fin del servicio debe ser mínimo 3 horas después de la hora de inicio.";
           this.presentAlertFechas();
         }else{
-          this.solicitando();
+          if(this.haydirOrigen){
+            this.solicitando();
+          }else{
+            this.mensaje="No ha seleccionado una ubicación."
+            this.presentAlertUbicacion();
+          }
         }
       }else if(parseInt(finiciolista[2])==parseInt(ffinlista[2])){ 
         console.log("mismo año");
@@ -232,7 +256,12 @@ export class ChoferPage implements OnInit {
             this.mensaje="La hora de Inicio del servicio debe ser mínimo 1 hora despúes de la hora actual";
             this.presentAlertFechas();
           }else{
-            this.solicitando();
+            if(this.haydirOrigen){
+              this.solicitando();
+            }else{
+              this.mensaje="No ha seleccionado una ubicación."
+              this.presentAlertUbicacion();
+            }
           }
 
         }else if(parseInt(finiciolista[1])>parseInt(ffinlista[1])){
@@ -240,11 +269,21 @@ export class ChoferPage implements OnInit {
           this.mensaje="La fecha de inicio no puede ser mayor a la fecha de finalización del servicio.";
           this.presentAlertFechas();
         }else{
-          this.solicitando();
+          if(this.haydirOrigen){
+            this.solicitando();
+          }else{
+            this.mensaje="No ha seleccionado una ubicación."
+            this.presentAlertUbicacion();
+          }
         }
         
       }else{
-        this.solicitando();
+        if(this.haydirOrigen){
+          this.solicitando();
+        }else{
+          this.mensaje="No ha seleccionado una ubicación."
+          this.presentAlertUbicacion();
+        }
       }
 
     } 
@@ -269,6 +308,7 @@ export class ChoferPage implements OnInit {
       horaFinalizacion: [""],
 
     })
+    console.log(this.haydirOrigen)
   }
 
   async presentAlertOrigen() {
@@ -304,6 +344,8 @@ export class ChoferPage implements OnInit {
           cssClass: 'secondary',
           handler: (blah) => {
             console.log('ORIGEN');
+            this.haydirOrigen=true;
+            console.log(this.haydirOrigen);
           }
         }
       ]
