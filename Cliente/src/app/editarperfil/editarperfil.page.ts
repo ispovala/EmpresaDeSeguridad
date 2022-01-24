@@ -226,6 +226,7 @@ submitForm() {
         //alert(res.base64String); 
         this.photo= 'data:image/jpeg;base64,' + res.base64String; 
     });
+    console.log(this.photo)
     //this.photo = image.webPath;
     
   }
