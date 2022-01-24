@@ -1,5 +1,5 @@
 
-<ion-content>
+<ion-content [fullscreen]="true">
   <div>
     <ion-buttons slot="start">
         <ion-img src="assets/img/retroceder.png" (click)="presentAlertEditar()"></ion-img>
@@ -17,11 +17,14 @@
     <h4>EDITAR PERFIL</h4>
   </div>
 
-  <span class="circle-grey">
-    <div class="logo">
-      <ion-img  src="assets/img/perfilclienteimg.png"></ion-img>
-    </div>
-  </span>
+  <div class="container">
+    <div class="outer"
+      [ngStyle]="{'background-image': 'url(' + photo + ')'}">
+        <div class="inner" (click)="openOptionSelection()">
+           <ion-icon name="camera" class="camera-icon"></ion-icon>
+        </div>
+     </div>
+  </div>
 
 	
   <div class="datosinput">

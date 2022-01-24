@@ -1,12 +1,12 @@
 USE `seguridadseproamerica`;
 --
--- Dumping data for table `arma`
+-- Dumping data for table `usuario`
 --
 
-LOCK TABLES `arma` WRITE;
-/*!40000 ALTER TABLE `arma` DISABLE KEYS */;
-INSERT INTO `arma` VALUES (1,'2021-12-27',NULL,0,'2021-12-27','Sin observaciones.','',1,1,NULL,9,NULL,9),(2,'2021-12-27',NULL,0,'2021-12-27','Con accesorios extras.','',2,5,NULL,7,NULL,7),(3,'2021-12-27',NULL,1,'2021-12-27','Perdida parcial.','',1,5,NULL,8,NULL,7),(4,'2022-01-20',NULL,1,'2022-01-20','Pérdida parcial por defecto.','',1,2,NULL,7,NULL,8);
-/*!40000 ALTER TABLE `arma` ENABLE KEYS */;
+LOCK TABLES `usuario` WRITE;
+/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` VALUES (1,'pbkdf2_sha256$260000$DSQRniFIfQ9pYKHe84ghEP$iX+Gqm2LtTlKGPlKwK/mLo+KgNM+O2qhXHWGa8/I5bk=','2021-12-27 20:04:19.024180',1,'admin','','','admin@seproamerica.com',1,1,'2021-12-08 22:44:25.072319','',NULL,NULL,0,0);
+/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -17,35 +17,6 @@ LOCK TABLES `calibre_arma` WRITE;
 /*!40000 ALTER TABLE `calibre_arma` DISABLE KEYS */;
 INSERT INTO `calibre_arma` VALUES (1,'9x19mm'),(2,'9mm');
 /*!40000 ALTER TABLE `calibre_arma` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Dumping data for table `candado_satelital`
---
-
-LOCK TABLES `candado_satelital` WRITE;
-/*!40000 ALTER TABLE `candado_satelital` DISABLE KEYS */;
-INSERT INTO `candado_satelital` VALUES (1,4,2,3,NULL,'2021-12-20',NULL,0,NULL,'2021-12-20','Sin observaciones.',''),(2,3,2,3,NULL,'2021-12-20',NULL,1,NULL,'2021-12-20','Extraviado.',''),(3,3,2,1,NULL,'2021-12-22',NULL,1,NULL,'2021-12-22','Sin observaciones.',''),(4,3,1,5,NULL,'2021-12-22',NULL,0,NULL,'2021-12-22','Sin observaciones',''),(5,3,1,2,NULL,'2021-12-22',NULL,1,NULL,'2021-12-22','Sin observaciones',''),(6,4,2,1,NULL,'2022-01-20',NULL,1,NULL,'2022-01-20','Pérdida total.','');
-/*!40000 ALTER TABLE `candado_satelital` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Dumping data for table `cargo`
---
-
-LOCK TABLES `cargo` WRITE;
-/*!40000 ALTER TABLE `cargo` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cargo` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Dumping data for table `celular`
---
-
-LOCK TABLES `celular` WRITE;
-/*!40000 ALTER TABLE `celular` DISABLE KEYS */;
-INSERT INTO `celular` VALUES (1,'2021-12-27',NULL,0,'2021-12-27','0985989911','Sin observaciones.','',4,NULL,5,6,NULL,1),(2,'2021-12-27',NULL,0,'2021-12-27','0987854152','Sin observaciones.','',2,NULL,6,8,NULL,2),(3,'2021-12-27',NULL,0,'2021-12-27','0996568456','Sin observaciones.','',1,NULL,5,5,NULL,3),(4,'2021-12-27',NULL,0,'2021-12-27','0984516231','Sin observaciones.','',5,NULL,6,7,NULL,2),(5,'2021-12-27',NULL,1,'2021-12-27','0984516551','Accidente con perdida parcial. No se usará más por defectos mayores.','',2,NULL,6,7,NULL,1),(6,'2022-01-20',NULL,1,'2022-01-20','0984588231','Devolución por defecto.','',2,NULL,5,6,NULL,1);
-/*!40000 ALTER TABLE `celular` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -99,13 +70,33 @@ INSERT INTO `tipo` VALUES (1,'H14',2),(2,'HB-A1Q',2),(3,'Compacto',4),(4,'Furgon
 UNLOCK TABLES;
 
 --
--- Dumping data for table `usuario`
+-- Dumping data for table `arma`
 --
 
-LOCK TABLES `usuario` WRITE;
-/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'pbkdf2_sha256$260000$DSQRniFIfQ9pYKHe84ghEP$iX+Gqm2LtTlKGPlKwK/mLo+KgNM+O2qhXHWGa8/I5bk=','2021-12-27 20:04:19.024180',1,'admin','','','admin@seproamerica.com',1,1,'2021-12-08 22:44:25.072319','',NULL,NULL,0,0);
-/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
+LOCK TABLES `arma` WRITE;
+/*!40000 ALTER TABLE `arma` DISABLE KEYS */;
+INSERT INTO `arma` VALUES (1,'2021-12-27',NULL,0,'2021-12-27','Sin observaciones.','',1,1,NULL,9,NULL,9),(2,'2021-12-27',NULL,0,'2021-12-27','Con accesorios extras.','',2,5,NULL,7,NULL,7),(3,'2021-12-27',NULL,1,'2021-12-27','Perdida parcial.','',1,5,NULL,8,NULL,7),(4,'2022-01-20',NULL,1,'2022-01-20','Pérdida parcial por defecto.','',1,2,NULL,7,NULL,8);
+/*!40000 ALTER TABLE `arma` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `candado_satelital`
+--
+
+LOCK TABLES `candado_satelital` WRITE;
+/*!40000 ALTER TABLE `candado_satelital` DISABLE KEYS */;
+INSERT INTO `candado_satelital` VALUES (1,4,2,3,NULL,'2021-12-20',NULL,0,NULL,'2021-12-20','Sin observaciones.',''),(2,3,2,3,NULL,'2021-12-20',NULL,1,NULL,'2021-12-20','Extraviado.',''),(3,3,2,1,NULL,'2021-12-22',NULL,1,NULL,'2021-12-22','Sin observaciones.',''),(4,3,1,5,NULL,'2021-12-22',NULL,0,NULL,'2021-12-22','Sin observaciones',''),(5,3,1,2,NULL,'2021-12-22',NULL,1,NULL,'2021-12-22','Sin observaciones',''),(6,4,2,1,NULL,'2022-01-20',NULL,1,NULL,'2022-01-20','Pérdida total.','');
+/*!40000 ALTER TABLE `candado_satelital` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `celular`
+--
+
+LOCK TABLES `celular` WRITE;
+/*!40000 ALTER TABLE `celular` DISABLE KEYS */;
+INSERT INTO `celular` VALUES (1,'2021-12-27',NULL,0,'2021-12-27','0985989911','Sin observaciones.','',4,NULL,5,6,NULL,1),(2,'2021-12-27',NULL,0,'2021-12-27','0987854152','Sin observaciones.','',2,NULL,6,8,NULL,2),(3,'2021-12-27',NULL,0,'2021-12-27','0996568456','Sin observaciones.','',1,NULL,5,5,NULL,3),(4,'2021-12-27',NULL,0,'2021-12-27','0984516231','Sin observaciones.','',5,NULL,6,7,NULL,2),(5,'2021-12-27',NULL,1,'2021-12-27','0984516551','Accidente con perdida parcial. No se usará más por defectos mayores.','',2,NULL,6,7,NULL,1),(6,'2022-01-20',NULL,1,'2022-01-20','0984588231','Devolución por defecto.','',2,NULL,5,6,NULL,1);
+/*!40000 ALTER TABLE `celular` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --

@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
-from django.views.generic import RedirectView
+from django.views.generic import TemplateView
 from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
 
 urlpatterns = [
@@ -13,7 +13,7 @@ urlpatterns = [
 
     url(r'^', include('seguridad.urls')),
 
-    # Angular
-    url(r'^administrador$', RedirectView.as_view(url='/Administrador/administracion/index.html'), name='home'),
+    # Administracion
+    url(r'^.*', TemplateView.as_view(template_name="home.html"), name="home")
 
 ]
