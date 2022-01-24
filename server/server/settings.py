@@ -1,4 +1,5 @@
 import datetime
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -19,14 +20,14 @@ ALLOWED_HOSTS = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    #'http://localhost:4200'
-    'https://pauldbm.pythonanywhere.com/administrador'
+    # 'http://localhost:4200'
+    'https://pauldbm.pythonanywhere.com'
 ]
 
 AUTH_USER_MODEL = 'seguridad.Usuario'
 
 REST_AUTH_SERIALIZERS = {
-   'USER_DETAILS_SERIALIZER': 'seguridad.serializers.UsuarioSerializer',
+    'USER_DETAILS_SERIALIZER': 'seguridad.serializers.UsuarioSerializer',
 }
 
 INSTALLED_APPS = [
@@ -57,7 +58,7 @@ ROOT_URLCONF = 'server.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'static/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
