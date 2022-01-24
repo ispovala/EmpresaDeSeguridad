@@ -142,7 +142,11 @@ export class GuardiaPage implements OnInit {
         else if(minutofin>minutoini){
           minutosmas1horafin=true;
         }else{
-          minutosmas1horafin=false;
+          if(minutofin<minutoini && horafin>horaini){
+            minutosmas1horafin=true;
+          } else{
+            minutosmas1horafin=false;
+          }
         }
     }
     var horaini3despues=false;
@@ -188,7 +192,7 @@ export class GuardiaPage implements OnInit {
           this.presentAlertFechas();
         }else if(!horainiciodespues1horafin){
           console.log("la hora de fin no es despues de una hora de la de inicio");
-          this.mensaje="El servicio debe durar mínimo 1 hora, es decir, la hora de fin del servicio debe ser mínimo 1 hora después de la hora de inicio.";
+          this.mensaje="El servicio debe durar mínimo 3 horas, es decir, la hora de fin del servicio debe ser mínimo 3 horas después de la hora de inicio.";
           this.presentAlertFechas();
         }else{
           this.solicitando();
@@ -201,7 +205,7 @@ export class GuardiaPage implements OnInit {
             console.log("dia de inicio es mayor a la de fin");
             this.mensaje="La fecha de inicio no puede ser mayor a la fecha de finalización del servicio.";
             this.presentAlertFechas();
-          }else if(parseInt(finiciolista[0])<diahoy){
+          }else if(parseInt(finiciolista[0])<diahoy && parseInt(finiciolista[1]) ==meshoy && parseInt(finiciolista[2]) ==anohoy){
             console.log("dia de inicio es menor a la fecha actual");
             this.mensaje="La fecha de inicio no puede ser menor a la fecha actual.";
             this.presentAlertFechas();

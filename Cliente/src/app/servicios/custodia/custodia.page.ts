@@ -143,7 +143,7 @@ export class CustodiaPage implements OnInit {
           }else{
             this.solicitando();
           }
-        }else if(parseInt(finiciolista[0])<diahoy){
+        }else if(parseInt(finiciolista[0])<diahoy && parseInt(finiciolista[1]) ==meshoy && parseInt(finiciolista[2]) ==anohoy){
           console.log("dia de inicio es menor a la fecha actual");
           this.mensaje="La fecha de inicio no puede ser menor a la fecha actual.";
           this.presentAlertFechas();
