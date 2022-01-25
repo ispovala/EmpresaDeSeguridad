@@ -7,7 +7,6 @@
     justify-content: space-between;
 }
 
-
 div h4 {
     font-weight: bold;
     color: #912020;
@@ -76,7 +75,7 @@ ion-menu-button {
     margin-left: 20px;
     margin-top: 10px;
     min-width: 50px;
-    ion-img{
+    ion-img {
         padding: 2px;
         width: 60px;
         opacity: 0.6;
@@ -119,4 +118,18 @@ ion-item {
     text-align: buttom;
     z-index: 1;
     bottom: 0;
+}
+
+.creditos {
+    left: 50%;
+    margin-left: -76px;
+    position: absolute;
+    bottom: 1em;
+    font-family: BebasBold;
+    font-size: x-large;
+    color: #bf1a24;
+    ion-img {
+        margin: 0 auto;
+        width: 6em;
+    }
 }
