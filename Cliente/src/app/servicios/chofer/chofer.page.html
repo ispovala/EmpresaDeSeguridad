@@ -42,16 +42,16 @@
           </div>
     
           <ion-label>Hora de Inicio</ion-label>
-          <div class="seleccion"  id="open-modal3">
-            <ion-item button="true" id="open-date-input3" >
-              <ion-label>{{dateValue3 | date: 'hh:mma'}}</ion-label>
+          <div class="seleccion"  id="open-modal2">
+            <ion-item button="true" id="open-date-input2" >
+              <ion-label>{{dateValue2 | date: 'hh:mma'}}</ion-label>
               <ion-icon name="time-outline" item-right></ion-icon>
-              <ion-modal class="horaval" trigger="open-modal3"> 
-                <ion-popover trigger="open-date-input3" show-backdrop="false">
+              <ion-modal class="horaval" trigger="open-modal2"> 
+                <ion-popover trigger="open-date-input2" show-backdrop="false">
                 <ng-template>
                   <ion-content >
                     <ion-datetime  formControlName="horaInicio" displayFormat="hh:mma" presentation="time" #popoverDatetime
-                    (ionChange)="dateValue3 =popoverDatetime.value"> 
+                    (ionChange)="dateValue2 =popoverDatetime.value"> 
                     </ion-datetime>
                   </ion-content>
                 </ng-template>
@@ -62,17 +62,17 @@
           </div>
         
           <ion-label>Fecha de Finalización</ion-label>
-          <div class="seleccion" id="open-modal2" >
-            <ion-item button="true" id="open-date-input2" >
-              <ion-label>{{dateValue2 | date: 'dd/MM/yyyy'}}</ion-label>
+          <div class="seleccion" id="open-modal3" >
+            <ion-item button="true" id="open-date-input3" >
+              <ion-label>{{dateValue3 | date: 'dd/MM/yyyy'}}</ion-label>
               <ion-icon name="calendar-clear-outline" item-right></ion-icon>
-              <ion-modal trigger="open-modal2">    
-                <ion-popover trigger="open-date-input2" show-backdrop="false">
+              <ion-modal trigger="open-modal3">    
+                <ion-popover trigger="open-date-input3" show-backdrop="false">
                 <ng-template>
                   <ion-content >
                     <ion-datetime formControlName="fechaFinalizacion" [max]="maxFecha" [min]="minFecha" displayFormat="DD/MM/YYYY" pickerFormat="DD MM YYYY" #popoverDatetime
                     presentation="date"
-                    (ionChange)="dateValue2 =popoverDatetime.value">   
+                    (ionChange)="dateValue3 =popoverDatetime.value">   
                       <div slot="title">     
                       </div>
                       

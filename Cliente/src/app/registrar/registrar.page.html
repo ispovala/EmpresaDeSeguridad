@@ -82,17 +82,17 @@
         
         <div class="itemdatos">
           <ion-label>Fecha de Nacimiento</ion-label>
-          <div class="seleccion">
-            <ion-item button="true" id="open-date-input2" >
-              <ion-label>{{dateValue2 | date: 'dd/MM/yyyy'}}</ion-label>
-              <ion-icon name="calendar-clear-outline" id="open-modal2" item-right></ion-icon>
-              <ion-modal trigger="open-modal2">    
-                <ion-popover trigger="open-date-input2" show-backdrop="false">
+          <div class="seleccion" id="open-modal13">
+            <ion-item button="true" id="open-date-input13" >
+              <ion-label>{{dateValue13 | date: 'dd/MM/yyyy'}}</ion-label>
+              <ion-icon name="calendar-clear-outline"  item-right></ion-icon>
+              <ion-modal trigger="open-modal13">    
+                <ion-popover trigger="open-date-input13" show-backdrop="false">
                 <ng-template>
                   <ion-content >
                     <ion-datetime formControlName="dob" [max]="maxFecha" [min]="minFecha" displayFormat="DD/MM/YYYY" pickerFormat="DD MM YYYY" #popoverDatetime
                     presentation="date"
-                    (ionChange)="dateValue2=popoverDatetime.value" (ionChange)="getDate($event)" >   
+                    (ionChange)="dateValue13=popoverDatetime.value" (ionChange)="getDate($event)" >   
                       <div slot="title">     
                       </div>
                       
