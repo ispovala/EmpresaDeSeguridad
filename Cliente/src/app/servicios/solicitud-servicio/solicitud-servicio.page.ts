@@ -22,6 +22,7 @@ export class SolicitudServicioPage implements OnInit {
   direccionDestino: any;
   seleccion: any;
   haymetodopago: boolean=false;
+  
 
   origen = {
     lat: -2.1676746,

@@ -24,7 +24,7 @@ export class TransportePage implements OnInit {
   mensaje: any;
   haydirOrigen: boolean=false;
   haydirDestino: boolean=false;
-
+  duracion:any;
 
   origen = {
     lat: -2.1676746,
@@ -85,71 +85,35 @@ export class TransportePage implements OnInit {
     
   }
   solicitud() {
-    var h=new Date();
-    var hoy = moment(h).format("DD/MM/YYYY");
-    var horahoy=moment(h).format("hh/mm/A");
-    var finicio=this.ionicForm.value.fechaInicio;
-    var hinicio=this.ionicForm.value.horaInicio;
-    var listahorainicio=(moment(this.ionicForm.value.horaInicio).format("hh/mm/A")).split("/", 3);   
-    var finiciolista=(moment(this.ionicForm.value.fechaInicio).format("DD/MM/YYYY")).split("/", 3);
-    var listahoy=hoy.split("/", 3)
-    var meshoy=parseInt(listahoy[1]); 
-    var diahoy=parseInt(listahoy[0]); 
-    var anohoy=parseInt(listahoy[2]); 
-    var horaini=parseInt(listahorainicio[0]); 
-    var minutoini=parseInt(listahorainicio[1]); 
-    var dianocheini=listahorainicio[2];  
-    var listahorahoy=(horahoy).split("/", 3);
-    console.log(diahoy);
-    console.log(finiciolista);
-    if (finicio== "" || hinicio== "") { //si hay campos vacios
+    var finicio=moment(this.ionicForm.value.fechaInicio).format("YYYY-MM-DD");
+    var ffin=moment(this.ionicForm.value.fechaFinalizacion).format("YYYY-MM-DD");
+    var hini=moment(this.ionicForm.value.horaInicio).format("HH:mm:ss");
+    var hfin=moment(this.ionicForm.value.horaFinalizacion).format("HH:mm:ss");
+    var fechainicio=moment(finicio+" "+hini,"YYYY-MM-DD HH:mm:ss");
+    var fechafin=moment(ffin+" "+hfin,"YYYY-MM-DD HH:mm:ss");
+
+    var dias=fechafin.diff(fechainicio,"d")
+    var horas=fechafin.diff(fechainicio,"h")
+    var minutos=fechafin.diff(fechainicio,"m")
+    //this.duracion=" "+dias+" días, "+(horas-(dias*24))+" horas y "+(minutos-(horas*60))+" minutos";
+    this.duracion=" "+(horas-(dias*24))+" horas y "+(minutos-(horas*60))+" minutos";
+    var hoy=moment(new Date());
+    var difdiahoy=fechainicio.diff(hoy,"d");
+    var difhorahoy=fechainicio.diff(hoy,"h");
+
+
+    console.log("dias"+dias);
+    console.log("horas"+horas);
+    console.log("minutos"+minutos);
+    console.log("diff"+this.duracion);
+    if (finicio== "" || ffin== "" || hini== "" || hfin== "") { //si hay campos vacios
       this.presentAlert();
     }else{
-      var fechainicioigualhoy=parseInt(finiciolista[0]) == diahoy && parseInt(finiciolista[1]) ==meshoy && parseInt(finiciolista[2]) ==anohoy ;
-      var horainicioigualhoraactual= parseInt(listahorahoy[0]) ==horaini && parseInt(listahorahoy[1]) ==minutoini && listahorahoy[2] ==dianocheini;
-      var minutosmas1hora=false;
-      if (!minutosmas1hora){
-          if(parseInt(listahorahoy[1]) ==minutoini){
-            minutosmas1hora=true;
-          }
-          else if(minutoini>parseInt(listahorahoy[1]) ){
-            console.log(minutoini);
-            console.log(listahorahoy[1]);
-            minutosmas1hora=true;
-          }else{
-            console.log(minutoini);
-            console.log(listahorahoy[1]);
-            console.log(false);
-            minutosmas1hora=false;
-          }
-      }
-
-      var horainiciodespues1horaactual=(horaini>(parseInt(listahorahoy[0]) ) && minutosmas1hora && listahorahoy[2] ==dianocheini) ||(horaini>(parseInt(listahorahoy[0]) +1));
-      console.log(horainiciodespues1horaactual);
-      console.log(listahorahoy[0]+1);
-      console.log(horaini+1);
-        if(fechainicioigualhoy){
-          console.log("fecha inicio igual a fecha actual");
-          if(!horainiciodespues1horaactual){
-            console.log("la hora de inicio o fin es la actual o la hora de inicio no es mayor a una hora de la hora actual");
-            this.mensaje="La hora de Inicio del servicio debe ser mínimo 1 hora después de la hora actual";
-            this.presentAlertFechas();
-          }else{
-            if(this.haydirOrigen){
-              if(this.haydirDestino){
-                this.solicitando();
-              }else{
-                this.mensaje="No ha seleccionado una ubicación de destino."
-                this.presentAlertUbicacion();
-              }
-            }else{
-              this.mensaje="No ha seleccionado una ubicación de origen."
-              this.presentAlertUbicacion();
-            }
-          }
-        }else if(parseInt(finiciolista[0])<diahoy && parseInt(finiciolista[1]) ==meshoy && parseInt(finiciolista[2]) ==anohoy){
-          console.log("dia de inicio es menor a la fecha actual");
-          this.mensaje="La fecha de inicio no puede ser menor a la fecha actual.";
+      console.log(difdiahoy);
+      console.log(difhorahoy);
+        if(difdiahoy==0 && difhorahoy<1){        
+          console.log("La hora de Inicio del servicio debe ser mínimo 1 hora después de la hora actual");
+          this.mensaje="La hora de Inicio del servicio debe ser mínimo 1 hora después de la hora actual";
           this.presentAlertFechas();
         }else{
           if(this.haydirOrigen){
@@ -163,13 +127,14 @@ export class TransportePage implements OnInit {
             this.mensaje="No ha seleccionado una ubicación de origen."
             this.presentAlertUbicacion();
           }
+          
         }
-    } 
+    }
 
   }
   solicitando(){
     this.navCtrl.navigateForward("/servicios/n/solicitud/hola",{ queryParams: {
-      servicio: "Transporte", datos:this.ionicForm.value, origen: this.origen, destino: this.destino
+      servicio: "Transporte", datos:this.ionicForm.value, origen: this.origen, destino: this.destino,duracion:this.duracion
     }});
     console.log(this.ionicForm.value);
   }
