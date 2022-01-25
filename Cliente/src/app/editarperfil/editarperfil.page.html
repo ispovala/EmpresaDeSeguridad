@@ -83,7 +83,7 @@
           <ion-label>Número de celular</ion-label>
           <ion-item lines="full">
             
-            <ion-input formControlName="mobile" type="tel " maxlength="10" required ></ion-input>
+            <ion-input formControlName="mobile" type="tel" minlength="10" maxlength="10" required inputmode="numeric" ></ion-input>
           </ion-item>
           <span class="error ion-padding" *ngIf="isSubmitted && errorControl.mobile.errors?.required">
             Es necesario un número de celular.
@@ -95,29 +95,15 @@
         
         <div class="itemdatos">
           <ion-label>Fecha de nacimiento</ion-label>
-          <div class="seleccion" id="open-modal12">
-            <ion-item button="true" id="open-date-input12" >
-              <ion-label>{{dateValue12 | date: 'dd/MM/yyyy'}}</ion-label>
-              <ion-icon name="calendar-clear-outline"  item-right></ion-icon>
-              <ion-modal trigger="open-modal12">    
-                <ion-popover trigger="open-date-input12" show-backdrop="false">
-                <ng-template>
-                  <ion-content >
-                    <ion-datetime formControlName="dob" [max]="maxFecha" [min]="minFecha" displayFormat="DD/MM/YYYY" pickerFormat="DD MM YYYY" #popoverDatetime
-                    presentation="date"
-                    (ionChange)="dateValue12 =popoverDatetime.value" >   
-                      <div slot="title">     
-                      </div>                     
-                    </ion-datetime>
-                  </ion-content>
-                </ng-template>
-              </ion-popover>
-              </ion-modal>
-            </ion-item>
-          </div>
-
-
-          
+          <ion-item lines="full">
+            <ion-input formControlName="bday" type="text" placeholder="AAAA-MM-DD"></ion-input>
+          </ion-item>
+          <span class="error ion-padding" *ngIf="isSubmitted && errorControl.bday.errors?.required">
+            Ingrese su fecha de nacimiento
+          </span>
+          <span class="error ion-padding" *ngIf="isSubmitted && errorControl.bday.errors?.pattern">
+            Ingrese una fecha válida
+          </span>
         </div>
         
         <div class="itemdatos">

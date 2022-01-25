@@ -57,14 +57,9 @@
               <ion-modal class="horaval" trigger="open-modal7"> 
                 <ion-popover trigger="open-date-input7" show-backdrop="false">
                 <ng-template>
-                  <ion-content >
                     <ion-datetime hour-cycle="h23" formControlName="horaInicio" displayFormat="hh:mma" presentation="time" #popoverDatetime
                     (ionChange)="dateValue7 =popoverDatetime.value"> 
                     </ion-datetime>
-                    
-                    
-                    
-                  </ion-content>
                 </ng-template>
               </ion-popover>
               </ion-modal>
@@ -105,11 +100,9 @@
               <ion-modal class="horaval" trigger="open-modal9"> 
                 <ion-popover trigger="open-date-input9" show-backdrop="false">
                 <ng-template>
-                  <ion-content >
                     <ion-datetime formControlName="horaFinalizacion" displayFormat="hh:mma" presentation="time" #popoverDatetime
                     (ionChange)="dateValue9 =popoverDatetime.value"> 
                     </ion-datetime>
-                  </ion-content>
                 </ng-template>
               </ion-popover>
               </ion-modal>

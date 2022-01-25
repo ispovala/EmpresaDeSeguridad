@@ -49,18 +49,14 @@
               <ion-modal class="horaval" trigger="open-modal2"> 
                 <ion-popover trigger="open-date-input2" show-backdrop="false">
                 <ng-template>
-                  <ion-content >
-                    <ion-datetime  formControlName="horaInicio" displayFormat="hh:mma" presentation="time" #popoverDatetime
+                    <ion-datetime formControlName="horaInicio" displayFormat="hh:mma" presentation="time" #popoverDatetime
                     (ionChange)="dateValue2 =popoverDatetime.value"> 
                     </ion-datetime>
-                  </ion-content>
                 </ng-template>
               </ion-popover>
               </ion-modal>
-            </ion-item>
-            
+            </ion-item> 
           </div>
-        
           <ion-label>Fecha de Finalización</ion-label>
           <div class="seleccion" id="open-modal3" >
             <ion-item button="true" id="open-date-input3" >
@@ -74,8 +70,7 @@
                     presentation="date"
                     (ionChange)="dateValue3 =popoverDatetime.value">   
                       <div slot="title">     
-                      </div>
-                      
+                      </div>                      
                     </ion-datetime>
                   </ion-content>
                 </ng-template>
@@ -92,11 +87,9 @@
               <ion-modal class="horaval" trigger="open-modal4"> 
                 <ion-popover trigger="open-date-input4" show-backdrop="false">
                 <ng-template>
-                  <ion-content >
                     <ion-datetime  formControlName="horaFinalizacion" displayFormat="hh:mma" presentation="time" #popoverDatetime
                     (ionChange)="dateValue4 =popoverDatetime.value"> 
                     </ion-datetime>
-                  </ion-content>
                 </ng-template>
               </ion-popover>
               </ion-modal>
