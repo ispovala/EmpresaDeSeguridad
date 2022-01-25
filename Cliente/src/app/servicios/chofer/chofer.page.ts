@@ -120,13 +120,18 @@ export class ChoferPage implements OnInit {
     var hoy=moment(new Date());
     var difdiahoy=fechainicio.diff(hoy,"d");
     var difhorahoy=fechainicio.diff(hoy,"h");
+    var fi=this.ionicForm.value.fechaInicio;
+    var ff=this.ionicForm.value.fechaFinalizacion;
+    var hi=this.ionicForm.value.horaInicio;
+    var hf=this.ionicForm.value.horaFinalizacion;
+
 
 
     console.log("dias"+dias);
     console.log("horas"+horas);
     console.log("minutos"+minutos);
     console.log("diff"+this.duracion);
-    if (finicio== "" || ffin== "" || hini== "" || hfin== "") { //si hay campos vacios
+    if (fi== "" || ff== "" || hi== "" || hf== "") { //si hay campos vacios
       this.presentAlert();
     }else{
       console.log(difdiahoy);

@@ -27,7 +27,7 @@
                 <ng-template>
                   <ion-content >
                     <ion-datetime formControlName="fechaInicio" [min]= "minFecha" [max]="maxFecha" displayFormat="DD/MM/YYYY" pickerFormat="DD MM YYYY" #popoverDatetime
-                    presentation="date"
+                    
                     (ionChange)="dateValue5 =popoverDatetime.value">   
                       <div slot="title">     
                       </div>
@@ -39,7 +39,7 @@
               </ion-modal>
             </ion-item>
           </div>
-    
+          
           <ion-label>Hora de Inicio</ion-label>
           <div class="seleccion"id="open-modal6">
             <ion-item button="true" id="open-date-input6" >

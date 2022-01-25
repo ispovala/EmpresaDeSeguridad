@@ -109,7 +109,10 @@ export class GuardiaPage implements OnInit {
     var hfin=moment(this.ionicForm.value.horaFinalizacion).format("HH:mm:ss");
     var fechainicio=moment(finicio+" "+hini,"YYYY-MM-DD HH:mm:ss");
     var fechafin=moment(ffin+" "+hfin,"YYYY-MM-DD HH:mm:ss");
-
+    var fi=this.ionicForm.value.fechaInicio;
+    var ff=this.ionicForm.value.fechaFinalizacion;
+    var hi=this.ionicForm.value.horaInicio;
+    var hf=this.ionicForm.value.horaFinalizacion;
     var dias=fechafin.diff(fechainicio,"d")
     var horas=fechafin.diff(fechainicio,"h")
     var minutos=fechafin.diff(fechainicio,"m")
@@ -124,7 +127,7 @@ export class GuardiaPage implements OnInit {
     console.log("horas"+horas);
     console.log("minutos"+minutos);
     console.log("diff"+this.duracion);
-    if (finicio== "" || ffin== "" || hini== "" || hfin== "") { //si hay campos vacios
+    if (fi== "" || ff== "" || hi== "" || hf== "") { //si hay campos vacios
       this.presentAlert();
     }else{
       console.log(difdiahoy);

@@ -4,6 +4,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { FormsModule ,ReactiveFormsModule} from '@angular/forms'; 
 import { NavController } from '@ionic/angular';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { CalendarModule } from 'ion2-calendar';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -18,7 +19,7 @@ import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule,ReactiveFormsModule, AngularFireAuthModule,AngularFirestoreModule,
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,CalendarModule, FormsModule,ReactiveFormsModule, AngularFireAuthModule,AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebase)],
   providers: [BarcodeScanner, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
