@@ -24,7 +24,7 @@
   </div>
   <div class="datos">
     
-    <div class="datosChofer" *ngIf=" datosrecibidos.servicio == 'Chofer seguro'" >
+    <div class="datosChofer" *ngIf=" datosrecibidos.servicio == 'Chofer'" >
       
     
           <ion-label class="negrita ">Servicio:</ion-label>
@@ -41,6 +41,9 @@
 
           <ion-label class="negrita "> <br/>Hora de Finalización: </ion-label>
           <ion-label> {{horaFinalizacion}}</ion-label>
+
+          <ion-label class="negrita "> <br/>Duración: </ion-label>
+          <ion-label>{{datosrecibidos.duracion}} </ion-label>
 
           <ion-label class="negrita "> <br/>Lugar: </ion-label>
           <ion-label> {{direccionOrigen}}</ion-label>
@@ -106,6 +109,9 @@
       <ion-label class="negrita "> <br/>Hora de Finalización: </ion-label>
       <ion-label> {{horaFinalizacion}}</ion-label>
 
+      <ion-label class="negrita "> <br/>Duración: </ion-label>
+          <ion-label>{{datosrecibidos.duracion}} </ion-label>
+
       <ion-label class="negrita "> <br/>Lugar: </ion-label>
       <ion-label> {{direccionOrigen}}</ion-label>
 
@@ -118,7 +124,7 @@
 
   
     </div>
-    <div class="datosChofer" *ngIf=" datosrecibidos.servicio == 'Transportar Mercadería'" >
+    <div class="datosChofer" *ngIf=" datosrecibidos.servicio == 'Transporte'" >
       <ion-label class="negrita ">Servicio:</ion-label>
       <ion-label> {{datosrecibidos.servicio}}</ion-label>
     
@@ -168,6 +174,7 @@
     </div>
 
   </div>
+  
   
   
 

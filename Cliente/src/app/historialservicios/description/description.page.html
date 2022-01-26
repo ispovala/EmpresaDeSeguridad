@@ -32,7 +32,7 @@
   </div>
   <div class="datos">
     
-    <div class="datosChofer" *ngIf=" datosrecibidos.des.servicio == 'Chofer seguro'" >
+    <div class="datosChofer" *ngIf=" datosrecibidos.des.servicio == 'Chofer'" >
       
       <ion-label class="negrita ">Servicio:</ion-label>
       <ion-label> {{datosrecibidos.des.servicio}}</ion-label>
@@ -53,12 +53,12 @@
       <ion-label> {{datosrecibidos.des.lugarini}}</ion-label>
 
       <ion-label class="negrita "> <br/>Vehículo: </ion-label>
-      <ion-label *ngIf=" datosrecibidos.des.valorvehiculo == true" > Sí</ion-label>
-      <ion-label *ngIf=" datosrecibidos.des.valorvehiculo != true" > No</ion-label>
+      <ion-label *ngIf=" datosrecibidos.des.vehiculo == true" > Sí</ion-label>
+      <ion-label *ngIf=" datosrecibidos.des.vehiculo != true" > No</ion-label>
 
       <ion-label class="negrita "> <br/>Chofer Guardespaldas: </ion-label>
-      <ion-label *ngIf=" datosrecibidos.des.valorguardaespaldas == true" > Sí</ion-label>
-      <ion-label *ngIf=" datosrecibidos.des.valorguardaespaldas != true" > No</ion-label>
+      <ion-label *ngIf=" datosrecibidos.des.guardaespalda == true" > Sí</ion-label>
+      <ion-label *ngIf=" datosrecibidos.des.guardaespalda != true" > No</ion-label>
       <ion-label class="negrita "> <br/>Monto: </ion-label>
       <ion-label> {{datosrecibidos.des.monto}}</ion-label>
       <ion-label class="negrita "> <br/>Método de pago: </ion-label>
@@ -87,8 +87,8 @@
       <ion-label> {{datosrecibidos.des.numerovehiculo}}</ion-label>
 
       <ion-label class="negrita "> <br/>Incluir candado satelital:</ion-label>
-      <ion-label *ngIf=" datosrecibidos.des.valorcandado == true" > Sí</ion-label>
-      <ion-label *ngIf=" datosrecibidos.des.valorcandado != true" > No</ion-label>
+      <ion-label *ngIf=" datosrecibidos.des.candado == true" > Sí</ion-label>
+      <ion-label *ngIf=" datosrecibidos.des.candado != true" > No</ion-label>
       <ion-label class="negrita "> <br/>Monto: </ion-label>
       <ion-label> {{datosrecibidos.des.monto}}</ion-label>
       <ion-label class="negrita "> <br/>Método de pago: </ion-label>
@@ -125,7 +125,7 @@
       <ion-label *ngIf=" datosrecibidos.des.pago == 'efectivo'" >Efectivo</ion-label>
 
     </div>
-    <div class="datosChofer" *ngIf=" datosrecibidos.des.servicio == 'Transportar Mercadería'" >
+    <div class="datosChofer" *ngIf=" datosrecibidos.des.servicio == 'Transporte'" >
       <ion-label class="negrita ">Servicio:</ion-label>
       <ion-label>{{datosrecibidos.des.servicio}}</ion-label>
 

@@ -2,7 +2,7 @@
     margin: 1rem;
     padding: 0.5rem 3rem 0.5rem 3rem;
     border: 2px ;
-    margin-top: 30%;
+    margin-top: 0;
     justify-items:center;
     justify-content: space-between;
     color:black;
@@ -26,14 +26,6 @@ div h4{
     margin-top: 30%;
 }
 
-span.circle-grey ion-img{
-    position:absolute;
-    width:30%;
-    //height:5rem;
-    border-radius: 50%;
-    margin:auto;
-    top: 28%; left: 0; bottom: 10; right: 0;
-}
 
 .botones button{
     text-align:center;
@@ -44,7 +36,6 @@ span.circle-grey ion-img{
     color:#ffffff;
     //margin-right: 5%;
     justify-content: space-between;
-
   }
 
 
@@ -79,7 +70,7 @@ span.circle-grey ion-img{
 }
 
 .datos{
-    margin-top: 7rem;
+    //margin-top: 7rem;
     .itemdatos{
         margin-top: 5%;
     }
@@ -139,14 +130,13 @@ ion-datetime {
   
   ion-modal {
     --width: 290px;
-    --height: 382px;
+    --height: 460px;
     --border-radius: 8px;
   }
   
   ion-modal ion-datetime {
-    height: 382px;
+    height: 460px;
   }
-
   ion-buttons {
     position: fixed;
     margin-left: 20px;
@@ -167,6 +157,8 @@ ion-datetime {
     top: 62px;
     z-index: 1;
 }
+
+
 
 .logosepro ion-img {
     position: fixed;
@@ -193,4 +185,45 @@ div.logosepro {
 
 .my-custom-class {
     --background: #e5e5e5;
+  }
+
+
+  /*SCSS para foto*/
+
+  .container {
+    width: 150px;
+    height: 150px;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 0;
+  }
+  .profile-pic {
+    width: 150px;
+    height: 150px;
+  }
+  .outer {
+    width: 80% !important;
+    height: 70% !important;
+
+    margin: auto;
+    border-radius: 100%;
+    position: relative;
+    background-size: 100% 100%;
+  }
+  .inner {
+    background-color: #075E54;
+    width: 45px;
+    height: 45px;
+    border-radius: 100%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .camera-icon {
+    height: 30px;
+    width: 30px;
+    color: white;
   }

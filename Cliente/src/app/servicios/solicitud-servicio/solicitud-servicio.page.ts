@@ -21,6 +21,8 @@ export class SolicitudServicioPage implements OnInit {
   direccionOrigen: any;
   direccionDestino: any;
   seleccion: any;
+  haymetodopago: boolean=false;
+  
 
   origen = {
     lat: -2.1676746,
@@ -52,13 +54,13 @@ export class SolicitudServicioPage implements OnInit {
     );
   }
   regresar() {
-    if (this.datosrecibidos.servicio == 'Chofer seguro') {
+    if (this.datosrecibidos.servicio == 'Chofer') {
       this.navCtrl.navigateForward("/servicios/n/chofer");
     }
     if (this.datosrecibidos.servicio == 'Guardia') {
       this.navCtrl.navigateForward("/servicios/n/guardia");
     }
-    if (this.datosrecibidos.servicio == 'Transportar Mercadería') {
+    if (this.datosrecibidos.servicio == 'Transporte') {
       this.navCtrl.navigateForward("/servicios/n/transporte");
     }
     if (this.datosrecibidos.servicio == 'Custodia') {
@@ -98,14 +100,31 @@ export class SolicitudServicioPage implements OnInit {
     await alert.present();
     
   }
+  async presentAlertPago() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Sin ubicación.',
+      //subHeader: 'Subtitle',
+      message: "No ha seleccionado un método de pago.",
+      buttons: ['OK']
+    });
+
+    await alert.present();
+    
+  }
   cancelar() {
     this.navCtrl.navigateForward("/servicios");
   }
   confirmar() {
-    this.presentAlertConfirmacion();
+    if(this.haymetodopago){
+      this.presentAlertConfirmacion();
+    }else{
+      this.presentAlertPago()
+    }
   }
   obtenermetodo(sel: any) {
     this.seleccion= sel;
+    this.haymetodopago=true;
     console.log(this.seleccion);
   }
 

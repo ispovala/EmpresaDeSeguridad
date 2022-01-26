@@ -1,4 +1,3 @@
-
 <ion-content no-scroll padding class="background">
   <div class="tope">
     <div class="logosepro">
@@ -16,19 +15,19 @@
     <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" validate>
       <ion-list class="datos">
         <div class="itemdatos">
-          <ion-label >Nombres</ion-label>
-        <ion-item lines="full">    
-          <ion-input formControlName="name" type="text"></ion-input>
-        </ion-item>
-        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.required">
-          Es necesario al menos un nombre.
-        </span>
-        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.minlength">
-          Su nombre debe tener al menos 2 caracteres.
-        </span>
-        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.pattern">
-          Ingrese un nombre válido.
-        </span>
+          <ion-label>Nombres</ion-label>
+          <ion-item lines="full">
+            <ion-input formControlName="name" type="text"></ion-input>
+          </ion-item>
+          <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.required">
+            Es necesario al menos un nombre.
+          </span>
+          <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.minlength">
+            Su nombre debe tener al menos 2 caracteres.
+          </span>
+          <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.pattern">
+            Ingrese un nombre válido.
+          </span>
         </div>
 
         <div class="itemdatos">
@@ -46,12 +45,12 @@
             Ingrese un apellido válido.
           </span>
         </div>
-        
+
         <div class="itemdatos">
-            <ion-label >Email</ion-label>
+          <ion-label>Email</ion-label>
           <ion-item lines="full">
-            
-            <ion-input formControlName="email" type="email"></ion-input>
+
+            <ion-input formControlName="email" type="text"></ion-input>
           </ion-item>
           <span class="error ion-padding" *ngIf="isSubmitted && errorControl.email.errors?.required">
             Es necesario que escriba un correo.
@@ -64,7 +63,7 @@
         <div class="itemdatos">
           <ion-item>
             <ion-label>Género</ion-label>
-            <ion-select formControlName="f2_edudetail"  placeholder="Escoja uno">
+            <ion-select formControlName="f2_edudetail" placeholder="Escoja uno">
               <ion-select-option value="f">Femenino</ion-select-option>
               <ion-select-option value="m">Masculino</ion-select-option>
             </ion-select>
@@ -74,56 +73,45 @@
         <div class="itemdatos">
           <ion-label>Número convencional (opcional)</ion-label>
           <ion-item lines="full">
-            
+
             <ion-input formControlName="mobile" input type="tel " maxlength="7"></ion-input>
           </ion-item>
-          
+
         </div>
-        
+
         <div class="itemdatos">
-          <ion-label>Fecha de Nacimiento</ion-label>
-          <div class="seleccion">
-            <ion-item button="true" id="open-date-input2" >
-              <ion-label>{{dateValue2 | date: 'dd/MM/yyyy'}}</ion-label>
-              <ion-icon name="calendar-clear-outline" id="open-modal2" item-right></ion-icon>
-              <ion-modal trigger="open-modal2">    
-                <ion-popover trigger="open-date-input2" show-backdrop="false">
-                <ng-template>
-                  <ion-content >
-                    <ion-datetime formControlName="dob" [max]="maxFecha" [min]="minFecha" displayFormat="DD/MM/YYYY" pickerFormat="DD MM YYYY" #popoverDatetime
-                    presentation="date"
-                    (ionChange)="dateValue2=popoverDatetime.value" (ionChange)="getDate($event)" >   
-                      <div slot="title">     
-                      </div>
-                      
-                    </ion-datetime>
-                  </ion-content>
-                </ng-template>
-              </ion-popover>
-              </ion-modal>
-            </ion-item>
-          </div>
+          <ion-label>Fecha de nacimiento</ion-label>
+          <ion-item lines="full">
+            <ion-input formControlName="bday" type="text" placeholder="AAAA-MM-DD"></ion-input>
+          </ion-item>
+          <span class="error ion-padding" *ngIf="isSubmitted && errorControl.bday.errors?.required">
+            Ingrese su fecha de nacimiento
+          </span>
+          <span class="error ion-padding" *ngIf="isSubmitted && errorControl.bday.errors?.pattern">
+            Ingrese una fecha válida
+          </span>
         </div>
-        
+
         <ion-row>
           <div class="botones">
-          <ion-col>
+            <ion-col>
 
-            <button ion-button class ="guardar">Registrarse</button>
-          </ion-col>
+              <button ion-button class="guardar">Registrarse</button>
+            </ion-col>
           </div>
         </ion-row>
 
-        
-    </ion-list>
+
+      </ion-list>
     </form>
     <ion-row>
-    <div class="container-terminos">
-      <ion-item>
-        <ion-label class="terminos">He leído y acepto las <span>políticas de privacidad</span></ion-label>
-        <ion-checkbox (click)="onClick()" [(ngModel)]="condiciones" color="primary" slot="start" item-right></ion-checkbox>
-      </ion-item>
-    </div> 
+      <div class="container-terminos">
+        <ion-item>
+          <ion-label class="terminos">He leído y acepto las <span>políticas de privacidad</span></ion-label>
+          <ion-checkbox (click)="onClick()" [(ngModel)]="condiciones" color="primary" slot="start" item-right>
+          </ion-checkbox>
+        </ion-item>
+      </div>
     </ion-row>
   </div>
 </ion-content>

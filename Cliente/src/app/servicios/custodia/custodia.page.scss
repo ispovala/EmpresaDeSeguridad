@@ -20,7 +20,8 @@ ion-content {
 }
 .horaval{
   --width: 290px;
-  --height: 248px;
+  --height: 200px;
+  font-weight: 500;
 }
 
 .regresar ion-img {
@@ -55,16 +56,22 @@ ion-content {
 ion-datetime {
   height: auto;
   width: auto;
+
 }
 
 ion-modal {
   --width: 290px;
-  --height: 382px;
+  --height: 460px;
   --border-radius: 8px;
 }
 
 ion-modal ion-datetime {
-  height: 382px;
+  height: 460px;
+}
+.seleccion ion-label{
+  text-align: center;
+  margin-bottom: 1.5%;
+  margin-top: 0%;
 }
 .ubicacion ion-label {
   font-family: hp265;
@@ -113,17 +120,27 @@ ion-modal ion-datetime {
 }
 .ubicacion {
   display: flex;
+  margin-bottom: 1%;
+
+}
+.ubicacion ion-label{
+  width:30em;
 }
 
 .ubicacion button {
   text-align: center;
-  margin-left: 0rem;
-  width: 10rem;
+  margin-right: 5%;
+  margin-left: 10%;
+  width: 30em;
   height: 2.6rem;
   border-radius: 60px;
   background-color: #4a7edd;
   color: #ffffff;
   font-size: 120%;
+}
+.botones{
+  height: 15em;
+  text-align: center;
 }
 .solicitar-servicio button {
   text-align: center;
@@ -187,9 +204,7 @@ ion-checkbox {
   color: #bf1a24;
 }
 
-.botones {
-  text-align: center;
-}
+
 :root {
   --ion-safe-area-top: 20px;
   --ion-safe-area-bottom: 22px;
