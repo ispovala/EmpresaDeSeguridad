@@ -46,7 +46,7 @@ export class EditarperfilPage implements OnInit {
     this.ionicForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(2), Validators.pattern('[a-zA-Z ]*')]],
       lastname: ['', [Validators.required, Validators.minLength(2), Validators.pattern('[a-zA-Z ]*')]],
-      email: ['', [Validators.required, Validators.pattern('[a-z0-9_-]+@[a-z0-9]+[.{1}][a-z]{2,}([.{1}][a-z]{2,})?')]],
+      email: ['', [Validators.required, Validators.pattern('[a-z/.0-9_-]+@[a-z0-9]+[.{1}][a-z]{2,}([.{1}][a-z]{2,})?')]],
       bday: ['', [Validators.required, Validators.pattern('(?:19[0-9]{2}|20[01][0-9]|2020)[-](?:0[1-9]|1[012])[-](?:0[1-9]|[12][0-9]|3[01])')]],
       mobile: ['', [Validators.required, Validators.pattern('^09[0-9]{8}$')]],
       cedula: ['', [Validators.required, Validators.pattern('[0-9]{10}')]],

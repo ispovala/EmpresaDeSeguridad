@@ -117,8 +117,8 @@ export class ChoferPage implements OnInit {
     var dias=fechafin.diff(fechainicio,"d")
     var horas=fechafin.diff(fechainicio,"h")
     var minutos=fechafin.diff(fechainicio,"m")
-    //this.duracion=" "+dias+" días, "+(horas-(dias*24))+" horas y "+(minutos-(horas*60))+" minutos";
-    this.duracion=" "+(horas-(dias*24))+" horas y "+(minutos-(horas*60))+" minutos";
+    this.duracion=" "+dias+" días, "+(horas-(dias*24))+" horas y "+(minutos-(horas*60))+" minutos";
+    //this.duracion=" "+(horas-(dias*24))+" horas y "+(minutos-(horas*60))+" minutos";
     var hoy=moment(new Date());
     var difdiahoy=fechainicio.diff(hoy,"d");
     var difhorahoy=fechainicio.diff(hoy,"h");

@@ -54,7 +54,7 @@
               <ion-modal class="horaval" trigger="open-modal11"> 
                 <ion-popover trigger="open-date-input11" show-backdrop="false">
                 <ng-template>
-                    <ion-datetime formControlName="horaInicio" displayFormat="hh:mma" presentation="time" #popoverDatetime
+                    <ion-datetime hour-cycle="h23" formControlName="horaInicio" displayFormat="hh:mma" presentation="time" #popoverDatetime
                     (ionChange)="dateValue11 =popoverDatetime.value"> 
                     </ion-datetime>
                 </ng-template>
