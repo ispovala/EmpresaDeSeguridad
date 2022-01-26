@@ -235,7 +235,7 @@ class Vehiculo(models.Model):
     year = models.PositiveSmallIntegerField(verbose_name="year", default=0)
 
     def __str__(self):
-        return "Placa: " + self.placa + ", Marca: " + self.marca.nombre + ", Modelo: " + self.modelo.nombre
+        return "Placa: " + self.placa # + ", Marca: " + self.marca.nombre + ", Modelo: " + self.modelo.nombre
 
     class Meta:
         db_table = 'vehiculo'

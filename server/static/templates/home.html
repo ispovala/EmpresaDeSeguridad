@@ -247,11 +247,12 @@
         white-space: nowrap;
         word-wrap: normal;
         direction: ltr;
-        font-feature-settings: "liga";
+        -webkit-font-feature-settings: "liga";
         -webkit-font-smoothing: antialiased;
       }
     </style>
     <style>
+      @charset "UTF-8";
       .mat-typography {
         font: 400 14px/20px Roboto, Helvetica Neue, sans-serif;
         letter-spacing: normal;
@@ -345,20 +346,21 @@
     </style>
     <link
       rel="stylesheet"
-      type="text/css"
-      href="{% static 'ang/styles.css' %}"
+      href="{% static 'ang/styles.fd98ecf0b0cf3ca8f02b.css' %}"
       media="print"
       onload="this.media='all'"
     />
     <noscript
-      ><link rel="stylesheet" type="text/css" href="{% static 'ang/styles.css' %}"
+      ><link
+        rel="stylesheet"
+        href="{% static 'ang/styles.fd98ecf0b0cf3ca8f02b.css' %}"
     /></noscript>
   </head>
   <body class="mat-typography">
     <app-root></app-root>
-    <script type="text/javascript" src="{% static 'ang/runtime.js' %}" defer></script>
-    <script type="text/javascript" src="{% static 'ang/polyfills.js' %}" defer></script>
-    <script type="text/javascript" src="{% static 'ang/scripts.js' %}" defer></script>
-    <script type="text/javascript" src="{% static 'ang/main.js' %}" defer></script>
+    <script src="{% static 'ang/runtime.fa97f0932ffabf75d666.js' %}" defer></script>
+    <script src="{% static 'ang/polyfills.d8beb66d5e426420985c.js' %}" defer></script>
+    <script src="{% static 'ang/scripts.bdf55d789593d77d109e.js' %}" defer></script>
+    <script src="{% static 'ang/main.ec0d775ed27cb5e164be.js' %}" defer></script>
   </body>
 </html>

@@ -124,11 +124,11 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 STATIC_ROOT = '/home/PaulDBM/EmpresaDeSeguridad/server/static'
 
 STATICFILES_DIRS = [
-    '/home/PaulDBM/EmpresaDeSeguridad/server/static/ang/',
+    BASE_DIR / 'static/ang',
 ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
