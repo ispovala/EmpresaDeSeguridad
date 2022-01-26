@@ -345,19 +345,20 @@
     </style>
     <link
       rel="stylesheet"
+      type="text/css"
       href="{% static 'ang/styles.css' %}"
       media="print"
       onload="this.media='all'"
     />
     <noscript
-      ><link rel="stylesheet" href="{% static 'ang/styles.css' %}"
+      ><link rel="stylesheet" type="text/css" href="{% static 'ang/styles.css' %}"
     /></noscript>
   </head>
   <body class="mat-typography">
     <app-root></app-root>
-    <script src="{% static 'ang/runtime.js' %}" defer></script>
-    <script src="{% static 'ang/polyfills.js' %}" defer></script>
-    <script src="{% static 'ang/scripts.js' %}" defer></script>
-    <script src="{% static 'ang/main.js' %}" defer></script>
+    <script type="text/javascript" src="{% static 'ang/runtime.js' %}" defer></script>
+    <script type="text/javascript" src="{% static 'ang/polyfills.js' %}" defer></script>
+    <script type="text/javascript" src="{% static 'ang/scripts.js' %}" defer></script>
+    <script type="text/javascript" src="{% static 'ang/main.js' %}" defer></script>
   </body>
 </html>
