@@ -66,105 +66,113 @@
     ></button>
   </div>
   <div class="modal-body">
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <div class="container">
-            <div class="row">
-              <div class="col">
-                <div class="form-group pb-3">
-                  <label for="Marca">Marca</label>
-                  <select
-                    name="marca"
-                    [(ngModel)]="currentArma.marca"
-                    class="form-control"
-                  >
-                    <option
-                      [value]="marca.id"
-                      *ngFor="let marca of getMarcasArma()"
+    <form
+      class="form-horizontal"
+      [formGroup]="form"
+      (ngSubmit)="modal.close(getArma)"
+      novalidate
+    >
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                  <div class="form-group pb-3">
+                    <label for="Marca">Marca</label>
+                    <select
+                      id="marca"
+                      name="marca"
+                      class="form-control"
+                      formControlName="marca"
+                      required
                     >
-                      {{ marca.nombre }}
-                    </option>
-                  </select>
+                      <option
+                        [value]="marca.id"
+                        *ngFor="let marca of getMarcasArma()"
+                      >
+                        {{ marca.nombre }}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="Tipo">Tipo</label>
+                    <select
+                      id="tipo"
+                      name="tipo"
+                      class="form-control"
+                      formControlName="tipo"
+                      required
+                    >
+                      <option
+                        [value]="tipo.id"
+                        *ngFor="let tipo of getTiposArma()"
+                      >
+                        {{ tipo.nombre }}
+                      </option>
+                    </select>
+                  </div>
                 </div>
-                <div class="form-group">
-                  <label for="Tipo">Tipo</label>
-                  <select
-                    name="tipo"
-                    [(ngModel)]="currentArma.tipo"
-                    class="form-control"
-                  >
-                    <option
-                      [value]="tipo.id"
-                      *ngFor="let tipo of getTiposArma()"
+                <div class="col">
+                  <div class="form-group pb-3">
+                    <label for="Calibre">Calibre</label>
+                    <select
+                      id="calibre"
+                      name="calibre"
+                      class="form-control"
+                      formControlName="calibre"
                     >
-                      {{ tipo.nombre }}
-                    </option>
-                  </select>
-                </div>
-              </div>
-              <div class="col">
-                <div class="form-group pb-3">
-                  <label for="Calibre">Calibre</label>
-                  <select
-                    name="calibre"
-                    [(ngModel)]="currentArma.calibre"
-                    class="form-control"
-                  >
-                    <option
-                      [value]="calibre.id"
-                      *ngFor="let calibre of getCalibresArma()"
+                      <option
+                        [value]="calibre.id"
+                        *ngFor="let calibre of getCalibresArma()"
+                      >
+                        {{ calibre.nombre }}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="Color">Color</label>
+                    <select
+                      id="color"
+                      name="color"
+                      class="form-control"
+                      formControlName="color"
+                      required
                     >
-                      {{ calibre.nombre }}
-                    </option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="Color">Color</label>
-                  <select
-                    name="color"
-                    [(ngModel)]="currentArma.color"
-                    class="form-control"
-                  >
-                    <option
-                      [value]="color.id"
-                      *ngFor="let color of getColores()"
-                    >
-                      {{ color.nombre }}
-                    </option>
-                  </select>
+                      <option
+                        [value]="color.id"
+                        *ngFor="let color of getColores()"
+                      >
+                        {{ color.nombre }}
+                      </option>
+                    </select>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col">
-          <div class="form-group">
-            <label for="Observaciones" class="pb-3">Observaciones</label>
-            <textarea
-              class="form-control"
-              name="observaciones"
-              id="observaciones"
-              rows="5"
-              [(ngModel)]="currentArma.observaciones"
-              required
-            ></textarea>
-          </div>
-          <div class="form-group">
-            <!--<input type="file">  guardarRutaFoto() -->
+          <div class="col">
+            <div class="form-group">
+              <label for="Observaciones" class="pb-3">Observaciones</label>
+              <textarea
+                class="form-control"
+                formControlName="observaciones"
+                name="observaciones"
+                id="observaciones"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <!--<input type="file">  guardarRutaFoto() -->
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="modal-footer">
-    <button
-      type="button"
-      class="btn btn-outline-success"
-      (click)="modal.close(currentArma)"
-    >
-      Agregar
-    </button>
+      <div class="d-flex justify-content-end py-3">
+        <button type="submit" class="btn btn-outline-success">Agregar</button>
+      </div>
+    </form>
   </div>
 </ng-template>
 
@@ -179,105 +187,113 @@
     ></button>
   </div>
   <div class="modal-body">
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <div class="container">
-            <div class="row">
-              <div class="col">
-                <div class="form-group pb-3">
-                  <label for="Marca">Marca</label>
-                  <select
-                    name="marca"
-                    [(ngModel)]="currentArma.marca"
-                    class="form-control"
-                  >
-                    <option
-                      [value]="marca.id"
-                      *ngFor="let marca of getMarcasArma()"
+    <form
+      class="form-horizontal"
+      [formGroup]="form"
+      (ngSubmit)="modal.close(getArma)"
+      novalidate
+    >
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                  <div class="form-group pb-3">
+                    <label for="Marca">Marca</label>
+                    <select
+                      id="marca"
+                      name="marca"
+                      class="form-control"
+                      formControlName="marca"
+                      required
                     >
-                      {{ marca.nombre }}
-                    </option>
-                  </select>
+                      <option
+                        [value]="marca.id"
+                        *ngFor="let marca of getMarcasArma()"
+                      >
+                        {{ marca.nombre }}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="Tipo">Tipo</label>
+                    <select
+                      id="tipo"
+                      name="tipo"
+                      class="form-control"
+                      formControlName="tipo"
+                      required
+                    >
+                      <option
+                        [value]="tipo.id"
+                        *ngFor="let tipo of getTiposArma()"
+                      >
+                        {{ tipo.nombre }}
+                      </option>
+                    </select>
+                  </div>
                 </div>
-                <div class="form-group">
-                  <label for="Tipo">Tipo</label>
-                  <select
-                    name="tipo"
-                    [(ngModel)]="currentArma.tipo"
-                    class="form-control"
-                  >
-                    <option
-                      [value]="tipo.id"
-                      *ngFor="let tipo of getTiposArma()"
+                <div class="col">
+                  <div class="form-group pb-3">
+                    <label for="Calibre">Calibre</label>
+                    <select
+                      id="calibre"
+                      name="calibre"
+                      class="form-control"
+                      formControlName="calibre"
                     >
-                      {{ tipo.nombre }}
-                    </option>
-                  </select>
-                </div>
-              </div>
-              <div class="col">
-                <div class="form-group pb-3">
-                  <label for="Calibre">Calibre</label>
-                  <select
-                    name="calibre"
-                    [(ngModel)]="currentArma.calibre"
-                    class="form-control"
-                  >
-                    <option
-                      [value]="calibre.id"
-                      *ngFor="let calibre of getCalibresArma()"
+                      <option
+                        [value]="calibre.id"
+                        *ngFor="let calibre of getCalibresArma()"
+                      >
+                        {{ calibre.nombre }}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="Color">Color</label>
+                    <select
+                      id="color"
+                      name="color"
+                      class="form-control"
+                      formControlName="color"
+                      required
                     >
-                      {{ calibre.nombre }}
-                    </option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="Color">Color</label>
-                  <select
-                    name="color"
-                    [(ngModel)]="currentArma.color"
-                    class="form-control"
-                  >
-                    <option
-                      [value]="color.id"
-                      *ngFor="let color of getColores()"
-                    >
-                      {{ color.nombre }}
-                    </option>
-                  </select>
+                      <option
+                        [value]="color.id"
+                        *ngFor="let color of getColores()"
+                      >
+                        {{ color.nombre }}
+                      </option>
+                    </select>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col">
-          <div class="form-group">
-            <label for="Observaciones" class="pb-3">Observaciones</label>
-            <textarea
-              class="form-control"
-              name="observaciones"
-              id="observaciones"
-              rows="5"
-              [(ngModel)]="currentArma.observaciones"
-              required
-            ></textarea>
-          </div>
-          <div class="form-group">
-            <!--<input type="file">  guardarRutaFoto() -->
+          <div class="col">
+            <div class="form-group">
+              <label for="Observaciones" class="pb-3">Observaciones</label>
+              <textarea
+                class="form-control"
+                formControlName="observaciones"
+                name="observaciones"
+                id="observaciones"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <!--<input type="file">  guardarRutaFoto() -->
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="modal-footer">
-    <button
-      type="button"
-      class="btn btn-outline-success"
-      (click)="modal.close(currentArma)"
-    >
-      Guardar
-    </button>
+      <div class="d-flex justify-content-end py-3">
+        <button type="submit" class="btn btn-outline-success">Agregar</button>
+      </div>
+    </form>
   </div>
 </ng-template>
 
@@ -316,7 +332,7 @@
       type="button"
       class="btn-close mx-3"
       aria-label="Close"
-      (click)="modal.close('Cross click')"
+      (click)="modal.dismiss('Cross click')"
     ></button>
   </div>
   <div class="modal-body">
@@ -348,12 +364,6 @@
             }}</label>
           </div>
           <div class="form-group">
-            <label for="Color" class="text-secondary">Color:</label>
-            <label for="Color" class="px-2">{{
-              currentArma.nombreColor
-            }}</label>
-          </div>
-          <div class="form-group">
             <label for="Calibre" class="text-secondary">Calibre:</label>
             <label for="ColoCalibrer" class="px-2">{{
               currentArma.nombreCalibre
@@ -373,7 +383,7 @@
         <button
           type="button"
           class="btn btn-outline-dark"
-          (click)="modal.close('edit'); openEM(editModal)"
+          (click)="modal.close(); openEM(editModal)"
         >
           Editar <i class="fas fa-edit"></i>
         </button>

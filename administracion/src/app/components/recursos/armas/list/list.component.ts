@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Arma } from 'src/app/core/models/recursos/arma/arma.model';
 import { CalibreArma } from 'src/app/core/models/recursos/arma/calibre-arma.model';
@@ -10,6 +11,7 @@ import { CalibreArmaService } from 'src/app/core/services/recursos/arma/calibre-
 import { ColorService } from 'src/app/core/services/recursos/color.service';
 import { MarcaService } from 'src/app/core/services/recursos/marca.service';
 import { TipoService } from 'src/app/core/services/recursos/tipo.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'armas-list',
@@ -23,8 +25,10 @@ export class ArmasListComponent implements OnInit {
   private marcasArma?: Marcas[];
   private colores?: Color[];
   currentArma: Arma = new Arma();
+  form: FormGroup;
 
   constructor(
+    private formBuilder: FormBuilder,
     private armaService: ArmaService,
     private calibresArmaService: CalibreArmaService,
     private tiposService: TipoService,
@@ -33,6 +37,7 @@ export class ArmasListComponent implements OnInit {
     private modalService: NgbModal
   ) {
     this.armas = [];
+    this.form = new FormGroup({});
   }
 
   ngOnInit(): void {
@@ -41,6 +46,42 @@ export class ArmasListComponent implements OnInit {
     this.retrieveMarcasArma();
     this.retrieveColores();
     this.refreshList();
+
+    this.form = this.formBuilder.group({
+      id: [null],
+      calibre: [null, Validators.required],
+      color: [null, Validators.required],
+      marca: [null, Validators.required],
+      observaciones: [null, Validators.required],
+      tipo: [null, Validators.required],
+    });
+  }
+
+  get getArma() {
+    return this.form.controls;
+  }
+
+  private infoAlert(msg: string) {
+    Swal.fire({
+      icon: 'info',
+      title: msg,
+      timer: 3000,
+      showConfirmButton: false,
+    });
+  }
+
+  private validateForm(form: FormGroup) {
+    if (!form.controls.marca.value) {
+      this.infoAlert('Seleccione una marca válida');
+    } else if (!form.controls.calibre.value) {
+      this.infoAlert('Seleccione un calibre válido');
+    } else if (!form.controls.tipo.value) {
+      this.infoAlert('Seleccione un tipo válido');
+    } else if (!form.controls.color.value) {
+      this.infoAlert('Seleccione un color válido');
+    } else if (!form.controls.observaciones.value) {
+      this.infoAlert('Escriba las observaciones');
+    }
   }
 
   private retrieveArmas(): void {
@@ -122,6 +163,15 @@ export class ArmasListComponent implements OnInit {
     return this.colores;
   }
 
+  private actionSuccessfully(msg: string) {
+    Swal.fire({
+      icon: 'success',
+      title: msg,
+      timer: 3000,
+      showConfirmButton: false,
+    });
+  }
+
   openCM(content: any) {
     this.modalService
       .open(content, {
@@ -131,8 +181,20 @@ export class ArmasListComponent implements OnInit {
       })
       .result.then(
         (result) => {
-          this.armaService.create(result).subscribe(
+          if (!this.form.valid) {
+            this.validateForm(this.form);
+            return;
+          }
+          this.currentArma = {
+            calibre: result.calibre.value,
+            color: result.color.value,
+            marca: result.marca.value,
+            tipo: result.tipo.value,
+            observaciones: result.observaciones.value,
+          };
+          this.armaService.create(this.currentArma).subscribe(
             () => {
+              this.actionSuccessfully('Arma creada exitosamente');
               this.refreshList();
             },
             (error) => {}
@@ -153,12 +215,27 @@ export class ArmasListComponent implements OnInit {
       })
       .result.then(
         (result) => {
-          this.armaService.update(result.id, result).subscribe(
-            () => {
-              this.refreshList();
-            },
-            (error) => {}
-          );
+          if (!this.form.valid) {
+            this.validateForm(this.form);
+            return;
+          }
+          this.currentArma = {
+            id: result.id.value,
+            calibre: result.calibre.value,
+            color: result.color.value,
+            marca: result.marca.value,
+            tipo: result.tipo.value,
+            observaciones: result.observaciones.value,
+          };
+          this.armaService
+            .update(this.currentArma.id, this.currentArma)
+            .subscribe(
+              () => {
+                this.actionSuccessfully('Arma modificada exitosamente');
+                this.refreshList();
+              },
+              (error) => {}
+            );
         },
         () => {
           this.resetCurrent();
@@ -174,6 +251,7 @@ export class ArmasListComponent implements OnInit {
           result.is_deleted = true;
           this.armaService.update(result.id, result).subscribe(
             () => {
+              this.actionSuccessfully('Arma eliminada exitosamente');
               this.refreshList();
             },
             (error) => {}
@@ -192,16 +270,12 @@ export class ArmasListComponent implements OnInit {
         size: 'lg',
         backdrop: 'static',
       })
-      .result.then((result) => {
-        if (
-          result != null &&
-          result != undefined &&
-          result != '' &&
-          result !== 'edit'
-        ) {
+      .result.then(
+        (result) => {},
+        () => {
           this.resetCurrent();
         }
-      });
+      );
   }
 
   refreshList(): void {
@@ -211,9 +285,18 @@ export class ArmasListComponent implements OnInit {
 
   resetCurrent(): void {
     this.currentArma = {};
+    this.form.reset();
   }
 
   setActiveArma(arma: Arma): void {
     this.currentArma = arma;
+    this.form.setValue({
+      id: arma.id,
+      calibre: arma.calibre,
+      marca: arma.marca,
+      tipo: arma.tipo,
+      color: arma.color,
+      observaciones: arma.observaciones,
+    });
   }
 }

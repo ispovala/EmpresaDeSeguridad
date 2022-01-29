@@ -66,121 +66,128 @@
     ></button>
   </div>
   <div class="modal-body">
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <div class="form-group pb-3">
-            <label for="Numero">Número</label>
-            <input
-              type="text"
-              #Numero="ngModel"
-              id="Numero"
-              name="Numero"
-              class="form-control"
-              [(ngModel)]="currentCelular.numero_contacto"
-              minlength="10"
-              maxlength="10"
-              required
-            />
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col">
-                <div class="form-group pb-3">
-                  <label for="Marca">Marca</label>
-                  <select
-                    name="marca"
-                    [(ngModel)]="currentCelular.marca"
-                    class="form-control"
-                    (change)="retrieveModelosCelular()"
-                  >
-                    <option
-                      [value]="marca.id"
-                      *ngFor="let marca of getMarcasCelular()"
+    <form
+      class="form-horizontal"
+      [formGroup]="form"
+      (ngSubmit)="modal.close(getCelular)"
+      novalidate
+    >
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="form-group pb-3">
+              <label for="Numero">Número</label>
+              <input
+                type="text"
+                id="numero_contacto"
+                name="numero_contacto"
+                class="form-control"
+                minlength="10"
+                maxlength="10"
+                formControlName="numero_contacto"
+                required
+              />
+            </div>
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                  <div class="form-group pb-3">
+                    <label for="Marca">Marca</label>
+                    <select
+                      id="marca"
+                      name="marca"
+                      class="form-control"
+                      (change)="retrieveModelosCelular()"
+                      formControlName="marca"
+                      required
                     >
-                      {{ marca.nombre }}
-                    </option>
-                  </select>
+                      <option
+                        [value]="marca.id"
+                        *ngFor="let marca of getMarcasCelular()"
+                      >
+                        {{ marca.nombre }}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="Operadora">Operadora</label>
+                    <select
+                      id="operadora"
+                      name="operadora"
+                      formControlName="operadora"
+                      class="form-control"
+                    >
+                      <option
+                        [value]="operadora.id"
+                        *ngFor="let operadora of getOperadorasCelular()"
+                      >
+                        {{ operadora.nombre }}
+                      </option>
+                    </select>
+                  </div>
                 </div>
-                <div class="form-group">
-                  <label for="Operadora">Operadora</label>
-                  <select
-                    name="operadora"
-                    [(ngModel)]="currentCelular.operadora"
-                    class="form-control"
-                  >
-                    <option
-                      [value]="operadora.id"
-                      *ngFor="let operadora of getOperadorasCelular()"
+                <div class="col">
+                  <div class="form-group pb-3">
+                    <label for="Modelo">Modelo</label>
+                    <select
+                      id="modelo"
+                      name="modelo"
+                      formControlName="modelo"
+                      class="form-control"
                     >
-                      {{ operadora.nombre }}
-                    </option>
-                  </select>
-                </div>
-              </div>
-              <div class="col">
-                <div class="form-group pb-3">
-                  <label for="Modelo">Modelo</label>
-                  <select
-                    name="modelo"
-                    [(ngModel)]="currentCelular.modelo"
-                    class="form-control"
-                    [disabled]="currentCelular.marca == undefined"
-                  >
-                    <option
-                      [value]="modelo.id"
-                      *ngFor="let modelo of getModelosCelular()"
+                      <option
+                        [value]="modelo.id"
+                        *ngFor="let modelo of getModelosCelular()"
+                      >
+                        {{ modelo.nombre }}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="Color">Color</label>
+                    <select
+                      id="color"
+                      name="color"
+                      class="form-control"
+                      formControlName="color"
+                      required
                     >
-                      {{ modelo.nombre }}
-                    </option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="Color">Color</label>
-                  <select
-                    name="color"
-                    [(ngModel)]="currentCelular.color"
-                    class="form-control"
-                  >
-                    <option
-                      [value]="color.id"
-                      *ngFor="let color of getColores()"
-                    >
-                      {{ color.nombre }}
-                    </option>
-                  </select>
+                      <option
+                        [value]="color.id"
+                        *ngFor="let color of getColores()"
+                      >
+                        {{ color.nombre }}
+                      </option>
+                    </select>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col">
-          <div class="form-group">
-            <label for="Observaciones" class="pb-3">Observaciones</label>
-            <textarea
-              class="form-control"
-              name="observaciones"
-              id="observaciones"
-              rows="5"
-              [(ngModel)]="currentCelular.observaciones"
-              required
-            ></textarea>
+          <div class="col">
+            <div class="form-group">
+              <label for="Observaciones" class="pb-3">Observaciones</label>
+              <textarea
+                class="form-control"
+                formControlName="observaciones"
+                name="observaciones"
+                id="observaciones"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <!--<input type="file">  guardarRutaFoto() -->
+            </div>
           </div>
-          <div class="form-group">
-            <!--<input type="file">  guardarRutaFoto() -->
+          <div class="d-flex justify-content-end py-3">
+            <button type="submit" class="btn btn-outline-success">
+              Agregar
+            </button>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="modal-footer">
-    <button
-      type="button"
-      class="btn btn-outline-success"
-      (click)="modal.close(currentCelular)"
-    >
-      Agregar
-    </button>
+    </form>
   </div>
 </ng-template>
 
@@ -195,121 +202,129 @@
     ></button>
   </div>
   <div class="modal-body">
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <div class="form-group pb-3">
-            <label for="Numero">Número</label>
-            <input
-              type="text"
-              #Numero="ngModel"
-              id="Numero"
-              name="Numero"
-              class="form-control"
-              [(ngModel)]="currentCelular.numero_contacto"
-              minlength="10"
-              maxlength="10"
-              required
-            />
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col">
-                <div class="form-group pb-3">
-                  <label for="Marca">Marca</label>
-                  <select
-                    name="marca"
-                    [(ngModel)]="currentCelular.marca"
-                    class="form-control"
-                    (change)="retrieveModelosCelular()"
-                  >
-                    <option
-                      [value]="marca.id"
-                      *ngFor="let marca of getMarcasCelular()"
+    <form
+      class="form-horizontal"
+      [formGroup]="form"
+      (ngSubmit)="modal.close(getCelular)"
+      novalidate
+    >
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="form-group pb-3">
+              <label for="Numero">Número</label>
+              <input
+                type="text"
+                id="numero_contacto"
+                name="numero_contacto"
+                class="form-control"
+                minlength="10"
+                maxlength="10"
+                formControlName="numero_contacto"
+                pattern="^[0-9]{10}$"
+                required
+              />
+            </div>
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                  <div class="form-group pb-3">
+                    <label for="Marca">Marca</label>
+                    <select
+                      id="marca"
+                      name="marca"
+                      class="form-control"
+                      (change)="retrieveModelosCelular()"
+                      formControlName="marca"
+                      required
                     >
-                      {{ marca.nombre }}
-                    </option>
-                  </select>
+                      <option
+                        [value]="marca.id"
+                        *ngFor="let marca of getMarcasCelular()"
+                      >
+                        {{ marca.nombre }}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="Operadora">Operadora</label>
+                    <select
+                      id="operadora"
+                      name="operadora"
+                      formControlName="operadora"
+                      class="form-control"
+                    >
+                      <option
+                        [value]="operadora.id"
+                        *ngFor="let operadora of getOperadorasCelular()"
+                      >
+                        {{ operadora.nombre }}
+                      </option>
+                    </select>
+                  </div>
                 </div>
-                <div class="form-group">
-                  <label for="Operadora">Operadora</label>
-                  <select
-                    name="operadora"
-                    [(ngModel)]="currentCelular.operadora"
-                    class="form-control"
-                  >
-                    <option
-                      [value]="operadora.id"
-                      *ngFor="let operadora of getOperadorasCelular()"
+                <div class="col">
+                  <div class="form-group pb-3">
+                    <label for="Modelo">Modelo</label>
+                    <select
+                      id="modelo"
+                      name="modelo"
+                      formControlName="modelo"
+                      class="form-control"
                     >
-                      {{ operadora.nombre }}
-                    </option>
-                  </select>
-                </div>
-              </div>
-              <div class="col">
-                <div class="form-group pb-3">
-                  <label for="Modelo">Modelo</label>
-                  <select
-                    name="modelo"
-                    [(ngModel)]="currentCelular.modelo"
-                    class="form-control"
-                    [disabled]="currentCelular.marca == undefined"
-                  >
-                    <option
-                      [value]="modelo.id"
-                      *ngFor="let modelo of getModelosCelular()"
+                      <option
+                        [value]="modelo.id"
+                        *ngFor="let modelo of getModelosCelular()"
+                      >
+                        {{ modelo.nombre }}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="Color">Color</label>
+                    <select
+                      id="color"
+                      name="color"
+                      class="form-control"
+                      formControlName="color"
+                      required
                     >
-                      {{ modelo.nombre }}
-                    </option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="Color">Color</label>
-                  <select
-                    name="color"
-                    [(ngModel)]="currentCelular.color"
-                    class="form-control"
-                  >
-                    <option
-                      [value]="color.id"
-                      *ngFor="let color of getColores()"
-                    >
-                      {{ color.nombre }}
-                    </option>
-                  </select>
+                      <option
+                        [value]="color.id"
+                        *ngFor="let color of getColores()"
+                      >
+                        {{ color.nombre }}
+                      </option>
+                    </select>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col">
-          <div class="form-group">
-            <label for="Observaciones" class="pb-3">Observaciones</label>
-            <textarea
-              class="form-control"
-              name="observaciones"
-              id="observaciones"
-              rows="5"
-              [(ngModel)]="currentCelular.observaciones"
-              required
-            ></textarea>
+          <div class="col">
+            <div class="form-group">
+              <label for="Observaciones" class="pb-3">Observaciones</label>
+              <textarea
+                class="form-control"
+                formControlName="observaciones"
+                name="observaciones"
+                id="observaciones"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <!--<input type="file">  guardarRutaFoto() -->
+            </div>
           </div>
-          <div class="form-group">
-            <!--<input type="file">  guardarRutaFoto() -->
+          <div class="d-flex justify-content-end py-3">
+            <button type="submit" class="btn btn-outline-success">
+              Agregar
+            </button>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="modal-footer">
-    <button
-      type="button"
-      class="btn btn-outline-success"
-      (click)="modal.close(currentCelular)"
-    >
-      Guardar
-    </button>
+    </form>
   </div>
 </ng-template>
 
