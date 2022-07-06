@@ -40,7 +40,7 @@
     "ion-datepicker": "^2.8.2",
     "ion-datetime-picker": "^0.5.2",
     "ion2-calendar": "^3.0.0-rc.0",
-    "moment": "^2.29.1",
+    "moment": "^2.29.4",
     "phonegap-plugin-barcodescanner": "^8.1.0",
     "rxfire": "^6.0.0",
     "rxjs": "~6.6.0",
